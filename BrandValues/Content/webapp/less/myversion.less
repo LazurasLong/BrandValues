@@ -1,0 +1,74 @@
+﻿/* BG */
+@brand-login-bg:            #f2f4f8;
+@brand-white:               #ffffff;
+@color-grey:                #e1e1e2;
+
+/* Text Colours */
+@text-dark-grey:            #788188;
+@text-light-grey:           #a9a9a9;
+@text-purple:               #c63b94;
+
+@h1:                   300%;
+@h2:                   180%;
+
+/* Login */
+.bg-login {
+    background-color: @brand-login-bg;
+    color: @text-dark-grey;
+    background-image: url("../images/bg/bg-compass.png");
+    background-position: 98% 97%;
+    background-repeat: no-repeat;
+}
+@media (max-width: 400px) {
+    .bg-login {
+        background-position: 100% 0%;
+    }    
+}
+.largest-text{
+    font-size: @h1;
+}
+.large-text{
+    font-size: @h2;
+}
+.purple {
+    color : @text-purple !important;
+}
+.green {
+    color: @brand-success;
+}
+.dark-grey{
+    color: @text-dark-grey;
+}
+.btn-grey {
+    background-color: @color-grey;
+    color: @text-dark-grey;
+}
+.btn-grey:hover {
+    background-color: darken(@color-grey, 5%);
+    border-color: darken(@color-grey, 8%);
+}
+#loginForm {
+    background-color: @brand-white;
+    padding: 10px;
+    padding-top: 25px;
+    margin-bottom: 15px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.link-light {
+    color: @text-light-grey;
+}
+.link-light:hover {
+    color: @text-purple;
+}
+.centered {
+    margin-left: 10% !important;
+    margin-right: 10% !important;
+}
+.top-padding {
+    padding-top: 5px;
+}
+.list-icon{
+    padding-left: 20px;
+    padding-right: 5px;
+}

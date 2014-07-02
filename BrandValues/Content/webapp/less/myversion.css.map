@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "file": "myversion.css",
+  "sources": [
+    "myversion.less"
+  ],
+  "names": [],
+  "mappings": ";;;AAWA;EACI,yBAAA;EACA,cAAA;;AAEJ;EACI,cAAA;;AAEJ;EACI,cAAA;;AAEJ;EACI,yBAAA;EACA,cAAA;;AAEJ,SAAS;EACL,yBAAA;EACA,qBAAA;;AAEJ;EACI,yBAAA;EACA,aAAA;EACA,iBAAA;EACA,mBAAA;EACA,wBAAA;EACA,mBAAA;;AAEJ;EACI,cAAA;;AAEJ,WAAW;EACP,cAAA;;AAEJ;EACI,2BAAA;EACA,4BAAA;;AAEJ;EACI,gBAAA"
+}

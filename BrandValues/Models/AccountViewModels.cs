@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace BrandValues.Models {
     public class ExternalLoginConfirmationViewModel {
         [Required]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -33,12 +34,14 @@ namespace BrandValues.Models {
 
     public class ForgotViewModel {
         [Required]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel {
         [Required]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -54,6 +57,7 @@ namespace BrandValues.Models {
 
     public class RegisterViewModel {
         [Required]
+        [DataType(DataType.EmailAddress)]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -72,6 +76,7 @@ namespace BrandValues.Models {
 
     public class ResetPasswordViewModel {
         [Required]
+        [DataType(DataType.EmailAddress)]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -92,6 +97,7 @@ namespace BrandValues.Models {
 
     public class ForgotPasswordViewModel {
         [Required]
+        [DataType(DataType.EmailAddress)]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }

@@ -135,6 +135,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="check.html" />
+    <Content Include="Content\webapp\images\aib-logo-large.png" />
+    <Content Include="Content\webapp\images\bg\bg-compass.png" />
+    <Content Include="Content\webapp\less\app.variables.css">
+      <DependentUpon>app.variables.less</DependentUpon>
+    </Content>
+    <Content Include="Content\webapp\less\myversion.css">
+      <DependentUpon>myversion.less</DependentUpon>
+    </Content>
     <Content Include="packages.config" />
     <Content Include="Content\webapp\css\bootstrap.less" />
     <Content Include="Content\webapp\fonts\fontawesome-webfont.eot" />
@@ -171,6 +179,13 @@
     </Content>
     <Content Include="Content\webapp\css\bootstrap.css.map">
       <DependentUpon>bootstrap.css</DependentUpon>
+    </Content>
+    <Content Include="Content\webapp\less\app.variables.css.map">
+      <DependentUpon>app.variables.css</DependentUpon>
+    </Content>
+    <Content Include="Content\webapp\less\myversion.less" />
+    <Content Include="Content\webapp\less\myversion.css.map">
+      <DependentUpon>myversion.css</DependentUpon>
     </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -1,0 +1,43 @@
+﻿/* BG */
+/* Text Colours */
+/* Login */
+.bg-login {
+  background-color: #f2f4f8;
+  color: #788188;
+}
+.purple {
+  color: #c63b94 !important;
+}
+.dark-grey {
+  color: #788188;
+}
+.btn-grey {
+  background-color: #e1e1e2;
+  color: #788188;
+}
+.btn-grey:hover {
+  background-color: #d4d4d5;
+  border-color: #ccccce;
+}
+#loginForm {
+  background-color: #ffffff;
+  padding: 10px;
+  padding-top: 25px;
+  margin-bottom: 15px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.link-light {
+  color: #a9a9a9;
+}
+.link-light:hover {
+  color: #c63b94;
+}
+.centered {
+  margin-left: 10% !important;
+  margin-right: 10% !important;
+}
+.top-padding {
+  padding-top: 5px;
+}
+/*# sourceMappingURL=myversion.css.map */
