@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/webapp/images/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="~/Content/webapp/images/icons/iphone.jpg" rel="apple-touch-icon">
+    <link href="~/Content/webapp/images/icons/ipad.jpg" rel="apple-touch-icon" sizes="72x72">
+    <link href="~/Content/webapp/images/icons/iphone4.jpg" rel="apple-touch-icon" sizes="114x114">
+    <link href="~/Content/webapp/images/icons/ipad3.jpg" rel="apple-touch-icon" sizes="144x144">
+
+    <link rel="stylesheet" href="~/Content/webapp/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/webapp/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/webapp/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/webapp/css/simple-line-icons.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/webapp/css/font.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/webapp/less/app.css" type="text/css" />
+
+    <!--[if lt IE 9]>
+      <script src="Scripts/webapp/ie/html5shiv.js"></script>
+      <script src="Scripts/webapp/ie/respond.min.js"></script>
+      <script src="Scripts/webapp/ie/excanvas.js"></script>
+    <![endif]-->
+
+</head>
+<body class="bg-info dker">
+    <div id="content" class="m-t-lg wrapper-md animated fadeInUp">
+        <div class="container">
+            @RenderBody()
+        </div>
+
+    </div>
+    <!-- footer -->
+    <footer id="footer">
+        <div class="text-center padder">
+            <p>
+                <small>Made with <i class="fa icon-heart"></i> by Digital Innovation<br>&copy; 2014</small>
+            </p>
+        </div>
+    </footer>
+
+            <script src="~/Scripts/webapp/jquery.min.js"></script>
+
+            <!-- Bootstrap -->
+            <script src="~/Scripts/webapp/bootstrap.min.js"></script>
+
+            <!-- App -->
+            <script src="~/Scripts/webapp/app.min.js"></script>
+            <script src="~/Scripts/webapp/app.plugin.min.js"></script>
+
+            @RenderSection("scripts", required: false)
+
+</body>
+</html>
