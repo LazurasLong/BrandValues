@@ -47,6 +47,12 @@
     <Reference Include="AspNet.Identity.MongoDB">
       <HintPath>..\packages\AspNet.Identity.MongoDB.1.0.10\lib\net45\AspNet.Identity.MongoDB.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.MongoDB">
+      <HintPath>..\packages\elmah.mongodb.1.7\lib\net35\Elmah.MongoDB.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -134,6 +140,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\Elmah.MongoDB.txt" />
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="error500.html" />
+    <Content Include="error.html" />
     <Content Include="check.html" />
     <Content Include="Content\webapp\images\aib-logo-large.png" />
     <Content Include="Content\webapp\images\bg\bg-compass.png" />

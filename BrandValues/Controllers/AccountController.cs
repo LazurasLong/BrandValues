@@ -152,17 +152,33 @@ namespace BrandValues.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (!model.Email.ToString().Contains("@aib"))
                 {
-                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
-                    return View("DisplayEmail");
+                    ModelState.AddModelError("", "You need to use your AIB email address");
                 }
-                AddErrors(result);
+                else
+                {
+                    string[] namesArray = model.Email.Split('.');
+                    //Get title case for first name & surname
+                    string firstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[0]);
+
+                    int l = namesArray[2].IndexOf("@");
+                    string surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[2].Substring(0, l));
+
+
+                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = firstName, Surname = surname};
+                    var result = await UserManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                        //ViewBag.Link = callbackUrl;
+                        return View("DisplayEmail");
+                    }
+                    AddErrors(result);                    
+                }
+
             }
 
             // If we got this far, something failed, redisplay form
