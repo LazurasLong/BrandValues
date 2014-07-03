@@ -8,9 +8,9 @@ namespace BrandValues
         {
             filters.Add(new HandleErrorAttribute());
 
-            #if !DEBUG
-            filters.Add(new RequireHttpsAttribute());
-            #endif
+            //#if !DEBUG
+            //filters.Add(new RequireHttpsAttribute());
+            //#endif
         }
     }
 }

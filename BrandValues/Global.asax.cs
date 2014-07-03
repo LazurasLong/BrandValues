@@ -19,5 +19,17 @@ namespace BrandValues
 
             MvcHandler.DisableMvcResponseHeader = true;
         }
+
+        protected void Application_BeginRequest()
+        {
+            //http://martin-brennan.github.io/aws/2013/04/08/force-https-asp-net-aws-load-balancer/
+            string protocol = Request.Headers["X-Forwarded-Proto"];
+            if (protocol != "https") {
+                string redirectUrl = Request.Url.ToString().Replace("http:", "https:");
+                Response.Redirect(redirectUrl);
+            };
+        }
+
+
     }
 }
