@@ -134,6 +134,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\webapp\images\logo.png" />
+    <Content Include="Content\webapp\images\p0.jpg" />
+    <Content Include="Content\webapp\images\p1.jpg" />
+    <Content Include="Content\webapp\images\p2.jpg" />
+    <Content Include="Content\webapp\images\p3.jpg" />
+    <Content Include="Content\webapp\images\p4.jpg" />
+    <Content Include="Content\webapp\images\p5.jpg" />
     <Content Include="error500.html" />
     <Content Include="error.html" />
     <Content Include="check.html" />
@@ -157,7 +164,6 @@
     <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-bold.woff" />
     <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-light.woff" />
     <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro.woff" />
-    <Content Include="Content\webapp\images\music.ogg" />
     <Content Include="Content\webapp\less\app.arrow.less" />
     <Content Include="Content\webapp\less\app.buttons.less" />
     <Content Include="Content\webapp\less\app.colors.less" />
@@ -273,7 +279,6 @@
     <Content Include="Content\webapp\images\icons\ipad3.jpg" />
     <Content Include="Content\webapp\images\icons\iphone.jpg" />
     <Content Include="Content\webapp\images\icons\iphone4.jpg" />
-    <Content Include="Content\webapp\images\logo.png" />
     <Content Include="Content\webapp\images\m0.jpg" />
     <Content Include="Content\webapp\images\m1.jpg" />
     <Content Include="Content\webapp\images\m10.jpg" />
@@ -306,21 +311,6 @@
     <Content Include="Content\webapp\images\m7.jpg" />
     <Content Include="Content\webapp\images\m8.jpg" />
     <Content Include="Content\webapp\images\m9.jpg" />
-    <Content Include="Content\webapp\images\music.mp3" />
-    <Content Include="Content\webapp\images\p0.jpg" />
-    <Content Include="Content\webapp\images\p1.jpg" />
-    <Content Include="Content\webapp\images\p10.jpg" />
-    <Content Include="Content\webapp\images\p11.jpg" />
-    <Content Include="Content\webapp\images\p12.jpg" />
-    <Content Include="Content\webapp\images\p13.jpg" />
-    <Content Include="Content\webapp\images\p2.jpg" />
-    <Content Include="Content\webapp\images\p3.jpg" />
-    <Content Include="Content\webapp\images\p4.jpg" />
-    <Content Include="Content\webapp\images\p5.jpg" />
-    <Content Include="Content\webapp\images\p6.jpg" />
-    <Content Include="Content\webapp\images\p7.jpg" />
-    <Content Include="Content\webapp\images\p8.jpg" />
-    <Content Include="Content\webapp\images\p9.jpg" />
     <Content Include="Content\webapp\less\app.css">
       <DependentUpon>app.less</DependentUpon>
     </Content>

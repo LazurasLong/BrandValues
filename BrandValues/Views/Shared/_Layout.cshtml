@@ -35,26 +35,25 @@
     <section class="vbox">
 
         <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
-            <div class="navbar-header aside bg-info nav-xs">
+            <div class="navbar-header aside brand-white nav-xs">
                 <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                     <i class="icon-list"></i>
                 </a>
-                <a href="index.html" class="navbar-brand text-lt">
-                    <i class="icon-earphones"></i>
-                    <img src="~/Content/webapp/images/logo.png" alt="." class="hide">
+                <a href="https://valuescompetition.com" class="navbar-brand text-dark">
+                    <img src="~/Content/webapp/images/logo.png" alt="AIB Logo">
                     <span class="hidden-nav-xs m-l-sm">Brand Values</span>
                 </a>
                 <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
                     <i class="icon-settings"></i>
                 </a>
             </div>      <ul class="nav navbar-nav hidden-xs">
-                <li>
-                    <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
-                        <i class="fa fa-indent text"></i>
-                        <i class="fa fa-dedent text-active"></i>
-                    </a>
-                </li>
-            </ul>
+                            <li>
+                                <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
+                                    <i class="fa fa-indent text"></i>
+                                    <i class="fa fa-dedent text-active"></i>
+                                </a>
+                            </li>
+                        </ul>
             <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
                 <div class="form-group">
                     <div class="input-group">
@@ -102,29 +101,103 @@
                         </section>
                     </li>
                     <li class="dropdown">
+                        <ul class="nav navbar-nav navbar-right">
+                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+
+                                <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
+                            
+                                <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
+                            }
+</ul>
+                    </li>
+                    <li class="dropdown">
                         @Html.Partial("_LoginPartial")
                     </li>
                 </ul>
             </div>
         </header>
 
-        @RenderBody()
+
+        <section>
+            <section class="hbox stretch">
+                <!-- .aside -->
+                <aside class="bg-black dk nav-xs aside hidden-print" id="nav">
+                    <section class="vbox">
+                        <section class="w-f-md scrollable">
+                            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2">
+                                <!-- nav -->
+                                <nav class="nav-primary hidden-xs">
+                                    <ul class="nav bg clearfix">
+                                        <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                            Discover
+                                        </li>
+                                        <li>
+                                            <a ui-sref="main">
+                                                <i class="icon-like icon"></i>
+                                                <b class="badge bg-primary pull-right">1</b>
+                                                <span>Discover</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="browse">
+                                                <i class="icon-grid icon"></i>
+                                                <span>Browse</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="upload">
+                                                <i class="icon-cloud-upload icon  "></i>
+                                                <span>Upload</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a ui-sref="flipboard">
+                                                <i class="icon-list icon"></i>
+                                                <span>Flipboard</span>
+                                            </a>
+                                        </li>
+                                        <li class="m-b hidden-nav-xs"></li>
+                                    </ul>
+                                </nav>
+                                <!-- / nav -->
+                            </div>
+                        </section>
+
+                        <footer class="footer hidden-xs no-padder text-center-nav-xs">
+                            <div class="bg hidden-xs ">
+                            </div>
+                        </footer>
+                    </section>
+                </aside>
+                <!-- /.aside -->
+                <section id="content">
+                    
+                    <section class="hbox stretch">
+
+                        @RenderBody()
+                    </section>
+
+                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                    </section>
+            </section>
+        </section>
 
     </section>
-    <!-- /Body content -->
+                <!-- /Body content -->
 
-    <script src="~/Scripts/webapp/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/Scripts/webapp/bootstrap.min.js"></script>
-    <!-- App -->
-    <script src="~/Scripts/webapp/app.min.js"></script>
-    <script src="~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="~/Scripts/webapp/app.plugin.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/webapp/jPlayer/jquery.jplayer.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/webapp/jPlayer/add-on/jplayer.playlist.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/webapp/jPlayer/demo.js"></script>
+                <script src="~/Scripts/webapp/jquery.min.js"></script>
+                <!-- Bootstrap -->
+                <script src="~/Scripts/webapp/bootstrap.min.js"></script>
+                <!-- App -->
+                <script src="~/Scripts/webapp/app.min.js"></script>
+                <script src="~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js"></script>
+                <script src="~/Scripts/webapp/app.plugin.min.js"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/jPlayer/jquery.jplayer.min.js"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/jPlayer/add-on/jplayer.playlist.min.js"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/jPlayer/demo.js"></script>
 
-    @RenderSection("scripts", required: false)
+                @RenderSection("scripts", required: false)
 
 </body>
 </html>
