@@ -1,4 +1,5 @@
-﻿using BrandValues.Properties;
+﻿using System.Collections.Specialized;
+using System.Configuration;
 
 namespace BrandValues
 {
@@ -18,10 +19,14 @@ namespace BrandValues
             //var client = new MongoClient("mongodb://localhost:27017");
             //var database = client.GetServer().GetDatabase("mydb");
 
-            var settings = MongoClientSettings.FromUrl(new MongoUrl(Settings.Default.ConnectionString));
+            NameValueCollection appConfig = ConfigurationManager.AppSettings;
+            string mongoConnectionString = appConfig["PARAM1"];
+            string mongoDatabaseName = appConfig["PARAM2"];
+
+            var settings = MongoClientSettings.FromUrl(new MongoUrl(mongoConnectionString));
             settings.WriteConcern.Journal = true;
             var client = new MongoClient(settings);
-            var database = client.GetServer().GetDatabase(Settings.Default.DatabaseName);
+            var database = client.GetServer().GetDatabase(mongoDatabaseName);
 
 			var users = database.GetCollection<IdentityUser>("users");
 			var roles = database.GetCollection<IdentityRole>("roles");
