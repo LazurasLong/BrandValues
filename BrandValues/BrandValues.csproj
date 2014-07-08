@@ -134,6 +134,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\webapp\images\box-compass.png" />
+    <Content Include="Content\webapp\images\aib-logo-small.png" />
+    <Content Include="Content\webapp\images\entries\document.png" />
+    <Content Include="Content\webapp\images\entries\photo.png" />
+    <Content Include="Content\webapp\images\Liffey.jpg" />
     <Content Include="Content\webapp\images\logo.png" />
     <Content Include="Content\webapp\images\p0.jpg" />
     <Content Include="Content\webapp\images\p1.jpg" />
@@ -141,6 +146,7 @@
     <Content Include="Content\webapp\images\p3.jpg" />
     <Content Include="Content\webapp\images\p4.jpg" />
     <Content Include="Content\webapp\images\p5.jpg" />
+    <Content Include="Content\webapp\less\m40.jpg" />
     <Content Include="error500.html" />
     <Content Include="error.html" />
     <Content Include="check.html" />
@@ -196,7 +202,6 @@
       <DependentUpon>myversion.css</DependentUpon>
     </Content>
     <Content Include="Scripts\webapp\app.min.js.map" />
-    <Content Include="Scripts\webapp\app.plugin.min.js.map" />
     <Content Include="Scripts\webapp\bootstrap.min.js.map" />
     <Content Include="Scripts\webapp\datatables\datatable.json" />
     <Content Include="Scripts\webapp\datatables\growthrate.csv" />
@@ -319,7 +324,6 @@
     <Content Include="Scripts\webapp\app.js" />
     <Content Include="Scripts\webapp\app.min.js" />
     <Content Include="Scripts\webapp\app.plugin.js" />
-    <Content Include="Scripts\webapp\app.plugin.min.js" />
     <Content Include="Scripts\webapp\bootstrap.js" />
     <Content Include="Scripts\webapp\bootstrap.min.js" />
     <Content Include="Scripts\webapp\calendar\bootstrap_calendar.css" />

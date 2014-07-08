@@ -20,6 +20,7 @@ namespace BrandValues
             MvcHandler.DisableMvcResponseHeader = true;
         }
 
+        #if !DEBUG
         protected void Application_BeginRequest()
         {
             //http://martin-brennan.github.io/aws/2013/04/08/force-https-asp-net-aws-load-balancer/
@@ -29,6 +30,7 @@ namespace BrandValues
                 Response.Redirect(redirectUrl);
             };
         }
+        #endif
 
 
     }

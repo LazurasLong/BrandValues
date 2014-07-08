@@ -6,10 +6,19 @@
 /* Text Colours */
 @text-dark-grey:            #788188;
 @text-light-grey:           #a9a9a9;
-@text-purple:               #c63b94;
+@text-purple:               #c73c95;
 
 @h1:                   300%;
 @h2:                   180%;
+
+.bg-purple {
+background-color: @text-purple;
+color: #f0f2f8;
+}
+
+.bg-white{
+    background-color: @brand-white;
+}
 
 /* Login */
 .bg-login {
@@ -71,4 +80,96 @@
 .list-icon{
     padding-left: 20px;
     padding-right: 5px;
+}
+
+/*Nav */
+
+/* Home Screen */
+.navbar-brand{
+    font-weight: normal;
+}
+.timeline-item.active .timeline-caption {
+    width: 100%;
+}
+.white{
+    color: @brand-white;
+}
+.left {
+    text-align: left !important;
+}
+.no-border-radius {
+    border-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+.no-left-padding{
+    padding-left: 0px;
+}
+.no-top-margin{
+    margin-top: 0px !important;
+}
+.no-bottom-margin{
+    margin-bottom: 0px;
+}
+.margin-bottom-10{
+    margin-bottom: 10px;
+}
+.menu-panel {
+    background-color: lighten(@brand-primary, 10%) !important;
+    border-radius: 0px !important;
+    border: none !important;
+    padding: 15px;
+}
+.menu-panel:hover {
+    background-color: lighten(@brand-primary, 20%) !important;
+}
+.top-padding-10 {
+    padding-top: 10px;
+}
+.warning-message{
+    margin-bottom: 10px;
+}
+.no-border {
+    border: none;
+}
+.accordion-icon{
+    position: static;
+    display: inline-block;
+    width: auto;
+}
+.time-icon{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block !important;
+    z-index: 10;
+    border-radius: 20px;
+    text-align: center;
+}
+.acc-icon-padding{
+    padding-top: 7px;
+}
+.padder-r {
+    padding-right: 10px;
+}
+
+/* Entry types */
+.entry-lg{
+    width: 100px;
+    height: 175px;
+}
+
+.video {
+    background-color: @text-purple;
+}
+
+/* Footer */
+#footer-right{
+    text-align: right;
+    right: 0;
+    width: 100%;
+    padding-top: 5px;
+    font-size: 12px;
 }
