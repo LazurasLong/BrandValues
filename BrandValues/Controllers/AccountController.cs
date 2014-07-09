@@ -74,7 +74,7 @@ namespace BrandValues.Controllers
 
             // This doen't count login failures towards lockout only two factor authentication
             // To enable password failures to trigger lockout, change to shouldLockout: true
-            var result = await SignInHelper.PasswordSignIn(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInHelper.PasswordSignIn(model.Email.ToLower(), model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -164,9 +164,10 @@ namespace BrandValues.Controllers
 
                     int l = namesArray[2].IndexOf("@");
                     string surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[2].Substring(0, l));
+                    
+                    var userEmail = model.Email.ToLower();
 
-
-                    var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = firstName, Surname = surname};
+                    var user = new ApplicationUser { UserName = userEmail, Email = userEmail, FirstName = firstName, Surname = surname };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
@@ -220,7 +221,7 @@ namespace BrandValues.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByNameAsync(model.Email.ToLower());
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed

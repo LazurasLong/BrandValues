@@ -23,39 +23,9 @@
     });
 
 
-    var ranNum = Math.floor((Math.random()*50)+1);
-    var info = $('#gi'), num='';
-    var count = 0;
-    $('#gn').on('keydown', function(){info.text('.')});
-    $('#guessform').bootstrapWizard({
-      'tabClass': 'nav nav-tabs',
-      'onNext': function(tab, navigation, index) {        
-        var answer = $('#gn').val();
-        num = num +' '+ answer;
-        count++;
-        if(answer > ranNum)
-        {
-          info.text("Guess lower!");
-          return false;
-        }
-        else if(answer < ranNum)
-        {
-          info.text("Guess higher!!");
-          return false;
-        }
-        else if(answer==ranNum)
-        {
-          ranNum = Math.floor((Math.random()*50)+1);
-          $('#answer').text(answer);
-          $('#count').text(count);
-          $('#num').text(num);
-          count = 0;
-          return true;
-        }
-      },
-      onTabClick: function(tab, navigation, index) {
-        return false;
-      }
+    $('#chkAll').click(function () {
+        var checkBoxes = $("input[name=values]");
+        checkBoxes.prop("checked", !checkBoxes.prop("checked"));
     });
     
   });

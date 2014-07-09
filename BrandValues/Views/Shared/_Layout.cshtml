@@ -100,20 +100,32 @@
                             </section>
                         </section>
                     </li>
-                    <li class="dropdown">
-                        <ul class="nav navbar-nav navbar-right">
-                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                            {
+                    
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
 
-                                <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
-                            
-                                <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
-                            }
-</ul>
-                    </li>
                     <li class="dropdown">
-                        @Html.Partial("_LoginPartial")
+
+                        <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                            Admin <b class="caret"></b>
+                        </a>
+
+                                <ul class="dropdown-menu animated fadeInRight">
+                            
+                                    <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
+
+                                    <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
+                            
+                                </ul>
+                            
+                           
+
                     </li>
+                    }
+                    
+                    
+                    @Html.Partial("_LoginPartial")
+
                 </ul>
             </div>
         </header>
@@ -133,7 +145,7 @@
                                             Discover
                                         </li>
                                         <li>
-                                            <a ui-sref="main">
+                                            <a href="~/home">
                                                 <i class="icon-like icon"></i>
                                                 <b class="badge bg-primary pull-right">1</b>
                                                 <span>Discover</span>
@@ -146,7 +158,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a ui-sref="upload">
+                                            <a href="~/home/upload">
                                                 <i class="icon-cloud-upload icon  "></i>
                                                 <span>Upload</span>
                                             </a>
@@ -193,11 +205,18 @@
                 <script src="~/Scripts/webapp/app.min.js"></script>
                 <script src="~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js"></script>
                 <script src="~/Scripts/webapp/app.plugin.js"></script>
+    
+                <!-- JPlayer-->
                 <script type="text/javascript" src="~/Scripts/webapp/jPlayer/jquery.jplayer.min.js"></script>
                 <script type="text/javascript" src="~/Scripts/webapp/jPlayer/add-on/jplayer.playlist.min.js"></script>
                 <script type="text/javascript" src="~/Scripts/webapp/jPlayer/demo.js"></script>
 
                 @RenderSection("scripts", required: false)
+                 
+                <!-- Upload -->
+                <script type="text/javascript" src="@Url.Content("~/Scripts/webapp/parsley/parsley.min.js")"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/wizard/jquery.bootstrap.wizard.js"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/wizard/demo.js"></script>
 
 </body>
 </html>
