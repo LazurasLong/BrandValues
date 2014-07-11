@@ -3917,6 +3917,12 @@ fieldset[disabled] .i-checks input + i:before {
 .bg-white {
   background-color: #ffffff;
 }
+/* Stop apple rubberbanding */
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
 /* Login */
 .bg-login {
   background-color: #f2f4f8;

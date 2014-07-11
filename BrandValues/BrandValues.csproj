@@ -137,6 +137,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Cloudfront\CannedPolicy.txt" />
+    <Content Include="Cloudfront\PrivateKey.xml" />
     <Content Include="Content\webapp\images\box-compass.png" />
     <Content Include="Content\webapp\images\aib-logo-small.png" />
     <Content Include="Content\webapp\images\entries\document.png" />
@@ -209,6 +211,10 @@
     <Content Include="Scripts\webapp\datatables\datatable.json" />
     <Content Include="Scripts\webapp\datatables\growthrate.csv" />
     <Content Include="Scripts\webapp\jquery.min.js.map" />
+    <Content Include="Scripts\webapp\jwplayer\demo.js" />
+    <Content Include="Scripts\webapp\jwplayer\jwplayer.flash.swf" />
+    <Content Include="Scripts\webapp\jwplayer\jwplayer.html5.js" />
+    <Content Include="Scripts\webapp\jwplayer\jwplayer.js" />
     <Content Include="Scripts\webapp\slider\slider.less" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
@@ -249,6 +255,7 @@
     <Content Include="Views\Shared\_Layout-Account.cshtml" />
     <Content Include="Views\Account\_ViewStart.cshtml" />
     <Content Include="Views\Home\Upload.cshtml" />
+    <Content Include="Views\Home\Play.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -411,6 +418,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Cloudfront\CloudFrontSecurityProvider.cs" />
+    <Compile Include="Cloudfront\GetSignedUrl.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />

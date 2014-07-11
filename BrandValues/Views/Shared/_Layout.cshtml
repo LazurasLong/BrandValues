@@ -152,7 +152,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a ui-sref="browse">
+                                            <a href="~/home/play">
                                                 <i class="icon-grid icon"></i>
                                                 <span>Browse</span>
                                             </a>
@@ -207,9 +207,14 @@
                 <script src="~/Scripts/webapp/app.plugin.js"></script>
     
                 <!-- JPlayer-->
-                <script type="text/javascript" src="~/Scripts/webapp/jPlayer/jquery.jplayer.min.js"></script>
+                @*<script type="text/javascript" src="~/Scripts/webapp/jPlayer/jquery.jplayer.min.js"></script>
                 <script type="text/javascript" src="~/Scripts/webapp/jPlayer/add-on/jplayer.playlist.min.js"></script>
-                <script type="text/javascript" src="~/Scripts/webapp/jPlayer/demo.js"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/jPlayer/demo.js"></script>*@
+    
+
+                <script src="~/Scripts/webapp/jwplayer/jwplayer.js"></script>
+                <script src="~/Scripts/webapp/jwplayer/jwplayer.html5.js"></script>
+                <script src="~/Scripts/webapp/jwplayer/demo.js"></script>
 
                 @RenderSection("scripts", required: false)
                  

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Play";
+}
+
+<section>
+
+    <section class="vbox">
+        <section class="relativescroll scrollable padder-lg w-f-md">
+            
+            <h1>@ViewBag.Test</h1>
+            
+            <h1>@ViewBag.Message</h1>
+
+            <script>
+                var signedUrl = '@ViewBag.Message';
+            </script>
+
+            <div id="mediaplayer"></div>
+
+            <video poster="https://s3-eu-west-1.amazonaws.com/valuescompetition-transcoder-thumbnails/test5-00001.png"
+                   src="https://s3-eu-west-1.amazonaws.com/valuescompetition-transcoder/test5/test5.m3u8"
+                   controls autoplay height="300" width="400">
+                <p>Your browser does not support HLS playback in HTML5.</p>
+            </video>
+
+        </section>
+    </section>
+
+</section>

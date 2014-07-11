@@ -162,5 +162,6 @@
 	//chosen
 	$(".chosen-select").length && $(".chosen-select").chosen();
 
+
   });
 }(window.jQuery);

@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing;
 using System.Collections.Specialized;
 using System.Configuration;
+using BrandValues.Cloudfront;
 
 
 namespace BrandValues.Controllers {
@@ -16,12 +17,34 @@ namespace BrandValues.Controllers {
     [Authorize]
     public class HomeController : Controller {
 
+        NameValueCollection appConfig = ConfigurationManager.AppSettings;
+        //private static string adminAccessKey = appConfig["AWSAccessKey"];
+        //private static string adminAccessSecret = appConfig["AWSAccessKey"];
+        //AmazonS3Config config = new AmazonS3Config()
+        //{
+        //    ServiceURL = "https://s3.amazonaws.com"
+        //};
+
         public ActionResult Index()
         {
             var user = User.Identity.Name;
 
             return View("Index", "", user);
         }
+
+        public ActionResult Play()
+        {
+            string testUrl = GetSignedUrl.GetUrl("https://d3o104q4nbxlx6.cloudfront.net/video/image.jpg", 5 * 60);
+
+            string url = GetSignedUrl.GetUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/st/mp4:test1.mp4", 5 * 60);
+
+
+            ViewBag.Message = url;
+            ViewBag.Test = testUrl;
+
+            return View("Play");
+        }
+
 
         public ActionResult Upload()
         {
@@ -44,7 +67,7 @@ namespace BrandValues.Controllers {
 
                 if (file.ContentLength > 0)
                 {
-                   NameValueCollection appConfig = ConfigurationManager.AppSettings;
+                   
                    string accessKey = appConfig["S3AWSAccessKey"];
                    string secretKey = appConfig["S3AWSSecretKey"];
 
