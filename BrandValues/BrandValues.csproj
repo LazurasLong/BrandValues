@@ -257,6 +257,8 @@
     <Content Include="Views\Account\_ViewStart.cshtml" />
     <Content Include="Views\Home\Upload.cshtml" />
     <Content Include="Views\Home\Play.cshtml" />
+    <Content Include="Views\Home\Entry.cshtml" />
+    <Content Include="Views\Home\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -413,6 +415,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
+    <Compile Include="App_Start\BrandValuesContext.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\EnsureAuthIndexes.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -426,6 +429,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
+    <Compile Include="Entries\Edit.cs" />
+    <Compile Include="Entries\Entry.cs" />
+    <Compile Include="Entries\PostEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

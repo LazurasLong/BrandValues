@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BrandValues.Entries.PostEntry
+@{
     ViewBag.Title = "Upload";
 }
 
@@ -13,7 +14,7 @@
                 <div class="col-sm-6">
                     @using (Html.BeginForm("UploadFiles", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data" }))
                     {
-
+                        @Html.AntiForgeryToken()
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <ul class="nav nav-tabs font-bold">
@@ -33,6 +34,17 @@
                                 <div class="line line-lg"></div>
                                 <div class="tab-content">
                                     <div class="tab-pane" id="step1">
+                                        
+                                        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
+                                        
+                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                        
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                        @Html.LabelFor(model => model.Thumbnail, new { @class = "col-sm-2 control-label" })
+
+                                        @Html.EditorFor(model => model.Thumbnail, new { @class = "form-control" })
+
                                         <select data-required="true" class="form-control m-t">
                                             <option value="">Type of entry</option>
                                             <option value="poem-story">Poem / Story</option>

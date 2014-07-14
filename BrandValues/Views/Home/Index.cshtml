@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model IEnumerable<BrandValues.Entries.Entry>
 @{
     ViewBag.Title = "Values Competition Home";
 }
@@ -173,146 +173,44 @@
                             <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
                             <h2 class="font-thin m-b">
                                 Discover Others Living the Brand Values <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                                                            <span class="bar1 a1 bg-primary"></span>
-                                                                            <span class="bar2 a2 bg-info"></span>
-                                                                            <span class="bar3 a3 bg-success"></span>
-                                                                            <span class="bar4 a4 bg-warning"></span>
-                                                                            <span class="bar5 a5 bg-danger dker"></span>
-                                                                        </span>
+                                    <span class="bar1 a1 bg-primary"></span>
+                                    <span class="bar2 a2 bg-info"></span>
+                                    <span class="bar3 a3 bg-success"></span>
+                                    <span class="bar4 a4 bg-warning"></span>
+                                    <span class="bar5 a5 bg-danger dker"></span>
+                                </span>
                             </h2>
                             <h4 class="font-thin">Top Trending Entries</h4>
                             <div class="row row-sm">
-                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                    <div class="item">
-                                        <div class="pos-rlt">
-                                            <div class="item-overlay opacity r r-2x bg-black">
-                                                <div class="center text-center m-t-n">
-                                                    <a href="#"><i class="icon-arrow-right i-2x"></i></a>
+
+                                @foreach (var entry in Model)
+                                {
+                                    
+                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                                        <div class="item">
+                                            <div class="pos-rlt">
+                                                <div class="item-overlay opacity r r-2x bg-black">
+                                                    <div class="center text-center m-t-n">
+                                                        <a href="#"><i class="icon-arrow-right i-2x"></i></a>
+                                                    </div>
+                                                    <div class="bottom padder m-b-sm">
+                                                        <a href="#" class="pull-right">
+                                                            <i class="fa fa-heart-o"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                                <div class="bottom padder m-b-sm">
-                                                    <a href="#" class="pull-right">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
+                                                <a href="#"><img src="@Html.DisplayFor(modelItem => entry.Thumbnail)" alt="Document" class="r r-2x img-full"></a>
                                             </div>
-                                            <a href="#"><img src="~/Content/webapp/images/entries/document.png" alt="Document" class="r r-2x img-full"></a>
-                                        </div>
-                                        <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">Customer Focus</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">Dave, COO</a>
+                                            <div class="padder-v">
+                                                <a href="#" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Description)</a>
+                                                <a href="#" class="text-ellipsis text-xs text-muted">@Html.DisplayFor(modelItem => entry.UserName), @Html.DisplayFor(modelItem => entry.UserArea)</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                    <div class="item">
-                                        <div class="pos-rlt">
-                                            <div class="item-overlay opacity r r-2x bg-black active">
-                                                <div class="bottom padder m-b-sm">
-                                                    <a href="#" class="pull-right active" data-toggle="class">
-                                                        <i class="fa fa-heart-o text"></i>
-                                                        <i class="fa fa-heart text-active text-danger"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <a href="#"><img src="~/Content/webapp/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
-                                        </div>
-                                        <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">Tech focus</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">Catherine, FSG</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix visible-xs"></div>
-                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                    <div class="item">
-                                        <div class="pos-rlt">
-                                            <div class="item-overlay opacity r r-2x bg-black">
-                                                <div class="center text-center m-t-n">
-                                                    <a href="#"><i class="icon-arrow-right i-2x"></i></a>
-                                                </div>
-                                                <div class="bottom padder m-b-sm">
-                                                    <a href="#" class="pull-right">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <a href="#"><img src="~/Content/webapp/images/p2.jpg" alt="" class="r r-2x img-full"></a>
-                                        </div>
-                                        <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">Terrific Teller</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">Wendy, Finance</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                    <div class="item">
-                                        <div class="pos-rlt">
-                                            <div class="item-overlay opacity r r-2x bg-black">
-                                                <div class="center text-center m-t-n">
-                                                    <a href="#"><i class="icon-control-play i-2x"></i></a>
-                                                </div>
-                                                <div class="bottom padder m-b-sm">
-                                                    <a href="#" class="pull-right">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="top">
-                                                <span class="pull-right m-t-n-xs m-r-sm text-white">
-                                                    <i class="fa fa-bookmark i-lg"></i>
-                                                </span>
-                                            </div>
-                                            <a href="#"><img src="~/Content/webapp/images/p3.jpg" alt="" class="r r-2x img-full"></a>
-                                        </div>
-                                        <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">Awesome</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">Andy, Branch</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix visible-xs"></div>
-                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                    <div class="item">
-                                        <div class="pos-rlt">
-                                            <div class="item-overlay opacity r r-2x bg-black">
-                                                <div class="center text-center m-t-n">
-                                                    <a href="#"><i class="icon-arrow-right i-2x"></i></a>
-                                                </div>
-                                                <div class="bottom padder m-b-sm">
-                                                    <a href="#" class="pull-right">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <a href="#"><img src="~/Content/webapp/images/entries/photo.png" alt="" class=" r r-2x img-full"></a>
-                                        </div>
-                                        <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">Quicker payments</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">John, COO</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                    <div class="item">
-                                        <div class="pos-rlt">
-                                            <div class="item-overlay opacity r r-2x bg-black">
-                                                <div class="center text-center m-t-n">
-                                                    <a href="#"><i class="icon-arrow-right i-2x"></i></a>
-                                                </div>
-                                                <div class="bottom padder m-b-sm">
-                                                    <a href="#" class="pull-right">
-                                                        <i class="fa fa-heart-o"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <a href="#"><img src="~/Content/webapp/images/p5.jpg" alt="" class="r r-2x img-full"></a>
-                                        </div>
-                                        <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">New ways to Bank</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">John, Finance</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
+
+                                @*<div class="clearfix visible-xs"></div>*@
+
                             </div>
 
 

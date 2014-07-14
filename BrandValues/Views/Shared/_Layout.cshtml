@@ -28,6 +28,8 @@
       <script src="Scripts/webapp/ie/respond.min.js"></script>
       <script src="Scripts/webapp/ie/excanvas.js"></script>
     <![endif]-->
+    
+    <script src="~/Scripts/webapp/jquery.min.js"></script>
 </head>
 <body class="">
 
@@ -164,9 +166,9 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a ui-sref="flipboard">
+                                            <a href="~/home/entry">
                                                 <i class="icon-list icon"></i>
-                                                <span>Flipboard</span>
+                                                <span>Your Entry</span>
                                             </a>
                                         </li>
                                         <li class="m-b hidden-nav-xs"></li>
@@ -198,7 +200,7 @@
     </section>
                 <!-- /Body content -->
 
-                <script src="~/Scripts/webapp/jquery.min.js"></script>
+                
                 <!-- Bootstrap -->
                 <script src="~/Scripts/webapp/bootstrap.min.js"></script>
                 <!-- App -->
@@ -214,7 +216,7 @@
 
                 <script src="~/Scripts/webapp/jwplayer/jwplayer.js"></script>
                 <script src="~/Scripts/webapp/jwplayer/jwplayer.html5.js"></script>
-                <script src="~/Scripts/webapp/jwplayer/demo.js"></script>
+                
 
                 @RenderSection("scripts", required: false)
                  

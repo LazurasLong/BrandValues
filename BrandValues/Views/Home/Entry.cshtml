@@ -1,0 +1,23 @@
+﻿@model IEnumerable<BrandValues.Entries.Entry>
+
+@{
+    ViewBag.Title = "Entry";
+}
+
+<h2>Entry</h2>
+
+@foreach (var entry in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => entry.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = entry.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = entry.Id })
+        </td>
+    </tr>
+}
+
