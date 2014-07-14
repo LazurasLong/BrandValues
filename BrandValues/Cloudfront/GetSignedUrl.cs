@@ -59,5 +59,40 @@ namespace BrandValues.Cloudfront
             return provider;
         }
 
+        public static string GetCustomUrl(string url, int time)
+        {
+            NameValueCollection appConfig = ConfigurationManager.AppSettings;
+            string keyPairID = appConfig["keyPairId"];
+            var provider = CloudFrontSecurityProvider.CreateCustomPrivateURL(
+                url,
+                "minutes",
+                "5",
+                "0",
+                GetIPAddress(),
+                "F:/GitHub BrandValues/BrandValues/BrandValues/Cloudfront/CustomPolicy.txt",
+                "F:/GitHub BrandValues/BrandValues/BrandValues/Cloudfront/PrivateKey.xml",
+                keyPairID);
+            //var signedUrl = provider.GetCustomUrl(url, DateTime.Now.AddMinutes(time));
+
+            return provider;
+        }
+
+        protected static string GetIPAddress()
+        {
+            System.Web.HttpContext context = System.Web.HttpContext.Current;
+            string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (!string.IsNullOrEmpty(ipAddress))
+            {
+                string[] addresses = ipAddress.Split(',');
+                if (addresses.Length != 0)
+                {
+                    return addresses[0];
+                }
+            }
+
+            return context.Request.ServerVariables["REMOTE_ADDR"];
+        }
+
     }
 }

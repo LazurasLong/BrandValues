@@ -1,1 +1,1 @@
-﻿{"Statement":[{"Resource":"RESOURCE","Condition":{"DateLessThan":{"AWS:EpochTime":EXPIRES}}}]}
+﻿{"Statement":[{"Resource":"THERESOURCE","Condition":{"DateLessThan":{"AWS:EpochTime":EXPIRES}}}]}

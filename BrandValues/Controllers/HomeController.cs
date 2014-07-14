@@ -36,8 +36,10 @@ namespace BrandValues.Controllers {
         {
             string testUrl = GetSignedUrl.GetUrl("https://d3o104q4nbxlx6.cloudfront.net/video/image.jpg", 5 * 60);
 
-            string url = GetSignedUrl.GetUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/st/mp4:test1.mp4", 5 * 60);
+            //string url = GetSignedUrl.GetUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/st/mp4:test1.mp4", 5 * 60);
+            string url = GetSignedUrl.GetUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/test1/test1.mp4", 5 * 60);
 
+            string customURL = GetSignedUrl.GetCustomUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/st/mp4:test1.mp4", 5*60);
 
             ViewBag.Message = url;
             ViewBag.Test = testUrl;
