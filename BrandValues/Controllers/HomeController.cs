@@ -14,7 +14,9 @@ using Antlr.Runtime.Misc;
 using BrandValues.Cloudfront;
 using BrandValues.App_Start;
 using BrandValues.Entries;
+using Microsoft.Ajax.Utilities;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 
 namespace BrandValues.Controllers {
@@ -123,8 +125,28 @@ namespace BrandValues.Controllers {
         public ActionResult Entry()
         {
             var entries = Context.Entries.FindAll();
-
             return View(entries);
+        }
+
+        public ActionResult Browse(EntryFilter filters)
+        {
+            var entries = FilterRentals(filters);
+            var model = new EntryList
+            {
+                Entries = entries,
+                Filters = filters
+            };
+            return View(model);
+        }
+
+        private MongoCursor<Entry> FilterRentals(EntryFilter filters)
+        {
+            if (filters.TypeFilter.IsNullOrWhiteSpace())
+            {
+                return Context.Entries.FindAll();
+            }
+            var query = MongoDB.Driver.Builders.Query<Entry>.EQ(r => r.Type, filters.TypeFilter);
+            return Context.Entries.Find(query);
         }
 
         public ActionResult Edit(string id)

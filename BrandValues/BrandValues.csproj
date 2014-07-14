@@ -259,6 +259,7 @@
     <Content Include="Views\Home\Play.cshtml" />
     <Content Include="Views\Home\Entry.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
+    <Content Include="Views\Home\Browse.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -431,6 +432,8 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Entries\Edit.cs" />
     <Compile Include="Entries\Entry.cs" />
+    <Compile Include="Entries\EntryFilter.cs" />
+    <Compile Include="Entries\EntryList.cs" />
     <Compile Include="Entries\PostEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
