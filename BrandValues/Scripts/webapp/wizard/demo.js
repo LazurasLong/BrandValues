@@ -22,11 +22,23 @@
       }
     });
 
+      $('#wizardform').lastSelector();
 
     $('#chkAll').click(function () {
         var checkBoxes = $("input[name=values]");
         checkBoxes.prop("checked", !checkBoxes.prop("checked"));
     });
+
+    $("#upload").click(function () {
+        $("#step1").hide();
+        $("#loading").fadeIn();
+        }
+    );
+
+    if (uploaded) {
+        $('#wizardform').find('.progress-bar').css({ width: 100 + '%' });
+        $("#step1").hide();
+    }
     
   });
 }(window.jQuery);

@@ -4071,4 +4071,8 @@ body {
   padding-top: 5px;
   font-size: 12px;
 }
+/* Loading */
+#loading {
+  display: none;
+}
 /*# sourceMappingURL=app.css.map */

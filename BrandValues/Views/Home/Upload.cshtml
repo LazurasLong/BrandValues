@@ -3,6 +3,10 @@
     ViewBag.Title = "Upload";
 }
 
+<script>
+    var uploaded = '@ViewBag.Uploaded';
+</script>
+
 <section>
 
     <section class="vbox">
@@ -12,7 +16,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    @using (Html.BeginForm("UploadFiles", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
                         <div class="panel panel-default">
@@ -30,15 +34,22 @@
                                     <div class="progress-bar bg-success"></div>
                                 </div>
                                 <div class="line line-lg"></div>
-                                <p>This twitter bootstrap plugin builds a wizard out of a formatter tabbable structure. It allows to build a wizard functionality using buttons to go through the different wizard steps and using events allows to hook into each step individually.</p>
+                                <p>You can upload your competition entry here by completing this form.</p>
+                                <h1>@ViewBag.Message</h1>
                                 <div class="line line-lg"></div>
                                 <div class="tab-content">
+                                    <div id="loading" class="centered">
+                                        <p align="center">
+                                            <img src="~/Content/webapp/images/ajax-loader.gif" alt="" />
+                                        </p>
+                                    </div>
+
                                     <div class="tab-pane" id="step1">
-                                        
+
                                         @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
-                                        
+
                                         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
-                                        
+
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
 
                                         @Html.LabelFor(model => model.Thumbnail, new { @class = "col-sm-2 control-label" })
@@ -46,7 +57,7 @@
                                         @Html.EditorFor(model => model.Thumbnail, new { @class = "form-control" })
 
                                         <select data-required="true" class="form-control m-t">
-                                            <option value="" >Type of entry</option>
+                                            <option value="">Type of entry</option>
                                             <option value="poem-story">Poem / Story</option>
                                             <option value="film">Film</option>
                                             <option value="image">Image</option>
@@ -101,11 +112,6 @@
                                             </div>
                                         </div>
 
-                                        <label class="col-sm-2 control-label" for="input-id-1">Label focus</label>
-                                        <input type="text" id="input-id-1" class="form-control" data-trigger="change" data-required="true" data-type="url" placeholder="website">
-                                        <p class="m-t">Your email:</p>
-                                        <input type="text" class="form-control" data-trigger="change" data-required="true" data-type="email" placeholder="email address">
-
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label" for="file">File input</label>
@@ -114,11 +120,8 @@
 
 
 
-                                                <input type="file" name="files" value="" multiple="multiple" />
-                                                <input type="submit" value="Upload" />
-
-
-                                                <h1>@ViewBag.Message</h1>
+                                                <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
+                                                <input type="submit" id="upload" value="Upload" />
 
 
                                             </div>
@@ -128,10 +131,14 @@
                                         <input type="checkbox" name="check" checked data-required="true"><i></i> I agree to the <a href="#" class="text-info">Terms of Service</a>
                                     </div>
                                     <div class="tab-pane" id="step2">
-                                        <p>Your email:</p>
-                                        <input type="text" class="form-control" data-trigger="change" data-required="true" data-type="email" placeholder="email address">
+                                        
                                     </div>
-                                    <div class="tab-pane" id="step3">This is step 3</div>
+
+                                    <div class="tab-pane" id="step3">
+                                        
+
+                                    </div>
+
                                     <ul class="pager wizard m-b-sm">
                                         <li class="previous first" style="display: none;"><a href="#">First</a></li>
                                         <li class="previous"><a href="#">Previous</a></li>
@@ -149,5 +156,3 @@
     </section>
 
 </section>
-
-

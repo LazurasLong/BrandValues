@@ -71,55 +71,56 @@ namespace BrandValues.Controllers {
         }
 
         [HttpPost]
-        public ActionResult UploadFiles(PostEntry postEntry, HttpPostedFileBase[] files)
+        public ActionResult Upload(PostEntry postEntry, HttpPostedFileBase[] files)
         {
             var entry = new Entry(postEntry);
             Context.Entries.Insert(entry);
-            return RedirectToAction("Index");
-            
-            //var myResponse = "";
+            //return RedirectToAction("Index");
 
-            //foreach (HttpPostedFileBase file in files)
-            //{
+            var myResponse = "";
 
-            //    if (file.ContentLength > 0)
-            //    {
-                   
-            //       string accessKey = appConfig["S3AWSAccessKey"];
-            //       string secretKey = appConfig["S3AWSSecretKey"];
+            foreach (HttpPostedFileBase file in files)
+            {
+
+                if (file.ContentLength > 0)
+                {
+
+                    string accessKey = appConfig["S3AWSAccessKey"];
+                    string secretKey = appConfig["S3AWSSecretKey"];
 
 
-            //       IAmazonS3 client;
+                    IAmazonS3 client;
 
-            //       var filePath = "video/" + file.FileName;
+                    var filePath = "video/" + file.FileName;
 
-            //        try
-            //        {
-            //            using (client = AWSClientFactory.CreateAmazonS3Client(accessKey, secretKey))
-            //            {
-            //                PutObjectRequest request = new PutObjectRequest();
+                    try
+                    {
+                        using (client = AWSClientFactory.CreateAmazonS3Client(accessKey, secretKey))
+                        {
+                            PutObjectRequest request = new PutObjectRequest();
 
-            //                request.BucketName = "valuescompetition-useruploads";
-            //                request.CannedACL = S3CannedACL.Private;
-            //                request.ServerSideEncryptionMethod = ServerSideEncryptionMethod.AES256;
-            //                request.Key = filePath;
-            //                request.InputStream = file.InputStream;
+                            request.BucketName = "valuescompetition-useruploads";
+                            request.CannedACL = S3CannedACL.Private;
+                            request.ServerSideEncryptionMethod = ServerSideEncryptionMethod.AES256;
+                            request.Key = filePath;
+                            request.InputStream = file.InputStream;
 
-            //                PutObjectResponse response = client.PutObject(request);
-            //                myResponse = response.HttpStatusCode.ToString();
-            //            }
-            //        }
-            //        catch (AmazonS3Exception s3Exception)
-            //        {
-            //            //s3Exception.InnerException
-            //            ViewBag.Message = s3Exception.Message;
-            //            return View("Upload");
-            //        }
-            //    }
-            //}
+                            PutObjectResponse response = client.PutObject(request);
+                            myResponse = response.HttpStatusCode.ToString();
+                        }
+                    }
+                    catch (AmazonS3Exception s3Exception)
+                    {
+                        //s3Exception.InnerException
+                        ViewBag.Message = s3Exception.Message;
+                        return View("Upload");
+                    }
+                }
+            }
 
-            //ViewBag.Message = myResponse;
-            //return View("Upload");
+            ViewBag.Message = myResponse;
+            ViewBag.Uploaded = true;
+            return View();
         }
 
         public ActionResult Entry()
