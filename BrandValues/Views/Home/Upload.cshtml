@@ -16,8 +16,9 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data" }))
+                    @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data", data_parsley_validate="" }))
                     {
+                        
                         @Html.AntiForgeryToken()
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -34,24 +35,22 @@
                                     <div class="progress-bar bg-success"></div>
                                 </div>
                                 <div class="line line-lg"></div>
-                                <h1>@ViewBag.Message</h1>
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="line line-lg"></div>
+                                   <h1>@ViewBag.Message</h1> 
+                                   <div class="line line-lg"></div>
                                 <div class="tab-content">
                                     <div id="loading" class="centered">
                                         <p align="center">
-                                            <img src="~/Content/webapp/images/ajax-loader.gif" alt="" />
+                                            <img src="~/images/ajax-loader.gif" alt="" />
                                         </p>
                                     </div>
 
                                     <div class="tab-pane" id="step1">
 
                                         <div class="form-group">
-                                            <label class="col-sm-4 control-label">
-                                                @Html.LabelFor(model => model.Name)
-                                            </label>
+                                            <label class="col-sm-4 control-label">Entry Name</label>
                                             <div class="col-sm-8">
-                                                @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+                                                <input type="text" class="form-control parsley-validated" data-trigger="change" data-required="true" data-parsley-type="alphanum" placeholder="Your entry name">
+                                                @*@Html.EditorFor(model => model.Name, new { @class = "form-control" })*@
                                                 <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger top-padding" })</span>
                                             </div>
                                         </div>
@@ -63,7 +62,8 @@
                                                 @Html.LabelFor(model => model.Description)
                                             </label>
                                             <div class="col-sm-8">
-                                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                                <textarea class="form-control parsley-validated" rows="6" data-minwords="6" data-maxlength="600" data-required="true" placeholder="Type a short description of your entry"></textarea>
+                                                @*@Html.TextAreaFor(model => model.Description, new { @class = "form-control" })*@
                                                 <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })</span>
                                             </div>
                                         </div>
@@ -75,7 +75,7 @@
                                                 Type
                                             </label>
                                             <div class="col-sm-8">
-                                                <select name="type" data-required="true" class="form-control m-t">
+                                                <select name="@Model.Type" class="form-control m-t">
                                                     <option value="individual">Individual</option>
                                                     <option value="team">Team</option>
                                                 </select>
@@ -90,7 +90,7 @@
                                                 Format
                                             </label>
                                             <div class="col-sm-8">
-                                                <select name="format" data-required="true" class="form-control m-t">
+                                                <select name="@Model.Format" class="form-control m-t">
                                                     <option value="text">Poem / Story / Lyric</option>
                                                     <option value="video">Video</option>
                                                     <option value="image">Image</option>
@@ -106,42 +106,42 @@
 
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input name="values" type="checkbox" id="chkAll" value="all">
+                                                        <input name="@Model.Values" type="checkbox" id="chkAll" value="all">
                                                         <i></i>
                                                         All the brand values
                                                     </label>
                                                 </div>
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input type="checkbox" name="values" value="customers">
+                                                        <input type="checkbox" name="@Model.Values" value="customers">
                                                         <i></i>
                                                         We put our customers first
                                                     </label>
                                                 </div>
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input type="checkbox" name="values" value="empowering">
+                                                        <input type="checkbox" name="@Model.Values" value="empowering">
                                                         <i></i>
                                                         We are empowering
                                                     </label>
                                                 </div>
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input type="checkbox" name="values" value="trust">
+                                                        <input type="checkbox" name="@Model.Values" value="trust">
                                                         <i></i>
                                                         We are building trust and appreciation
                                                     </label>
                                                 </div>
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input type="checkbox" name="values" value="simple">
+                                                        <input type="checkbox" name="@Model.Values" value="simple">
                                                         <i></i>
                                                         We keep things simple
                                                     </label>
                                                 </div>
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input type="checkbox" name="values" value="together">
+                                                        <input type="checkbox" name="@Model.Values" value="together">
                                                         <i></i>
                                                         We are better together
                                                     </label>
@@ -161,6 +161,8 @@
                                             </div>
                                         </div>
                                         
+                                        <input type="submit" id="upload" value="Upload" />
+                                        
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
 
                                         
@@ -171,14 +173,26 @@
                                         
 
                                         <div class="form-group">
-                                            <label class="col-sm-4 control-label" for="file">Your File to Upload</label>
-                                            <div class="col-sm-8">
-
-                                                <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
-                                                <input type="submit" id="upload" value="Upload" />
-
-
+                                            
+                                            <div class="centered">
+                                                <input type="file" name="files" class=" filestyle" data-icon="false" data-classbutton="btn btn-default" value="" multiple="multiple" data-classinput="form-control inline v-middle input-s" id="filestyle-0" style="position: fixed; left: -500px;">
+                                                <div class="bootstrap-filestyle" style="display: inline;"><input type="text" class="form-control inline v-middle input-s" disabled=""> 
+                                                    <label for="filestyle-0" class="btn btn-default"><span>Choose file</span></label>
+                                                </div>
                                             </div>
+
+                                            
+                                        </div>
+                                        
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                                        
+                                        <label class="col-sm-4 control-label" for="file">Your File to Upload</label>
+                                        <div class="col-sm-8">
+
+                                            <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
+                                            <input type="submit" id="upload" value="Upload" />
+
+
                                         </div>
                                         
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
@@ -209,4 +223,6 @@
 
 </section>
 
-<script src="~/Scripts/webapp/wizard/demo.js"></script>
+@section Scripts {
+    @Scripts.Render("~/Bundles/upload")
+}

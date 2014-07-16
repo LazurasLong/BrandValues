@@ -18,7 +18,7 @@
                         </div>
                     </a>
                     <a href="#">
-                        <img class="img-full" src="~/Content/webapp/images/box-compass.png" alt="Values Competition Logo">
+                        <img class="img-full" src="~/images/box-compass.png" alt="Values Competition Logo">
                     </a>
                 </div>
 
@@ -172,13 +172,7 @@
                         <section class="relativescroll scrollable padder-lg w-f-md">
                             <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
                             <h2 class="font-thin m-b">
-                                Discover Others Living the Brand Values <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                    <span class="bar1 a1 bg-primary"></span>
-                                    <span class="bar2 a2 bg-info"></span>
-                                    <span class="bar3 a3 bg-success"></span>
-                                    <span class="bar4 a4 bg-warning"></span>
-                                    <span class="bar5 a5 bg-danger dker"></span>
-                                </span>
+                                Discover Others Living the Brand Values
                             </h2>
                             <h4 class="font-thin">Top Trending Entries</h4>
                             <div class="row row-sm">
@@ -199,7 +193,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.Thumbnail)" alt="Document" class="r r-2x img-full"></a>
+                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Document" class="r r-2x img-full"></a>
                                             </div>
                                             <div class="padder-v">
                                                 <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Description)</a>
@@ -226,7 +220,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Spring rain</a>
@@ -242,7 +236,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p2.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p2.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Hope</a>
@@ -258,7 +252,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p3.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p3.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Listen wind</a>
@@ -274,7 +268,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p4.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p4.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Breaking me</a>
@@ -290,7 +284,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p5.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p5.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Nothing</a>
@@ -306,7 +300,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p3.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p3.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Panda Style</a>
@@ -322,7 +316,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p4.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p4.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Hook Me</a>
@@ -338,7 +332,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p0.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p0.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Tempered Song</a>
@@ -354,7 +348,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/entries/document.png" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/entries/document.png" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Tempered Song</a>
@@ -370,7 +364,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p0.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p0.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Tempered Song</a>
@@ -386,7 +380,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Tempered Song</a>
@@ -402,7 +396,7 @@
                                                             <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img src="~/Content/webapp/images/p0.jpg" alt="" class="r r-2x img-full"></a>
+                                                    <a href="#"><img src="~/images/p0.jpg" alt="" class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Tempered Song</a>

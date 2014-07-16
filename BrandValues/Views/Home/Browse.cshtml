@@ -13,7 +13,7 @@
                             <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
                                 @using (Html.BeginForm())
                                 {
-                                    <input class="list-group-item" value="@Model.Filters.TypeFilter" />
+                                    <input class="list-group-item" name="@Model.Filters.TypeFilter" value="team" />
                                     <input type="submit" value="Search" />
                                 }
 
@@ -44,7 +44,7 @@
                                                         <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><i class="fa fa-play-circle i-2x"></i></a>
                                                     </div>
                                                 </div>
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.Thumbnail)" alt="" class="r r-2x img-full"></a>
+                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="" class="r r-2x img-full"></a>
                                             </div>
                                             <div class="padder-v">
                                                 <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Description)</a>

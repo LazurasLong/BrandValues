@@ -12,7 +12,7 @@
                 @Html.AntiForgeryToken()
 
                 <p class="text-center">
-                    <img src="~/Content/webapp/images/aib-logo-large.png" alt="AIB Logo" />
+                    <img src="~/images/aib-logo-large.png" alt="AIB Logo" />
                 </p>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -63,6 +63,3 @@
         </ul>
     </div>
 </div>
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

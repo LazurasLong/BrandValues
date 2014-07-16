@@ -22,7 +22,7 @@ namespace BrandValues.Entries
 
         public string Url { get; set; }
 
-        public List<string> Values { get; set; }
+        public ICollection<Value> Values { get; set; } 
 
         public string Name { get; set; }
 
@@ -56,5 +56,12 @@ namespace BrandValues.Entries
             Description = edit.NewDescription;
         }
         
+    }
+
+    public class Value
+    {
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+        public string Name { get; set; }
     }
 }

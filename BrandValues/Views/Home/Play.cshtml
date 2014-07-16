@@ -7,11 +7,8 @@
 
     <section class="vbox">
         <section class="relativescroll scrollable padder-lg w-f-md">
-
-            @*<h1>@ViewBag.RTMPUrl</h1>
-            <h1>@ViewBag.AppleUrl</h1>
-            <h1>@ViewBag.FallbackUrl</h1>*@
-            <h1>Video</h1>
+            
+            <h1>@Model.Name</h1>
 
             <script type="text/javascript">
                 var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
@@ -27,4 +24,6 @@
 
 </section>
 
-<script src="~/Scripts/webapp/jwplayer/demo.js"></script>
+@section Scripts {
+    @Scripts.Render("~/Bundles/video")
+}

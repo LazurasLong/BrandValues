@@ -48,14 +48,23 @@ namespace BrandValues.Controllers {
 
             var entries = Context.Entries.FindAll();
 
+            var model = from r in entries
+                orderby r.Likes.Count() descending
+                select r;
 
-            return View(entries);
+
+            return View(model);
         }
-
 
 
         public ActionResult Play(string id)
         {
+            if (id.IsNullOrWhiteSpace())
+            {
+                return RedirectToAction("Index");
+            }
+
+
             //get Entry first
             var entry = GetEntry(id);
 
@@ -120,10 +129,13 @@ namespace BrandValues.Controllers {
 
         public ActionResult Upload()
         {
+            //ViewBag.Message = "Test";
+            
             return View();
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Upload(PostEntry postEntry, HttpPostedFileBase[] files)
         {
             var myResponse = "";
@@ -153,41 +165,56 @@ namespace BrandValues.Controllers {
                 }
 
                 string accessKey = appConfig["S3AWSAccessKey"];
-                    string secretKey = appConfig["S3AWSSecretKey"];
+                string secretKey = appConfig["S3AWSSecretKey"];
 
 
-                    IAmazonS3 client;
+                IAmazonS3 client;
+                var filePath = "";
 
-                    var filePath = "video/" + file.FileName;
+                if (file.ContentType.Contains("video/"))
+                {
+                    filePath = "video/" + file.FileName;
+                }
 
-                    try
+                if (file.ContentType.Contains("text/") || file.ContentType.Contains("application/pdf") || file.ContentType.Contains("application/msword") || file.ContentType.Contains("application/vnd.ms-powerpoint"))
+                {
+                    filePath = "text/" + file.FileName;
+                }
+
+                if (file.ContentType.Contains("image/"))
+                {
+                    filePath = "image/" + file.FileName;
+                }
+                
+
+                try
+                {
+                    using (client = AWSClientFactory.CreateAmazonS3Client(accessKey, secretKey))
                     {
-                        using (client = AWSClientFactory.CreateAmazonS3Client(accessKey, secretKey))
-                        {
-                            PutObjectRequest request = new PutObjectRequest();
+                        PutObjectRequest request = new PutObjectRequest();
 
-                            request.BucketName = "valuescompetition-useruploads";
-                            request.CannedACL = S3CannedACL.Private;
-                            request.ServerSideEncryptionMethod = ServerSideEncryptionMethod.AES256;
-                            request.Key = filePath;
-                            request.InputStream = file.InputStream;
+                        request.BucketName = "valuescompetition-useruploads";
+                        request.CannedACL = S3CannedACL.Private;
+                        request.ServerSideEncryptionMethod = ServerSideEncryptionMethod.AES256;
+                        request.Key = filePath;
+                        request.InputStream = file.InputStream;
 
-                            PutObjectResponse response = client.PutObject(request);
-                            myResponse = response.HttpStatusCode.ToString();
-                        }
+                        PutObjectResponse response = client.PutObject(request);
+                        myResponse = response.HttpStatusCode.ToString();
                     }
-                    catch (AmazonS3Exception s3Exception)
-                    {
-                        //s3Exception.InnerException
-                        ViewBag.Message = s3Exception.Message;
-                        return View("Upload");
-                    }
+                }
+                catch (AmazonS3Exception s3Exception)
+                {
+                    //s3Exception.InnerException
+                    ViewBag.Message = s3Exception.Message;
+                    return View("Upload");
+                }
                 
             }
 
             ViewBag.Message = myResponse;
             ViewBag.Uploaded = true;
-            return View();
+            return View(entry);
         }
 
         public ActionResult Entry()
@@ -220,6 +247,8 @@ namespace BrandValues.Controllers {
         public ActionResult Edit(string id)
         {
             var entry = GetEntry(id);
+
+
             return View(entry);
         }
 

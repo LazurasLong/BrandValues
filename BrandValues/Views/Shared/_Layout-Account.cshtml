@@ -15,18 +15,17 @@
     <link href="~/Content/webapp/images/icons/iphone4.jpg" rel="apple-touch-icon" sizes="114x114">
     <link href="~/Content/webapp/images/icons/ipad3.jpg" rel="apple-touch-icon" sizes="144x144">
 
-    <link rel="stylesheet" href="~/Content/webapp/css/bootstrap.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/webapp/css/animate.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/webapp/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/webapp/css/simple-line-icons.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/webapp/css/font.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/webapp/less/app.css" type="text/css" />
+    @Styles.Render("~/Bundles/css")
+    
+    <script src="~/Scripts/webapp/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="Scripts/webapp/ie/html5shiv.js"></script>
       <script src="Scripts/webapp/ie/respond.min.js"></script>
       <script src="Scripts/webapp/ie/excanvas.js"></script>
     <![endif]-->
+    
+    
 
 </head>
 <body class="bg-login">
@@ -44,15 +43,8 @@
             </p>
         </div>
     </footer>*@
-
-            <script src="~/Scripts/webapp/jquery.min.js"></script>
-
-            <!-- Bootstrap -->
-            <script src="~/Scripts/webapp/bootstrap.min.js"></script>
-
-            <!-- App -->
-            <script src="~/Scripts/webapp/app.min.js"></script>
-            <script src="~/Scripts/webapp/app.plugin.min.js"></script>
+    
+    @Scripts.Render("~/Bundles/account")
 
             @RenderSection("scripts", required: false)
     

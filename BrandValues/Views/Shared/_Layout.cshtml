@@ -15,12 +15,15 @@
     <link href="~/Content/webapp/images/icons/iphone4.jpg" rel="apple-touch-icon" sizes="114x114">
     <link href="~/Content/webapp/images/icons/ipad3.jpg" rel="apple-touch-icon" sizes="144x144">
 
-    <link rel="stylesheet" href="~/Content/webapp/css/bootstrap.css" type="text/css" />
+    @Styles.Render("~/Bundles/css")
+    @*<link rel="stylesheet" href="~/Content/webapp/css/bootstrap.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/webapp/css/animate.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/webapp/css/font-awesome.min.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/webapp/css/simple-line-icons.css" type="text/css" />
     <link rel="stylesheet" href="~/Content/webapp/css/font.css" type="text/css" />
-    <link rel="stylesheet" href="~/Content/webapp/less/app.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/webapp/less/app.css" type="text/css" />*@
+    
+    <script src="~/Scripts/webapp/jquery.min.js"></script>
 
     <!--[if lt IE 9]>
       <script src="Scripts/webapp/ie/html5shiv.js"></script>
@@ -28,7 +31,7 @@
       <script src="Scripts/webapp/ie/excanvas.js"></script>
     <![endif]-->
     
-    <script src="~/Scripts/webapp/jquery.min.js"></script>
+    
    
 </head>
 <body class="">
@@ -42,7 +45,7 @@
                     <i class="icon-list"></i>
                 </a>
                 <a href="https://valuescompetition.com" class="navbar-brand text-dark">
-                    <img src="~/Content/webapp/images/aib-logo-small.png" alt="AIB Logo">
+                    <img src="~/images/aib-logo-small.png" alt="AIB Logo">
                     <span class="hidden-nav-xs m-l-sm">Brand Values</span>
                 </a>
                 <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
@@ -81,7 +84,7 @@
                                 <div class="list-group list-group-alt">
                                     <a href="#" class="media list-group-item">
                                         <span class="pull-left thumb-sm">
-                                            <img src="~/Content/webapp/images/a0.png" alt="..." class="img-circle">
+                                            <img src="~/images/a0.png" alt="..." class="img-circle">
                                         </span>
                                         <span class="media-body block m-b-none">
                                             Use awesome animate.css<br>
@@ -199,9 +202,10 @@
 
     </section>
                 <!-- /Body content -->
-
+    
+    @Scripts.Render("~/Bundles/webapp")
                 
-                <!-- Bootstrap -->
+                @*<!-- Bootstrap -->
                 <script src="~/Scripts/webapp/bootstrap.min.js"></script>
                 <!-- App -->
                 <script src="~/Scripts/webapp/app.min.js"></script>
@@ -210,13 +214,15 @@
    
                 <script src="~/Scripts/webapp/jwplayer/jwplayer.js"></script>
                 <script src="~/Scripts/webapp/jwplayer/jwplayer.html5.js"></script>
-                
-
-                @RenderSection("scripts", required: false)
-                 
+    
                 <!-- Upload -->
                 <script type="text/javascript" src="@Url.Content("~/Scripts/webapp/parsley/parsley.min.js")"></script>
-                <script type="text/javascript" src="~/Scripts/webapp/wizard/jquery.bootstrap.wizard.js"></script>
+                <script type="text/javascript" src="~/Scripts/webapp/wizard/jquery.bootstrap.wizard.js"></script>*@
+                
+
+    @RenderSection("scripts", required: false)
+                 
+                
 
     
                 <script>

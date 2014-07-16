@@ -16,8 +16,10 @@ namespace BrandValues.Entries
         [Required]
         public string Format { get; set; }
 
-        public List<string> Values { get; set; }
+        [Required(ErrorMessage = "Which Brand Value are you demonstrating?")]
+        public ICollection<Value> Values { get; set; }
 
+        [StringLength(600)]
         [Required(AllowEmptyStrings = false)]
         public string Description { get; set; }
 
@@ -25,10 +27,10 @@ namespace BrandValues.Entries
         [Required(ErrorMessage = "A name would be very helpful")]
         public string Name { get; set; }
 
-        [Required]
+        
         public string UserName { get; set; }
 
-        [Required]
+        
         public string UserArea { get; set; }
     }
 }
