@@ -1,4 +1,5 @@
-﻿@{
+﻿@model BrandValues.Entries.Entry
+@{
     ViewBag.Title = "Play";
 }
 
@@ -6,22 +7,17 @@
 
     <section class="vbox">
         <section class="relativescroll scrollable padder-lg w-f-md">
-            
-            <h1>@ViewBag.Test</h1>
-            
-            <h1>@ViewBag.Message</h1>
+
+            <h1>@ViewBag.RTMPUrl</h1>
+            <h1>@ViewBag.FallbackUrl</h1>
+
 
             <script>
-                var signedUrl = '@ViewBag.Message';
+                var rtmpUrl = '@ViewBag.RTMPUrl';
+                var fallbackUrl = '@ViewBag.FallbackUrl';
             </script>
 
             <div id="mediaplayer"></div>
-
-            <video poster="https://s3-eu-west-1.amazonaws.com/valuescompetition-transcoder-thumbnails/test5-00001.png"
-                   src="https://d3tjmfmbi1uz2q.cloudfront.net/test3.m3u8"
-                   controls autoplay height="300" width="400">
-                <p>Your browser does not support HLS playback in HTML5.</p>
-            </video>
 
         </section>
     </section>

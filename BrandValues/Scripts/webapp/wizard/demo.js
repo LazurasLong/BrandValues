@@ -22,8 +22,6 @@
       }
     });
 
-      $('#wizardform').lastSelector();
-
     $('#chkAll').click(function () {
         var checkBoxes = $("input[name=values]");
         checkBoxes.prop("checked", !checkBoxes.prop("checked"));

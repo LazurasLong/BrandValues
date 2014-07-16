@@ -17,6 +17,8 @@ using BrandValues.Entries;
 using Microsoft.Ajax.Utilities;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
+using Amazon.CloudFront;
 
 
 namespace BrandValues.Controllers {
@@ -49,19 +51,50 @@ namespace BrandValues.Controllers {
             return View(entries);
         }
 
-        public ActionResult Play()
+
+
+        public ActionResult Play(string id)
         {
-            string testUrl = GetSignedUrl.GetUrl("https://d3o104q4nbxlx6.cloudfront.net/video/image.jpg", 5 * 60);
+            //get Entry first
+            var entry = GetEntry(id);
 
-            //string url = GetSignedUrl.GetUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/st/mp4:test1.mp4", 5 * 60);
-            string url = GetSignedUrl.GetUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/test1/test1.mp4", 5 * 60);
+            //get video for entry
+            //RTMP resources do not take the form of a URL, 
+            //and instead the resource path is nothing but the stream's name. e.g. "video1.mp4"
+            if (entry.Format == "video")
+            {
+                ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
+                ViewBag.FallbackUrl = GetFallbackCloudFrontUrl(entry);
+            } else {
+                ViewBag.CloudFrontUrl = GetCloudFrontUrl(entry);
+            }
+            
 
-            string customURL = GetSignedUrl.GetCustomUrl("rtmp://sbw4t54bzxsgi.cloudfront.net/cfx/st/mp4:test1.mp4", 5*60);
+            return View(entry);
+        }
 
-            ViewBag.Message = url;
-            ViewBag.Test = testUrl;
+        private string GetRTMPCloudfrontUrl(Entry entry)
+        {
+            string rtmpUrl = appConfig["RTMPCloudfront"];
+            string videoUrl = entry.Url;
+            string signedVideoUrl = GetSignedUrl.GetCloudfrontUrl(videoUrl);
+            return rtmpUrl + signedVideoUrl;
+        }
 
-            return View("Play");
+        private string GetFallbackCloudFrontUrl(Entry entry)
+        {
+            string cloudfrontUrl = appConfig["TranscoderCloudfront"];
+            string relativeUrl = entry.Url;
+            string url = cloudfrontUrl + relativeUrl;
+            return GetSignedUrl.GetCloudfrontUrl(url);
+        }
+
+        private string GetCloudFrontUrl(Entry entry)
+        {
+            string cloudfrontUrl = appConfig["UploadCloudfront"];
+            string relativeUrl = entry.Url;
+            string url = cloudfrontUrl + relativeUrl;
+            return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
 

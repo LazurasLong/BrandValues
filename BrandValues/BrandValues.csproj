@@ -137,9 +137,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cloudfront\CannedPolicy.txt" />
-    <Content Include="Cloudfront\CustomPolicy.txt" />
-    <Content Include="Cloudfront\PrivateKey.xml" />
     <Content Include="Content\webapp\images\ajax-loader.gif" />
     <Content Include="Content\webapp\images\box-compass.png" />
     <Content Include="Content\webapp\images\aib-logo-small.png" />
@@ -259,6 +256,7 @@
     <Content Include="Views\Home\Entry.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Browse.cshtml" />
+    <Content Include="Cloudfront\pk-APKAJWFKSJRPHR2V45EA.pem" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -416,7 +414,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Cloudfront\CloudFrontSecurityProvider.cs" />
     <Compile Include="Cloudfront\GetSignedUrl.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

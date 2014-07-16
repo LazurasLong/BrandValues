@@ -12,11 +12,15 @@ namespace BrandValues.Entries
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
 
+        //Individual or team
         public string Type { get; set; }
 
+        //Video, text, image
         public string Format { get; set; }
 
         public string Thumbnail { get; set; }
+
+        public string Url { get; set; }
 
         public List<string> Values = new List<string>();
 
