@@ -22,9 +22,9 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <ul class="nav nav-tabs font-bold">
-                                    <li><a href="#step1" data-toggle="tab">Step 1</a></li>
-                                    <li><a href="#step2" data-toggle="tab">Step 2</a></li>
-                                    <li><a href="#step3" data-toggle="tab">Step 3</a></li>
+                                    <li><a href="#step1" data-toggle="tab">Step 1: Your Details</a></li>
+                                    <li><a href="#step2" data-toggle="tab">Step 2: Upload</a></li>
+                                    <li><a href="#step3" data-toggle="tab">Step 3: Finish</a></li>
                                 </ul>
                             </div>
                             <div class="panel-body">
@@ -34,7 +34,6 @@
                                     <div class="progress-bar bg-success"></div>
                                 </div>
                                 <div class="line line-lg"></div>
-                                <p>You can upload your competition entry here by completing this form.</p>
                                 <h1>@ViewBag.Message</h1>
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="line line-lg"></div>
@@ -47,31 +46,67 @@
 
                                     <div class="tab-pane" id="step1">
 
-                                        @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
-
-                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">
+                                                @Html.LabelFor(model => model.Name)
+                                            </label>
+                                            <div class="col-sm-8">
+                                                @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+                                                <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger top-padding" })</span>
+                                            </div>
+                                        </div>
 
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
 
-                                        @Html.LabelFor(model => model.Thumbnail, new { @class = "col-sm-2 control-label" })
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">
+                                                @Html.LabelFor(model => model.Description)
+                                            </label>
+                                            <div class="col-sm-8">
+                                                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                                <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })</span>
+                                            </div>
+                                        </div>
 
-                                        @Html.EditorFor(model => model.Thumbnail, new { @class = "form-control" })
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
 
-                                        <select data-required="true" class="form-control m-t">
-                                            <option value="">Type of entry</option>
-                                            <option value="text">Poem / Story / Lyric</option>
-                                            <option value="video">Video</option>
-                                            <option value="image">Image</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">
+                                                Type
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <select name="type" data-required="true" class="form-control m-t">
+                                                    <option value="individual">Individual</option>
+                                                    <option value="team">Team</option>
+                                                </select>
+                                                <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger top-padding" })</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label">
+                                                Format
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <select name="format" data-required="true" class="form-control m-t">
+                                                    <option value="text">Poem / Story / Lyric</option>
+                                                    <option value="video">Video</option>
+                                                    <option value="image">Image</option>
+                                                </select>
+                                                <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Format, "", new { @class = "text-danger top-padding" })</span>
+                                            </div>
+                                        </div>
 
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
                                         <div class="form-group">
                                             <label class="col-sm-4 control-label">Which AIB Values are demonstrated?</label>
                                             <div class="col-sm-8">
+
                                                 <div class="checkbox i-checks">
                                                     <label>
-                                                        <input type="checkbox" id="chkAll" value="all">
+                                                        <input name="values" type="checkbox" id="chkAll" value="all">
                                                         <i></i>
                                                         All the brand values
                                                     </label>
@@ -111,16 +146,33 @@
                                                         We are better together
                                                     </label>
                                                 </div>
+                                                <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Values, "", new { @class = "text-danger top-padding" })</span>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
+                                        
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="file">File input</label>
-                                            <div class="col-sm-10">
-                                                @*<input type="file" class="filestyle" data-icon="false" data-classbutton="btn btn-default" data-classinput="form-control inline v-middle input-s">*@
+                                            <label class="col-sm-4 control-label">
+                                                
+                                            </label>
+                                            <div class="col-sm-8">
+                                                <input type="checkbox" name="check" checked data-required="true"><i></i> I agree to the <a href="#" class="text-info">Terms & Conditions</a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
 
+                                        
+                                    </div>
+                                    <div class="tab-pane" id="step2">
+                                        
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                                        
 
+                                        <div class="form-group">
+                                            <label class="col-sm-4 control-label" for="file">Your File to Upload</label>
+                                            <div class="col-sm-8">
 
                                                 <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
                                                 <input type="submit" id="upload" value="Upload" />
@@ -128,16 +180,14 @@
 
                                             </div>
                                         </div>
-
-                                        <div class="line line-dashed b-b line-lg pull-in"></div>
-                                        <input type="checkbox" name="check" checked data-required="true"><i></i> I agree to the <a href="#" class="text-info">Terms of Service</a>
-                                    </div>
-                                    <div class="tab-pane" id="step2">
                                         
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+
                                     </div>
 
                                     <div class="tab-pane" id="step3">
                                         
+                                        <h1>Congrats</h1>
 
                                     </div>
 

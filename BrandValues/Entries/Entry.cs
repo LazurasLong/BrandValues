@@ -22,7 +22,9 @@ namespace BrandValues.Entries
 
         public string Url { get; set; }
 
-        public List<string> Values = new List<string>();
+        public List<string> Values { get; set; }
+
+        public string Name { get; set; }
 
         public string Description { get; set; }
 
@@ -42,10 +44,11 @@ namespace BrandValues.Entries
 
         public Entry(PostEntry postEntry)
         {
+            Name = postEntry.Name;
             Description = postEntry.Description;
-            ThumbnailUrl = postEntry.Thumbnail;
             Format = postEntry.Format;
             Type = postEntry.Type;
+            Values = postEntry.Values;
         }
 
         public void Edit(Edit edit)

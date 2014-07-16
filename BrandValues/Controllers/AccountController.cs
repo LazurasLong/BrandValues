@@ -167,7 +167,14 @@ namespace BrandValues.Controllers
                     
                     var userEmail = model.Email.ToLower();
 
-                    var user = new ApplicationUser { UserName = userEmail, Email = userEmail, FirstName = firstName, Surname = surname };
+                    var user = new ApplicationUser
+                    {
+                        UserName = userEmail, 
+                        Email = userEmail,
+                        FirstName = firstName,
+                        Surname = surname,
+                        Area = model.Area
+                    };
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {

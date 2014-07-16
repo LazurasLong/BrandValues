@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Collections.Specialized;
 using System.Configuration;
 using Antlr.Runtime.Misc;
+using AspNet.Identity.MongoDB;
 using BrandValues.Cloudfront;
 using BrandValues.App_Start;
 using BrandValues.Entries;
@@ -19,6 +20,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using Amazon.CloudFront;
+using BrandValues.Models;
 
 
 namespace BrandValues.Controllers {
@@ -27,7 +29,6 @@ namespace BrandValues.Controllers {
     public class HomeController : Controller {
 
         public readonly BrandValuesContext Context = new BrandValuesContext();
-
 
         NameValueCollection appConfig = ConfigurationManager.AppSettings;
         //private static string adminAccessKey = appConfig["AWSAccessKey"];
@@ -119,13 +120,16 @@ namespace BrandValues.Controllers {
 
         public ActionResult Upload()
         {
-            return View("Upload");
+            return View();
         }
 
         [HttpPost]
         public ActionResult Upload(PostEntry postEntry, HttpPostedFileBase[] files)
         {
             var myResponse = "";
+
+            postEntry.UserName = User.Identity.Name;
+            postEntry.UserArea = "Coo";
             
             if (!ModelState.IsValid)
             {
