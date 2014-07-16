@@ -7,24 +7,28 @@ namespace BrandValues
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            bundles.Add(new ScriptBundle("~/bundles/scripts/webapp").Include(
+                        "~/Scripts/webapp/bootstrap.min.js",
+                        "~/Scripts/webapp/app.min.js",
+                        "~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js",
+                        "~/Scripts/webapp/app.plugin.js",
+                        "~/Scripts/webapp/jwplayer/jwplayer.js",
+                        "~/Scripts/webapp/jwplayer/jwplayer.html5.js",
+                        "~/Scripts/webapp/parsley/parsley.min.js",
+                        "~/Scripts/webapp/wizard/jquery.bootstrap.wizard.js"
+                        ));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
-            // Use the development version of Modernizr to develop with and learn from. Then, when you're
-            // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/webapp/css/bootstrap.css",
+                      "~/Content/webapp/css/animate.css",
+                      "~/Content/webapp/css/font-awesome.min.css",
+                      "~/Content/webapp/css/simple-line-icons.css",
+                      "~/Content/webapp/css/font.css",
+                      "~/Content/webapp/less/app.css"
+                      ));
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BrandValues.Entries
         //Video, text, image
         public string Format { get; set; }
 
-        public string Thumbnail { get; set; }
+        public string ThumbnailUrl { get; set; }
 
         public string Url { get; set; }
 
@@ -43,7 +43,9 @@ namespace BrandValues.Entries
         public Entry(PostEntry postEntry)
         {
             Description = postEntry.Description;
-            Thumbnail = postEntry.Thumbnail;
+            ThumbnailUrl = postEntry.Thumbnail;
+            Format = postEntry.Format;
+            Type = postEntry.Type;
         }
 
         public void Edit(Edit edit)

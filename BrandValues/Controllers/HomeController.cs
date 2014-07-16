@@ -69,6 +69,8 @@ namespace BrandValues.Controllers {
             } else {
                 ViewBag.CloudFrontUrl = GetCloudFrontUrl(entry);
             }
+
+            ViewBag.Thumbnail = GetCloudFrontUrl(entry);
             
 
             return View(entry);
@@ -106,6 +108,14 @@ namespace BrandValues.Controllers {
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
+        private string GetThumbnailUrl(Entry entry)
+        {
+            string cloudfrontUrl = appConfig["TranscoderCloudfront"];
+            string relativeUrl = entry.ThumbnailUrl;
+            string url = cloudfrontUrl + relativeUrl;
+            return GetSignedUrl.GetCloudfrontUrl(url);
+        }
+
 
         public ActionResult Upload()
         {
@@ -115,19 +125,30 @@ namespace BrandValues.Controllers {
         [HttpPost]
         public ActionResult Upload(PostEntry postEntry, HttpPostedFileBase[] files)
         {
+            var myResponse = "";
+            
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
             var entry = new Entry(postEntry);
             Context.Entries.Insert(entry);
+
             //return RedirectToAction("Index");
 
-            var myResponse = "";
+            
 
             foreach (HttpPostedFileBase file in files)
             {
 
-                if (file.ContentLength > 0)
+                if (file == null)
                 {
+                    ViewBag.Message = "Please select a file to upload";
+                    return View();
+                }
 
-                    string accessKey = appConfig["S3AWSAccessKey"];
+                string accessKey = appConfig["S3AWSAccessKey"];
                     string secretKey = appConfig["S3AWSSecretKey"];
 
 
@@ -157,7 +178,7 @@ namespace BrandValues.Controllers {
                         ViewBag.Message = s3Exception.Message;
                         return View("Upload");
                     }
-                }
+                
             }
 
             ViewBag.Message = myResponse;

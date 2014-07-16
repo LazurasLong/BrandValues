@@ -7,7 +7,7 @@
     //JWPlayer
     jwplayer("mediaplayer").setup({
         playlist: [{
-            image: "https://s3-eu-west-1.amazonaws.com/valuescompetition-transcoder-thumbnails/test1-00001.png",
+            image: thumbnailUrl,
             sources: [{
                 file: rtmpUrl
             },{

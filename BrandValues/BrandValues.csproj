@@ -14,7 +14,7 @@
     <RootNamespace>BrandValues</RootNamespace>
     <AssemblyName>BrandValues</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -364,13 +364,6 @@
     <Content Include="Scripts\webapp\ie\excanvas.js" />
     <Content Include="Scripts\webapp\ie\html5shiv.js" />
     <Content Include="Scripts\webapp\ie\respond.min.js" />
-    <Content Include="Scripts\webapp\jPlayer\add-on\jplayer.playlist.min.js" />
-    <Content Include="Scripts\webapp\jPlayer\add-on\jquery.jplayer.inspector.js" />
-    <Content Include="Scripts\webapp\jPlayer\demo.js" />
-    <Content Include="Scripts\webapp\jPlayer\jplayer.flat.css" />
-    <Content Include="Scripts\webapp\jPlayer\Jplayer.swf" />
-    <Content Include="Scripts\webapp\jPlayer\jquery.jplayer.min.js" />
-    <Content Include="Scripts\webapp\jPlayer\popcorn\popcorn.jplayer.js" />
     <Content Include="Scripts\webapp\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="Scripts\webapp\jquery.js" />
     <Content Include="Scripts\webapp\jquery.min.js" />
@@ -451,7 +444,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57619</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:57619/</IISUrl>
+          <IISUrl>http://localhost/BrandValues</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -36,6 +36,7 @@
                                 <div class="line line-lg"></div>
                                 <p>You can upload your competition entry here by completing this form.</p>
                                 <h1>@ViewBag.Message</h1>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="line line-lg"></div>
                                 <div class="tab-content">
                                     <div id="loading" class="centered">
@@ -49,6 +50,7 @@
                                         @Html.LabelFor(model => model.Description, new { @class = "col-sm-2 control-label" })
 
                                         @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })
 
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
 
@@ -156,3 +158,5 @@
     </section>
 
 </section>
+
+<script src="~/Scripts/webapp/wizard/demo.js"></script>

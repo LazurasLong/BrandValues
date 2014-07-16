@@ -11,12 +11,13 @@
             @*<h1>@ViewBag.RTMPUrl</h1>
             <h1>@ViewBag.AppleUrl</h1>
             <h1>@ViewBag.FallbackUrl</h1>*@
-
+            <h1>Video</h1>
 
             <script type="text/javascript">
                 var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
                 var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
                 var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';
+                var thumbnailUrl = '@Html.Raw(ViewBag.Thumbnail)';
             </script>
 
             <div id="mediaplayer"></div>
