@@ -8,13 +8,15 @@
     <section class="vbox">
         <section class="relativescroll scrollable padder-lg w-f-md">
 
-            <h1>@ViewBag.RTMPUrl</h1>
-            <h1>@ViewBag.FallbackUrl</h1>
+            @*<h1>@ViewBag.RTMPUrl</h1>
+            <h1>@ViewBag.AppleUrl</h1>
+            <h1>@ViewBag.FallbackUrl</h1>*@
 
 
-            <script>
-                var rtmpUrl = '@ViewBag.RTMPUrl';
-                var fallbackUrl = '@ViewBag.FallbackUrl';
+            <script type="text/javascript">
+                var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
+                var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
+                var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';
             </script>
 
             <div id="mediaplayer"></div>

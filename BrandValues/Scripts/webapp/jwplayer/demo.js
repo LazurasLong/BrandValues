@@ -10,18 +10,19 @@
             image: "https://s3-eu-west-1.amazonaws.com/valuescompetition-transcoder-thumbnails/test1-00001.png",
             sources: [{
                 file: rtmpUrl
-            },{ 
-                file: "https://d3tjmfmbi1uz2q.cloudfront.net/test3.m3u8"
+            },{
+                file: appleUrl
             },{
                 file: fallbackUrl
             }]
         }],
-        primary: "flash",
         sharing: {
             link: document.URL
         },
+        primary: "flash",
         width: 640,
-        height: 360
+        height: 360,
+        ga: { idstring: "Video title" }
     });
 
 

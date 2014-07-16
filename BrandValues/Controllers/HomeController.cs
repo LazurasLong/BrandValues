@@ -64,7 +64,8 @@ namespace BrandValues.Controllers {
             if (entry.Format == "video")
             {
                 ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
-                ViewBag.FallbackUrl = GetFallbackCloudFrontUrl(entry);
+                ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
+                ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
             } else {
                 ViewBag.CloudFrontUrl = GetCloudFrontUrl(entry);
             }
@@ -76,16 +77,24 @@ namespace BrandValues.Controllers {
         private string GetRTMPCloudfrontUrl(Entry entry)
         {
             string rtmpUrl = appConfig["RTMPCloudfront"];
-            string videoUrl = entry.Url;
+            string videoUrl = entry.Url + ".mp4";
             string signedVideoUrl = GetSignedUrl.GetCloudfrontUrl(videoUrl);
             return rtmpUrl + signedVideoUrl;
         }
 
-        private string GetFallbackCloudFrontUrl(Entry entry)
+        private string GetAppleCloudFrontUrl(Entry entry)
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
             string relativeUrl = entry.Url;
-            string url = cloudfrontUrl + relativeUrl;
+            string url = cloudfrontUrl + relativeUrl + ".m3u8";
+            return GetSignedUrl.GetCloudfrontUrl(url);
+        }
+
+        private string GetFallbackMP4CloudFrontUrl(Entry entry)
+        {
+            string cloudfrontUrl = appConfig["TranscoderCloudfront"];
+            string relativeUrl = entry.Url;
+            string url = cloudfrontUrl + relativeUrl + ".mp4";
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
