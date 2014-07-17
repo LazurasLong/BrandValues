@@ -44,10 +44,12 @@
             jwplayer("mediaplayer").setup({
                 playlist: [{
                     image: videoThumbnailUrl,
-                    sources: [{
+                    sources: [
+                        {
                         file: rtmpUrl,
                         type: "rtmp"
-                    }, {
+                    },
+                    {
                         file: appleUrl,
                         type: "hls"
                     }, {

@@ -96,8 +96,9 @@ namespace BrandValues.Controllers {
         private string GetAppleCloudFrontUrl(Entry entry)
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
-            string relativeUrl = Path.GetFileNameWithoutExtension(entry.Url);
-            string url = cloudfrontUrl + relativeUrl + ".m3u8";
+            string fileName = Path.GetFileNameWithoutExtension(entry.Url);
+            string relativeUrl = entry.Url.Substring(0, entry.Url.LastIndexOf('/'));
+            string url = cloudfrontUrl + relativeUrl + "/" + fileName + ".m3u8";
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 

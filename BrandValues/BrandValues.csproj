@@ -270,6 +270,7 @@
     <Content Include="fonts\sourcesanspro\sourcesanspro-bold.woff" />
     <Content Include="fonts\sourcesanspro\sourcesanspro-light.woff" />
     <Content Include="fonts\sourcesanspro\sourcesanspro.woff" />
+    <Content Include="Views\Shared\_Layout-Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

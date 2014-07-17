@@ -18,13 +18,13 @@
                         <div class="pos-rlt">
                             <div class="item-overlay opacity r r-2x bg-black">
                                 <div class="center text-center m-t-n">
-                                    <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><i class="fa fa-play-circle i-2x"></i></a>
+                                    <a href="@Url.Action("Edit", "Home", new { id = entry.Id })"><i class="fa fa-play-circle i-2x"></i></a>
                                 </div>
                             </div>
-                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="" class="r r-2x img-full"></a>
+                            <a href="@Url.Action("Edit", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="" class="r r-2x img-full"></a>
                         </div>
                         <div class="padder-v">
-                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                            <a href="@Url.Action("Edit", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
                             <span class="text-ellipsis text-xs text-muted">@Html.DisplayFor(modelItem => entry.UserName), @Html.DisplayFor(modelItem => entry.UserArea)</span>
                         </div>
                     </div>

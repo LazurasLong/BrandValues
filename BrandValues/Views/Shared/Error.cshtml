@@ -2,9 +2,25 @@
 
 @{
     ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout-Error.cshtml";
 }
 
-<hgroup>
-    <h1 class="text-error">Error.</h1>
-    <h2 class="text-error">An error occurred while processing your request.</h2>
-</hgroup>
+<div class="cover-container">
+
+    <div class="inner cover">
+        <h1 class="cover-heading">Something has gone wrong.</h1>
+        <p class="lead">Please go <a href="javascript:history.back()">back</a> and try again, if this re-occurs please contact</p>
+        <p class="lead">
+            <a href="mailto:aib@valuescompetition.com?Subject=Site%20error" target="_top">
+                aib@valuescompetition.com
+            </a>
+        </p>
+    </div>
+
+    <div class="mastfoot">
+        <div class="inner">
+            <p>Sorry for any inconvenience!</p>
+        </div>
+    </div>
+
+</div>

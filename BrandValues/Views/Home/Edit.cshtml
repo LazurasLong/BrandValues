@@ -3,36 +3,41 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<section class="vbox">
+<section class="scrollable padder">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    <h2>Edit</h2>
 
-    <div class="form-horizontal">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Description</label>
-            <div class="col-md-10">
-                @Model.Description
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Description</label>
+                <div class="col-md-10">
+                    @Model.Description
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.Label("Edit", "Edit Description", new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBox("NewDescription")
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            @Html.Label("Edit", "Edit Description", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBox("NewDescription")
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Back to Entries", "Entry")
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to Entries", "Entry")
-</div>
+</section>
+</section>
