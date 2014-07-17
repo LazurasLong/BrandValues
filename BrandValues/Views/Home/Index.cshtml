@@ -196,7 +196,7 @@
                                                 <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Document" class="r r-2x img-full"></a>
                                             </div>
                                             <div class="padder-v">
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Description)</a>
+                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
                                                 <span class="text-ellipsis text-xs text-muted">@Html.DisplayFor(modelItem => entry.UserName), @Html.DisplayFor(modelItem => entry.UserArea)</span>
                                             </div>
                                         </div>

@@ -3,25 +3,161 @@
     ViewBag.Title = "Play";
 }
 
-<section>
+<script type="text/javascript">
+                var format = '@(Model.Format)';
 
-    <section class="vbox">
-        <section class="relativescroll scrollable padder-lg w-f-md">
-            
-            <h1>@Model.Name</h1>
-
-            <script type="text/javascript">
+                //video Urls
                 var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
                 var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
                 var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';
-                var thumbnailUrl = '@Html.Raw(ViewBag.Thumbnail)';
-            </script>
+                var videoThumbnailUrl = '@Html.Raw(ViewBag.VideoThumbnailUrl)';
 
-            <div id="mediaplayer"></div>
+                //other URls
+                var cloudfrontUrl = '@Html.Raw(ViewBag.CloudFrontUrl)';
 
+                var thumbnailUrl = '@Html.Raw(Model.ThumbnailUrl)';
+</script>
+
+<section id="content">
+    <section class="vbox">
+        <section>
+            <section class="hbox stretch bg-black dker">
+                <!-- side content -->
+                <aside class="col-sm-5 no-padder" id="sidebar">
+                    <section class="vbox animated fadeInUp">
+                        <section class="scrollable">
+                            <div class="m-t-n-xxs item pos-rlt">
+                                <div id="mediaplayer" align="center"></div>
+                                <div id="images" align="center"></div>
+                                <div id="text" align="center"></div>
+                                <div class="entry-info gd bg-info wrapper-lg">
+                                    <span class="pull-right text-sm">
+                                        <a class="btn btn-default" id="btn-1" href="#btn-1" data-toggle="class:btn-success">
+                                            <i class="fa fa-thumbs-o-up text"></i>
+                                            <span class="text">Like</span>
+                                            <i class="fa fa-check text-active"></i>
+                                            <span class="text-active">Liked</span>
+                                        </a>
+                                    </span>
+                                    <span class="h2 font-thin">@Model.Name</span><br />
+                                    <span>by @Model.UserName</span>
+                                </div>
+                            </div>
+                            
+
+                        </section>
+                    </section>
+                </aside>
+                <!-- / side content -->
+                <section class="col-sm-4 no-padder bg">
+                    <section class="vbox">
+                        <section class="scrollable hover">
+                            <ul class="list-group list-group-lg no-bg auto m-b-none m-t-n-xxs">
+                                <li class="list-group-item clearfix">
+                                    <section class="panel-default">
+                                        <div class="panel-body">
+                                            <div class="clearfix text-center">
+                                                <div class="inline">
+                                                    <span class="h2 font-thin">@Model.Name</span><br/>
+                                                    <small class="m-b white">by @Model.UserName</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+
+                                    </section>
+                                </li>
+                                <li class="list-group-item entry-highlighted clearfix">
+                                    <div class="col-xs-2">
+                                        <div class="padder-v">
+                                            <a class="btn btn-default" data-toggle="button">
+                                                <i class="fa fa-thumbs-o-up text"></i>
+                                                <i class="fa fa-thumbs-up text-active text-success"></i>
+                                            </a>
+                                        </div>
+                                        <div class="padder-v">
+                                            <a class="btn btn-default" data-toggle="button">
+                                                <i class="fa icon-share text"></i>
+                                                <i class="fa icon-share text-active text-danger"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-10">
+                                        <p class="left white">
+                                            <span class="h4 font-thin">Description</span><br />
+                                        <p class="m-b white">@Model.Description</p>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </section>
+                    </section>
+                </section>
+                <section class="col-sm-3 no-padder lt">
+                    <section class="vbox">
+                        <section class="scrollable hover">
+                            <div class="m-t-n-xxs">
+                                <div class="item pos-rlt">
+                                    <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                                        <span class="block h3 font-bold text-info">Find</span>
+                                        <span class="text-muted">Search for more entries</span>
+                                        <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                                    </a>
+                                    <a href="#">
+                                        <img class="img-full" src="~/images/m40.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="item pos-rlt">
+                                    <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                                        <span class="block h3 font-bold text-warning text-u-c">Learn</span>
+                                        <span class="text-muted">Find out more about the Brand Values</span>
+                                        <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                                    </a>
+                                    <a href="#">
+                                        <img class="img-full" src="~/images/m41.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="item pos-rlt">
+                                    <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                                        <span class="block h3 font-bold text-success text-u-c">Share</span>
+                                        <span class="text-muted">Share entries with colleagues</span>
+                                        <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                                    </a>
+                                    <a href="#">
+                                        <img class="img-full" src="~/images/m42.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="item pos-rlt">
+                                    <a href="#" class="item-overlay active opacity wrapper-md font-xs text-right">
+                                        <span class="block h3 font-bold text-white text-u-c">Watch</span>
+                                        <span class="text-muted">Check out more Brand Values videos</span>
+                                        <span class="bottom wrapper-md block"><i class="icon-arrow-right i-lg pull-left"></i> -</span>
+                                    </a>
+                                    <a href="#">
+                                        <img class="img-full" src="~/images/m44.jpg" alt="...">
+                                    </a>
+                                </div>
+                                <div class="item pos-rlt">
+                                    <a href="#" class="item-overlay active opacity wrapper-md font-xs">
+                                        <span class="block h3 font-bold text-danger-lter text-u-c">Top10</span>
+                                        <span class="text-muted">Selected songs</span>
+                                        <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
+                                    </a>
+                                    <a href="#">
+                                        <img class="img-full" src="~/images/m45.jpg" alt="...">
+                                    </a>
+                                </div>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
         </section>
+        <footer class="footer bg-black dk"></footer>
     </section>
-
+    <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
 </section>
 
 @section Scripts {

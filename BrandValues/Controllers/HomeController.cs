@@ -21,6 +21,7 @@ using MongoDB.Driver;
 using System;
 using Amazon.CloudFront;
 using BrandValues.Models;
+using System.Collections.Generic;
 
 
 namespace BrandValues.Controllers {
@@ -76,12 +77,10 @@ namespace BrandValues.Controllers {
                 ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
                 ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
                 ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
+                ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
             } else {
                 ViewBag.CloudFrontUrl = GetCloudFrontUrl(entry);
-            }
-
-            ViewBag.Thumbnail = GetCloudFrontUrl(entry);
-            
+            }       
 
             return View(entry);
         }
@@ -89,7 +88,7 @@ namespace BrandValues.Controllers {
         private string GetRTMPCloudfrontUrl(Entry entry)
         {
             string rtmpUrl = appConfig["RTMPCloudfront"];
-            string videoUrl = entry.Url + ".mp4";
+            string videoUrl = entry.Url;
             string signedVideoUrl = GetSignedUrl.GetCloudfrontUrl(videoUrl);
             return rtmpUrl + signedVideoUrl;
         }
@@ -97,7 +96,7 @@ namespace BrandValues.Controllers {
         private string GetAppleCloudFrontUrl(Entry entry)
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
-            string relativeUrl = entry.Url;
+            string relativeUrl = Path.GetFileNameWithoutExtension(entry.Url);
             string url = cloudfrontUrl + relativeUrl + ".m3u8";
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
@@ -106,7 +105,7 @@ namespace BrandValues.Controllers {
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
             string relativeUrl = entry.Url;
-            string url = cloudfrontUrl + relativeUrl + ".mp4";
+            string url = cloudfrontUrl + relativeUrl;
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
@@ -118,10 +117,10 @@ namespace BrandValues.Controllers {
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
-        private string GetThumbnailUrl(Entry entry)
+        private string GetVideoThumbnailUrl(Entry entry)
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
-            string relativeUrl = entry.ThumbnailUrl;
+            string relativeUrl = entry.VideoThumbnailUrl;
             string url = cloudfrontUrl + relativeUrl;
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
@@ -130,7 +129,10 @@ namespace BrandValues.Controllers {
         public ActionResult Upload()
         {
             //ViewBag.Message = "Test";
-            
+            //PostEntry postEntry = new PostEntry();
+
+            //GetValuesList(postEntry);
+
             return View();
         }
 
@@ -148,16 +150,18 @@ namespace BrandValues.Controllers {
                 return View();
             }
 
+            //var user = UserManager.FindByName(User.Identity.Name);
+
             var entry = new Entry(postEntry);
-            Context.Entries.Insert(entry);
+
+            entry.UserName = User.Identity.Name;
+            entry.CreatedOn = DateTime.UtcNow;
+//            entry.UserArea = User.Identity.
 
             //return RedirectToAction("Index");
 
-            
-
-            foreach (HttpPostedFileBase file in files)
+            foreach (var file in files)
             {
-
                 if (file == null)
                 {
                     ViewBag.Message = "Please select a file to upload";
@@ -171,21 +175,43 @@ namespace BrandValues.Controllers {
                 IAmazonS3 client;
                 var filePath = "";
 
+                //remove spaces
+                var newFileName = file.FileName.Replace(" ", String.Empty);
+
+                var foldername = Path.GetFileNameWithoutExtension(newFileName);
+
                 if (file.ContentType.Contains("video/"))
                 {
-                    filePath = "video/" + file.FileName;
+                    filePath = "video/" + foldername + "/" + newFileName;
+                    entry.VideoThumbnailUrl = "video/" + foldername + "/" + foldername + "-00001.png";
+                    entry.ThumbnailUrl = "images/entries/video.png";
+                    entry.Url = filePath;
                 }
 
-                if (file.ContentType.Contains("text/") || file.ContentType.Contains("application/pdf") || file.ContentType.Contains("application/msword") || file.ContentType.Contains("application/vnd.ms-powerpoint"))
+                if (file.ContentType.Contains("text/") || 
+                    file.ContentType.Contains("application/pdf") || 
+                    file.ContentType.Contains("application/msword") || 
+                    file.ContentType.Contains("application/vnd.ms-powerpoint") ||
+                    file.ContentType.Contains("application/vnd.openxmlformats-officedocument")
+                    )
                 {
-                    filePath = "text/" + file.FileName;
+                    filePath = "text/" + foldername + "/" + newFileName;
+                    entry.ThumbnailUrl = "/images/entries/document.png";
+                    entry.Url = filePath;
                 }
 
                 if (file.ContentType.Contains("image/"))
                 {
-                    filePath = "image/" + file.FileName;
+                    filePath = "image/" + foldername + "/" + newFileName;
+                    entry.ThumbnailUrl = "/images/entries/photo.png";
+                    entry.Url = filePath;
                 }
-                
+
+                if (filePath == null)
+                {
+                   ViewBag.Message = "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support";
+                  return View(); 
+                }
 
                 try
                 {
@@ -200,21 +226,50 @@ namespace BrandValues.Controllers {
                         request.InputStream = file.InputStream;
 
                         PutObjectResponse response = client.PutObject(request);
-                        myResponse = response.HttpStatusCode.ToString();
+                        //myResponse = response.HttpStatusCode.ToString();
+                        if (response.HttpStatusCode.ToString() == "OK")
+                        {
+                            Context.Entries.Insert(entry);
+
+                            myResponse = "File uploaded & entry submitted. Awesome. <br/> To view it, please <a href=\"";
+                            var callbackUrl = Url.Action("Play", "Home", new { Id = entry.Id });
+                            myResponse = myResponse + callbackUrl + "\">click here</a>";                          
+                        }
+
                     }
                 }
                 catch (AmazonS3Exception s3Exception)
                 {
                     //s3Exception.InnerException
+#if(DEBUG)
                     ViewBag.Message = s3Exception.Message;
+#endif
+
+#if(!DEBUG)
+                    if (s3Exception.Message.Contains("x-amz-server-side-encryption header is not supported"))
+                    {
+                        ViewBag.Message =
+                            "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support";
+                    }
+                    else
+                    {
+                        ViewBag.Message =
+                            "There was a problem uploading your file. Please try again, if this continues to happen please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support";
+                    }
+#endif
+
+
                     return View("Upload");
-                }
-                
+                } 
             }
+
+            
+            
+           
 
             ViewBag.Message = myResponse;
             ViewBag.Uploaded = true;
-            return View(entry);
+            return View();
         }
 
         public ActionResult Entry()

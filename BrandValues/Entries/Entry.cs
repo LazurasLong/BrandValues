@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
@@ -20,9 +21,11 @@ namespace BrandValues.Entries
 
         public string ThumbnailUrl { get; set; }
 
+        public string VideoThumbnailUrl { get; set; }
+
         public string Url { get; set; }
 
-        public ICollection<Value> Values { get; set; } 
+        public string Values { get; set; }
 
         public string Name { get; set; }
 
@@ -37,6 +40,8 @@ namespace BrandValues.Entries
         public string UserName { get; set; }
 
         public string UserArea { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public Entry()
         {

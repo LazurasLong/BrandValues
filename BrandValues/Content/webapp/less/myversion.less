@@ -23,7 +23,7 @@ color: #f0f2f8;
 /* Stop apple rubberbanding */
 html, body {
   height: 100%;
-  overflow: hidden;
+  //overflow: hidden;
 }
 
 /* Login */
@@ -84,6 +84,9 @@ html, body {
 .centered {
     margin-left: 10% !important;
     margin-right: 10% !important;
+}
+.center {
+    text-align: center;
 }
 .top-padding {
     padding-top: 5px;
@@ -175,6 +178,23 @@ html, body {
 .video {
     background-color: @text-purple;
 }
+
+.entry-info{
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+@media (max-width: 767px) {
+.entry-info{
+    display: none;
+}
+}
+
+.entry-highlighted {
+    background-color: #181f24!important;
+}
+
+
 
 /* Footer */
 #footer-right{

@@ -141,6 +141,7 @@
     <Content Include="images\box-compass.png" />
     <Content Include="images\aib-logo-small.png" />
     <Content Include="images\entries\document.png" />
+    <Content Include="images\entries\video.png" />
     <Content Include="images\entries\photo.png" />
     <Content Include="images\Liffey.jpg" />
     <Content Include="images\logo.png" />

@@ -1,29 +1,70 @@
-﻿$(document).ready(function(){
+﻿$(document).ready(function() {
 
-    //alert(signedUrl);
+    switch (format) {
+        case ("video"):
+            LoadMedia();
+            break;
+        case ("text"):
+            LoadText();
+            break;
+        case ("image"):
+            LoadImage();
+            break;
+    }
 
-    jwplayer.key = "D7QMo1Ir9C8AM7Rbowp5IFudmR8sc8K4pzXVb4PNirw=";
+    function LoadText() {
+        if (!cloudfrontUrl) {
+            
+            $('#text').append("<h1>No documents, PDF's, or other text uploaded along with this entry.</h1>");
+        } else {
+            var entryUrl = cloudfrontUrl;
+            $('#text').append("<h1 class='top-padding-10'><a href=" + entryUrl + " target='_blank' >Click here</a> to open this entry</h1>");
+        }
+    }
 
-    //JWPlayer
-    jwplayer("mediaplayer").setup({
-        playlist: [{
-            image: thumbnailUrl,
-            sources: [{
-                file: rtmpUrl
-            },{
-                file: appleUrl
-            },{
-                file: fallbackUrl
-            }]
-        }],
-        sharing: {
-            link: document.URL
-        },
-        primary: "flash",
-        width: 640,
-        height: 360,
-        ga: { idstring: "Video title" }
-    });
+
+    function LoadImage() {
+        if (!cloudfrontUrl) {
+            $('#images').append("<h1>No image uploaded along with this entry.</h1>");
+        } else {
+            var entryUrl = cloudfrontUrl;
+            $('#images').append("<a href=" + entryUrl + " target='_blank' ><img src=" + entryUrl + " /></a>");
+        }
+    }
+
+
+    function LoadMedia() {
+
+        if (!videoThumbnailUrl || !rtmpUrl || !appleUrl || !fallbackUrl) {
+            $('#mediaplayer').append("<h1>No video uploaded along with this entry.</h1>");
+        } else {
+            jwplayer.key = "D7QMo1Ir9C8AM7Rbowp5IFudmR8sc8K4pzXVb4PNirw=";
+
+            //JWPlayer
+            jwplayer("mediaplayer").setup({
+                playlist: [{
+                    image: videoThumbnailUrl,
+                    sources: [{
+                        file: rtmpUrl
+                    }, {
+                        file: appleUrl
+                    }, {
+                        file: fallbackUrl
+                    }]
+                }],
+                sharing: {
+                    link: document.URL
+                },
+                //primary: "flash",
+                width: "100%",
+                aspectratio: "16:9",
+                ga: { idstring: "Video title" }
+            });
+        }
+
+
+    }
+
 
 
 });
