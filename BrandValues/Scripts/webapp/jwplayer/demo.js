@@ -45,9 +45,11 @@
                 playlist: [{
                     image: videoThumbnailUrl,
                     sources: [{
-                        file: rtmpUrl
+                        file: rtmpUrl,
+                        type: "rtmp"
                     }, {
-                        file: appleUrl
+                        file: appleUrl,
+                        type: "hls"
                     }, {
                         file: fallbackUrl
                     }]
