@@ -15,7 +15,7 @@
     function LoadText() {
         if (!cloudfrontUrl) {
             
-            $('#text').append("<h1>No documents, PDF's, or other text uploaded along with this entry.</h1>");
+            $('#text').append("<h1 class='top-padding-10'>No documents, PDF's, or other text uploaded along with this entry.</h1>");
         } else {
             var entryUrl = cloudfrontUrl;
             $('#text').append("<h1 class='top-padding-10'><a href=" + entryUrl + " target='_blank' >Click here</a> to open this entry</h1>");
@@ -25,10 +25,10 @@
 
     function LoadImage() {
         if (!cloudfrontUrl) {
-            $('#images').append("<h1>No image uploaded along with this entry.</h1>");
+            $('#images').append("<h1 class='top-padding-10'>No image uploaded along with this entry.</h1>");
         } else {
             var entryUrl = cloudfrontUrl;
-            $('#images').append("<a href=" + entryUrl + " target='_blank' ><img src=" + entryUrl + " /></a>");
+            $('#images').append("<a href=" + entryUrl + " target='_blank' ><img src=" + entryUrl + " class='entry-image' /></a>");
         }
     }
 
@@ -58,7 +58,7 @@
                 //primary: "flash",
                 width: "100%",
                 aspectratio: "16:9",
-                ga: { idstring: "Video title" }
+                ga: { idstring: videoName }
             });
         }
 

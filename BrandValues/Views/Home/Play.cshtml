@@ -4,18 +4,20 @@
 }
 
 <script type="text/javascript">
-                var format = '@(Model.Format)';
+    var format = '@(Model.Format)';
+    var videoName = '@(Model.Name)';
 
-                //video Urls
-                var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
-                var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
-                var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';
-                var videoThumbnailUrl = '@Html.Raw(ViewBag.VideoThumbnailUrl)';
+    //video Urls
+    var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
+    var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
+    var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';
+    var videoThumbnailUrl = '@Html.Raw(ViewBag.VideoThumbnailUrl)';
 
-                //other URls
-                var cloudfrontUrl = '@Html.Raw(ViewBag.CloudFrontUrl)';
+    //other URls
+    var cloudfrontUrl = '@Html.Raw(ViewBag.CloudFrontUrl)';
 
-                var thumbnailUrl = '@Html.Raw(Model.ThumbnailUrl)';
+    var thumbnailUrl = '@Html.Raw(Model.ThumbnailUrl)';
+
 </script>
 
 <section id="content">
@@ -137,16 +139,6 @@
                                     </a>
                                     <a href="#">
                                         <img class="img-full" src="~/images/m44.jpg" alt="...">
-                                    </a>
-                                </div>
-                                <div class="item pos-rlt">
-                                    <a href="#" class="item-overlay active opacity wrapper-md font-xs">
-                                        <span class="block h3 font-bold text-danger-lter text-u-c">Top10</span>
-                                        <span class="text-muted">Selected songs</span>
-                                        <span class="bottom wrapper-md block">- <i class="icon-arrow-right i-lg pull-right"></i></span>
-                                    </a>
-                                    <a href="#">
-                                        <img class="img-full" src="~/images/m45.jpg" alt="...">
                                     </a>
                                 </div>
                             </div>

@@ -184,7 +184,7 @@ namespace BrandValues.Controllers {
                 {
                     filePath = "video/" + foldername + "/" + newFileName;
                     entry.VideoThumbnailUrl = "video/" + foldername + "/" + foldername + "-00001.png";
-                    entry.ThumbnailUrl = "images/entries/video.png";
+                    entry.ThumbnailUrl = "/images/entries/video.png";
                     entry.Url = filePath;
                 }
 
