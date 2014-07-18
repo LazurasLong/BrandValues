@@ -22,6 +22,9 @@ using System;
 using Amazon.CloudFront;
 using BrandValues.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using Amazon.SQS;
+using Amazon.SQS.Model;
 
 
 namespace BrandValues.Controllers {
@@ -177,14 +180,20 @@ namespace BrandValues.Controllers {
                 var filePath = "";
 
                 //remove spaces
-                var newFileName = file.FileName.Replace(" ", String.Empty);
+                var username = User.Identity.Name;
+                if (username.Contains('@'))
+                    username = username.Substring(0, username.LastIndexOf('@'));
 
-                var foldername = Path.GetFileNameWithoutExtension(newFileName);
+                var entryName = entry.Name.Replace(" ", String.Empty);
+                var newFileName = entryName + Path.GetExtension(file.FileName);
+
+                var foldername = username;
+                    //Path.GetFileNameWithoutExtension(newFileName);
 
                 if (file.ContentType.Contains("video/"))
                 {
                     filePath = "video/" + foldername + "/" + newFileName;
-                    entry.VideoThumbnailUrl = "video/" + foldername + "/" + foldername + "-00001.png";
+                    entry.VideoThumbnailUrl = "video/" + foldername + "/" + entryName + "-00001.png";
                     entry.ThumbnailUrl = "/images/entries/video.png";
                     entry.Url = filePath;
                 }
@@ -261,7 +270,39 @@ namespace BrandValues.Controllers {
 
 
                     return View("Upload");
-                } 
+                }
+
+                //Send to SQS for re-encoding
+                if (file.ContentType.Contains("video/"))
+                {
+                    using (AmazonSQSClient sqsClient = new AmazonSQSClient())
+                    {
+                        try
+                        {
+                            var json = Newtonsoft.Json.JsonConvert.SerializeObject(entry);
+
+                            SendMessageRequest request = new SendMessageRequest();
+                            request.QueueUrl = appConfig["SQSEncodingQueue"];
+                            request.MessageBody = json;
+
+                            SendMessageResponse response = sqsClient.SendMessage(request);
+                        }
+                        catch (AmazonSQSException sqsException)
+                        {
+#if(DEBUG)
+                            ViewBag.Message = sqsException.Message;
+#endif
+
+#if(!DEBUG)
+                        ViewBag.Message =
+                            "There was a problem editing your video. Please try again, if this continues to happen please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20re-encoding%20video'>aib@valuescompetition.com</a> for support";
+#endif
+                        }
+
+                    }
+                }
+
+
             }
 
             

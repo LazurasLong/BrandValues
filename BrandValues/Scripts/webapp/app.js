@@ -183,12 +183,12 @@ Date.now = Date.now || function() { return +new Date; };
   $(function(){
 
     // toogle fullscreen
-    $(document).on('click', "[data-toggle=fullscreen]", function(e){
-      e.preventDefault();
-      if (screenfull.enabled) {
-        screenfull.request();
-      }
-    });
+    //$(document).on('click', "[data-toggle=fullscreen]", function(e){
+    //  e.preventDefault();
+    //  if (screenfull.enabled) {
+    //    screenfull.request();
+    //  }
+    //});
 
   	// placeholder
   	$('input[placeholder], textarea[placeholder]').placeholder();
