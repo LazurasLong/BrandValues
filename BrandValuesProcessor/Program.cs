@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Amazon;
+using Amazon.ElasticTranscoder;
+using Amazon.ElasticTranscoder.Model;
 using Amazon.SQS;
 using Amazon.SQS.Model;
 using BrandValues.Entries;
@@ -15,14 +18,14 @@ namespace BrandValuesProcessor
 {
     class Program
     {
+        private static string AccessKeyID = "AKIAINIQRUHQ6IHTDS3A";
+        private static string SecretAccessKeyID = "VtkJmp8Lgi9kCKGbICCaUIGzdl5nqsN0CIeuLCm6";
+
         static void Main(string[] args)
         {
             Console.WriteLine("Checking for SQS messages");
 
             ConsoleKeyInfo cki = new ConsoleKeyInfo();
-
-            string AccessKeyID = "AKIAINIQRUHQ6IHTDS3A";
-            string SecretAccessKeyID = "VtkJmp8Lgi9kCKGbICCaUIGzdl5nqsN0CIeuLCm6";
 
             //create client
             AmazonSQSClient client = new AmazonSQSClient(AccessKeyID, SecretAccessKeyID, Amazon.RegionEndpoint.EUWest1);
@@ -73,6 +76,8 @@ namespace BrandValuesProcessor
 
                     Console.WriteLine(entry.VideoThumbnailUrl);
 
+                    CreateJobRequest();
+
                     //Delete all messages
                     //client.DeleteMessage(m.ReceiptHandle);
 
@@ -81,6 +86,53 @@ namespace BrandValuesProcessor
 
 
             }
+
+        }
+
+        private static void CreateJobRequest(string videoPath, string bucketName)
+        {
+
+            string accsessKey = AccessKeyID;
+            string secretKey = SecretAccessKeyID;
+            var etsClient = new AmazonElasticTranscoderClient(AccessKeyID, SecretAccessKeyID, RegionEndpoint.EUWest1);
+            var notifications = new Notifications()
+            {
+                Completed = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode",
+                Error = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode",
+                Progressing = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode",
+                Warning = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode"
+            };
+
+            //var pipeline = etsClient.CreatePipeline(new CreatePipelineRequest()
+            //{
+            //    Name = "MyFolder",
+            //    InputBucket = bucketName,
+            //    OutputBucket = bucketName,
+            //    Notifications = notifications,
+            //    Role = "arn:aws:iam::XXXXXXXXXXXX:role/Elastic_Transcoder_Default_Role"
+
+            //}).CreatePipelineResult.Pipeline;
+            etsClient.CreateJob(new CreateJobRequest()
+            {
+                PipelineId = pipeline.Id,
+                Input = new JobInput()
+                {
+                    AspectRatio = "auto",
+                    Container = "mp4",
+                    FrameRate = "auto",
+                    Interlaced = "auto",
+                    Resolution = "auto",
+                    Key = videoPath
+
+                },
+                Output = new CreateJobOutput()
+                {
+                    ThumbnailPattern = videoPath + "videoName{resolution}_{count}",
+                    Rotate = "0",
+                    PresetId = "1351620000000-000020",
+                    Key = videoPath + "newFileName.mp4"
+                }
+            });
 
         }
     }
