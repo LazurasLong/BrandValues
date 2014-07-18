@@ -3607,6 +3607,14 @@ fieldset[disabled] .i-checks input + i:before {
 html,
 body {
   height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+/* Menu fixes */
+@media (max-width: 910px) {
+  .hidden-tablet {
+    display: none !important;
+  }
 }
 /* Login */
 .bg-login {
@@ -3678,6 +3686,11 @@ body {
   padding-right: 5px;
 }
 /*Nav */
+.slim-scroll {
+  background-image: url("../images/bg/bg-nav-compass.png");
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+}
 /* Home Screen */
 .navbar-brand {
   font-weight: normal;
@@ -3774,8 +3787,12 @@ body {
     display: none;
 }
 }*/
-.entry-highlighted {
-  background-color: #181f24!important;
+.margin-bottom {
+  margin-bottom: 20px !important;
+}
+.margin-lr {
+  margin-left: 2%;
+  margin-right: 2%;
 }
 /* Footer */
 #footer-right {

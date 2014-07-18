@@ -49,10 +49,11 @@
                         file: rtmpUrl,
                         type: "rtmp"
                     },
+                    //{
+                    //    file: appleUrl,
+                    //    type: "hls"
+                    //},
                     {
-                        file: appleUrl,
-                        type: "hls"
-                    }, {
                         file: fallbackUrl
                     }]
                 }],

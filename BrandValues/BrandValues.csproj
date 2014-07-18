@@ -138,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\bg\bg-nav-compass.png" />
     <Content Include="images\box-compass.png" />
     <Content Include="images\aib-logo-small.png" />
     <Content Include="images\entries\document.png" />
