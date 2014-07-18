@@ -37,6 +37,10 @@
                     <button type="submit" class="btn btn-info lt b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign in</span></button>
                 </p>
 
+                <p class="text-center centered">
+                        @Html.ActionLink("Register", "Register", null, new { @class = "btn btn-warning btn-block rounded" })
+                </p>
+
                 <hr />
                 <p class="text-center">
                     @Html.ActionLink("Forget your password?", "ForgotPassword", null, new { @class = "link-light" })
@@ -44,9 +48,9 @@
             }
         </section>
 
-        <p class="text-center centered">
+        @*<p class="text-center centered">
             @Html.ActionLink("Sign up", "Register", null, new { @class = "btn btn-grey btn-block rounded" })
-        </p>
+        </p>*@
     </div>
     <div class="col-md-7">
         @*<section id="socialLoginForm">

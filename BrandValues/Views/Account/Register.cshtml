@@ -29,39 +29,101 @@
                 </div>
                 <div class="form-group centered">
                     <label class="col-sm-4 control-label">Select your area</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                         @{
-                        List<SelectListItem> listItems = new List<SelectListItem>();
-                        listItems.Add(new SelectListItem
-                        {
-                            Text = "COO Domain",
-                            Value = "COO Domain",
-                            Selected = true
-                        });
-                        listItems.Add(new SelectListItem
-                        {
-                            Text = "Finance",
-                            Value = "Finance",
-                        });
-                        listItems.Add(new SelectListItem
-                        {
-                            Text = "IT",
-                            Value = "IT"
-                        });
+                List<SelectListItem> listItems = new List<SelectListItem>();
+                listItems.Add(new SelectListItem
+                {
+                    Text = "COO Domain",
+                    Value = "COO Domain",
+                    Selected = true
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "IT",
+                    Value = "IT",
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Leadership Team",
+                    Value = "Leadership Team"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Products",
+                    Value = "Products"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "PB & CB - Head Office",
+                    Value = "PB & CB - Head Office"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "PB & CB - Branches",
+                    Value = "PB & CB - Branches"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "First Trust",
+                    Value = "First Trust"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "AIB UK",
+                    Value = "AIB UK"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Corporate Affairs & Strategy",
+                    Value = "Corporate Affairs & Strategy"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "FSG",
+                    Value = "FSG"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "HR",
+                    Value = "HR"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Risk",
+                    Value = "Risk"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Finance",
+                    Value = "Finance"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Group Internal Audit",
+                    Value = "Group Internal Audit"
+                });
+                listItems.Add(new SelectListItem
+                {
+                    Text = "Legal",
+                    Value = "Legal"
+                });
                         }
-                        @Html.DropDownListFor(model => model.Area, listItems)
+                        @Html.DropDownListFor(model => model.Area, listItems, new { @class = "form-control m-b" })
                     </div>
 
-                </div>               
-                
-                
-                
+                </div>
+
+
+
                 <p class="text-center centered">
                     <button type="submit" class="btn btn-info lt b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign up</span></button>
                 </p>
             }
 
         </section>
+
+
 
         <p class="text-center centered">
             @Html.ActionLink("Already registered?", "Login", null, new { @class = "btn btn-grey btn-block rounded" })
