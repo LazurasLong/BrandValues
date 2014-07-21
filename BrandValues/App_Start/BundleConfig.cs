@@ -36,9 +36,9 @@ namespace BrandValues
             bundles.Add(new StyleBundle("~/Bundles/css").Include(
                       "~/Content/webapp/css/bootstrap.css",
                       "~/Content/webapp/css/animate.css",
+                      "~/Content/webapp/css/font.css",
                       "~/Content/webapp/css/font-awesome.min.css",
                       "~/Content/webapp/css/simple-line-icons.css",
-                      "~/Content/webapp/css/font.css",
                       "~/Content/webapp/less/app.css"
                       ));
 

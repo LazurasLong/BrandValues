@@ -3,47 +3,147 @@
     ViewBag.Title = "Create";
 }
 
-<h2>@ViewBag.Title.</h2>
+<section class="vbox">
+    <section class="scrollable padder">
+        <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-error" })
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2 control-label">
-            Select User Role
-        </label>
-        <div class="col-md-10">
-            @foreach (var item in (SelectList)ViewBag.RoleId)
+        @using (Html.BeginForm("Create", "UsersAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h4>Create a new account.</h4>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-error" })
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label">Select area</label>
+                <div class="col-md-10">
+                    @{
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
             {
-                <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
-                @Html.Label(item.Value, new { @class = "control-label" })
-            }
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Create" />
-        </div>
-    </div>
-}
+                Text = "COO Domain",
+                Value = "COO Domain",
+                Selected = true
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "IT",
+                Value = "IT",
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Leadership Team",
+                Value = "Leadership Team"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Products",
+                Value = "Products"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "PB & CB - Head Office",
+                Value = "PB & CB - Head Office"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "PB & CB - Branches",
+                Value = "PB & CB - Branches"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "First Trust",
+                Value = "First Trust"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "AIB UK",
+                Value = "AIB UK"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Corporate Affairs & Strategy",
+                Value = "Corporate Affairs & Strategy"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "FSG",
+                Value = "FSG"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "HR",
+                Value = "HR"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Risk",
+                Value = "Risk"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Finance",
+                Value = "Finance"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Group Internal Audit",
+                Value = "Group Internal Audit"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Legal",
+                Value = "Legal"
+            });
+                    }
+                    @Html.DropDownListFor(model => model.Area, listItems, new { @class = "form-control m-b" })
+                </div>
+
+
+
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-2 control-label">
+                    Select User Role
+                </label>
+                <div class="col-md-10">
+                    @foreach (var item in (SelectList)ViewBag.RoleId)
+                    {
+                        <input type="checkbox" name="SelectedRoles" value="@item.Value" class="checkbox-inline" />
+                        @Html.Label(item.Value, new { @class = "control-label" })
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" class="btn btn-default" value="Create" />
+                </div>
+            </div>
+        }
+        
+        <p>
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        
+    </section>
+</section>
+

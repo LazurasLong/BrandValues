@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace BrandValues.Utils
+{
+    public static class IpAddress
+    {
+        public static string GetIp()
+        {
+
+            string strIpAddress;
+
+            strIpAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+
+            if (strIpAddress == null)
+
+                strIpAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
+
+            return strIpAddress;
+
+        }
+
+        public static bool CheckIp()
+        {
+            if (Utils.IpAddress.GetIp() == "194.69.198.225")
+            {
+                return true;
+            }
+
+            if (Utils.IpAddress.GetIp() == "194.69.198.226")
+            {
+                return true;
+            }
+
+            if (Utils.IpAddress.GetIp() == "194.69.198.227")
+            {
+                return true;
+            }
+
+            if (Utils.IpAddress.GetIp() == "194.69.198.228")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+    }
+}

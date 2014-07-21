@@ -32,6 +32,14 @@ namespace BrandValues
         }
         #endif
 
+        //protected void Session_Start(object sender)
+        //{
+        //    if (Utils.IpAddress.CheckIp())
+        //    {
+        //        Response.Redirect("~/error.html");
+        //    }
+        //}
+
 
     }
 }

@@ -273,6 +273,9 @@
     <Content Include="fonts\sourcesanspro\sourcesanspro-light.woff" />
     <Content Include="fonts\sourcesanspro\sourcesanspro.woff" />
     <Content Include="Views\Shared\_Layout-Error.cshtml" />
+    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-light-webfont.eot" />
+    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-bold-webfont.eot" />
+    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-regular-webfont.eot" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -443,6 +446,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils\IpAddress.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

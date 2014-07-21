@@ -70,7 +70,8 @@
             jwplayer().onError(function () {
                 jwplayer().load({ file: "https://s3-eu-west-1.amazonaws.com/valuescompetition-degraded/video-encoding.mp4", image: "https://s3-eu-west-1.amazonaws.com/valuescompetition-degraded/video-encoding.png" });
                 jwplayer().play();
-            });
+            });
+
         }
 
 
