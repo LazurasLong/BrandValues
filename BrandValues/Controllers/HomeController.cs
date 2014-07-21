@@ -50,7 +50,7 @@ namespace BrandValues.Controllers {
             //Context.Database.GetStats();
             //return Json(Context.Database.Server.BuildInfo, JsonRequestBehavior.AllowGet);
 
-            var entries = Context.Entries.FindAll();
+            var entries = Context.Entries.FindAll().SetLimit(6);
 
             var model = from r in entries
                 orderby r.Likes.Count() descending
