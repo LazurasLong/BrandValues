@@ -35,7 +35,7 @@
 
     function LoadMedia() {
 
-        if (!videoThumbnailUrl || !rtmpUrl || !appleUrl || !fallbackUrl) {
+        if (!videoThumbnailUrl || !rtmpUrl || !fallbackUrl) {
             $('#mediaplayer').append("<h1>No video uploaded along with this entry.</h1>");
         } else {
             jwplayer.key = "D7QMo1Ir9C8AM7Rbowp5IFudmR8sc8K4pzXVb4PNirw=";
@@ -63,8 +63,14 @@
                 //primary: "flash",
                 width: "100%",
                 aspectratio: "16:9",
+                //autostart: true,
                 ga: { idstring: videoName }
             });
+
+            jwplayer().onError(function () {
+                jwplayer().load({ file: "https://s3-eu-west-1.amazonaws.com/valuescompetition-degraded/video-encoding.mp4", image: "https://s3-eu-west-1.amazonaws.com/valuescompetition-degraded/video-encoding.png" });
+                jwplayer().play();
+            });
         }
 
 

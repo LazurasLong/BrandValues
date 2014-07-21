@@ -144,6 +144,7 @@
     <Content Include="images\entries\document.png" />
     <Content Include="images\entries\video.png" />
     <Content Include="images\entries\photo.png" />
+    <Content Include="images\jwplayer\video-encoding.png" />
     <Content Include="images\Liffey.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\p0.jpg" />

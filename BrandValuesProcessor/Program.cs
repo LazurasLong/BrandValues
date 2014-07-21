@@ -94,7 +94,7 @@ namespace BrandValuesProcessor
 
         }
 
-        private static void CreateJobRequest(string videoPath, string outputBucketName, string thumbnailUrl, string fileName)
+        private static async void CreateJobRequest(string videoPath, string outputBucketName, string thumbnailUrl, string fileName)
         {
 
             string accsessKey = AccessKeyID;
@@ -103,9 +103,7 @@ namespace BrandValuesProcessor
 
             var pipeline = etsClient.ListPipelines(new ListPipelinesRequest()).ListPipelinesResult.Pipelines.Find(x => x.Name.Contains("ValuesCompetition"));
 
-            Console.WriteLine(pipeline);
-
-            etsClient.CreateJob(new CreateJobRequest()
+            var job = etsClient.CreateJob(new CreateJobRequest()
             {
                 PipelineId = pipeline.Id,
                 Input = new JobInput()
@@ -126,6 +124,9 @@ namespace BrandValuesProcessor
                 }
             });
 
+            //var requestId = job.ResponseMetadata.RequestId;
+
+            //var status = job.Job.Status;
         }
     }
 }

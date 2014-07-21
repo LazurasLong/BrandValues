@@ -78,7 +78,7 @@ namespace BrandValues.Controllers {
             if (entry.Format == "video")
             {
                 ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
-                ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
+                //ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
                 ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
                 ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
             } else {
@@ -193,7 +193,7 @@ namespace BrandValues.Controllers {
                 if (file.ContentType.Contains("video/"))
                 {
                     filePath = "video/" + foldername + "/" + newFileName;
-                    entry.VideoThumbnailUrl = "video/" + foldername + "/" + entryName + "-00001.png";
+                    entry.VideoThumbnailUrl = "video/" + foldername + "/" + entryName + "_00001.png";
                     entry.ThumbnailUrl = "/images/entries/video.png";
                     entry.Url = filePath;
                 }
