@@ -91,7 +91,9 @@ namespace BrandValues.Controllers {
         private string GetRTMPCloudfrontUrl(Entry entry)
         {
             string rtmpUrl = appConfig["RTMPCloudfront"];
-            string videoUrl = entry.Url;
+            //string videoUrl = entry.Url;
+            string fileName = Path.GetFileNameWithoutExtension(entry.Url);
+            string videoUrl = fileName + ".mp4";
             string signedVideoUrl = GetSignedUrl.GetCloudfrontUrl(videoUrl);
             return rtmpUrl + signedVideoUrl;
         }
@@ -108,8 +110,9 @@ namespace BrandValues.Controllers {
         private string GetFallbackMP4CloudFrontUrl(Entry entry)
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
-            string relativeUrl = entry.Url;
-            string url = cloudfrontUrl + relativeUrl;
+            string fileName = Path.GetFileNameWithoutExtension(entry.Url);
+            string relativeUrl = entry.Url.Substring(0, entry.Url.LastIndexOf('/'));
+            string url = cloudfrontUrl + relativeUrl + "/" + fileName + ".mp4";
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
