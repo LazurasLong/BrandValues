@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BrandValues.Entries.Entry>
+﻿@using System.Web.UI.WebControls
+@model IEnumerable<BrandValues.Entries.Entry>
 
 @{
     ViewBag.Title = "Entry";
@@ -11,29 +12,35 @@
         </div>
         
         <div class="row row-sm">
-            @foreach (var entry in Model.Where(x => x.UserName.Contains(User.Identity.Name)))
-            {
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="item">
-                        <div class="pos-rlt">
-                            <div class="item-overlay opacity r r-2x bg-black">
-                                <div class="center text-center m-t-n">
-                                    <a href="@Url.Action("Edit", "Home", new { id = entry.Id })"><i class="fa fa-play-circle i-2x"></i></a>
+            
+            <div class="m-b-md">
+                <h3 class="m-b-none">@Html.Raw(ViewBag.Message)</h3>
+            </div>
+
+                @foreach (var entry in Model.Where(x => x.UserName.Contains(User.Identity.Name)))
+                {
+                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                        <div class="item">
+                            <div class="pos-rlt">
+                                <div class="item-overlay opacity r r-2x bg-black">
+                                    <div class="center text-center m-t-n">
+                                        <a href="@Url.Action("Edit", "Home", new { id = entry.Id })"><i class="fa fa-play-circle i-2x"></i></a>
+                                    </div>
                                 </div>
+                                <a href="@Url.Action("Edit", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="" class="r r-2x img-full"></a>
                             </div>
-                            <a href="@Url.Action("Edit", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="" class="r r-2x img-full"></a>
-                        </div>
-                        <div class="padder-v">
-                            <a href="@Url.Action("Edit", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
-                            <span class="text-ellipsis text-xs text-muted">@Html.DisplayFor(modelItem => entry.UserName), @Html.DisplayFor(modelItem => entry.UserArea)</span>
+                            <div class="padder-v">
+                                <a href="@Url.Action("Edit", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                                <span class="text-ellipsis text-xs text-muted">@Html.DisplayFor(modelItem => entry.UserName), @Html.DisplayFor(modelItem => entry.UserArea)</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+
+                }
 
 
 
-        </div>
+            </div>
         
 @if (Request.IsAuthenticated && User.IsInRole("Admin"))
 {

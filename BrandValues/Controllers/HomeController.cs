@@ -319,7 +319,23 @@ namespace BrandValues.Controllers {
 
         public ActionResult Entry()
         {
-            var entries = Context.Entries.FindAll();
+            var entries = Context.Entries.FindAll().Where(x => x.UserName.Contains(User.Identity.Name));
+
+            if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                entries = Context.Entries.FindAll();
+            }
+
+            if (entries.Count() == 0)
+            {
+                var myResponse = "You have not entered the competition, please <a href=\"";
+                var callbackUrl = Url.Action("Upload", "Home");
+                myResponse = myResponse + callbackUrl + "\">click here</a> to upload your entry";
+                ViewBag.Message = myResponse;
+            }
+
+            
+
             return View(entries);
         }
 
