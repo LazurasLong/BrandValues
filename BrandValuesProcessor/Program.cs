@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -74,9 +75,13 @@ namespace BrandValuesProcessor
                 {
                     Entry entry = JsonConvert.DeserializeObject<Entry>(m.Body);
 
-                    Console.WriteLine(entry.VideoThumbnailUrl);
+                    string relativeUrl = entry.Url.Substring(0, entry.Url.LastIndexOf('/'));
+                    string url = relativeUrl + "/";
 
-                    CreateJobRequest();
+                    string fileName = Path.GetFileNameWithoutExtension(entry.Url);
+                    string thumbnailUrl = relativeUrl + "/" + fileName;
+
+                    CreateJobRequest(entry.Url, url, thumbnailUrl, fileName);
 
                     //Delete all messages
                     //client.DeleteMessage(m.ReceiptHandle);
@@ -89,29 +94,17 @@ namespace BrandValuesProcessor
 
         }
 
-        private static void CreateJobRequest(string videoPath, string bucketName)
+        private static void CreateJobRequest(string videoPath, string outputBucketName, string thumbnailUrl, string fileName)
         {
 
             string accsessKey = AccessKeyID;
             string secretKey = SecretAccessKeyID;
             var etsClient = new AmazonElasticTranscoderClient(AccessKeyID, SecretAccessKeyID, RegionEndpoint.EUWest1);
-            var notifications = new Notifications()
-            {
-                Completed = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode",
-                Error = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode",
-                Progressing = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode",
-                Warning = "arn:aws:sns:us-east-1:XXXXXXXXXXXX:Transcode"
-            };
 
-            //var pipeline = etsClient.CreatePipeline(new CreatePipelineRequest()
-            //{
-            //    Name = "MyFolder",
-            //    InputBucket = bucketName,
-            //    OutputBucket = bucketName,
-            //    Notifications = notifications,
-            //    Role = "arn:aws:iam::XXXXXXXXXXXX:role/Elastic_Transcoder_Default_Role"
+            var pipeline = etsClient.ListPipelines(new ListPipelinesRequest()).ListPipelinesResult.Pipelines.Find(x => x.Name.Contains("ValuesCompetition"));
 
-            //}).CreatePipelineResult.Pipeline;
+            Console.WriteLine(pipeline);
+
             etsClient.CreateJob(new CreateJobRequest()
             {
                 PipelineId = pipeline.Id,
@@ -123,14 +116,13 @@ namespace BrandValuesProcessor
                     Interlaced = "auto",
                     Resolution = "auto",
                     Key = videoPath
-
                 },
                 Output = new CreateJobOutput()
                 {
-                    ThumbnailPattern = videoPath + "videoName{resolution}_{count}",
+                    ThumbnailPattern = thumbnailUrl + "_{count}",
                     Rotate = "0",
-                    PresetId = "1351620000000-000020",
-                    Key = videoPath + "newFileName.mp4"
+                    PresetId = "1404988675523-kvy8fy", //Web - Large Thumbnail
+                    Key = outputBucketName + fileName + ".mp4"
                 }
             });
 
