@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using BrandValues.Entries;
+using BrandValues.Models;
 using MongoDB.Driver;
 
 namespace BrandValues.App_Start
@@ -17,7 +18,7 @@ namespace BrandValues.App_Start
         {
             NameValueCollection appConfig = ConfigurationManager.AppSettings;
             string mongoConnectionString = appConfig["PARAM1"];
-            string mongoDatabaseName = "test";
+            string mongoDatabaseName = appConfig["PARAM3"];
 
             var settings = MongoClientSettings.FromUrl(new MongoUrl(mongoConnectionString));
             settings.WriteConcern.Journal = true;
@@ -28,6 +29,11 @@ namespace BrandValues.App_Start
         public MongoCollection<Entry> Entries
         {
             get { return Database.GetCollection<Entry>("entries"); }
+        }
+
+        public MongoCollection<SiteVersion> SiteVersions
+        {
+            get { return Database.GetCollection<SiteVersion>("siteversions"); }
         }
     }
 }

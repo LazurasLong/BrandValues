@@ -35,12 +35,8 @@ namespace BrandValues.Controllers {
         public readonly BrandValuesContext Context = new BrandValuesContext();
 
         NameValueCollection appConfig = ConfigurationManager.AppSettings;
-        //private static string adminAccessKey = appConfig["AWSAccessKey"];
-        //private static string adminAccessSecret = appConfig["AWSAccessKey"];
-        //AmazonS3Config config = new AmazonS3Config()
-        //{
-        //    ServiceURL = "https://s3.amazonaws.com"
-        //};
+
+        
 
         public ActionResult Index()
         {
@@ -50,16 +46,23 @@ namespace BrandValues.Controllers {
             //Context.Database.GetStats();
             //return Json(Context.Database.Server.BuildInfo, JsonRequestBehavior.AllowGet);
 
+            var version = Context.SiteVersions.FindOne();
+
             var entries = Context.Entries.FindAll().SetLimit(6);
 
             var model = from r in entries
-                orderby r.Likes.Count() descending
-                select r;
+                        orderby r.Likes.Count() descending
+                        select r;
 
 
-            return View(model);
+            if (version.Homepage == "Version1")
+            {
+                return View(model);
+            }
+
+            return View("V2", model);
+
         }
-
 
         public ActionResult Play(string id)
         {
