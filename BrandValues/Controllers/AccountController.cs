@@ -9,12 +9,19 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Amazon.SQS;
+using Amazon.SQS.Model;
+using System.Collections.Specialized;
+using System.Configuration;
+using Newtonsoft.Json.Linq;
 
 namespace BrandValues.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        NameValueCollection appConfig = ConfigurationManager.AppSettings;
+
         public AccountController()
         {
         }
@@ -178,11 +185,49 @@ namespace BrandValues.Controllers
                     var result = await UserManager.CreateAsync(user, model.Password);
                     if (result.Succeeded)
                     {
-                        var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                        //ViewBag.Link = callbackUrl;
-                        return View("DisplayEmail");
+                        bool sendEmail = false;
+
+                        using (AmazonSQSClient sqsClient = new AmazonSQSClient())
+                        {
+                            try
+                            {
+                                var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                                //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                                //ViewBag.Link = callbackUrl;
+
+                                JArray email = new JArray();
+                                email.Add(user.Email);
+                                email.Add(user.FirstName);
+                                email.Add(callbackUrl);
+
+                                var json = Newtonsoft.Json.JsonConvert.SerializeObject(email);
+
+                                SendMessageRequest request = new SendMessageRequest();
+                                request.QueueUrl = appConfig["SQSEmailQueue"];
+                                request.MessageBody = json;
+
+                                SendMessageResponse response = sqsClient.SendMessage(request);
+
+                                return View("DisplayEmail");
+                            }
+                            catch (AmazonSQSException sqsException)
+                            {
+                                sendEmail = true;
+                            }
+
+                        }
+
+                        if (sendEmail)
+                        {
+                            var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                            await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
+                            return View("DisplayEmail");
+                        }
+
+                        
+                        
                     }
                     AddErrors(result);                    
                 }

@@ -137,6 +137,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\Simple-Line-Icons.dev.svg" />
+    <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\bg\bg-nav-compass.png" />
     <Content Include="images\box-compass.png" />
@@ -165,9 +168,6 @@
     <Content Include="Content\webapp\less\myversion.css">
       <DependentUpon>myversion.less</DependentUpon>
     </Content>
-    <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="fonts\Simple-Line-Icons.dev.svg" />
-    <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="packages.config" />
     <Content Include="Content\webapp\css\bootstrap.less" />
     <Content Include="Content\webapp\fonts\fontawesome-webfont.eot" />
@@ -262,6 +262,10 @@
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Browse.cshtml" />
     <Content Include="Cloudfront\pk-APKAJWFKSJRPHR2V45EA.pem" />
+    <Content Include="Views\Shared\_Layout-Error.cshtml" />
+    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-light-webfont.eot" />
+    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-bold-webfont.eot" />
+    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-regular-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -269,13 +273,12 @@
     <Content Include="fonts\Simple-Line-Icons.eot" />
     <Content Include="fonts\Simple-Line-Icons.ttf" />
     <Content Include="fonts\Simple-Line-Icons.woff" />
+    <Content Include="fonts\sourcesanspro\sourcesanspro-bold-webfont.eot" />
     <Content Include="fonts\sourcesanspro\sourcesanspro-bold.woff" />
+    <Content Include="fonts\sourcesanspro\sourcesanspro-light-webfont.eot" />
     <Content Include="fonts\sourcesanspro\sourcesanspro-light.woff" />
+    <Content Include="fonts\sourcesanspro\sourcesanspro-regular-webfont.eot" />
     <Content Include="fonts\sourcesanspro\sourcesanspro.woff" />
-    <Content Include="Views\Shared\_Layout-Error.cshtml" />
-    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-light-webfont.eot" />
-    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-bold-webfont.eot" />
-    <Content Include="Content\webapp\fonts\sourcesanspro\sourcesanspro-regular-webfont.eot" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
