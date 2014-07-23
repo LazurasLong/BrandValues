@@ -14,6 +14,8 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "TranscoderService", "Transc
 		{C09629FC-37F7-48EA-9732-A2685A0FF6BF} = {C09629FC-37F7-48EA-9732-A2685A0FF6BF}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrandValuesEmailProcessor", "BrandValuesEmailProcessor\BrandValuesEmailProcessor.csproj", "{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -63,6 +65,16 @@ Global
 		{5982388E-9C3E-4D0C-B179-97246B05C7EE}.Release|Any CPU.Build.0 = SingleImage
 		{5982388E-9C3E-4D0C-B179-97246B05C7EE}.SingleImage|Any CPU.ActiveCfg = SingleImage
 		{5982388E-9C3E-4D0C-B179-97246B05C7EE}.SingleImage|Any CPU.Build.0 = SingleImage
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{106306B8-C9DE-4B3C-8A32-0F923DDE0E00}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

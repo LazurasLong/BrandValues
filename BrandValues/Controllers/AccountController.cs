@@ -14,6 +14,7 @@ using Amazon.SQS.Model;
 using System.Collections.Specialized;
 using System.Configuration;
 using Newtonsoft.Json.Linq;
+using System.Collections.Generic;
 
 namespace BrandValues.Controllers
 {
@@ -196,10 +197,12 @@ namespace BrandValues.Controllers
                                 //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                                 //ViewBag.Link = callbackUrl;
 
-                                JArray email = new JArray();
-                                email.Add(user.Email);
-                                email.Add(user.FirstName);
-                                email.Add(callbackUrl);
+                                Dictionary<string, string> email = new Dictionary<string, string>();
+
+                                email.Add("email", user.Email);
+                                email.Add("name", user.FirstName);
+                                email.Add("url", callbackUrl);
+                                email.Add("subject", "Welcome");
 
                                 var json = Newtonsoft.Json.JsonConvert.SerializeObject(email);
 

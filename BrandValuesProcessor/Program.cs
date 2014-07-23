@@ -39,7 +39,7 @@ namespace BrandValuesProcessor
                     //call polling
                     PollQueue(client);
 
-                    Thread.Sleep(10000); //loop until input
+                    Thread.Sleep(3000); //loop until input
                 }
                 cki = Console.ReadKey(true);
 
@@ -81,12 +81,12 @@ namespace BrandValuesProcessor
                     string fileName = Path.GetFileNameWithoutExtension(entry.Url);
                     string thumbnailUrl = relativeUrl + "/" + fileName;
 
-                    CreateJobRequest(entry.Url, url, thumbnailUrl, fileName);
+                    CreateJobRequest(entry.Url, url, thumbnailUrl, fileName, client, request, m);
 
                     //Delete all messages
                     //client.DeleteMessage(m.ReceiptHandle);
 
-                    client.DeleteMessage(new DeleteMessageRequest() { QueueUrl = request.QueueUrl, ReceiptHandle = m.ReceiptHandle });
+                    //client.DeleteMessage(new DeleteMessageRequest() { QueueUrl = request.QueueUrl, ReceiptHandle = m.ReceiptHandle });
                 }
 
 
@@ -94,7 +94,7 @@ namespace BrandValuesProcessor
 
         }
 
-        private static async void CreateJobRequest(string videoPath, string outputBucketName, string thumbnailUrl, string fileName)
+        private static async void CreateJobRequest(string videoPath, string outputBucketName, string thumbnailUrl, string fileName, AmazonSQSClient client, ReceiveMessageRequest request, Message m)
         {
 
             string accsessKey = AccessKeyID;
@@ -103,26 +103,37 @@ namespace BrandValuesProcessor
 
             var pipeline = etsClient.ListPipelines(new ListPipelinesRequest()).ListPipelinesResult.Pipelines.Find(x => x.Name.Contains("ValuesCompetition"));
 
-            var job = etsClient.CreateJob(new CreateJobRequest()
+            try
             {
-                PipelineId = pipeline.Id,
-                Input = new JobInput()
+                var job = etsClient.CreateJob(new CreateJobRequest()
                 {
-                    AspectRatio = "auto",
-                    Container = "mp4",
-                    FrameRate = "auto",
-                    Interlaced = "auto",
-                    Resolution = "auto",
-                    Key = videoPath
-                },
-                Output = new CreateJobOutput()
-                {
-                    ThumbnailPattern = thumbnailUrl + "_{count}",
-                    Rotate = "0",
-                    PresetId = "1404988675523-kvy8fy", //Web - Large Thumbnail
-                    Key = outputBucketName + fileName + ".mp4"
-                }
-            });
+                    PipelineId = pipeline.Id,
+                    Input = new JobInput()
+                    {
+                        AspectRatio = "auto",
+                        Container = "mp4",
+                        FrameRate = "auto",
+                        Interlaced = "auto",
+                        Resolution = "auto",
+                        Key = videoPath
+                    },
+                    Output = new CreateJobOutput()
+                    {
+                        ThumbnailPattern = thumbnailUrl + "_{count}",
+                        Rotate = "0",
+                        PresetId = "1404988675523-kvy8fy", //Web - Large Thumbnail
+                        Key = outputBucketName + fileName + ".mp4"
+                    }
+                });
+
+                client.DeleteMessage(new DeleteMessageRequest() { QueueUrl = request.QueueUrl, ReceiptHandle = m.ReceiptHandle });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error creating job");
+            }
+
+
 
             //var requestId = job.ResponseMetadata.RequestId;
 
