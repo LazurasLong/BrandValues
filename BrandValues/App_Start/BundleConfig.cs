@@ -28,6 +28,7 @@ namespace BrandValues
 
             bundles.Add(new ScriptBundle("~/Bundles/upload").Include(
                         "~/Scripts/webapp/parsley/parsley.min.js",
+                        "~/Scripts/webapp/parsley/parsley.extend.js",
                         "~/Scripts/webapp/wizard/jquery.bootstrap.wizard.js",
                         "~/Scripts/webapp/file-input/bootstrap-filestyle.min.js",
                         "~/Scripts/webapp/wizard/demo.js"

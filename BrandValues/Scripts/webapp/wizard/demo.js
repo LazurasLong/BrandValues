@@ -22,8 +22,6 @@
       }
     });
 
-    
-
     $('#chkAll').click(function () {
         var checkBoxes = $("input[name=values]");
         checkBoxes.prop("checked", !checkBoxes.prop("checked"));
@@ -65,6 +63,15 @@
         $("#step2").hide();
         $("#pager").hide();
     }
-    
+
+
+    $('#type').on('change', function () {
+        if (this.value == "team") {
+            $("#teamname-txt").fadeIn();
+        } else {
+            $("#teamname-txt").hide();
+        }
+    });
+
   });
 }(window.jQuery);

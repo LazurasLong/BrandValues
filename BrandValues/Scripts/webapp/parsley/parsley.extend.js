@@ -2,7 +2,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
 
 (function ($) {
   window.ParsleyConfig = $.extend( true, {}, window.ParsleyConfig, {
-    validators: {
+      validators: {
       minwords: function ( val, nbWords ) {
         val = val.replace( /(^\s*)|(\s*$)/gi, "" );
         val = val.replace( /[ ]{2,}/gi, " " );
@@ -19,7 +19,7 @@ window.ParsleyConfig = window.ParsleyConfig || {};
         val = val.split(' ').length;
 
         return val <= nbWords;
-      }
+      } 
 
       , rangewords: function ( val, obj ) {
         val = val.replace( /(^\s*)|(\s*$)/gi, "" );

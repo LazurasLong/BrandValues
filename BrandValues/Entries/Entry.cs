@@ -39,6 +39,12 @@ namespace BrandValues.Entries
 
         public string UserName { get; set; }
 
+        public string UserFirstName { get; set; }
+
+        public string UserSurname { get; set; }
+
+        public string TeamName { get; set; }
+
         public string UserArea { get; set; }
 
         public DateTime CreatedOn { get; set; }

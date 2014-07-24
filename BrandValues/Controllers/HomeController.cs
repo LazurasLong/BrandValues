@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Linq;
+using System.Web.WebPages;
 using Amazon.DataPipeline.Model;
 using Amazon.S3;
 using Amazon.S3.Model;
@@ -25,6 +26,9 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Amazon.SQS;
 using Amazon.SQS.Model;
+using System.Globalization;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 
 
 namespace BrandValues.Controllers {
@@ -33,6 +37,27 @@ namespace BrandValues.Controllers {
     public class HomeController : Controller {
 
         public readonly BrandValuesContext Context = new BrandValuesContext();
+
+        public HomeController() { }
+
+        public HomeController(ApplicationUserManager userManager)
+        {
+            UserManager = userManager;
+        }
+
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
 
         NameValueCollection appConfig = ConfigurationManager.AppSettings;
 
@@ -163,27 +188,36 @@ namespace BrandValues.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Upload(PostEntry postEntry, HttpPostedFileBase[] files)
+        public async Task<ActionResult> Upload(PostEntry postEntry, HttpPostedFileBase[] files)
         {
+            //positive outcome response
             var myResponse = "";
-
-            postEntry.UserName = User.Identity.Name;
-            postEntry.UserArea = "Coo";
             
+            //check that model is valid
             if (!ModelState.IsValid)
             {
                 return View();
             }
 
-            //var user = UserManager.FindByName(User.Identity.Name);
-
+            //start new entry from posted fields
             var entry = new Entry(postEntry);
 
+            //get users details
             entry.UserName = User.Identity.Name;
-            entry.CreatedOn = DateTime.UtcNow;
-//            entry.UserArea = User.Identity.
+            var user = await UserManager.FindByNameAsync(User.Identity.Name);
+            entry.UserArea = user.Area;
+            entry.UserFirstName = user.FirstName;
+            entry.UserSurname = user.Surname;
 
-            //return RedirectToAction("Index");
+            //check that user has completed team name
+            if (postEntry.Type == "team" && postEntry.TeamName.IsEmpty())
+            {
+                ViewBag.Message = "Please enter your team name";
+                return View();
+            }
+
+            //set date
+            entry.CreatedOn = DateTime.UtcNow;
 
             foreach (var file in files)
             {
@@ -195,6 +229,8 @@ namespace BrandValues.Controllers {
 
                 string accessKey = appConfig["S3AWSAccessKey"];
                 string secretKey = appConfig["S3AWSSecretKey"];
+
+                string siteFilesCloudfront = appConfig["SiteFilesCloudfront"];
 
 
                 IAmazonS3 client;
@@ -211,11 +247,14 @@ namespace BrandValues.Controllers {
                 var foldername = username;
                     //Path.GetFileNameWithoutExtension(newFileName);
 
+
                 if (file.ContentType.Contains("video/"))
                 {
+                    //set the submission format to match filetype
+                    entry.Format = "video";
                     filePath = "video/" + foldername + "/" + newFileName;
                     entry.VideoThumbnailUrl = "video/" + foldername + "/" + entryName + "_00001.png";
-                    entry.ThumbnailUrl = "/images/entries/video.png";
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/video.png";
                     entry.Url = filePath;
                 }
 
@@ -226,15 +265,19 @@ namespace BrandValues.Controllers {
                     file.ContentType.Contains("application/vnd.openxmlformats-officedocument")
                     )
                 {
+                    //set the submission format to match filetype
+                    entry.Format = "text";
                     filePath = "text/" + foldername + "/" + newFileName;
-                    entry.ThumbnailUrl = "/images/entries/document.png";
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/document.png";
                     entry.Url = filePath;
                 }
 
                 if (file.ContentType.Contains("image/"))
                 {
+                    //set the submission format to match filetype
+                    entry.Format = "image";
                     filePath = "image/" + foldername + "/" + newFileName;
-                    entry.ThumbnailUrl = "/images/entries/photo.png";
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/photo.png";
                     entry.Url = filePath;
                 }
 
