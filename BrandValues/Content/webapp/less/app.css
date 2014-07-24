@@ -3604,13 +3604,16 @@ fieldset[disabled] .i-checks input + i:before {
   background-color: #ffffff;
 }
 /* Stop apple rubberbanding */
-html,
-body {
+/*html, body {
   height: 100%;
+  //overflow: hidden;
+  //overflow: auto;
+  //-webkit-overflow-scrolling: touch;
 }
-.scrollable {
-  -webkit-overflow-scrolling: touch;
-}
+
+.scrollable{
+ -webkit-overflow-scrolling: touch;
+}*/
 /* Menu fixes */
 @media (max-width: 910px) {
   .hidden-tablet {
