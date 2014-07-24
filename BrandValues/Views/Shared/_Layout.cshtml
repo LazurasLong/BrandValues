@@ -145,7 +145,7 @@
                                         <li>
                                             <a href="~/home">
                                                 <i class="icon-like icon"></i>
-                                                <b class="badge bg-primary pull-right">1</b>
+                                                @*<b class="badge bg-primary pull-right">1</b>*@
                                                 <span>Discover</span>
                                             </a>
                                         </li>
@@ -170,6 +170,17 @@
                                                 <span>Edit</span>
                                             </a>
                                         </li>
+                                        
+                                        <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                            Help
+                                        </li>
+                                        <li>
+                                            <a href="~/home/faq">
+                                                <i class=icon-info icon  "></i>
+                                                <span>FAQ's</span>
+                                            </a>
+                                        </li>
+
 
                                         @if (Request.IsAuthenticated && User.IsInRole("Admin"))
                                         {

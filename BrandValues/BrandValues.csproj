@@ -288,6 +288,7 @@
     <Content Include="Views\SiteAdmin\Index.cshtml" />
     <Content Include="Views\Home\V2.cshtml" />
     <Content Include="Views\Account\Terms.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -181,6 +181,10 @@ namespace BrandValues.Controllers {
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
+        public ActionResult FAQ()
+        {
+            return View();
+        }
 
         public ActionResult Upload()
         {
