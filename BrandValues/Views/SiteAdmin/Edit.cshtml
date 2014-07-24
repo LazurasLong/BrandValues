@@ -6,38 +6,56 @@
 
 
 <section class="vbox">
-<section class="scrollable padder">
-    <h2>Edit.</h2>
+    <section class="scrollable padder">
+        <h2>Select the hompage.</h2>
 
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>Roles.</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-            @Html.HiddenFor(model => model.Id)
+            <div class="form-horizontal">
+                <h4>Current homepage: @Model.Homepage</h4>
+                <hr />
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(model => model.Id)
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Homepage, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(model => model.Homepage, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Homepage)
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.Homepage, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Homepage, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Homepage)
+                    </div>
+                </div>*@
+                
+                <script>
+                    var selected = '@Model.Homepage';
+                </script>
+            
+
+                <select name="homepage" id="homepage" class="image-picker">
+                    <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version1">  Version 1  </option>
+                    <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version2">  Version 2  </option>
+                    <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version3">  Version 3  </option>
+                    <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version4">  Version 4  </option>
+                    <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version5">  Version 5  </option>
+                    <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version6">  Version 6  </option>
+                </select>
+
+                <div>
+                    <input type="submit" value="Save" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
                 </div>
-            </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+            </div>
+        }
+        
+
+
+    </section>
 </section>
-</section>
+
+@section Scripts {
+    @Scripts.Render("~/Bundles/picker")
+}

@@ -15,18 +15,11 @@ namespace BrandValues.Controllers
 
         public readonly BrandValuesContext Context = new BrandValuesContext();
 
-
         // GET: SiteAdmin
         public ActionResult Index()
         {
             var versions = Context.SiteVersions.FindAll();
             return View(versions);
-        }
-
-        // GET: SiteAdmin/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         // GET: SiteAdmin/Create
@@ -62,6 +55,7 @@ namespace BrandValues.Controllers
         public ActionResult Edit(string id)
         {
             var siteVersion = GetVersion(id);
+
             return View(siteVersion);
         }
 

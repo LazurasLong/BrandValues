@@ -212,6 +212,9 @@
     <Content Include="Scripts\webapp\bootstrap.min.js.map" />
     <Content Include="Scripts\webapp\datatables\datatable.json" />
     <Content Include="Scripts\webapp\datatables\growthrate.csv" />
+    <Content Include="Scripts\webapp\image-picker\demo.js" />
+    <Content Include="Scripts\webapp\image-picker\image-picker.js" />
+    <Content Include="Scripts\webapp\image-picker\image-picker.min.js" />
     <Content Include="Scripts\webapp\jquery-ui.min.js" />
     <Content Include="Scripts\webapp\jquery.min.js.map" />
     <Content Include="Scripts\webapp\jwplayer\demo.js" />
@@ -281,7 +284,6 @@
     <Content Include="fonts\sourcesanspro\sourcesanspro.woff" />
     <Content Include="Views\SiteAdmin\Create.cshtml" />
     <Content Include="Views\SiteAdmin\Delete.cshtml" />
-    <Content Include="Views\SiteAdmin\Details.cshtml" />
     <Content Include="Views\SiteAdmin\Edit.cshtml" />
     <Content Include="Views\SiteAdmin\Index.cshtml" />
     <Content Include="Views\Home\V2.cshtml" />

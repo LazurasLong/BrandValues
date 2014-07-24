@@ -33,6 +33,11 @@ namespace BrandValues
                         "~/Scripts/webapp/wizard/demo.js"
                         ));
 
+            bundles.Add(new ScriptBundle("~/Bundles/picker").Include(
+                        "~/Scripts/webapp/image-picker/image-picker.js",
+                        "~/Scripts/webapp/image-picker/demo.js"
+                        ));
+
             bundles.Add(new StyleBundle("~/Bundles/css").Include(
                       "~/Content/webapp/css/bootstrap.css",
                       "~/Content/webapp/css/animate.css",

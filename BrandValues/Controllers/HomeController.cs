@@ -36,8 +36,21 @@ namespace BrandValues.Controllers {
 
         NameValueCollection appConfig = ConfigurationManager.AppSettings;
 
-        
+        private SiteVersion _siteVersion;
+        public SiteVersion SiteVersion
+        {
+            get
+            {
+                return _siteVersion ?? Context.SiteVersions.FindOne();
+            }
+            private set
+            {
+                _siteVersion = value;
+            }
+        }
 
+        //cache
+        [OutputCache(Duration = 60)]
         public ActionResult Index()
         {
             //var user = User.Identity.Name;
@@ -46,7 +59,7 @@ namespace BrandValues.Controllers {
             //Context.Database.GetStats();
             //return Json(Context.Database.Server.BuildInfo, JsonRequestBehavior.AllowGet);
 
-            var version = Context.SiteVersions.FindOne();
+            var version = SiteVersion.Homepage;
 
             var entries = Context.Entries.FindAll().SetLimit(6);
 
@@ -55,15 +68,17 @@ namespace BrandValues.Controllers {
                         select r;
 
 
-            if (version.Homepage == "Version1")
+            if (version == "Version2")
             {
-                return View(model);
+                return View("V2", model);
             }
 
-            return View("V2", model);
+            return View(model);
 
         }
 
+        //cache
+        [OutputCache(Duration = 600)]
         public ActionResult Play(string id)
         {
             if (id.IsNullOrWhiteSpace())
