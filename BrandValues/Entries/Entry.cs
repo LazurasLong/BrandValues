@@ -60,6 +60,7 @@ namespace BrandValues.Entries
             Format = postEntry.Format;
             Type = postEntry.Type;
             Values = postEntry.Values;
+            TeamName = postEntry.TeamName;
         }
 
         public void Edit(Edit edit)

@@ -29,6 +29,7 @@ using Amazon.SQS.Model;
 using System.Globalization;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
+using MongoDB.Driver.Builders;
 
 
 namespace BrandValues.Controllers {
@@ -86,19 +87,24 @@ namespace BrandValues.Controllers {
 
             var version = SiteVersion.Homepage;
 
-            var entries = Context.Entries.FindAll().SetLimit(6);
+            //var entries = Context.Entries.FindAll().SetLimit(6);
 
-            var model = from r in entries
-                        orderby r.Likes.Count() descending
-                        select r;
+            //return last 6 entries
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+
+            //var model = from r in entries
+            //            orderby r.CreatedOn descending
+            //            select r;
 
 
             if (version == "Version2")
             {
-                return View("V2", model);
+                return View("V2", allDocs);
             }
 
-            return View(model);
+            return View(allDocs);
 
         }
 
