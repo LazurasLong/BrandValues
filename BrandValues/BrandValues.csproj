@@ -208,6 +208,11 @@
     <Content Include="Content\webapp\less\myversion.css.map">
       <DependentUpon>myversion.css</DependentUpon>
     </Content>
+    <None Include="Scripts\jquery-1.8.3.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.3.js" />
+    <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\webapp\app.min.js.map" />
     <Content Include="Scripts\webapp\bootstrap.min.js.map" />
     <Content Include="Scripts\webapp\datatables\datatable.json" />
@@ -289,6 +294,9 @@
     <Content Include="Views\Home\V2.cshtml" />
     <Content Include="Views\Account\Terms.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\_Intro.cshtml" />
+    <Content Include="Views\Home\_HowItWorks.cshtml" />
+    <Content Include="Views\Home\_Prizes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

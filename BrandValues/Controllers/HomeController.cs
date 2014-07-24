@@ -108,6 +108,21 @@ namespace BrandValues.Controllers {
 
         }
 
+        public PartialViewResult Intro()
+        {
+            return PartialView("_Intro");
+        }
+
+        public PartialViewResult HowItWorks()
+        {
+            return PartialView("_HowItWorks");
+        }
+
+        public PartialViewResult Prizes()
+        {
+            return PartialView("_Prizes");
+        }
+
         //cache
         [OutputCache(Duration = 600)]
         public ActionResult Play(string id)
