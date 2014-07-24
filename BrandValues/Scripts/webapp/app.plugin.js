@@ -148,13 +148,13 @@
 		$('.count', $el).fadeOut().fadeIn().text($v+1);
 		$($msg).hide().prependTo($el.find('.list-group')).slideDown().css('display','block');
 	}
-	var $msg = '<a href="#" class="media list-group-item">'+
+	var $msg = '<a href="~/home/upload" class="media list-group-item">'+
                   '<span class="pull-left thumb-sm text-center">'+
-                    '<i class="fa fa-envelope-o fa-2x text-success"></i>'+
+                    '<i class="fa icon-bulb fa-2x text-success"></i>' +
                   '</span>'+
                   '<span class="media-body block m-b-none">'+
-                    'Sophi sent you a email<br>'+
-                    '<small class="text-muted">1 minutes ago</small>'+
+                    'Judging is coming soon, get your entry in today!<br>'+
+                    '<small class="text-muted">27th August</small>'+
                   '</span>'+
                 '</a>';	
   setTimeout(function(){addMsg($msg);}, 1500);

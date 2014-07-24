@@ -3854,4 +3854,13 @@ ul.thumbnails.image_picker_selector li .thumbnail img {
 ul.thumbnails.image_picker_selector li .thumbnail.selected {
   background: #0088cc;
 }
+/* Entry */
+.entry-icon:hover {
+  filter: alpha(opacity=60);
+  /* IE */
+  opacity: 0.6;
+}
+.entry-icon-padder {
+  padding-top: 5px;
+}
 /*# sourceMappingURL=app.css.map */

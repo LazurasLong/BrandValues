@@ -4,11 +4,18 @@
 }
 
 
-                <!-- side content -->
-<aside class="aside-xl bg-light dk" id="sidebar">
+<!-- side content -->
+<aside id="sidebar">
     <section class="vbox">
 
         <section class="scrollable wrapper animated fadeInLeft">
+            
+            @*<div class="bg-warning wrapper-md r warning-message">
+                <a href="~/home/upload">
+                    <span class="h4 m-b-xs block"><i class="icon-speech i-lg"></i> The Competition is now open!</span>
+                    <span class="text-muted">Click here to submit your individual or team entry before October 8th</span>
+                </a>
+            </div>*@
 
             <div class="panel-group margin-bottom-10" id="accordion">
                 <div class="item pos-rlt">
@@ -123,376 +130,138 @@
 
             </div>
 
-            <div class="bg-warning wrapper-md r warning-message">
-                <a href="#">
-                    <span class="h4 m-b-xs block"><i class="icon-speech i-lg"></i> The Competition is now open!</span>
-                    <span class="text-muted">Click here to submit your individual or team entry before October 8th</span>
-                </a>
-            </div>
 
-            <div class="panel panel-default portlet-item">
-                <header class="panel-heading">
-                    <ul class="nav nav-pills pull-right">
-                        <li>
-                            <a href="#" class="panel-toggle text-muted"><i class="fa fa-caret-down text-active"></i><i class="fa fa-caret-up text"></i></a>
-                        </li>
-                    </ul>
-                    News <span class="badge bg-warning">1</span>
-                </header>
-                <section class="panel-body">
-                    <article class="media">
-                        <div class="pull-left">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x text-warning"></i>
-                                <i class="fa fa-file-o fa-stack-1x text-white"></i>
-                            </span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#" class="h4">The Competition has begun!</a>
-                            <small class="block m-t-xs">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus</small>
-                            <em class="text-xs">Posted on Aug 27, 2014</em>
-                        </div>
-                    </article>
-                </section>
-            </div>
         </section>
         
-        <footer class="footer footer-md bg-black">
-           
-        </footer>
+        <footer class="footer hidden-xs footer-md bg-black"></footer>
 
     </section>
 </aside>
 <!-- / side content -->
 
 
-                <section>
-                    
-                    <section class="vbox">
-                        <section class="relativescroll scrollable padder-lg w-f-md">
-                            @*<a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i class="icon-refresh i-lg  inline" id="refresh"></i></a>*@
-                            <h2 class="font-thin m-b">
-                                Discover Others Living the Brand Values
-                            </h2>
-                            <h4 class="font-thin">Top Trending Entries</h4>
-                            <div class="row row-sm">
+<section class="aside-xl bg-light dk">
+    <section class="vbox">
+        <section class="relativescroll scrollable padder-lg w-f-md">
+            @*<a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"><i class="icon-refresh i-lg  inline" id="refresh"></i></a>*@
+            <h4 class="font-thin">Recent Entries</h4>
+            <div class="row">
 
-                                @foreach (var entry in Model)
-                                {
+                @foreach (var entry in Model)
+                {
 
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="item">
-                                            <div class="pos-rlt">
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })">
+                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-4">
+                    <div class="item">
+                        <div class="pos-rlt entry-icon">
+                            @*<a href="@Url.Action("Play", "Home", new { id = entry.Id })">
 
-                                                    <span class="item-overlay opacity r r-2x bg-black">
-                                                        <span class="center text-center m-t-n">
-                                                            @if (entry.Format == "video")
-                                                            {
-                                                                <i class="icon-control-play i-2x"></i>
-                                                            }
-                                                            else
-                                                            {
-                                                                <i class="icon-magnifier i-2x"></i>
-                                                            }
+                                <span class="item-overlay opacity r r-2x bg-black">
+                                    <span class="center text-center m-t-n">
+                                        @if (entry.Format == "video")
+                                            {
+                                            <i class="icon-control-play i-2x"></i>
+                                            }
+                                            else
+                                            {
+                                            <i class="icon-magnifier i-2x"></i>
+                                            }
 
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Document" class="r r-2x img-full"></a>
-                                            </div>
-                                            <div class="padder-v">
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
-                                                <span class="text-ellipsis text-xs text-muted">
-                                                    @if (entry.Type == "individual")
-                                                    {
-                                                        var space = "&nbsp;";
-                                                        @Html.DisplayFor(modelItem => entry.UserFirstName)
-                                                        @Html.Raw(space)
-                                                        @Html.DisplayFor(modelItem => entry.UserSurname)
-                                                        <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => entry.TeamName)
-                                                        <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                                    }
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
+                                    </span>
+                                </span>
+                            </a>*@
+                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
+                        </div>
+                        <div class="padder-v entry-icon-padder">
+                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                            <span class="text-ellipsis text-xs text-muted">
+                                @if (entry.Type == "individual")
+                                    {
+                                        var space = "&nbsp;";
+                                    @Html.DisplayFor(modelItem => entry.UserFirstName)
+                                    @Html.Raw(space)
+                                    @Html.DisplayFor(modelItem => entry.UserSurname)
+                                    <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                                    }
+                                    else
+                                    {
+                                    @Html.DisplayFor(modelItem => entry.TeamName)
+                                    <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                                    }
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                }
 
-                                @*<div class="clearfix visible-xs"></div>*@
+                @*<div class="clearfix visible-xs"></div>*@
 
-                            </div>
+            </div>
 
 
-                            <div class="row">
-                                <div class="col-md-7">
-                                    <h4 class="font-thin">Latest Entries</h4>
-                                    <div class="row row-sm">
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Spring rain</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p2.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Hope</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miya</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p3.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Listen wind</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Soyia Jess</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p4.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Breaking me</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Pett JA</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p5.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Nothing</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Willion</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p3.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Panda Style</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Lionie</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p4.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Hook Me</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Gossi</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p0.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/entries/document.png" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p0.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/entries/photo.png" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-3">
-                                            <div class="item">
-                                                <div class="pos-rlt">
-                                                    <div class="item-overlay opacity r r-2x bg-black">
-                                                        <div class="center text-center m-t-n">
-                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <a href="#"><img src="~/images/p0.jpg" alt="" class="r r-2x img-full"></a>
-                                                </div>
-                                                <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-5">
-                                    <h4 class="font-thin">We want your view</h4>
-                                    <div class="list-group bg-white list-group-lg no-bg auto">
-                                        <a href="#" class="list-group-item clearfix">
-                                            <span class="pull-right h2 text-muted m-l">1</span>
-                                            <span class="pull-left h2 text-muted padder-r">
-                                                <i class="icon-control-play icon"></i>
-                                            </span>
-                                            <span class="clear">
-                                                <span>Helping customers</span>
-                                                <small class="text-muted clear text-ellipsis">by Catherine Finn</small>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="list-group-item clearfix">
-                                            <span class="pull-right h2 text-muted m-l">2</span>
-                                            <span class="pull-left h2 text-muted padder-r">
-                                                <i class="icon-control-play icon"></i>
-                                            </span>
-                                            <span class="clear">
-                                                <span>Empowering staff</span>
-                                                <small class="text-muted clear text-ellipsis">by Dave Maxwell</small>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="list-group-item clearfix">
-                                            <span class="pull-right h2 text-muted m-l">3</span>
-                                            <span class="pull-left h2 text-muted padder-r">
-                                                <i class="icon-control-play icon"></i>
-                                            </span>
-                                            <span class="clear">
-                                                <span>Building trust and appreciation</span>
-                                                <small class="text-muted clear text-ellipsis">by Wendy Beesley</small>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="list-group-item clearfix">
-                                            <span class="pull-right h2 text-muted m-l">4</span>
-                                            <span class="pull-left h2 text-muted padder-r">
-                                                <i class="icon-book-open icon"></i>
-                                            </span>
-                                            <span class="clear">
-                                                <span>I keep things simple</span>
-                                                <small class="text-muted clear text-ellipsis">by Andy O'Sullivan</small>
-                                            </span>
-                                        </a>
-                                        <a href="#" class="list-group-item clearfix">
-                                            <span class="pull-right h2 text-muted m-l">5</span>
-                                            <span class="pull-left h2 text-muted padder-r">
-                                                <i class="icon-book-open icon"></i>
-                                            </span>
-                                            <span class="clear">
-                                                <span>We are better together</span>
-                                                <small class="text-muted clear text-ellipsis">by David Duffy</small>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="row">
+                    <h4 class="font-thin">We want your view</h4>
+                    <div class="list-group bg-white list-group-lg no-bg auto">
+                        <a href="#" class="list-group-item clearfix">
+                            <span class="pull-right h2 text-muted m-l">1</span>
+                            <span class="pull-left h2 text-muted padder-r">
+                                <i class="icon-control-play icon"></i>
+                            </span>
+                            <span class="clear">
+                                <span>Helping customers</span>
+                                <small class="text-muted clear text-ellipsis">by Catherine Finn</small>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">
+                            <span class="pull-right h2 text-muted m-l">2</span>
+                            <span class="pull-left h2 text-muted padder-r">
+                                <i class="icon-control-play icon"></i>
+                            </span>
+                            <span class="clear">
+                                <span>Empowering staff</span>
+                                <small class="text-muted clear text-ellipsis">by Dave Maxwell</small>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">
+                            <span class="pull-right h2 text-muted m-l">3</span>
+                            <span class="pull-left h2 text-muted padder-r">
+                                <i class="icon-control-play icon"></i>
+                            </span>
+                            <span class="clear">
+                                <span>Building trust and appreciation</span>
+                                <small class="text-muted clear text-ellipsis">by Wendy Beesley</small>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">
+                            <span class="pull-right h2 text-muted m-l">4</span>
+                            <span class="pull-left h2 text-muted padder-r">
+                                <i class="icon-book-open icon"></i>
+                            </span>
+                            <span class="clear">
+                                <span>I keep things simple</span>
+                                <small class="text-muted clear text-ellipsis">by Andy O'Sullivan</small>
+                            </span>
+                        </a>
+                        <a href="#" class="list-group-item clearfix">
+                            <span class="pull-right h2 text-muted m-l">5</span>
+                            <span class="pull-left h2 text-muted padder-r">
+                                <i class="icon-book-open icon"></i>
+                            </span>
+                            <span class="clear">
+                                <span>We are better together</span>
+                                <small class="text-muted clear text-ellipsis">by David Duffy</small>
+                            </span>
+                        </a>
+                    </div>
+            </div>
 
-                        </section>
-                        
-                        <footer class="footer footer-md bg-black">
-                            <p id="footer-right"><i class="fa icon-wrench"></i>  Built internally by AIB's Digital Innovation</p>
-                        </footer>
+        </section>
 
-                    </section>
+        <footer class="footer footer-md bg-black">
+            <p id="footer-right"><i class="fa icon-wrench"></i>  Built internally by AIB's Digital Innovation</p>
+        </footer>
 
-
-                </section>
+    </section>
+</section>
 
            
 

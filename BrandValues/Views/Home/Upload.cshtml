@@ -10,7 +10,8 @@
 <section>
 
     <section class="vbox">
-        <section class="relativescroll scrollable padder-lg w-f-md">
+        <section class="relativescroll scrollable animated fadeInLeft padder-lg w-f-md">
+
             <div class="m-b-md">
                 <h3 class="m-b-none">Upload your Individual or Team Competition Entry</h3>
             </div>
@@ -84,7 +85,7 @@
                                                 <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger top-padding" })</span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-group" id="teamname-txt">
                                             <label class="col-sm-4 control-label">Team Name</label>
                                             <div class="col-sm-8">
@@ -169,24 +170,24 @@
                                         <div class="line line-dashed b-b line-lg pull-in"></div>
 
                                         @*<label class="col-sm-4 control-label" for="file">Your File to Upload</label>
-                                            <div class="col-sm-8">
+                                        <div class="col-sm-8">
 
-                                                <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
+                                            <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
 
-                                            </div>*@
+                                        </div>*@
                                         <div class="centered center">
                                             <input type="submit" class="btn btn-primary btn-lg btn-block" id="upload" value="Upload" />
                                         </div>
 
 
 
-                                            <div class="line line-dashed b-b line-lg pull-in"></div>
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
 
-                                        </div>
+                                    </div>
 
                                     <div class="tab-pane" id="step3">
 
-                                        
+
 
                                     </div>
 
@@ -203,7 +204,10 @@
                 </div>
 
             </div>
+
         </section>
+        
+        <footer class="footer hidden-xs footer-md bg-black"></footer>
     </section>
 
 </section>

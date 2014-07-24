@@ -38,7 +38,7 @@
                                 
                             </div>
                         </section>
-                        <footer class="footer footer-md bg-black"></footer>
+                        <footer class="footer hidden-xs footer-md bg-black"></footer>
                     </section>
                 </aside>
                 <!-- / side content -->
@@ -52,26 +52,10 @@
 
                                     <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
                                         <div class="item">
-                                            <div class="pos-rlt">
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })">
-
-                                                    <span class="item-overlay opacity r r-2x bg-black">
-                                                        <span class="center text-center m-t-n">
-                                                            @if (entry.Format == "video")
-                                                            {
-                                                                <i class="icon-control-play i-2x"></i>
-                                                            }
-                                                            else
-                                                            {
-                                                                <i class="icon-magnifier i-2x"></i>
-                                                            }
-
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Document" class="r r-2x img-full"></a>
+                                            <div class="pos-rlt entry-icon">
+                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
                                             </div>
-                                            <div class="padder-v">
+                                            <div class="padder-v entry-icon-padder">
                                                 <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
                                                 <span class="text-ellipsis text-xs text-muted">
                                                     @if (entry.Type == "individual")
@@ -106,7 +90,7 @@
                             </ul>
                         </section>
                         
-                        <footer class="footer footer-md bg-black"></footer>
+                        <footer class="footer hidden-xs footer-md bg-black"></footer>
                     </section>
                 </section>
             </section>
