@@ -164,6 +164,9 @@
                                                 <span>Browse</span>
                                             </a>
                                         </li>
+                                        <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                            Your Entry
+                                        </li>
                                         <li>
                                             <a href="~/home/upload">
                                                 <i class="icon-cloud-upload icon  "></i>
@@ -176,8 +179,35 @@
                                                 <span>Edit</span>
                                             </a>
                                         </li>
+
+                                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                        {
+                                            <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                                Admin
+                                            </li>
+                                            <li>
+                                                <a href="~/SiteAdmin">
+                                                    <i class="icon-settings icon"></i>
+                                                    <span>Site Admin</span>
+                                                </a>
+                                            </li>
+                                        <li>
+                                            <a href="~/UsersAdmin">
+                                                <i class="icon-users icon"></i>
+                                                <span>Users Admin</span>
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="~/RolesAdmin">
+                                                <i class="icon-magic-wand icon"></i>
+                                                <span>Roles Admin</span>
+                                            </a>
+                                        </li>                                            
+                                        }
+
                                         <li class="m-b hidden-nav-xs"></li>
                                     </ul>
+
                                 </nav>
                                 <!-- / nav -->
                             </div>

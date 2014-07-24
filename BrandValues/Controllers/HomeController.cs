@@ -50,7 +50,7 @@ namespace BrandValues.Controllers {
         }
 
         //cache
-        [OutputCache(Duration = 60)]
+        //[OutputCache(Duration = 60)]
         public ActionResult Index()
         {
             //var user = User.Identity.Name;
