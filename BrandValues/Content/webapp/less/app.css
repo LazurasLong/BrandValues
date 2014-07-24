@@ -3625,7 +3625,7 @@ body {
   background-position: 98% 97%;
   background-repeat: no-repeat;
 }
-@media (max-width: 400px) {
+@media (max-width: 991px) {
   .bg-login {
     background-position: 100% 0%;
   }
@@ -3723,6 +3723,9 @@ body {
 }
 .margin-bottom-10 {
   margin-bottom: 10px;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
 }
 .menu-panel {
   background-color: #879ac8 !important;

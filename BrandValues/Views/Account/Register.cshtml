@@ -114,10 +114,13 @@
 
                 </div>
 
+    <p class="text-center margin-bottom-20">
+        <input id="terms" type="checkbox" name="check" checked><i></i> I agree to the  @Html.ActionLink("Terms & Conditions", "Terms", null, new { @class = "text-info" })
+    </p>
 
 
                 <p class="text-center centered">
-                    <button type="submit" class="btn btn-info lt b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign up</span></button>
+                    <button type="submit" id="submit" class="btn btn-info lt b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign up</span></button>
                 </p>
             }
 
@@ -141,3 +144,14 @@
         </ul>
     </div>
 </div>
+
+
+<script>
+    $("#terms").click(function () {
+        if ($(this).is(":checked")) {
+            $("#submit").removeAttr("disabled");
+        } else {
+            $("#submit").attr("disabled", "disabled");
+        }
+    });
+</script>

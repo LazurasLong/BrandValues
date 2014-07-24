@@ -143,6 +143,13 @@ namespace BrandValues.Controllers
             }
         }
 
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Terms()
+        {
+            return View();
+        }
+
         //
         // GET: /Account/Register
         [AllowAnonymous]
