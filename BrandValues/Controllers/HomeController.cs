@@ -117,6 +117,10 @@ namespace BrandValues.Controllers {
                 return RedirectToAction("Index");
             }
 
+            //return last 6 entries
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(2);
 
             //get Entry first
             var entry = GetEntry(id);
@@ -134,7 +138,11 @@ namespace BrandValues.Controllers {
                 ViewBag.CloudFrontUrl = GetCloudFrontUrl(entry);
             }       
 
-            return View(entry);
+            PlayViewModel playViewModel = new PlayViewModel();
+            playViewModel.Entry = entry;
+            playViewModel.Entries = allDocs;
+
+            return View(playViewModel);
         }
 
         private string GetRTMPCloudfrontUrl(Entry entry)

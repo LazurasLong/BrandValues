@@ -458,6 +458,7 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlayViewModel.cs" />
     <Compile Include="Models\SiteVersion.cs" />
     <Compile Include="Models\SiteVersionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
