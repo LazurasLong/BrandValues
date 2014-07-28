@@ -1,0 +1,162 @@
+@model BrandValues.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<div class="span-8 colborder">
+    <div id="loginForm">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <p class="text-center">
+                <img src="~/images/aib-logo-large.png" alt="AIB Logo" />
+            </p>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+            <p>
+                <label for="email">AIB Email</label>
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "Email", @class = "title input-small" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @type = "email", @class = "text-danger top-padding" })
+            </p>
+            <p>
+                <label for="password">Create a new password</label>
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "Create a new Password", @class = "title input-small" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @type = "password", @class = "text-danger top-padding" })
+            </p>
+            <p>
+                <label for="ConfirmPassword">Confirm password</label>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Confirm above Password", @class = "title input-small" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @type = "password", @class = "text-danger top-padding" })
+            </p>
+            <div class="form-group centered">
+                <label class="span-7">Select your area</label>
+                <div class="span-7">
+                    @{
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            listItems.Add(new SelectListItem
+            {
+                Text = "COO Domain",
+                Value = "COO Domain",
+                Selected = true
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "IT",
+                Value = "IT",
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Leadership Team",
+                Value = "Leadership Team"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Products",
+                Value = "Products"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "PB & CB - Head Office",
+                Value = "PB & CB - Head Office"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "PB & CB - Branches",
+                Value = "PB & CB - Branches"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "First Trust",
+                Value = "First Trust"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "AIB UK",
+                Value = "AIB UK"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Corporate Affairs & Strategy",
+                Value = "Corporate Affairs & Strategy"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "FSG",
+                Value = "FSG"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "HR",
+                Value = "HR"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Risk",
+                Value = "Risk"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Finance",
+                Value = "Finance"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Group Internal Audit",
+                Value = "Group Internal Audit"
+            });
+            listItems.Add(new SelectListItem
+            {
+                Text = "Legal",
+                Value = "Legal"
+            });
+                    }
+                    @Html.DropDownListFor(model => model.Area, listItems, new { @class = "form-control m-b" })
+                </div>
+
+            </div>
+
+            <p>
+                <input id="terms" type="checkbox" name="check" checked><i></i> I agree to the  @Html.ActionLink("Terms & Conditions", "Terms", null, new { @class = "text-info" })
+            </p>
+
+
+            <p>
+                <button type="submit" id="submit" class="btn btn-info lt b-2x btn-block btn-rounded"><i class="icon-arrow-right pull-right"></i><span class="m-r-n-lg">Sign up</span></button>
+            </p>
+            
+            <hr/>
+            <p>
+            @Html.ActionLink("Already registered?", "Login", null, new { @class = "btn btn-grey btn-block rounded" })
+            </p>
+        }
+    </div>
+
+
+
+    <hr>
+</div>
+
+<div class="span-7 last">
+
+    <h1 class="largest-text purple">See the AIB Brand Values<br />come to life, from anywhere</h1>
+    <hr />
+    <h3 class="large-text dark-grey">Discover how your colleagues are living the values</h3>
+    <ul class="list-unstyled">
+        <li><h4><i class="icon-check green list-icon"></i> See, hear & read how teams/individuals are shaping the future</h4></li>
+        <li><h4><i class="icon-check green list-icon"></i> Enter your own team/individual competition entry</h4></li>
+        <li><h4><i class="icon-check green list-icon"></i> Have your say. Like, share & comment on the best entry</h4></li>
+    </ul>
+
+</div>
+
+<script>
+    $("#terms").click(function () {
+        if ($(this).is(":checked")) {
+            $("#submit").removeAttr("disabled");
+        } else {
+            $("#submit").attr("disabled", "disabled");
+        }
+    });
+</script>

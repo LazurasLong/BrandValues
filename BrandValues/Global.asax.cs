@@ -1,7 +1,9 @@
 ﻿using BrandValues.Models;
+using System;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.WebPages;
 
 namespace BrandValues
 {
@@ -18,6 +20,17 @@ namespace BrandValues
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             MvcHandler.DisableMvcResponseHeader = true;
+
+            //IE6 & IE7 identifier
+            DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("IE6")
+            {
+                ContextCondition = (context => context.GetOverriddenUserAgent().IndexOf("MSIE 6.", StringComparison.OrdinalIgnoreCase) >= 0)
+            });
+
+            DisplayModeProvider.Instance.Modes.Add(new DefaultDisplayMode("IE6")
+            {
+                ContextCondition = (context => context.GetOverriddenUserAgent().IndexOf("MSIE 7.", StringComparison.OrdinalIgnoreCase) >= 0)
+            });
         }
 
         #if !DEBUG
@@ -32,13 +45,6 @@ namespace BrandValues
         }
         #endif
 
-        //protected void Session_Start(object sender)
-        //{
-        //    if (Utils.IpAddress.CheckIp())
-        //    {
-        //        Response.Redirect("~/error.html");
-        //    }
-        //}
 
 
     }

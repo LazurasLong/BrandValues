@@ -1,0 +1,71 @@
+﻿/* Colours */
+body {
+  height: 100%;
+}
+#header {
+  position: fixed !important;
+  position: absolute;
+  /* IE6 reads this */
+  height: 100px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: blue;
+  z-index: 2;
+}
+#navigation {
+  position: fixed !important;
+  position: absolute;
+  /* IE6 reads this */
+  height: 100%;
+  width: 200px;
+  top: 0;
+  left: 0;
+  padding-top: 100px;
+  background: yellow;
+  z-index: 1;
+}
+#content {
+  margin-top: 50px;
+  margin-left: 200px;
+}
+.input-small {
+  width: 90% !important;
+}
+.text-center {
+  text-align: center;
+}
+/* Login */
+.text-danger {
+  color: #f05050;
+}
+.top-padding {
+  padding-top: 15px;
+}
+.largest-text {
+  font-size: 300%;
+}
+.large-text {
+  font-size: 180%;
+}
+.purple {
+  color: #c73c95 !important;
+}
+.green {
+  color: #91ba65;
+}
+.dark-grey {
+  color: #788188;
+}
+#loginForm {
+  background-color: #ffffff;
+  padding: 10px;
+  padding-top: 25px;
+  margin-bottom: 15px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+/* My Colours */
+/* Text Colours */
+/* Buttons */
+/*# sourceMappingURL=IE6.css.map */

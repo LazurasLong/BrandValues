@@ -137,6 +137,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\webapp\ie\ie.css" />
+    <Content Include="Content\webapp\ie\print.css" />
+    <Content Include="Content\webapp\ie\screen.css" />
+    <Content Include="Content\webapp\less\IE6.css">
+      <DependentUpon>IE6.less</DependentUpon>
+    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\Simple-Line-Icons.dev.svg" />
     <Content Include="fonts\Simple-Line-Icons.svg" />
@@ -207,6 +213,10 @@
     <Content Include="Content\webapp\less\myversion.less" />
     <Content Include="Content\webapp\less\myversion.css.map">
       <DependentUpon>myversion.css</DependentUpon>
+    </Content>
+    <Content Include="Content\webapp\less\IE6.less" />
+    <Content Include="Content\webapp\less\IE6.css.map">
+      <DependentUpon>IE6.css</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
@@ -297,6 +307,11 @@
     <Content Include="Views\Home\_Intro.cshtml" />
     <Content Include="Views\Home\_HowItWorks.cshtml" />
     <Content Include="Views\Home\_Prizes.cshtml" />
+    <Content Include="Views\Shared\_Layout-Account.IE6.cshtml" />
+    <Content Include="Views\Shared\_Layout.IE6.cshtml" />
+    <Content Include="Views\Account\Login.IE6.cshtml" />
+    <Content Include="Views\Account\Register.IE6.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.IE6.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

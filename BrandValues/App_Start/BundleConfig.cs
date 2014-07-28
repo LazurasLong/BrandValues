@@ -49,6 +49,12 @@ namespace BrandValues
                       "~/Content/webapp/less/app.css"
                       ));
 
+            bundles.Add(new StyleBundle("~/Bundles/ie6css").Include(
+                    "~/Content/webapp/ie/screen.css",    
+                    "~/Content/webapp/ie/ie.css",  
+                    "~/Content/webapp/less/ie6.css"
+                      ));
+
             BundleTable.EnableOptimizations = true;
         }
     }

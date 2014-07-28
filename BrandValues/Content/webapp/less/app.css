@@ -3695,6 +3695,9 @@ fieldset[disabled] .i-checks input + i:before {
   background-position: 0% 100%;
   background-repeat: no-repeat;
 }
+.blue {
+  color: #3996b1 !important;
+}
 /* Home Screen */
 .navbar-brand {
   font-weight: normal;
