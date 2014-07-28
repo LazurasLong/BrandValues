@@ -8,7 +8,7 @@
         var videoName = '@(Model.Entry.Name)';
 
         //video Urls
-        var networkCheck = '@Html.Raw(@ViewBag.NetworkCheck)';
+        var networkCheck = '@ViewBag.NetworkCheck';
         var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
         var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
         var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';
@@ -67,7 +67,7 @@
                                         <div class="col-xs-10 margin-bottom">
                                             <p class="left">
                                                 <span class="h4 font-thin">Description</span><br />
-                                            <p class="m-b">@Model.Entry.Description</p>
+                                                <p class="m-b">@Model.Entry.Description</p>
                                             </p>
                                         </div>
                                     </li>

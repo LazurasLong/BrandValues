@@ -125,7 +125,7 @@ namespace BrandValues.Controllers {
         }
 
         //cache
-        [OutputCache(Duration = 600)]
+        //[OutputCache(Duration = 600)]
         public ActionResult Play(string id)
         {
             if (id.IsNullOrWhiteSpace())

@@ -10,15 +10,16 @@ namespace BrandValues.Utils
         public static string GetIp()
         {
 
-            string strIpAddress;
-
-            strIpAddress = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-            if (strIpAddress == null)
-
-                strIpAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
-
-            return strIpAddress;
+            string visitorsIPAddr = string.Empty;
+            if (HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"] != null)
+            {
+                visitorsIPAddr = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString();
+            }
+            else if (HttpContext.Current.Request.UserHostAddress.Length != 0)
+            {
+                visitorsIPAddr = HttpContext.Current.Request.UserHostAddress;
+            }
+            return visitorsIPAddr;
 
         }
 

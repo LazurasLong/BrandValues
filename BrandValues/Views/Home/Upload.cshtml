@@ -57,7 +57,7 @@
                 <div class="tab-pane" id="step1">
 
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Entry Name</label>
+                        <label class="col-sm-4 control-label">Competition Entry Name</label>
                         <div class="col-sm-8">
                             <input name="name" type="text" class="form-control parsley-validated" data-trigger="change" data-required="true" data-parsley-type="alphanum" placeholder="Your entry name">
                             @*@Html.EditorFor(model => model.Name, new { @class = "form-control" })*@
@@ -72,7 +72,7 @@
                             Description
                         </label>
                         <div class="col-sm-8">
-                            <textarea name="description" class="form-control parsley-validated" rows="6" data-minwords="6" data-maxlength="600" data-required="true" placeholder="Type a short description of your entry"></textarea>
+                            <textarea name="description" class="form-control parsley-validated" rows="6" data-minwords="6" data-required="true" placeholder="Type a description of your entry"></textarea>
                             @*@Html.TextAreaFor(model => model.Description, new { @class = "form-control" })*@
                             <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })</span>
                         </div>

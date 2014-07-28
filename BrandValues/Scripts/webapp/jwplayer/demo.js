@@ -35,7 +35,7 @@
 
     function LoadMedia() {
 
-        if (networkCheck == "true") {
+        if (networkCheck == "True") {
             $('#mediaplayer').append("<img src='https://d3kx2j4tswsg1z.cloudfront.net/play/network-video-warning.png' class='entry-image' />");
         } else {
             if (!videoThumbnailUrl || !rtmpUrl || !fallbackUrl) {
