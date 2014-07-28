@@ -8,6 +8,7 @@
         var videoName = '@(Model.Entry.Name)';
 
         //video Urls
+        var networkCheck = '@Html.Raw(@ViewBag.NetworkCheck)';
         var rtmpUrl = '@Html.Raw(ViewBag.RTMPUrl)';
         var appleUrl = '@Html.Raw(ViewBag.AppleUrl)';
         var fallbackUrl = '@Html.Raw(ViewBag.FallbackUrl)';

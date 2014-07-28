@@ -30,6 +30,7 @@ using System.Globalization;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using MongoDB.Driver.Builders;
+using BrandValues.Utils;
 
 
 namespace BrandValues.Controllers {
@@ -145,10 +146,22 @@ namespace BrandValues.Controllers {
             //and instead the resource path is nothing but the stream's name. e.g. "video1.mp4"
             if (entry.Format == "video")
             {
-                ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
-                //ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
-                ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
-                ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
+                //check for AIB network PC and disable
+                
+
+                if (IpAddress.CheckIp())
+                {
+                    ViewBag.NetworkCheck = true;
+                }
+                else
+                {
+                    ViewBag.NetworkCheck = false;
+                    ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
+                    //ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
+                    ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
+                    ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
+                } 
+
             } else {
                 ViewBag.CloudFrontUrl = GetCloudFrontUrl(entry);
             }       
