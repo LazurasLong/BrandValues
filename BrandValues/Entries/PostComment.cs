@@ -19,6 +19,6 @@ namespace BrandValues.Entries
 
         public DateTime CreatedOn { get; set; }
 
-
+        public bool Censored { get; set; }
     }
 }

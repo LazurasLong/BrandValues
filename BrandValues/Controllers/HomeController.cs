@@ -175,7 +175,7 @@ namespace BrandValues.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> PostComment(FormCollection form, PostComment postComment)
+        public async Task<ActionResult> PostComment(FormCollection form, PostComment postComment)
         {
             //get entry
             var id = form["Entry.Id"];
@@ -187,6 +187,7 @@ namespace BrandValues.Controllers {
             postComment.UserFirstName = user.FirstName;
             postComment.UserSurname = user.Surname;
             postComment.CreatedOn = DateTime.UtcNow;
+            postComment.Censored = false;
 
             //entry.Comments.Add(postComment.UserName);
             //entry.Comments.Add(postComment.Comment);
@@ -199,7 +200,8 @@ namespace BrandValues.Controllers {
 
             Context.Entries.Save(entry);
 
-            return Json("Ok", JsonRequestBehavior.AllowGet);
+            //return Json("Ok", JsonRequestBehavior.AllowGet);
+            return PartialView("_Comments", entry);
         }
 
         private string GetRTMPCloudfrontUrl(Entry entry)

@@ -71,9 +71,15 @@
                                             <p class="m-b">@Model.Entry.Description</p>
                                             </p>
                                         </div>
+                                        @*@using (Ajax.BeginForm("PostComment", new AjaxOptions
+        {
+            UpdateTargetId = "comments-result",
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace
+        }))*@
 
-
-                                        @using (Html.BeginForm("PostComment", "Home", FormMethod.Post, new { id = "commentForm", data_parsley_validate = "" }))
+                                        @using (Ajax.BeginForm("PostComment", "Home", FormMethod.Post, new AjaxOptions { UpdateTargetId = "comments-result", OnFailure = "handleError", OnSuccess = "OnSuccess", InsertionMode = InsertionMode.Replace }, new { id = "commentForm", data_parsley_validate = "" }))
+                                        
                                         {
 
                                             @Html.AntiForgeryToken()
@@ -91,6 +97,20 @@
 
 
                                         }
+                                        
+                                        <script type="text/javascript">
+
+                                            function OnSuccess(response) {
+                                                alert(response);
+                                            }
+
+                                            function handleError(ajaxContext) {
+                                                var response = ajaxContext.get_response();
+                                                var statusCode = response.get_statusCode();
+                                                alert("Sorry, the request failed with status code " + statusCode);
+                                            }
+
+                                        </script>
 
                                         <a class="btn btn-default" id="btn-2" href="#btn-2" data-toggle="class:btn-success">
                                             <i class="fa fa-thumbs-o-up text"></i>
@@ -98,39 +118,17 @@
                                             <i class="fa fa-check text-active"></i>
                                             <span class="text-active">Commented</span>
                                         </a>
+                                        
+                                        <hr/>
+                                        
+                                        
 
+                                       
+                                        @Html.Partial("_Comments", Model.Entry)
 
+                                        
+                                        
 
-                                        <div id="success" class="text-success">Worked</div>
-
-                                        @*<script>
-                    $(function () {
-                        $('commentForm').submit(function () {
-                            if ($(this).valid()) {
-                                $.ajax({
-                                    url: this.action,
-                                    type: this.method,
-                                    data: $(this).serialize(),
-                                    success: function (result) {
-                                        $('#success').html(result);
-                                        $('#success').fadeIn();
-                                    }
-                                });
-                            }
-                            return false;
-                        });
-                    });
-                </script>*@
-
-                                        @foreach (var comment in Model.Entry.Comments)
-                                        {
-                                            <div class="col-xs-10 margin-bottom">
-                                                <p class="left">
-                                                    <span class="h4 font-thin">@comment.UserFirstName @comment.UserSurname, @comment.UserArea</span><br />
-                                                <p class="m-b">@comment.Comment</p>
-                                                </p>
-                                            </div>                                            
-                                        }
 
 
                                     </li>

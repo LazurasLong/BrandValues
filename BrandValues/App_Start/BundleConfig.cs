@@ -12,7 +12,9 @@ namespace BrandValues
                         "~/Scripts/webapp/app.min.js",
                         "~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js",
                         "~/Scripts/webapp/app.plugin.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.js"
+                        "~/Scripts/jquery.unobtrusive-ajax.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/Bundles/account").Include(
