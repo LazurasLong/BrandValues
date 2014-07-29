@@ -34,14 +34,14 @@
                                     <div id="images" align="center"></div>
                                     <div id="text" align="center"></div>
                                     <div class="entry-info wrapper-lg">
-                                        <span class="pull-right text-sm">
-                                            <a class="btn btn-default" id="btn-1" href="#btn-1" data-toggle="class:btn-success">
-                                                <i class="fa fa-thumbs-o-up text"></i>
-                                                <span class="text">Thumbs Up</span>
-                                                <i class="fa fa-check text-active"></i>
-                                                <span class="text-active">Liked</span>
-                                            </a>
-                                        </span>
+                                        
+                                        <form class="pull-right text-sm" method="post" action="@Url.Action("PostLike")" data-brandvalues-target="#searchResults">
+                                            @Html.HiddenFor(model => model.Entry.Id)
+                                            <button type="submit" class="btn btn-default" id="btn-like" value="Comment">
+                                                <i class="fa fa-thumbs-o-up text"></i> Thumbs Up
+                                            </button>
+
+                                        </form>
                                         <span class="h2 font-thin">@Model.Entry.Name</span><br />
                                         <span>by @Model.Entry.UserName</span>
                                     </div>

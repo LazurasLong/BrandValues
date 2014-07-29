@@ -274,6 +274,23 @@ namespace BrandValues.Controllers {
             return PartialView("_Comments", entry);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PostLike(FormCollection form)
+        {
+            //get entry
+            var id = form["Entry.Id"];
+            var entry = GetEntry(id);
+
+            //var user = await UserManager.FindByNameAsync(User.Identity.Name);
+
+            entry.Likes.Add(User.Identity.Name);
+
+            Context.Entries.Save(entry);
+
+            return Json("Ok", JsonRequestBehavior.AllowGet);
+        }
+
         private string GetRTMPCloudfrontUrl(Entry entry)
         {
             string rtmpUrl = appConfig["RTMPCloudfront"];
