@@ -3658,12 +3658,19 @@ textarea,
 .ui-menu .ui-menu-item a.ui-state-active {
   font-weight: normal;
   margin: 0;
-  color: #ffffff;
+  color: #ffffff !important;
   background-color: #647cb8;
   background-repeat: no-repeat;
   background-image: none !important;
   text-shadow: none;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.search-by {
+  color: #8ca1af;
+  font-size: 10px;
+}
+.search-by:hover {
+  color: #ffffff;
 }
 /* Login */
 .bg-login {

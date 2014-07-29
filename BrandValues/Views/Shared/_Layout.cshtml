@@ -32,7 +32,8 @@
     <![endif]-->
     
     <script src="~/Scripts/webapp/jquery.min.js"></script> 
-    <script src="~/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
+
    
 </head>
 <body class="">
@@ -63,7 +64,7 @@
             <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs hidden-tablet" role="search" method="get" action="@Url.Action("Search")" data-brandvalues-ajax="true" data-brandvalues-target="#searchResults">
                 <div class="form-group">
                     <div class="input-group">
-                        <input type="text" id="searchText" name="searchText" class="form-control input-sm no-border rounded" placeholder="Search..." data-brandvalues-autocomplete="@Url.Action("Autocomplete")">
+                        <input type="text" id="term" name="term" class="form-control input-sm no-border rounded" placeholder="Search..." data-brandvalues-autocomplete="@Url.Action("Autocomplete")">
                         <span class="input-group-btn">
                             <button type="submit" id="searchSubmit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
                         </span>

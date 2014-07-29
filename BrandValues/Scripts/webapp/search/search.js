@@ -19,8 +19,9 @@ $(function () {
 
     var submitAutocomplete = function (event, ui) {
         var $input = $(this);
-        $input.val(ui.item.label);
+        $input.val(ui.item.entryName);
 
+        //console.log($input);
         //var $form = $input.parents("form:first");
 
         var $form = $('#searchSubmit');
@@ -44,7 +45,7 @@ $(function () {
             //$("<small class='db'></small>").text(item.rating + "/100").appendTo($a);
             //return $("<li></li>").append($a).appendTo(ul);
             return $("<li>")
-        .append("<a>" + item.entryName + "<br>by " + item.userFirstName + " " + item.userSurname + "</a>")
+        .append("<a>" + item.entryName + "<br><span class='search-by'>by " + item.userFirstName + " " + item.userSurname + "</span></a>")
         .appendTo(ul);
         };
     };

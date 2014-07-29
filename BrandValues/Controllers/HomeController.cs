@@ -31,6 +31,7 @@ using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using MongoDB.Driver.Builders;
 using BrandValues.Utils;
+using System.Text.RegularExpressions;
 
 
 namespace BrandValues.Controllers {
@@ -110,31 +111,70 @@ namespace BrandValues.Controllers {
         }
 
         [HttpGet]
-        public ActionResult Search(string searchText)
+        public ActionResult Search(string term)
         {
 
-            if (string.IsNullOrEmpty(searchText))
-                return RedirectToAction("Index");
+            if (string.IsNullOrEmpty(term))
+                return PartialView("_Search");
 
-            var searchTerm = searchText.Trim();
-            //get entry
-            var entries = Context.Entries.FindAll().Where(
-                x => x.Name.StartsWith(searchTerm) 
+            var searchTerm = term.Trim().ToLower();
+            searchTerm = searchTerm.ToLower();
+
+            var userName = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.UserName, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var teamName = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.TeamName, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var desc = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Description, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var name = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Name, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    userName, teamName, desc, name
                 );
+
+            var entries = Context.Entries.Find(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
 
             return PartialView("_Search", entries);
         }
 
         public ActionResult Autocomplete(string term)
         {
-            var entries = Context.Entries.FindAll().Where(
-                x => x.Name.StartsWith(term, StringComparison.CurrentCultureIgnoreCase)
-                ).Take(5).Select(r => new
+            //test directly using http://localhost/BrandValues/Home/Autocomplete?term=tes
+
+            if (string.IsNullOrEmpty(term))
+                return Json("Nothing found", JsonRequestBehavior.AllowGet);
+
+            var searchTerm = term.Trim().ToLower();
+            searchTerm = searchTerm.ToLower();
+
+            var userName = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.UserName, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var teamName = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.TeamName, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var desc = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Description, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var name = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Name, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    userName, teamName, desc, name
+                );
+
+            var entries = Context.Entries
+                .FindAs<Entry>(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn))
+                .SetLimit(5).Select(r => new
                 {
                     entryName = r.Name,
                     userFirstName = r.UserFirstName,
                     userSurname = r.UserSurname
                 });
+
+
+            //var entries = Context.Entries.FindAll().Where(
+            //    x => x.UserName.ToLower().Contains(searchTerm)
+            //    ).Take(5).Select(r => new
+            //    {
+            //        entryName = r.Name,
+            //        userFirstName = r.UserFirstName,
+            //        userSurname = r.UserSurname
+            //    });
 
             return Json(entries, JsonRequestBehavior.AllowGet);
         }
