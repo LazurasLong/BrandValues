@@ -1,13 +1,15 @@
 ﻿@model BrandValues.Entries.Entry
 <div id="comments-result">
     @foreach (var comment in Model.Comments.OrderByDescending(x => x.CreatedOn))
-    {
-        <div class="col-xs-10 margin-bottom">
-            <p class="left">
-                <span class="h4 font-thin">@comment.UserFirstName @comment.UserSurname, @comment.UserArea</span><br />
-            <p class="m-b">@comment.Comment</p>
-            </p>
-        </div>
-    }
+{
+    <div class="col-xs-10 margin-bottom-10">
+        <p class="left">
+            <blockquote>
+        <p>@comment.Comment</p>
+        <footer class="text-primary">@comment.UserFirstName @comment.UserSurname, @comment.UserArea</footer>
+        </blockquote>
+        </p>
+    </div>
+}
 
 </div>

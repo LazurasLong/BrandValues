@@ -76,61 +76,71 @@
             HttpMethod = "POST",
             InsertionMode = InsertionMode.Replace
         }))*@
-
-                                        @using (Ajax.BeginForm("PostComment", "Home", FormMethod.Post, new AjaxOptions { UpdateTargetId = "comments-result", OnFailure = "handleError", OnSuccess = "OnSuccess", InsertionMode = InsertionMode.Replace }, new { id = "commentForm", data_parsley_validate = "" }))
                                         
-                                        {
+                                        <div class="col-xs-2">
 
-                                            @Html.AntiForgeryToken()
-                                            @Html.HiddenFor(model => model.Entry.Id)
+                                        </div>
 
-                                            <label class="col-sm-4 control-label">Post a comment</label>
-                                            <div class="col-sm-8">
-                                                <input name="comment" type="text" class="form-control parsley-validated" data-trigger="change" data-required="true" placeholder="Your comment">
-                                            </div>
+                                        <div class="col-xs-10 margin-bottom">
+                                            
+                                            <p class="left">
+                                                <span class="h4 font-thin">Post a comment</span><br />
+                                            </p>
+
+                                            @using (Ajax.BeginForm("PostComment", "Home", FormMethod.Post, new AjaxOptions { UpdateTargetId = "comments-result", OnBegin = "OnBegin", LoadingElementId = "loading", OnFailure = "handleError", OnSuccess = "OnSuccess", InsertionMode = InsertionMode.Replace }, new { id = "commentForm", @class = "form-inline" }))
+                                            {
+
+                                                @Html.AntiForgeryToken()
+                                                @Html.HiddenFor(model => model.Entry.Id)
+                                                
 
 
-                                            <div class="centered center">
-                                                <input type="submit" class="btn btn-primary btn-lg btn-block" id="comment" value="Comment" />
-                                            </div>
+                                                <div class="form-group">
+
+                                                    <input name="comment" id="comment" type="text" class="form-control"  placeholder="Your comment">
+                                                    <button type="submit" class="btn btn-primary" id="comment-btn" value="Comment">
+                                                        <i class="fa fa-thumbs-o-up text"></i> Comment
+                                                    </button>
+                                                </div>
 
 
-                                        }
-                                        
-                                        <script type="text/javascript">
-
-                                            function OnSuccess(response) {
-                                                alert(response);
                                             }
 
-                                            function handleError(ajaxContext) {
-                                                var response = ajaxContext.get_response();
-                                                var statusCode = response.get_statusCode();
-                                                alert("Sorry, the request failed with status code " + statusCode);
-                                            }
+                                            <script type="text/javascript">
 
-                                        </script>
+                                                function OnSuccess(response) {
+                                                    $('#comment').val("");
+                                                    $('#comment-btn').prop('disabled', false);
+                                                }
 
-                                        <a class="btn btn-default" id="btn-2" href="#btn-2" data-toggle="class:btn-success">
-                                            <i class="fa fa-thumbs-o-up text"></i>
-                                            <span class="text">Comment</span>
-                                            <i class="fa fa-check text-active"></i>
-                                            <span class="text-active">Commented</span>
-                                        </a>
-                                        
-                                        <hr/>
-                                        
-                                        
+                                                function OnBegin() {
+                                                    $('#comment-btn').prop('disabled', true);
+                                                }
 
-                                       
-                                        @Html.Partial("_Comments", Model.Entry)
+                                                //function handleError(ajaxContext) {
+                                                //    var response = ajaxContext.get_response();
+                                                //    var statusCode = response.get_statusCode();
+                                                //    alert("Sorry, the request failed with status code " + statusCode);
+                                                //}
 
-                                        
-                                        
+                                            </script>
+
+                                            <hr />
+                                            
+                                            <div id="loading" class="centered">
+                                                <p align="center">
+                                                    <img src="~/images/ajax-loader.gif" alt="" />
+                                                </p>
+                                            </div>
+
+                                            @Html.Partial("_Comments", Model.Entry)
+
+                                        </div>
 
 
 
-                                    </li>
+
+</li>
                                 </ul>
 
 
