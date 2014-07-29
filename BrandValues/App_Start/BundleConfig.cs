@@ -52,8 +52,17 @@ namespace BrandValues
             bundles.Add(new StyleBundle("~/Bundles/ie6css").Include(
                     "~/Content/webapp/ie/screen.css",    
                     "~/Content/webapp/ie/ie.css",  
-                    "~/Content/webapp/less/ie6.css"
+                    "~/Content/webapp/less/ie6.css",
+                    "~/Content/webapp/css/simple-line-icons.css"
                       ));
+
+            bundles.Add(new StyleBundle("~/Bundles/ie6").Include(
+                    "~/Scripts/jquery.unobtrusive-ajax.js"
+                      ));
+
+            bundles.Add(new ScriptBundle("~/Bundles/ie6upload").Include(
+                        "~/Scripts/webapp/wizard/demoIE6.js"
+                        ));
 
             BundleTable.EnableOptimizations = true;
         }

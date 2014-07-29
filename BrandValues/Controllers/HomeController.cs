@@ -173,6 +173,35 @@ namespace BrandValues.Controllers {
             return View(playViewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<JsonResult> PostComment(FormCollection form, PostComment postComment)
+        {
+            //get entry
+            var id = form["Entry.Id"];
+            var entry = GetEntry(id);
+            
+            postComment.UserName = User.Identity.Name;
+            var user = await UserManager.FindByNameAsync(User.Identity.Name);
+            postComment.UserArea = user.Area;
+            postComment.UserFirstName = user.FirstName;
+            postComment.UserSurname = user.Surname;
+            postComment.CreatedOn = DateTime.UtcNow;
+
+            //entry.Comments.Add(postComment.UserName);
+            //entry.Comments.Add(postComment.Comment);
+            //entry.Comments.Add(postComment.UserFirstName);
+            //entry.Comments.Add(postComment.UserSurname);
+            //entry.Comments.Add(postComment.UserArea);
+            //entry.Comments.Add(postComment.CreatedOn.ToString());
+
+            entry.Comments.Add(postComment);
+
+            Context.Entries.Save(entry);
+
+            return Json("Ok", JsonRequestBehavior.AllowGet);
+        }
+
         private string GetRTMPCloudfrontUrl(Entry entry)
         {
             string rtmpUrl = appConfig["RTMPCloudfront"];

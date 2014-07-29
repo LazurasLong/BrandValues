@@ -1,0 +1,118 @@
+﻿    @model IEnumerable<BrandValues.Entries.Entry>
+    @{
+        ViewBag.Title = "Values Competition Home";
+    }
+
+<div class="span-8 colborder">
+    <div class="panel-group margin-bottom-10" id="accordion">
+        <div class="item pos-rlt">
+            <a class="item-overlay active wrapper-md font-xs" href="~/Home">
+                <div class="panel-body no-left-padding left">
+                    <span class="h3 font-thin">The AIB<br />Brand Values<br />Competition</span>
+                </div>
+            </a>
+            <a href="~/Home">
+                <img class="img-full" src="~/images/box-compass.png" alt="Values Competition Logo">
+            </a>
+        </div>
+
+        @*@Ajax.ActionLink(
+                         "HowItWorks",
+                "HowItWorks",
+                "Home",
+                         new AjaxOptions { UpdateTargetId = "result" }
+            )*@
+
+
+
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/HowItWorks">
+                <div class="panel-heading menu-panel">
+
+                    <span class="accordion-icon"><i class="fa icon-info time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">How the competition works</span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Prizes">
+                <div class="panel-heading menu-panel">
+                    <span class="accordion-icon"><i class="fa icon-star time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">What prizes are up for grabs?</span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a href="#">
+                <div class="panel-heading menu-panel">
+                    <span class="accordion-icon"><i class="fa icon-map time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">A reminder of the AIB brand values </span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a href="#">
+                <div class="panel-heading menu-panel">
+                    <span class="accordion-icon"><i class="fa icon-control-play time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">Our new brand film</span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a href="~/Home/upload">
+                <div class="panel-heading menu-panel">
+                    <span class="accordion-icon"><i class="fa icon-cloud-upload time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">Click here to enter</span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a href="#">
+                <div class="panel-heading menu-panel">
+                    <span class="accordion-icon"><i class="fa icon-eye time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">What does a winning entry look like?</span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        <div class="panel panel-default no-top-margin no-border-radius no-border">
+            <a href="~/Home/faq">
+                <div class="panel-heading menu-panel">
+                    <span class="accordion-icon"><i class="fa icon-question time-icon bg-primary"></i></span>
+                    <span class="timeline-date white">All your questions answered… </span>
+                    <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                </div>
+            </a>
+        </div>
+        @*<div class="panel panel-default no-top-margin no-border-radius no-border">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                    <div class="panel-heading menu-panel">
+
+                        <span class="accordion-icon"><i class="fa icon-calendar time-icon bg-primary"></i></span>
+                        <span class="timeline-date white">Competition Calendar</span>
+                        <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                    </div>
+                </a>
+            </div>*@
+    </div>
+
+
+</div>
+
+
+<div class="span-7 last">
+
+
+    <div id="result">
+        @Html.Partial("_Intro")
+    </div>
+
+
+</div>
+
+

@@ -3823,6 +3823,9 @@ fieldset[disabled] .i-checks input + i:before {
 #teamname-txt {
   display: none;
 }
+#success {
+  display: none;
+}
 /* Image picker */
 ul.thumbnails.image_picker_selector {
   overflow: auto;

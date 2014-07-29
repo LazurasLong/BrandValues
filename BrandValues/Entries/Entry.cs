@@ -35,7 +35,7 @@ namespace BrandValues.Entries
 
         public int Hits { get; set; }
 
-        public List<string> Comments = new List<string>();
+        public List<PostComment> Comments { get; set; }
 
         public string UserName { get; set; }
 

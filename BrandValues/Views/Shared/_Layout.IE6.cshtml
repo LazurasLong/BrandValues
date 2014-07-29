@@ -21,38 +21,104 @@
 </head>
 <body>
     <div id="header">
-        <h1>Example header</h1>
+        <div class="span-2">
+            <a href="~/home/" class="navbar-brand text-dark">
+                <img src="~/images/aib-logo-small.png" alt="AIB Logo">
+            </a>
+        </div>
+        <div class="span-3 top-padding"><h3>Brand Values</h3></div>
+        <div class="prepend-10 top-padding last inline">
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <div class="span-3">
+                    @Html.ActionLink("Site Admin", "Index", "SiteAdmin")
+                </div>
+                <div class="span-3">
+                    @Html.ActionLink("Roles Admin", "Index", "RolesAdmin")
+                </div>
+                <div class="span-3">
+                    @Html.ActionLink("Users Admin", "Index", "UsersAdmin")
+                </div>
+               
+
+            }
+
+
+            @Html.Partial("_LoginPartial")
+
+        </div>
     </div>
     <div id="navigation">
-        <ul>
-            <li><a href="">Navigation 1</a></li>
-            <li><a href="">Navigation 2</a></li>
-            <li><a href="">Navigation 3</a></li>
-            <li><a href="">Navigation 4</a></li>
-            <li><a href="">Navigation 5</a></li>
-        </ul>
+        <nav class="nav-primary">
+            <ul class="nav bg clearfix">
+                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                    Discover
+                </li>
+                <li>
+                    <a href="~/home">
+                        <i class="icon-like icon"></i>
+
+                        <span>Discover</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/home/browse">
+                        <i class="icon-grid icon"></i>
+                        <span>Browse</span>
+                    </a>
+                </li>
+                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                    Your Entry
+                </li>
+                <li>
+                    <a href="~/home/upload">
+                        <i class="icon-cloud-upload icon  "></i>
+                        <span>Upload</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="~/home/entry">
+                        <i class="icon-pencil icon"></i>
+                        <span>Edit</span>
+                    </a>
+                </li>
+
+                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                    Help
+                </li>
+                <li>
+                    <a href="~/home/faq">
+                        <i class="icon-info icon"></i>
+                        <span>FAQ's</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
     </div>
     <div id="content">
         @RenderBody()
     </div>
 
-    
-    @Scripts.Render("~/Bundles/account")
 
-            @RenderSection("scripts", required: false)
-    
-            <script>
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    @Scripts.Render("~/Bundles/ie6")
 
-            ga('create', 'UA-41233555-3', 'auto');
-            ga('send', 'pageview');
+    @RenderSection("scripts", required: false)
 
-            </script>
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-41233555-3', 'auto');
+        ga('send', 'pageview');
+
+    </script>
 
 </body>
+
 </html>

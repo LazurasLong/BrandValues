@@ -162,7 +162,6 @@
     <Content Include="images\p3.jpg" />
     <Content Include="images\p4.jpg" />
     <Content Include="images\p5.jpg" />
-    <Content Include="Content\webapp\less\m40.jpg" />
     <Content Include="error500.html" />
     <Content Include="error.html" />
     <Content Include="check.html" />
@@ -237,6 +236,7 @@
     <Content Include="Scripts\webapp\jwplayer\jwplayer.html5.js" />
     <Content Include="Scripts\webapp\jwplayer\jwplayer.js" />
     <Content Include="Scripts\webapp\slider\slider.less" />
+    <Content Include="Scripts\webapp\wizard\demoIE6.js" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -312,6 +312,10 @@
     <Content Include="Views\Account\Login.IE6.cshtml" />
     <Content Include="Views\Account\Register.IE6.cshtml" />
     <Content Include="Views\Account\ForgotPassword.IE6.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.IE6.cshtml" />
+    <Content Include="Views\Home\Index.IE6.cshtml" />
+    <Content Include="Views\Home\FAQ.IE6.cshtml" />
+    <Content Include="Views\Home\Upload.IE6.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -473,6 +477,7 @@
     <Compile Include="Entries\Entry.cs" />
     <Compile Include="Entries\EntryFilter.cs" />
     <Compile Include="Entries\EntryList.cs" />
+    <Compile Include="Entries\PostComment.cs" />
     <Compile Include="Entries\PostEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

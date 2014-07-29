@@ -41,12 +41,12 @@ body {
 #header {
     position: fixed !important;
     position: absolute; /* IE6 reads this */
-    height: 100px;
+    height: 50px;
     width: 100%;
     top: 0;
     left: 0;
-    background: blue;
     z-index: 2;
+    background: @brand-white;
 }
 #navigation {
     position: fixed !important;
@@ -56,8 +56,18 @@ body {
     top: 0;
     left: 0;
     padding-top: 100px;
-    background: yellow;
+    background: #181f24;
+    color: #7d94a4;
     z-index: 1;
+}
+#navigation a {
+    color: #7d94a4;
+}
+#navigation a:hover {
+    color: @brand-white;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+background-color: #2c3942;
 }
 #content {
     margin-top: 50px;
@@ -70,6 +80,9 @@ body {
 
 .text-center{
     text-align: center;
+}
+.text-left {
+text-align: left;
 }
 
 /* Login */
@@ -84,6 +97,15 @@ body {
 }
 .large-text{
     font-size: @h2;
+}
+.text-primary{
+    color: @brand-primary;
+}
+.text-success{
+    color: @brand-success;
+}
+.text-warning {
+    color: @brand-warning;
 }
 .purple {
     color : @text-purple !important;
@@ -101,6 +123,55 @@ body {
     margin-bottom: 15px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+}
+
+/* Nav */
+.nav {
+    list-style-type: none;
+}
+.bg-black .text-muted {
+color: #627b8c!important;
+}
+.nav>li {
+position: relative;
+display: block;
+}
+.m-b-sm {
+margin-bottom: 10px;
+}
+.m-t {
+margin-top: 15px;
+}
+.m-b {
+margin-bottom: 15px;
+}
+.padder {
+padding-left: 15px;
+padding-right: 15px;
+}
+.text-xs {
+font-size: 12px;
+}
+.text-muted {
+color: #939aa0;
+}
+.text-muted {
+color: #999;
+}
+
+/* Upload */
+/* Loading */
+#loading {
+    display: none;
+}
+
+/* Upload */
+#teamname-txt {
+    display: none;
+}
+
+.help-block{
+   display: block;
 }
 
 
