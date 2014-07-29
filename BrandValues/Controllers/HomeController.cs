@@ -109,6 +109,36 @@ namespace BrandValues.Controllers {
 
         }
 
+        [HttpGet]
+        public ActionResult Search(string searchText)
+        {
+
+            if (string.IsNullOrEmpty(searchText))
+                return RedirectToAction("Index");
+
+            var searchTerm = searchText.Trim();
+            //get entry
+            var entries = Context.Entries.FindAll().Where(
+                x => x.Name.StartsWith(searchTerm) 
+                );
+
+            return PartialView("_Search", entries);
+        }
+
+        public ActionResult Autocomplete(string term)
+        {
+            var entries = Context.Entries.FindAll().Where(
+                x => x.Name.StartsWith(term, StringComparison.CurrentCultureIgnoreCase)
+                ).Take(5).Select(r => new
+                {
+                    entryName = r.Name,
+                    userFirstName = r.UserFirstName,
+                    userSurname = r.UserSurname
+                });
+
+            return Json(entries, JsonRequestBehavior.AllowGet);
+        }
+
         public PartialViewResult Intro()
         {
             return PartialView("_Intro");
@@ -477,25 +507,13 @@ namespace BrandValues.Controllers {
             return View(entries);
         }
 
-        public ActionResult Browse(EntryFilter filters)
+        public ActionResult Browse()
         {
-            var entries = FilterRentals(filters);
-            var model = new EntryList
-            {
-                Entries = entries,
-                Filters = filters
-            };
-            return View(model);
-        }
+            
+            var model = Context.Entries.FindAll();
 
-        private MongoCursor<Entry> FilterRentals(EntryFilter filters)
-        {
-            if (filters.TypeFilter.IsNullOrWhiteSpace())
-            {
-                return Context.Entries.FindAll();
-            }
-            var query = MongoDB.Driver.Builders.Query<Entry>.EQ(r => r.Type, filters.TypeFilter);
-            return Context.Entries.Find(query);
+
+            return View(model);
         }
 
         public ActionResult Edit(string id)

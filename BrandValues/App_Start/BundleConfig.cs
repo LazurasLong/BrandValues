@@ -8,13 +8,14 @@ namespace BrandValues
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/Bundles/webapp").Include(
+                        "~/Scripts/jquery.unobtrusive-ajax.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery.validate.unobtrusive.js",
                         "~/Scripts/webapp/bootstrap.min.js",
                         "~/Scripts/webapp/app.min.js",
                         "~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js",
                         "~/Scripts/webapp/app.plugin.js",
-                        "~/Scripts/jquery.unobtrusive-ajax.js",
-                        "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js"
+                        "~/Scripts/webapp/search/search.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/Bundles/account").Include(
@@ -48,7 +49,8 @@ namespace BrandValues
                       "~/Content/webapp/css/font.css",
                       "~/Content/webapp/css/font-awesome.min.css",
                       "~/Content/webapp/css/simple-line-icons.css",
-                      "~/Content/webapp/less/app.css"
+                      "~/Content/webapp/less/app.css",
+                      "~/Content/webapp/css/jquery-ui-1.10.0.custom.css"
                       ));
 
             bundles.Add(new StyleBundle("~/Bundles/ie6css").Include(

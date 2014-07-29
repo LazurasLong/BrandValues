@@ -137,6 +137,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\webapp\css\jquery-ui-1.10.0.custom.css" />
+    <Content Include="Content\webapp\css\jquery.ui.1.10.0.ie.css" />
     <Content Include="Content\webapp\ie\ie.css" />
     <Content Include="Content\webapp\ie\print.css" />
     <Content Include="Content\webapp\ie\screen.css" />
@@ -220,6 +222,8 @@
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -240,6 +244,7 @@
     <Content Include="Scripts\webapp\jwplayer\jwplayer.flash.swf" />
     <Content Include="Scripts\webapp\jwplayer\jwplayer.html5.js" />
     <Content Include="Scripts\webapp\jwplayer\jwplayer.js" />
+    <Content Include="Scripts\webapp\search\search.js" />
     <Content Include="Scripts\webapp\slider\slider.less" />
     <Content Include="Scripts\webapp\wizard\demoIE6.js" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -322,6 +327,8 @@
     <Content Include="Views\Home\FAQ.IE6.cshtml" />
     <Content Include="Views\Home\Upload.IE6.cshtml" />
     <Content Include="Views\Home\_Comments.cshtml" />
+    <Content Include="Views\Home\_Search.cshtml" />
+    <Content Include="Views\Home\_DisplayEntries.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -481,8 +488,6 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Entries\Edit.cs" />
     <Compile Include="Entries\Entry.cs" />
-    <Compile Include="Entries\EntryFilter.cs" />
-    <Compile Include="Entries\EntryList.cs" />
     <Compile Include="Entries\PostComment.cs" />
     <Compile Include="Entries\PostEntry.cs" />
     <Compile Include="Global.asax.cs">

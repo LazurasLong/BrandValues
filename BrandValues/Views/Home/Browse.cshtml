@@ -1,99 +1,72 @@
-﻿@model BrandValues.Entries.EntryList
+﻿@model IEnumerable<BrandValues.Entries.Entry>
 
-@{
-    ViewBag.Title = "Browse";
-}
+    @{
+        ViewBag.Title = "Browse";
+    }
 
-        <section id="content">
-            <section class="hbox stretch">
-                <!-- side content -->
-                <aside class="aside bg-light dk" id="sidebar">
-                    <section class="vbox">
-                        <section class="w-f-md scrollable hover animated fadeInUp">
-                            <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
-                                @*@using (Html.BeginForm())
+    <section id="content">
+        <section class="hbox stretch">
+            <!-- side content -->
+            <aside class="aside bg-light dk" id="sidebar">
+                <section class="vbox">
+                    <section class="w-f-md scrollable hover animated fadeInUp">
+                        <div class="list-group no-radius no-border no-bg m-t-n-xxs m-b-none auto">
+                            @*@using (Html.BeginForm())
                                 {
                                     <input class="list-group-item" name="@Model.Filters.TypeFilter" value="team" />
                                     <input type="submit" value="Search" />
                                 }*@
 
-                                <a href="#" class="list-group-item">
-                                    All the brand values
-                                </a>
-                                <a href="#" class="list-group-item active">
-                                    We put our customers first
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    We are empowering
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    We are building trust and appreciation
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    We keep things simple
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    We are better together
-                                </a>
-                                
-                            </div>
-                        </section>
-                        <footer class="footer hidden-xs footer-md bg-black"></footer>
+                            <a href="#" class="list-group-item">
+                                All the brand values
+                            </a>
+                            <a href="#" class="list-group-item active">
+                                We put our customers first
+                            </a>
+                            <a href="#" class="list-group-item">
+                                We are empowering
+                            </a>
+                            <a href="#" class="list-group-item">
+                                We are building trust and appreciation
+                            </a>
+                            <a href="#" class="list-group-item">
+                                We keep things simple
+                            </a>
+                            <a href="#" class="list-group-item">
+                                We are better together
+                            </a>
+
+                        </div>
                     </section>
-                </aside>
-                <!-- / side content -->
-                <section>
-                    <section class="vbox">
-                        <section class="scrollable padder-lg w-f-md">
-                            <h2 class="font-thin m-b">Browse Entries</h2>
-                            <div class="row row-sm">
-                                @foreach (var entry in Model.Entries)
-                                {
+                    <footer class="footer hidden-xs footer-md bg-black"></footer>
+                </section>
+            </aside>
+            <!-- / side content -->
+            <section>
+                <section class="vbox">
+                    <section class="scrollable padder-lg w-f-md">
+                        <h2 class="font-thin m-b">Browse Entries</h2>
+                        <div class="row row-sm">
 
-                                    <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                                        <div class="item">
-                                            <div class="pos-rlt entry-icon">
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
-                                            </div>
-                                            <div class="padder-v entry-icon-padder">
-                                                <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
-                                                <span class="text-ellipsis text-xs text-muted">
-                                                    @if (entry.Type == "individual")
-                                                    {
-                                                        var space = "&nbsp;";
-                                                        @Html.DisplayFor(modelItem => entry.UserFirstName)
-                                                        @Html.Raw(space)
-                                                        @Html.DisplayFor(modelItem => entry.UserSurname)
-                                                        <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                                    }
-                                                    else
-                                                    {
-                                                        @Html.DisplayFor(modelItem => entry.TeamName)
-                                                        <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                                    }
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
+                            @Html.Partial("_DisplayEntries")
 
 
-                            </div>
-                            <ul class="pagination pagination">
-                                <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-                            </ul>
-                        </section>
-                        
-                        <footer class="footer hidden-xs footer-md bg-black"></footer>
+                        </div>
+                        <ul class="pagination pagination">
+                            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                        </ul>
                     </section>
+
+                    <footer class="footer hidden-xs footer-md bg-black"></footer>
                 </section>
             </section>
-            <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
         </section>
+        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+    </section>
 
