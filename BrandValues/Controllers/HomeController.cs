@@ -194,6 +194,16 @@ namespace BrandValues.Controllers {
             return PartialView("_Prizes");
         }
 
+        public PartialViewResult BrandValues()
+        {
+            return PartialView("_BrandValues");
+        }
+
+        public PartialViewResult WinningEntry()
+        {
+            return PartialView("_WinningEntry");
+        }
+
         //cache
         //[OutputCache(Duration = 600)]
         public ActionResult Play(string id)
@@ -268,6 +278,7 @@ namespace BrandValues.Controllers {
             postComment.UserSurname = user.Surname;
             postComment.CreatedOn = DateTime.UtcNow;
             postComment.Censored = false;
+            postComment.Comment = form["comment"];
 
             //entry.Comments.Add(postComment.UserName);
             //entry.Comments.Add(postComment.Comment);
@@ -479,7 +490,7 @@ namespace BrandValues.Controllers {
                         {
                             Context.Entries.Insert(entry);
 
-                            myResponse = "File uploaded & entry submitted. Awesome. <br/> To view it, please <a href=\"";
+                            myResponse = "File uploaded & entry submitted.<br/>To view it, please <a href=\"";
                             var callbackUrl = Url.Action("Play", "Home", new { Id = entry.Id });
                             myResponse = myResponse + callbackUrl + "\">click here</a>";                          
                         }

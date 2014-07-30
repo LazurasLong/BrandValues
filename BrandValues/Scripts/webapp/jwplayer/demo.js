@@ -18,7 +18,7 @@
             $('#text').append("<h1 class='top-padding-10'>No documents, PDF's, or other text uploaded along with this entry.</h1>");
         } else {
             var entryUrl = cloudfrontUrl;
-            $('#text').append("<h1 class='top-padding-10'><a href=" + entryUrl + " target='_blank' >Click here</a> to open this entry</h1>");
+            $('#text').append("<a href=" + entryUrl + " target='_blank' ><img src='https://d3kx2j4tswsg1z.cloudfront.net/play/click-to-open.png' class='entry-image' /></a>");
         }
     }
 

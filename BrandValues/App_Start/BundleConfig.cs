@@ -49,9 +49,14 @@ namespace BrandValues
                       "~/Content/webapp/css/font.css",
                       "~/Content/webapp/css/font-awesome.min.css",
                       "~/Content/webapp/css/simple-line-icons.css",
-                      "~/Content/webapp/less/app.css",
-                      "~/Content/webapp/css/jquery-ui-1.10.0.custom.css"
+                      "~/Content/webapp/less/app.css"
                       ));
+
+            //http://joshua.perina.com/africa/gambia/fajara/post/internet-explorer-css-file-size-limit
+            bundles.Add(new StyleBundle("~/Bundles/jqueryui").Include(
+                      "~/Content/webapp/css/jquery-ui-1.10.0.custom.css"
+            ));
+                                  
 
             bundles.Add(new StyleBundle("~/Bundles/ie6css").Include(
                     "~/Content/webapp/ie/screen.css",    

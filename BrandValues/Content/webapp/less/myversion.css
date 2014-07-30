@@ -1,12 +1,110 @@
 ﻿/* BG */
 /* Text Colours */
+.bg-purple {
+  background-color: #c73c95;
+  color: #f0f2f8;
+}
+.bg-white {
+  background-color: #ffffff;
+}
+/* Stop apple rubberbanding */
+/*html, body {
+  height: 100%;
+  //overflow: hidden;
+  //overflow: auto;
+  //-webkit-overflow-scrolling: touch;
+}
+
+.scrollable{
+ -webkit-overflow-scrolling: touch;
+}*/
+/* Menu fixes */
+@media (max-width: 910px) {
+  .hidden-tablet {
+    display: none !important;
+  }
+}
+/* Autocomplete fixes */
+.ui-autocomplete {
+  z-index: 99999 !important;
+}
+.ui-corner-all {
+  -moz-border-radius-bottomright: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+  -khtml-border-bottom-right-radius: 0px;
+  -moz-border-radius-bottomleft: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+  -khtml-border-bottom-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-top-left-radius: 0px;
+  -khtml-border-top-left-radius: 0px;
+  border-top-left-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -webkit-border-top-right-radius: 0px;
+  -khtml-border-top-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+input[type="text"],
+input[type="password"],
+.ui-autocomplete-input,
+textarea,
+.uneditable-input {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+.ui-widget-content {
+  background: #ffffff !important;
+}
+.ui-menu .ui-menu-item a.ui-state-focus,
+.ui-menu .ui-menu-item a.ui-state-active {
+  font-weight: normal;
+  margin: 0;
+  color: #ffffff !important;
+  background-color: #232c32;
+  background-repeat: no-repeat;
+  background-image: none !important;
+  text-shadow: none;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+.search-by {
+  color: #8ca1af;
+  font-size: 10px;
+}
+.search-by:hover {
+  color: #ffffff;
+}
 /* Login */
 .bg-login {
   background-color: #f2f4f8;
   color: #788188;
+  background-image: url("../images/bg/bg-compass.png");
+  background-position: 98% 97%;
+  background-repeat: no-repeat;
+}
+@media (max-width: 991px) {
+  .bg-login {
+    background-position: 100% 0%;
+  }
+  .mobile-bg {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px;
+  }
+}
+.largest-text {
+  font-size: 300%;
+}
+.large-text {
+  font-size: 180%;
 }
 .purple {
-  color: #c63b94 !important;
+  color: #c73c95 !important;
+}
+.green {
+  color: #91ba65;
 }
 .dark-grey {
   color: #788188;
@@ -31,13 +129,206 @@
   color: #a9a9a9;
 }
 .link-light:hover {
-  color: #c63b94;
+  color: #c73c95;
 }
 .centered {
   margin-left: 10% !important;
   margin-right: 10% !important;
 }
+.center {
+  text-align: center;
+}
 .top-padding {
   padding-top: 5px;
+}
+.list-icon {
+  padding-left: 20px;
+  padding-right: 5px;
+}
+/*Nav */
+.slim-scroll {
+  background-image: url("../images/bg/bg-nav-compass.png");
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+}
+.blue {
+  color: #3996b1 !important;
+}
+/* Home Screen */
+.navbar-brand {
+  font-weight: normal;
+}
+.timeline-item.active .timeline-caption {
+  width: 100%;
+}
+.white {
+  color: #ffffff;
+}
+.left {
+  text-align: left !important;
+}
+.no-border-radius {
+  border-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+.no-left-padding {
+  padding-left: 0px;
+}
+.no-top-margin {
+  margin-top: 0px !important;
+}
+.margin-top-20 {
+  margin-top: 20px;
+}
+.no-bottom-margin {
+  margin-bottom: 0px;
+}
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+.menu-panel {
+  background-color: #879ac8 !important;
+  border-radius: 0px !important;
+  border: none !important;
+  padding: 15px;
+}
+.menu-panel:hover {
+  background-color: #aab7d8 !important;
+}
+.top-padding-10 {
+  padding-top: 10px;
+}
+.warning-message {
+  margin-bottom: 10px;
+}
+.no-border {
+  border: none;
+}
+.accordion-icon {
+  position: static;
+  display: inline-block;
+  width: auto;
+}
+.time-icon {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block !important;
+  z-index: 10;
+  border-radius: 20px;
+  text-align: center;
+}
+.acc-icon-padding {
+  padding-top: 7px;
+}
+.padder-r {
+  padding-right: 10px;
+}
+/* Entry types */
+.entry-lg {
+  width: 100px;
+  height: 175px;
+}
+.video {
+  background-color: #c73c95;
+}
+.entry-info {
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.entry-image {
+  width: 100%;
+}
+.entry-centered {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 5%;
+}
+/*@media (max-width: 767px) {
+.entry-info{
+    display: none;
+}
+}*/
+.margin-bottom {
+  margin-bottom: 20px !important;
+}
+.margin-lr {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+/* Footer */
+#footer-right {
+  text-align: right;
+  right: 0;
+  width: 100%;
+  padding-top: 5px;
+  font-size: 12px;
+}
+/* Loading */
+#loading {
+  display: none;
+}
+/* Upload */
+#teamname-txt {
+  display: none;
+}
+#success {
+  display: none;
+}
+/* Image picker */
+ul.thumbnails.image_picker_selector {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+ul.thumbnails.image_picker_selector ul {
+  overflow: auto;
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+ul.thumbnails.image_picker_selector li.group_title {
+  float: none;
+}
+ul.thumbnails.image_picker_selector li {
+  margin: 0px 12px 12px 0px;
+  float: left;
+}
+ul.thumbnails.image_picker_selector li .thumbnail {
+  padding: 6px;
+  border: 1px solid #dddddd;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+ul.thumbnails.image_picker_selector li .thumbnail img {
+  -webkit-user-drag: none;
+}
+ul.thumbnails.image_picker_selector li .thumbnail.selected {
+  background: #0088cc;
+}
+/* Entry */
+.entry-icon:hover {
+  filter: alpha(opacity=60);
+  /* IE */
+  opacity: 0.6;
+}
+.entry-icon-padder {
+  padding-top: 5px;
+}
+#likeResults {
+  display: none !important;
 }
 /*# sourceMappingURL=myversion.css.map */
