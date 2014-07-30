@@ -15,15 +15,7 @@
     <link href="~/Content/webapp/images/icons/iphone4.jpg" rel="apple-touch-icon" sizes="114x114">
     <link href="~/Content/webapp/images/icons/ipad3.jpg" rel="apple-touch-icon" sizes="144x144">
 
-    @Styles.Render("~/Bundles/css")
-
-    @*<link rel="stylesheet" href="~/Content/webapp/css/bootstrap.css" type="text/css" />
-        <link rel="stylesheet" href="~/Content/webapp/css/animate.css" type="text/css" />
-        <link rel="stylesheet" href="~/Content/webapp/css/font-awesome.min.css" type="text/css" />
-        <link rel="stylesheet" href="~/Content/webapp/css/simple-line-icons.css" type="text/css" />
-        <link rel="stylesheet" href="~/Content/webapp/css/font.css" type="text/css" />
-        <link rel="stylesheet" href="~/Content/webapp/less/app.css" type="text/css" />*@
-   
+    @Styles.Render("~/Bundles/css")   
 
     <!--[if lt IE 9]>
       <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/html5shiv.js"></script>
@@ -36,7 +28,7 @@
 
    
 </head>
-<body class="">
+<body>
 
     <!-- Body content -->
     <section class="vbox">
@@ -179,33 +171,35 @@
                                             </li>
                                             <li>
                                                 <a href="~/home/faq">
-                                                    <i class="icon-info" icon="" "=" "></i>
+                                                    <i class="icon-info" icon="icon-question icon"></i>
                                                     <span>FAQ's</span>
                                                 </a>
                                             </li>
 
-
-                                            <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                                Admin
-                                            </li>
-                                            <li>
-                                                <a href="~/SiteAdmin">
-                                                    <i class="icon-settings icon"></i>
-                                                    <span>Site Admin</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="~/UsersAdmin">
-                                                    <i class="icon-users icon"></i>
-                                                    <span>Users Admin</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="~/RolesAdmin">
-                                                    <i class="icon-magic-wand icon"></i>
-                                                    <span>Roles Admin</span>
-                                                </a>
-                                            </li>
+                                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                            {
+                                                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                                    Admin
+                                                </li>
+                                                <li>
+                                                    <a href="~/SiteAdmin">
+                                                        <i class="icon-settings icon"></i>
+                                                        <span>Site Admin</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/UsersAdmin">
+                                                        <i class="icon-users icon"></i>
+                                                        <span>Users Admin</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/RolesAdmin">
+                                                        <i class="icon-magic-wand icon"></i>
+                                                        <span>Roles Admin</span>
+                                                    </a>
+                                                </li>
+                                            }
 
                                             <li class="m-b hidden-nav-xs"></li>
                                         </ul>
@@ -230,8 +224,8 @@
                         @RenderBody()
                     </section>
 
-                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
-                    </section>
+                        
+                </section>
             </section>
         </section>
 
@@ -239,21 +233,6 @@
                 <!-- /Body content -->
     
     @Scripts.Render("~/Bundles/webapp")
-                
-                @*<!-- Bootstrap -->
-                <script src="~/Scripts/webapp/bootstrap.min.js"></script>
-                <!-- App -->
-                <script src="~/Scripts/webapp/app.min.js"></script>
-                <script src="~/Scripts/webapp/slimscroll/jquery.slimscroll.min.js"></script>
-                <script src="~/Scripts/webapp/app.plugin.js"></script>
-   
-                <script src="~/Scripts/webapp/jwplayer/jwplayer.js"></script>
-                <script src="~/Scripts/webapp/jwplayer/jwplayer.html5.js"></script>
-    
-                <!-- Upload -->
-                <script type="text/javascript" src="@Url.Content("~/Scripts/webapp/parsley/parsley.min.js")"></script>
-                <script type="text/javascript" src="~/Scripts/webapp/wizard/jquery.bootstrap.wizard.js"></script>*@
-                
 
     @RenderSection("scripts", required: false)
                  
