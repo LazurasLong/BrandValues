@@ -3750,6 +3750,17 @@ textarea,
 .blue {
   color: #3996b1 !important;
 }
+/* Footer */
+@media (max-width: 1024px) {
+  .footer-md {
+    min-height: 10px;
+  }
+}
+@media (max-height: 600px) {
+  .footer-md {
+    min-height: 10px;
+  }
+}
 /* Home Screen */
 .navbar-brand {
   font-weight: normal;
