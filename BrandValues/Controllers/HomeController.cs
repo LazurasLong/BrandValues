@@ -96,6 +96,27 @@ namespace BrandValues.Controllers {
             sbb.Descending("CreatedOn");
             var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
 
+            //dropdown menu
+            List<SelectListItem> items = new List<SelectListItem>();
+
+            items.Add(new SelectListItem { Text = "Home", Value = "0" });
+
+            items.Add(new SelectListItem { Text = "How the competition works", Value = "1" });
+
+            items.Add(new SelectListItem { Text = "What prizes are up for grabs?", Value = "2" });
+
+            items.Add(new SelectListItem { Text = "A reminder of the AIB brand values", Value = "3" });
+
+            items.Add(new SelectListItem { Text = "Our new brand film", Value = "4" });
+
+            items.Add(new SelectListItem { Text = "Click here to enter", Value = "5" });
+
+            items.Add(new SelectListItem { Text = "What does a winning entry look like?", Value = "6" });
+
+            items.Add(new SelectListItem { Text = "All your questions answered…", Value = "7" });
+
+            ViewBag.Menu = items;
+
             //var model = from r in entries
             //            orderby r.CreatedOn descending
             //            select r;
@@ -177,6 +198,34 @@ namespace BrandValues.Controllers {
             //    });
 
             return Json(entries, JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult CategoryChosen(string Menu)
+        {
+
+            var selection = Convert.ToInt32(Menu);
+
+            switch (selection)
+            {
+                case 0:
+                    return PartialView("_Intro");
+                case 1:
+                    return PartialView("_HowItWorks");
+                case 2:
+                    return PartialView("_Prizes");
+                case 3:
+                    return PartialView("_BrandValues");
+                case 4:
+                    return PartialView("Browse");
+                case 5:
+                    return PartialView("Upload");
+                case 6:
+                    return PartialView("_WinningEntry");
+                case 7:
+                    return PartialView("FAQ");
+            }
+
+            return PartialView("_Intro");
         }
 
         public PartialViewResult Intro()
