@@ -338,6 +338,25 @@ namespace BrandValues.Controllers {
             playViewModel.Entry = entry;
             playViewModel.Entries = allDocs;
 
+            //check site version for like/vote
+            var votingEnabled = SiteVersion.Voting;
+            ViewBag.Voting = false;
+            //check for vote
+            ViewBag.Voted = false;
+            if (votingEnabled == true)
+            {
+                ViewBag.Voting = true;
+                
+                foreach (string x in entry.Votes)
+                {
+                    if (x.Contains(User.Identity.Name))
+                    {
+                        ViewBag.Voted = true;
+                    }
+                }
+                return View(playViewModel);
+            }
+
             //check for like
             ViewBag.Liked = false;
             foreach (string x in entry.Likes)
@@ -394,6 +413,24 @@ namespace BrandValues.Controllers {
             //var user = await UserManager.FindByNameAsync(User.Identity.Name);
 
             entry.Likes.Add(User.Identity.Name);
+
+            Context.Entries.Save(entry);
+
+            return Json("Ok", JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<JsonResult> PostVote(FormCollection form)
+        {
+            //get entry
+            var id = form["Entry.Id"];
+            var entry = GetEntry(id);
+
+            //var user = await UserManager.FindByNameAsync(User.Identity.Name);
+
+            entry.Votes.Add(User.Identity.Name);
 
             Context.Entries.Save(entry);
 

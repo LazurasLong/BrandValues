@@ -10,5 +10,7 @@ namespace BrandValues.Models
     {
         [Required]
         public string Homepage { get; set; }
+
+        public bool Voting { get; set; }
     }
 }

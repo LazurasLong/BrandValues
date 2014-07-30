@@ -14,6 +14,8 @@ namespace BrandValues.Models
 
         public string Homepage { get; set; }
 
+        public bool Voting { get; set; }
+
         public SiteVersion()
         {
         }
@@ -21,6 +23,7 @@ namespace BrandValues.Models
         public void Edit(SiteVersionViewModel edit)
         {
             Homepage = edit.Homepage;
+            Voting = edit.Voting;
         }
     }
 }

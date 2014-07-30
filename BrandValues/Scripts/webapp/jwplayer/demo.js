@@ -60,9 +60,9 @@
                             file: fallbackUrl
                         }]
                     }],
-                    sharing: {
-                        link: document.URL
-                    },
+                    //sharing: {
+                    //    link: document.URL
+                    //},
                     //primary: "flash",
                     width: "100%",
                     aspectratio: "16:9",

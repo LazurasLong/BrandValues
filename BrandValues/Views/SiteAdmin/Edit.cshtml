@@ -7,7 +7,7 @@
 
 <section class="vbox">
     <section class="scrollable padder">
-        <h2>Select the hompage.</h2>
+        <h2>Site Options</h2>
 
 
         @using (Html.BeginForm())
@@ -41,6 +41,28 @@
                     <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version5">  Version 5  </option>
                     <option data-img-src="https://d3kx2j4tswsg1z.cloudfront.net/siteadmin/version1.jpg" value="Version6">  Version 6  </option>
                 </select>
+
+                <div class="form-group">
+                        <label class="col-sm-2 control-label" for="voting">Voting Enabled</label>
+                        <div class="col-md-10">
+                            <select id="voting" name="voting" class="form-control">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+                            @Html.ValidationMessageFor(model => model.Voting)
+                        </div>
+                </div>
+
+                <script>
+                    var voting = '@(Model.Voting)';
+                    if (voting == "False") {
+                        $('#voting').val("false");
+                    } else {
+                        $('#voting').val("true");
+                    }
+                    
+                </script>
+
 
                 <div>
                     <input type="submit" value="Save" class="btn btn-default" /> |

@@ -33,6 +33,8 @@ namespace BrandValues.Entries
 
         public List<string> Likes = new List<string>();
 
+        public List<string> Votes = new List<string>();
+
         public int Hits { get; set; }
 
         public List<PostComment> Comments { get; set; }

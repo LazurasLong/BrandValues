@@ -35,72 +35,146 @@
                                     <div id="text" align="center"></div>
                                     <div class="entry-info wrapper-lg">
 
-                                        @if (ViewBag.Liked)
+                                        @if (ViewBag.Voting)
                                         {
-                                            <div class="pull-right text-sm">
-                                                <div class="btn btn-success">
-                                                    <i class="fa fa-thumbs-o-up text"></i> Liked
+                                            if (ViewBag.Voted)
+                                            {
+                                                <div class="pull-right text-sm">
+                                                    <div class="btn btn-success">
+                                                        <i class="fa fa-thumbs-o-up text"></i> Voted
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        }
-                                        else
-                                        {
+                                            }
+                                            else
+                                            {
 
-                                            <script>
+                                                <script>
 
-                                                $(function () {
+                                                    $(function () {
 
-                                                    //Like
-                                                    $("#btn-like").click(function () {
-                                                        var $form = $('#likeForm');
-                                                        var options = {
-                                                            url: $form.attr("action"),
-                                                            type: $form.attr("method"),
-                                                            data: $form.serialize(),
-                                                            success: function (response) {
+                                                        //Like
+                                                        $("#btn-vote").click(function () {
+                                                            var $form = $('#voteForm');
+                                                            var options = {
+                                                                url: $form.attr("action"),
+                                                                type: $form.attr("method"),
+                                                                data: $form.serialize(),
+                                                                success: function (response) {
 
-                                                                $("#likeForm").hide();
-                                                                $("#likeresults").removeClass('hidden');
+                                                                    $("#voteForm").hide();
+                                                                    $("#voteresults").removeClass('hidden');
 
+
+                                                                    //$('#btn-like').removeClass("btn-default");
+                                                                    //$('#btn-like').addClass("btn-success");
+                                                                    //$("#btn-like").prop('disabled', true);
+                                                                    //$("#likeTxt").html('Liked');
+                                                                }
+                                                            };
+
+                                                            $.ajax(options).done(function (data) {
+
+                                                                $("#voteForm").hide();
+                                                                $("#voteresults").removeClass('hidden');
 
                                                                 //$('#btn-like').removeClass("btn-default");
                                                                 //$('#btn-like').addClass("btn-success");
-                                                                //$("#btn-like").prop('disabled', true);
                                                                 //$("#likeTxt").html('Liked');
-                                                            }
-                                                        };
+                                                                //var $target = $('#likeResults');
+                                                                //$target.replaceWith(data);
+                                                            });
 
-                                                        $.ajax(options).done(function (data) {
-
-                                                            $("#likeForm").hide();
-                                                            $("#likeresults").removeClass('hidden');
-
-                                                            //$('#btn-like').removeClass("btn-default");
-                                                            //$('#btn-like').addClass("btn-success");
-                                                            //$("#likeTxt").html('Liked');
-                                                            //var $target = $('#likeResults');
-                                                            //$target.replaceWith(data);
+                                                            return false;
                                                         });
 
-                                                        return false;
+
+
                                                     });
+                                                </script>
 
 
 
-                                                });
-                                            </script>
-
-
-
-                                            <form class="pull-right text-sm" id="likeForm" method="post" action="@Url.Action("PostLike")">
+                                            <form class="pull-right text-sm" id="voteForm" method="post" action="@Url.Action("PostVote")">
                                                 @Html.AntiForgeryToken()
                                                 @Html.HiddenFor(model => model.Entry.Id)
-                                                <button type="submit" class="btn btn-default" id="btn-like" value="Comment">
-                                                    <i class="fa fa-thumbs-o-up text"></i> <span id="likeTxt">Thumbs Up</span>
+                                                <button type="submit" class="btn btn-default" id="btn-vote" value="Vote">
+                                                    <i class="fa fa-thumbs-o-up text"></i> <span id="voteTxt">Vote For</span>
                                                 </button>
 
                                             </form>
                                         }
+                                        
+                                        }
+                                        else {
+
+                                            if (ViewBag.Liked)
+                                            {
+                                                <div class="pull-right text-sm">
+                                                    <div class="btn btn-success">
+                                                        <i class="fa fa-thumbs-o-up text"></i> Liked
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+
+                                                <script>
+
+                                                    $(function () {
+
+                                                        //Like
+                                                        $("#btn-like").click(function () {
+                                                            var $form = $('#likeForm');
+                                                            var options = {
+                                                                url: $form.attr("action"),
+                                                                type: $form.attr("method"),
+                                                                data: $form.serialize(),
+                                                                success: function (response) {
+
+                                                                    $("#likeForm").hide();
+                                                                    $("#likeresults").removeClass('hidden');
+
+
+                                                                    //$('#btn-like').removeClass("btn-default");
+                                                                    //$('#btn-like').addClass("btn-success");
+                                                                    //$("#btn-like").prop('disabled', true);
+                                                                    //$("#likeTxt").html('Liked');
+                                                                }
+                                                            };
+
+                                                            $.ajax(options).done(function (data) {
+
+                                                                $("#likeForm").hide();
+                                                                $("#likeresults").removeClass('hidden');
+
+                                                                //$('#btn-like').removeClass("btn-default");
+                                                                //$('#btn-like').addClass("btn-success");
+                                                                //$("#likeTxt").html('Liked');
+                                                                //var $target = $('#likeResults');
+                                                                //$target.replaceWith(data);
+                                                            });
+
+                                                            return false;
+                                                        });
+
+
+
+                                                    });
+                                                </script>
+
+
+
+                                                <form class="pull-right text-sm" id="likeForm" method="post" action="@Url.Action("PostLike")">
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.HiddenFor(model => model.Entry.Id)
+                                                    <button type="submit" class="btn btn-default" id="btn-like" value="Comment">
+                                                        <i class="fa fa-thumbs-o-up text"></i> <span id="likeTxt">Thumbs Up</span>
+                                                    </button>
+
+                                                </form>
+                                            }
+                                        }
+
 
                                         <div class="pull-right animated fadeInRight hidden" id="likeresults">
                                             <div class="pull-right text-sm">
@@ -110,7 +184,13 @@
                                             </div>
                                         </div>
 
-
+                                        <div class="pull-right animated fadeInRight hidden" id="voteresults">
+                                            <div class="pull-right text-sm">
+                                                <div class="btn btn-success">
+                                                    <i class="fa fa-thumbs-o-up text"></i> Voted
+                                                </div>
+                                            </div>
+                                        </div>
 
 
 
@@ -121,8 +201,14 @@
                                                 if (Model.Entry.TeamName != null)
                                                 {
                                                     @(Model.Entry.TeamName)
-                                                }else {
-                                                    @(Model.Entry.UserName)
+                                                }
+                                                else
+                                                {
+                                                    var space = "&nbsp;";
+                                                    @(Model.Entry.UserFirstName)
+                                                    @Html.Raw(space)
+                                                    @(Model.Entry.UserSurname)
+                                                    <br />@(Model.Entry.UserArea)
                                                 }
                                             }
 
@@ -133,18 +219,7 @@
                                 <ul class="list-group list-group-lg auto m-b-none m-t-n-xxs">
                                     <li class="list-group-item margin-bottom clearfix">
                                         <div class="col-xs-2">
-                                            <div>
-                                                <a class="btn btn-default" data-toggle="button">
-                                                    <i class="fa fa-thumbs-o-up text"></i>
-                                                    <i class="fa fa-thumbs-up text-active text-success"></i>
-                                                </a>
-                                            </div>
-                                            <div class="top-padding-10">
-                                                <a class="btn btn-default" data-toggle="button">
-                                                    <i class="fa icon-share text"></i>
-                                                    <i class="fa icon-share text-active text-danger"></i>
-                                                </a>
-                                            </div>
+
                                         </div>
 
                                         <div class="col-xs-10 margin-bottom">
@@ -232,6 +307,10 @@
 
 
                             </section>
+
+
+
+
 
 
 
