@@ -240,6 +240,16 @@ namespace BrandValues.Controllers {
             playViewModel.Entry = entry;
             playViewModel.Entries = allDocs;
 
+            //check for like
+            ViewBag.Liked = false;
+            foreach (string x in entry.Likes)
+            {
+                if (x.Contains(User.Identity.Name))
+                {
+                    ViewBag.Liked = true;
+                }
+            }
+
             return View(playViewModel);
         }
 
@@ -276,7 +286,7 @@ namespace BrandValues.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> PostLike(FormCollection form)
+        public async Task<JsonResult> PostLike(FormCollection form)
         {
             //get entry
             var id = form["Entry.Id"];

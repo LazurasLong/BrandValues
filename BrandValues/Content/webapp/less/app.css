@@ -3659,7 +3659,7 @@ textarea,
   font-weight: normal;
   margin: 0;
   color: #ffffff !important;
-  background-color: #647cb8;
+  background-color: #232c32;
   background-repeat: no-repeat;
   background-image: none !important;
   text-shadow: none;
@@ -3923,5 +3923,8 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected {
 }
 .entry-icon-padder {
   padding-top: 5px;
+}
+#likeResults {
+  display: none !important;
 }
 /*# sourceMappingURL=app.css.map */
