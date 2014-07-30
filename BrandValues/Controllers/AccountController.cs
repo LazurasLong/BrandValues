@@ -292,7 +292,7 @@ namespace BrandValues.Controllers
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "We received a request to reset your password.<br/>Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a><br/><br/>-------------------------------------<br/>If you have any problems please contact aib@valuescompetition.com");
                 ViewBag.Link = callbackUrl;
                 return View("ForgotPasswordConfirmation");
             }
