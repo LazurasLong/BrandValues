@@ -204,6 +204,94 @@ namespace BrandValues.Controllers {
             return PartialView("_WinningEntry");
         }
 
+        //Browse
+        public PartialViewResult All()
+        {
+            var entries = Context.Entries.FindAll();
+            return PartialView("_DisplayEntries", entries);
+        }
+
+        public PartialViewResult Customers()
+        {
+            var searchTerm = "customers";
+            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    search
+                );
+
+            var entries = Context.Entries
+                .FindAs<Entry>(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            return PartialView("_DisplayEntries", entries);
+        }
+
+        public PartialViewResult Empowering()
+        {
+            var searchTerm = "empowering";
+            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    search
+                );
+
+            var entries = Context.Entries
+                .FindAs<Entry>(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            return PartialView("_DisplayEntries", entries);
+        }
+
+        public PartialViewResult Trust()
+        {
+            var searchTerm = "trust";
+            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    search
+                );
+
+            var entries = Context.Entries
+                .FindAs<Entry>(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            return PartialView("_DisplayEntries", entries);
+        }
+
+        public PartialViewResult Simple()
+        {
+            var searchTerm = "simple";
+            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    search
+                );
+
+            var entries = Context.Entries
+                .FindAs<Entry>(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            return PartialView("_DisplayEntries", entries);
+        }
+
+
+        public PartialViewResult Together()
+        {
+            var searchTerm = "together";
+            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
+            var searchQuery =
+                MongoDB.Driver.Builders.Query.Or(
+                    search
+                );
+
+            var entries = Context.Entries
+                .FindAs<Entry>(searchQuery)
+                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            return PartialView("_DisplayEntries", entries);
+        }
+
         //cache
         //[OutputCache(Duration = 600)]
         public ActionResult Play(string id)
