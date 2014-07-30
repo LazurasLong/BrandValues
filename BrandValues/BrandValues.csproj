@@ -331,6 +331,7 @@
     <Content Include="Views\Home\_DisplayEntries.cshtml" />
     <Content Include="Views\Home\_WinningEntry.cshtml" />
     <Content Include="Views\Home\_BrandValues.cshtml" />
+    <Content Include="Views\Account\ErrorNotConfirmed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
