@@ -37,7 +37,25 @@
 
 body {
     height: 100%;
+    color: #788188;
 }
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+
 #header {
     position: fixed !important;
     position: absolute; /* IE6 reads this */
@@ -172,6 +190,126 @@ color: #999;
 
 .help-block{
    display: block;
+}
+
+/* Homepage */
+.panel.panel-default {
+border-color: #eaeef1;
+}
+.panel-group .panel {
+margin-bottom: 0;
+overflow: hidden;
+}
+.no-border {
+border: none;
+}
+.no-top-margin {
+margin-top: 0!important;
+}
+.panel-group .panel-heading {
+border-bottom: 0;
+}
+.accordion-icon {
+position: static;
+display: inline-block;
+width: auto;
+}
+.bg-primary {
+background-color: @brand-primary;
+color: #f0f2f8;
+}
+.white {
+color: #fff;
+}
+.i-lg {
+font-size: 1.33333333em;
+line-height: .75em;
+vertical-align: -15%;
+}
+.acc-icon-padding {
+padding-top: 7px;
+}
+.menu-panel {
+    background-color: lighten(@brand-primary, 10%) !important;
+    border-radius: 0px !important;
+    border: none !important;
+    padding: 15px;
+}
+.menu-panel:hover {
+    background-color: lighten(@brand-primary, 5%) !important;
+}
+.menuhover {
+    background-color: lighten(@brand-primary, 5%) !important;
+}
+.menu-panel-orange {
+    background-color: lighten(@brand-warning, 7.5%) !important;
+}
+.menu-panel-orange:hover {
+    background-color: lighten(@brand-warning, 5%) !important;
+}
+.left {
+    text-align: left !important;
+}
+
+/* entries */
+.text-ellipsis {
+display: block;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.text-xs {
+font-size: 12px;
+}
+.text-muted {
+color: #939aa0;
+}
+
+.entry-icon-padder {
+padding-top: 5px;
+}
+.padder-v {
+padding-top: 15px;
+padding-bottom: 15px;
+}
+.pos-rlt {
+position: relative;
+}
+
+
+
+
+/* Subpages */
+.margin-top-20 {
+margin-top: 20px;
+}
+
+.m-t-xl {
+margin-top: 40px;
+}
+
+.m-b {
+margin-bottom: 15px;
+}
+
+h3, .h3 {
+font-size: 24px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+margin: 0;
+}
+
+.clear {
+display: block;
+overflow: hidden;
+}
+
+@media (min-width: 768px) {
+.hidden-desktop {
+display: none!important;
+}
 }
 
 

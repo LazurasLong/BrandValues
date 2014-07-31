@@ -150,6 +150,7 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\bg\bg-nav-compass.png" />
+    <Content Include="images\box-compass-ie.png" />
     <Content Include="images\box-compass.png" />
     <Content Include="images\aib-logo-small.png" />
     <Content Include="images\entries\document.png" />
@@ -157,6 +158,7 @@
     <Content Include="images\entries\photo.png" />
     <Content Include="images\jwplayer\video-encoding.png" />
     <Content Include="images\Liffey.jpg" />
+    <Content Include="images\logo-ie.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\p0.jpg" />
     <Content Include="images\p1.jpg" />

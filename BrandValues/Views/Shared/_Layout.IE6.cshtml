@@ -21,28 +21,12 @@
 </head>
 <body>
     <div id="header">
-        <div class="span-2">
-            <a href="~/home/" class="navbar-brand text-dark">
-                <img src="~/images/aib-logo-small.png" alt="AIB Logo">
+        <div class="span-6">
+            <a href="~/home/" class="left">
+                <img src="~/images/logo-ie.png" alt="AIB Brand Values">
             </a>
         </div>
-        <div class="span-3 top-padding"><h3>Brand Values</h3></div>
-        <div class="prepend-10 top-padding last inline">
-            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-            {
-                <div class="span-3">
-                    @Html.ActionLink("Site Admin", "Index", "SiteAdmin")
-                </div>
-                <div class="span-3">
-                    @Html.ActionLink("Roles Admin", "Index", "RolesAdmin")
-                </div>
-                <div class="span-3">
-                    @Html.ActionLink("Users Admin", "Index", "UsersAdmin")
-                </div>
-               
-
-            }
-
+        <div class="prepend-18 top-padding last inline">
 
             @Html.Partial("_LoginPartial")
 
