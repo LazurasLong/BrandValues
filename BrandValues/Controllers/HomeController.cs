@@ -207,10 +207,15 @@ namespace BrandValues.Controllers {
 
             var selection = Convert.ToInt32(Menu);
 
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+
+
             switch (selection)
             {
                 case 0:
-                    return PartialView("_Intro");
+                    return PartialView("_Intro", allDocs);
                 case 1:
                     return PartialView("_HowItWorks");
                 case 2:
@@ -227,7 +232,7 @@ namespace BrandValues.Controllers {
                     return PartialView("FAQ");
             }
 
-            return PartialView("_Intro");
+            return PartialView("_Intro", allDocs);
         }
 
         public PartialViewResult Intro()

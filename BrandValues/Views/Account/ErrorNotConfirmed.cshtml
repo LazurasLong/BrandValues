@@ -1,15 +1,14 @@
 ﻿@{
     ViewBag.Title = "Please Confirm Your Email";
 }
+<div class="mobile-bg">
+    <h2>@ViewBag.Title.</h2>
+        <p>
+            Please confirm your email by clicking the link in the email we sent you.<br />
+            If you are having problems please contact us at <a class="text-info" href="mailto:aib@valuescompetition.com?Subject=Login%20Issue">aib@valuescompetition.com</a>
+        </p>
 
-<h2>@ViewBag.Title.</h2>
-<div>
-    <p>
-        Please confirm your email by clicking the link in the email we sent you.<br />
-        If you are having problems please contact us at <a class="text-info" href="mailto:aib@valuescompetition.com?Subject=Login%20Issue">aib@valuescompetition.com</a>
-    </p>
-
-    <p>
-        @Html.ActionLink("Back to login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "text-info" })
-    </p>
+        <p>
+            @Html.ActionLink("Back to login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "text-info" })
+        </p>
 </div>
