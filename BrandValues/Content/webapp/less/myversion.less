@@ -267,7 +267,16 @@ min-height: 10px;
     padding: 15px;
 }
 .menu-panel:hover {
-    background-color: lighten(@brand-primary, 20%) !important;
+    background-color: lighten(@brand-primary, 5%) !important;
+}
+.menuhover {
+    background-color: lighten(@brand-primary, 5%) !important;
+}
+.menu-panel-orange {
+    background-color: lighten(@brand-warning, 7.5%) !important;
+}
+.menu-panel-orange:hover {
+    background-color: lighten(@brand-warning, 5%) !important;
 }
 .top-padding-10 {
     padding-top: 10px;
@@ -350,6 +359,9 @@ min-height: 10px;
 
 /* Loading */
 #loading {
+    display: none;
+}
+#mainLoading {
     display: none;
 }
 

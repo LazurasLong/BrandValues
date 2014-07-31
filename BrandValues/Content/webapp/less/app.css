@@ -3832,7 +3832,16 @@ textarea,
   padding: 15px;
 }
 .menu-panel:hover {
-  background-color: #aab7d8 !important;
+  background-color: #758bc0 !important;
+}
+.menuhover {
+  background-color: #758bc0 !important;
+}
+.menu-panel-orange {
+  background-color: #ea975b !important;
+}
+.menu-panel-orange:hover {
+  background-color: #e99050 !important;
 }
 .top-padding-10 {
   padding-top: 10px;
@@ -3906,6 +3915,9 @@ textarea,
 }
 /* Loading */
 #loading {
+  display: none;
+}
+#mainLoading {
   display: none;
 }
 /* Upload */

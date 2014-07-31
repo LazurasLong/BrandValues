@@ -122,13 +122,9 @@ namespace BrandValues.Controllers {
 
             items.Add(new SelectListItem { Text = "A reminder of the AIB brand values", Value = "3" });
 
-            items.Add(new SelectListItem { Text = "Our new brand film", Value = "4" });
+            items.Add(new SelectListItem { Text = "What does a winning entry look like?", Value = "4" });
 
-            items.Add(new SelectListItem { Text = "Click here to enter", Value = "5" });
-
-            items.Add(new SelectListItem { Text = "What does a winning entry look like?", Value = "6" });
-
-            items.Add(new SelectListItem { Text = "All your questions answered…", Value = "7" });
+            items.Add(new SelectListItem { Text = "All your questions answered…", Value = "5" });
 
             return items;
         }
@@ -202,7 +198,7 @@ namespace BrandValues.Controllers {
             return Json(entries, JsonRequestBehavior.AllowGet);
         }
 
-        public PartialViewResult CategoryChosen(string Menu)
+        public ActionResult CategoryChosen(string Menu)
         {
 
             var selection = Convert.ToInt32(Menu);
@@ -223,13 +219,9 @@ namespace BrandValues.Controllers {
                 case 3:
                     return PartialView("_BrandValues");
                 case 4:
-                    return PartialView("Browse");
-                case 5:
-                    return PartialView("Upload");
-                case 6:
                     return PartialView("_WinningEntry");
-                case 7:
-                    return PartialView("FAQ");
+                case 5:
+                    return PartialView("_FAQ");
             }
 
             return PartialView("_Intro", allDocs);
@@ -250,6 +242,11 @@ namespace BrandValues.Controllers {
             return PartialView("_Prizes");
         }
 
+        public PartialViewResult BrandFilm()
+        {
+            return PartialView("_BrandFilm");
+        }
+
         public PartialViewResult BrandValues()
         {
             return PartialView("_BrandValues");
@@ -258,6 +255,11 @@ namespace BrandValues.Controllers {
         public PartialViewResult WinningEntry()
         {
             return PartialView("_WinningEntry");
+        }
+
+        public PartialViewResult FAQs()
+        {
+            return PartialView("_FAQ");
         }
 
         //Browse

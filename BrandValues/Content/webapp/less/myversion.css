@@ -238,6 +238,9 @@ textarea,
 .menu-panel:hover {
   background-color: #aab7d8 !important;
 }
+.menuhover {
+  background-color: #aab7d8 !important;
+}
 .top-padding-10 {
   padding-top: 10px;
 }
@@ -310,6 +313,9 @@ textarea,
 }
 /* Loading */
 #loading {
+  display: none;
+}
+#mainLoading {
   display: none;
 }
 /* Upload */
