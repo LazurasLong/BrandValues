@@ -38,16 +38,29 @@ color: #f0f2f8;
 
 /* Menu fixes */
 @media (max-width: 910px) {
-.hidden-tablet{
-    display: none !important;
+    .hidden-tablet{
+        display: none !important;
+    }
 }
-  
+
+@media (max-width: 768px) {
+    .no-margin-mobile{
+        margin-bottom: 0px !important;
+        padding-bottom: 0px !important;
+    }  
+    .wrapper {
+        padding-bottom: 0px !important;
+    }
+    .panel-body {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }
 }
 
 @media (min-width: 768px) {
-.hidden-desktop{
-    display: none !important;
-}
+    .hidden-desktop{
+        display: none !important;
+    }
   
 }
 
@@ -86,7 +99,6 @@ border-radius: 0px !important;
 .ui-widget-content{
     background: @brand-white !important;
 }
-
 .ui-menu .ui-menu-item a.ui-state-focus,
 .ui-menu .ui-menu-item a.ui-state-active { 
   font-weight: normal; 

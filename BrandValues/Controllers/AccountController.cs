@@ -166,6 +166,22 @@ namespace BrandValues.Controllers
             return View();
         }
 
+        private bool CheckEmail(string email)
+        {
+            if (email.Contains("@aib"))
+            {
+                return true;
+            }
+
+            if (email.Contains("@mail.ebs.ie"))
+            {
+                return true;
+            }
+            
+            return false;
+        }
+
+
         //
         // POST: /Account/Register
         [HttpPost]
@@ -175,20 +191,39 @@ namespace BrandValues.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!model.Email.ToString().Contains("@aib"))
+                var userEmail = model.Email.ToLower();
+
+                if (!CheckEmail(userEmail))
                 {
-                    ModelState.AddModelError("", "You need to use your AIB email address");
+                    ModelState.AddModelError("", "You need to use your AIB or EBS email address");
                 }
                 else
                 {
-                    string[] namesArray = model.Email.Split('.');
-                    //Get title case for first name & surname
-                    string firstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[0]);
+                    string[] namesArray = userEmail.Split('.');
 
-                    int l = namesArray[2].IndexOf("@");
-                    string surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[2].Substring(0, l));
+                    string firstName = "";
+                    string surname = "";
+
+                    if (userEmail.Contains("@aib"))
+                    {
+                        //Get title case for first name & surname
+                        firstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[0]);
+
+                        int l = namesArray[2].IndexOf("@");
+                        surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[2].Substring(0, l));
+                    }
+
+                    if (userEmail.Contains("@mail.ebs.ie"))
+                    {
+                        //Get title case for first name & surname
+                        firstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[0]);
+
+                        int l = namesArray[1].IndexOf("@");
+                        surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[1].Substring(0, l));
+                    }
+
+
                     
-                    var userEmail = model.Email.ToLower();
 
                     var user = new ApplicationUser
                     {

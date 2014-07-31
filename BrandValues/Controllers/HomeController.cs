@@ -96,6 +96,21 @@ namespace BrandValues.Controllers {
             sbb.Descending("CreatedOn");
             var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
 
+            //get menu
+            ViewBag.Menu = GetMenu();
+
+
+            if (version == "Version2")
+            {
+                return View("V2", allDocs);
+            }
+
+            return View(allDocs);
+
+        }
+
+        public List<SelectListItem> GetMenu()
+        {
             //dropdown menu
             List<SelectListItem> items = new List<SelectListItem>();
 
@@ -115,20 +130,7 @@ namespace BrandValues.Controllers {
 
             items.Add(new SelectListItem { Text = "All your questions answered…", Value = "7" });
 
-            ViewBag.Menu = items;
-
-            //var model = from r in entries
-            //            orderby r.CreatedOn descending
-            //            select r;
-
-
-            if (version == "Version2")
-            {
-                return View("V2", allDocs);
-            }
-
-            return View(allDocs);
-
+            return items;
         }
 
         [HttpGet]
