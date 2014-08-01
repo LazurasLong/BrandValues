@@ -779,10 +779,17 @@ namespace BrandValues.Controllers {
 
         public ActionResult Edit(string id)
         {
+
+            //only give edit access to admin or user who created
             var entry = GetEntry(id);
 
+            if (User.IsInRole("Admin") || entry.UserName == User.Identity.Name)
+            {
+                return View(entry);
+            }
 
-            return View(entry);
+            return RedirectToAction("Entry");
+            
         }
 
         private Entry GetEntry(string id)
@@ -795,14 +802,27 @@ namespace BrandValues.Controllers {
         public ActionResult Edit(string id, Edit editEntry)
         {
             var entry = GetEntry(id);
-            entry.Edit(editEntry);
-            Context.Entries.Save(entry);
-            return RedirectToAction("Index");
+            if (User.IsInRole("Admin") || entry.UserName == User.Identity.Name)
+            {
+                entry.Edit(editEntry);
+                Context.Entries.Save(entry);
+                return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Entry");
+
+
         }
 
         public ActionResult Delete(string id)
         {
-            Context.Entries.Remove(MongoDB.Driver.Builders.Query.EQ("_id", new ObjectId(id)));
+            var entry = GetEntry(id);
+            if (User.IsInRole("Admin") || entry.UserName == User.Identity.Name)
+            {
+                Context.Entries.Remove(MongoDB.Driver.Builders.Query.EQ("_id", new ObjectId(id)));
+                return RedirectToAction("Entry");
+            }
+
             return RedirectToAction("Entry");
         }
     }

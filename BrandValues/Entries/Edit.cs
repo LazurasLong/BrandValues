@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,7 +8,9 @@ namespace BrandValues.Entries
 {
     public class Edit
     {
+        [Required]
         public string Name { get; set; }
-        public string NewDescription { get; set; }
+        [Required]
+        public string Description { get; set; }
     }
 }

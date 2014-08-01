@@ -67,7 +67,7 @@ namespace BrandValues.Entries
 
         public void Edit(Edit edit)
         {
-            Description = edit.NewDescription;
+            Description = edit.Description;
             Name = edit.Name;
         }
         
