@@ -341,6 +341,12 @@ hr {
   border: 0;
   border-top: 1px solid #eee;
 }
+.small-hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
 .margin-top-20 {
   margin-top: 20px;
 }

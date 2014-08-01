@@ -24,7 +24,8 @@ namespace BrandValues
             //IE6 & IE7 identifier
             DisplayModeProvider.Instance.Modes.Insert(0, new DefaultDisplayMode("IE6")
             {
-                ContextCondition = (context => context.GetOverriddenUserAgent().IndexOf("MSIE 6.", StringComparison.OrdinalIgnoreCase) >= 0)
+                ContextCondition = (
+                context => context.GetOverriddenUserAgent().IndexOf("MSIE 6.", StringComparison.OrdinalIgnoreCase) >= 0) 
             });
 
             DisplayModeProvider.Instance.Modes.Add(new DefaultDisplayMode("IE6")
