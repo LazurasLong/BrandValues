@@ -73,6 +73,10 @@ namespace BrandValues
                         "~/Scripts/webapp/wizard/demoIE6.js"
                         ));
 
+            bundles.Add(new ScriptBundle("~/Bundles/ie6video").Include(
+                        "~/Scripts/webapp/jwplayer/ie6.js"
+                        ));
+
             BundleTable.EnableOptimizations = true;
         }
     }

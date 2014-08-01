@@ -7,24 +7,31 @@
     var uploaded = '@ViewBag.Uploaded';
 </script>
 
+<div class="span-8">
+    <div class="item pos-rlt">
+        <img class="img-full" src="~/images/upload-ie.png" alt="Upload your individual or team entry">
+    </div>
+    <div class="panel-heading">
+        <ul class="nav nav-tabs font-bold">
+            <li><a href="#step1" data-toggle="tab">Step 1: Your Details</a></li>
+            <li><a href="#step2" data-toggle="tab">Step 2: Upload</a></li>
+        </ul>
+    </div>
+</div>
 
                         <div class="span-12 prepend-1 ">
 
     <div class="m-t m-b">
 
-        <h3>Upload your Individual or Team Competition Entry</h3>
+
+
 
         @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data", data_parsley_validate = "" }))
         {
 
             @Html.AntiForgeryToken()
             <div class="panel margin-top-20 panel-default">
-                <div class="panel-heading">
-                    <ul class="nav nav-tabs font-bold">
-                        <li><a href="#step1" data-toggle="tab">Step 1: Your Details</a></li>
-                        <li><a href="#step2" data-toggle="tab">Step 2: Upload</a></li>
-                    </ul>
-                </div>
+
                 <div class="panel-body">
                     <hr />
                     <h2 class="text-success">@Html.Raw(ViewBag.Message)</h2>

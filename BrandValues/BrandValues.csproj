@@ -148,11 +148,13 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\Simple-Line-Icons.dev.svg" />
     <Content Include="fonts\Simple-Line-Icons.svg" />
+    <Content Include="images\aib-logo-large-ie.png" />
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\bg\bg-nav-compass.png" />
     <Content Include="images\box-compass-ie.png" />
     <Content Include="images\box-compass.png" />
     <Content Include="images\aib-logo-small.png" />
+    <Content Include="images\browse-ie.png" />
     <Content Include="images\entries\document.png" />
     <Content Include="images\entries\video.png" />
     <Content Include="images\entries\photo.png" />
@@ -177,6 +179,7 @@
     <Content Include="Content\webapp\less\myversion.css">
       <DependentUpon>myversion.less</DependentUpon>
     </Content>
+    <Content Include="images\upload-ie.png" />
     <Content Include="packages.config" />
     <Content Include="Content\webapp\css\bootstrap.less" />
     <Content Include="Content\webapp\fonts\fontawesome-webfont.eot" />
@@ -242,6 +245,7 @@
     <Content Include="Scripts\webapp\image-picker\image-picker.min.js" />
     <Content Include="Scripts\webapp\jquery-ui.min.js" />
     <Content Include="Scripts\webapp\jquery.min.js.map" />
+    <Content Include="Scripts\webapp\jwplayer\ie6.js" />
     <Content Include="Scripts\webapp\jwplayer\demo.js" />
     <Content Include="Scripts\webapp\jwplayer\jwplayer.flash.swf" />
     <Content Include="Scripts\webapp\jwplayer\jwplayer.html5.js" />
@@ -333,6 +337,8 @@
     <Content Include="Views\Home\_BrandValues.cshtml" />
     <Content Include="Views\Account\ErrorNotConfirmed.cshtml" />
     <Content Include="Views\Home\_FAQ.cshtml" />
+    <Content Include="Views\Home\Browse.IE6.cshtml" />
+    <Content Include="Views\Home\Play.IE6.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
