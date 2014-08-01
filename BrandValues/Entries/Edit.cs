@@ -7,6 +7,7 @@ namespace BrandValues.Entries
 {
     public class Edit
     {
+        public string Name { get; set; }
         public string NewDescription { get; set; }
     }
 }

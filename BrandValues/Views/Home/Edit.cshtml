@@ -15,18 +15,29 @@
             <div class="form-horizontal">
 
                 <div class="form-group">
+                    <label class="control-label col-md-2">New Name</label>
+                    <div class="col-md-10">
+                        @Html.TextBox("Name")
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label class="control-label col-md-2">Description</label>
                     <div class="col-md-10">
                         @Model.Description
                     </div>
                 </div>
 
+
                 <div class="form-group">
                     @Html.Label("Edit", "Edit Description", new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBox("NewDescription")
+                        <textarea name="NewDescription" id="NewDescription" class="form-control" placeholder="Your new Description" rows="3"></textarea>
                     </div>
                 </div>
+
+
+
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
