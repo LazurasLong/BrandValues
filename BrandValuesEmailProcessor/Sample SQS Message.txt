@@ -1,0 +1,1 @@
+﻿{"email":"david.j.maxwell@aib.ie","name":"Dave","url":"https://valuescompetition.com/Account/ConfirmEmail?userId=53dba62c46f3c62ea44d7b46&code=p9galDpM1GTwzU%2FIVSumOpLlFK4GRGH9mtAG8GI5KU2NtXYGRaRJ0jUPu4Whwpsy%2BSCrBys%2BaxsHBlKhM5nPE87TcmnQDYc2d5sBgeVNCx%2B5eX5beqRoY7TuUwmoNazPbp93jkmxLXWS7JKiFLk3gbxxTRcFRh1%2BUy9DgMuNLZyevciEuWO7hN4J64eI3%2Blr","subject":"Welcome"}

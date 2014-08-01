@@ -193,7 +193,7 @@ namespace BrandValues.Controllers
             {
                 var userEmail = model.Email.ToLower();
 
-                if (!CheckEmail(userEmail))
+                if (CheckEmail(userEmail))
                 {
                     ModelState.AddModelError("", "You need to use your AIB or EBS email address");
                 }
