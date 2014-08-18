@@ -50,6 +50,14 @@
     <Reference Include="AWSSDK">
       <HintPath>..\packages\AWSSDK.2.1.7.0\lib\net45\AWSSDK.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah, Version=1.2.14318.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\elmah.corelibrary.1.2.1\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc, Version=2.0.0.29988, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.0.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -480,7 +488,9 @@
     <Content Include="Scripts\webapp\wysiwyg\bootstrap-wysiwyg.js" />
     <Content Include="Scripts\webapp\wysiwyg\demo.js" />
     <Content Include="Scripts\webapp\wysiwyg\jquery.hotkeys.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\ApplicationIdentityContext.cs" />
