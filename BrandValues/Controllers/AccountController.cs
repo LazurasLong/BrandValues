@@ -193,7 +193,7 @@ namespace BrandValues.Controllers
             {
                 var userEmail = model.Email.ToLower();
 
-                if (CheckEmail(userEmail))
+                if (!CheckEmail(userEmail))
                 {
                     ModelState.AddModelError("", "You need to use your AIB or EBS email address");
                 }
@@ -243,7 +243,7 @@ namespace BrandValues.Controllers
                             try
                             {
                                 var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                                var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: "https");
                                 //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                                 //ViewBag.Link = callbackUrl;
 
@@ -274,7 +274,7 @@ namespace BrandValues.Controllers
                         if (sendEmail)
                         {
                             var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: "https");
                             await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
                             return View("DisplayEmail");
                         }
@@ -334,7 +334,7 @@ namespace BrandValues.Controllers
                 }
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: "https");
                 await UserManager.SendEmailAsync(user.Id, "Reset Password", "We received a request to reset your password.<br/>Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a><br/><br/>-------------------------------------<br/>If you have any problems please contact aib@valuescompetition.com");
                 ViewBag.Link = callbackUrl;
                 return View("ForgotPasswordConfirmation");

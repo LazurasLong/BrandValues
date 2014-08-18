@@ -4,7 +4,20 @@
 <div class="mobile-bg">
     <h2>@ViewBag.Title.</h2>
 
-    <p>
-        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </p>
+    @if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count() > 0)
+    {
+        <p>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            Unfortunately we could not confirm your account. Please email us directly at <a class="text-info" href="mailto:aib@valuescompetition.com?Subject=Account%20Verification">aib@valuescompetition.com</a> to verify your account.<br />
+            Our apologies for any inconvenience caused.
+        </p>
+    }
+    else
+    {
+        <p>
+            Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </p>
+    }
+
+
 </div>

@@ -1,17 +1,29 @@
 @using Microsoft.AspNet.Identity
 
-<li class="logindropdown">
     @*<a href="#" class="dropdown-toggle bg clear" data-toggle="logindropdown">
         @this.User.Identity.GetUserName() <b class="caret"></b>
     </a>*@
     
-    <ul class="nav navbar-nav navbar-right">
+
 
         <li>
-            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            <a href="~/Manage">
+                <i class="icon-user icon  "></i>
+                <span>@User.Identity.GetUserName()</span>
+            </a>
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+
+        @*<li>
+            @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+        </li>*@
+
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()">
+                <i class="icon-close icon  "></i>
+                <span>Log off</span>
+            </a>
+        </li>
+
 
         @if (Request.IsAuthenticated)
         {
@@ -23,5 +35,3 @@
             }
         }
   
-
-</li>

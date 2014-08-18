@@ -14,8 +14,13 @@
 
 
         <p class="text-center centered">
-            @Html.ActionLink("Back", "Register", null, new { @class = "btn btn-grey btn-block rounded" })
+            @Html.ActionLink("Close", null, null, new { @class = "btn btn-grey btn-block rounded", id = "close" })
         </p>
+
+        <script>
+            $("#close").click(function () { window.close(); });
+        </script>
+
     </div>
     
 

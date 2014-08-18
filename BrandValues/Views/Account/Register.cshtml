@@ -40,11 +40,6 @@
                 });
                 listItems.Add(new SelectListItem
                 {
-                    Text = "IT",
-                    Value = "IT",
-                });
-                listItems.Add(new SelectListItem
-                {
                     Text = "Leadership Team",
                     Value = "Leadership Team"
                 });
@@ -115,7 +110,7 @@
                 </div>
 
     <p class="text-center margin-bottom-20">
-        <input id="terms" type="checkbox" name="check" checked><i></i> I agree to the  @Html.ActionLink("Terms & Conditions", "Terms", null, new { @class = "text-info" })
+        <input id="terms" type="checkbox" name="check" checked><i></i> I agree to the  @Html.ActionLink("Terms & Conditions", "Terms", null, new { @class = "text-info", target = "_blank" })
     </p>
 
 
