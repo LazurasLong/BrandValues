@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/webapp/images/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="~/Content/webapp/images/icons/iphone.jpg" rel="apple-touch-icon">
+    <link href="~/Content/webapp/images/icons/ipad.jpg" rel="apple-touch-icon" sizes="72x72">
+    <link href="~/Content/webapp/images/icons/iphone4.jpg" rel="apple-touch-icon" sizes="114x114">
+    <link href="~/Content/webapp/images/icons/ipad3.jpg" rel="apple-touch-icon" sizes="144x144">
+
+    @Styles.Render("~/Bundles/css")   
+    @Styles.Render("~/Bundles/jqueryui")
+
+    
+
+    <!--[if lt IE 9]>
+      <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/html5shiv.js"></script>
+      <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/respond.min.js"></script>
+      <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/excanvas.js"></script>
+    <![endif]-->
+    
+    <script src="~/Scripts/webapp/jquery.min.js"></script> 
+    <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
+
+   
+</head>
+<body>
+
+    <!-- Body content -->
+    <section class="vbox">
+
+        <header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+            <div class="navbar-header aside brand-white">
+                <a href="~/home/" class="navbar-brand text-dark">
+                    <img src="~/images/aib-logo-small.png" alt="AIB Logo">
+                    <span class="hidden-nav-xs m-l-sm">Brand Values</span>
+                </a>
+                <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+                    <i class="icon-list"></i>
+                </a>
+            </div>
+            <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs hidden-tablet" role="search" method="get" action="@Url.Action("Search")" data-brandvalues-ajax="true" data-brandvalues-target="#searchResults">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="text" id="term" name="term" class="form-control input-sm no-border rounded" placeholder="Search..." data-brandvalues-autocomplete="@Url.Action("Autocomplete")">
+                        <span class="input-group-btn">
+                            <button type="submit" id="searchSubmit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+
+
+            <div>
+                <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+
+                    <li class="hidden-xs">
+                        <a href="#" class="dropdown-toggle lt" data-toggle="dropdown">
+                            <i class="icon-bell"></i>
+                            <span class="badge badge-sm up bg-danger count">1</span>
+                        </a>
+                        <section class="dropdown-menu aside-xl animated fadeInUp">
+                            <section class="panel bg-white">
+                                <div class="panel-heading b-light bg-light">
+                                    <strong>You have <span class="count">1</span> notifications</strong>
+                                </div>
+                                <div class="list-group list-group-alt">
+                                    <a href="~/home/upload" class="media list-group-item">
+                                        <span class="media-body block m-b-none">
+                                            The competition is open! Get your entry in<br>
+                                            <small class="text-muted">27th Aug</small>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="panel-footer text-sm">
+                                    <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                                    <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                                </div>
+                            </section>
+                        </section>
+                    </li>
+
+
+                    <li>
+                        <a href="~/home">
+                            <i class="icon-like icon"></i>
+
+                            <span>Discover</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/home/browse">
+                            <i class="icon-grid icon"></i>
+                            <span>Browse</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/home/upload">
+                            <i class="icon-cloud-upload icon  "></i>
+                            <span>Upload</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/home/entry">
+                            <i class="icon-pencil icon"></i>
+                            <span>Edit</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="~/home/faq">
+                            <i class="icon-info icon"></i>
+                            <span>FAQ's</span>
+                        </a>
+                    </li>
+
+
+
+                    </ul>
+
+            </div>
+
+            <div class="navbar-right ">
+
+
+                <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+
+
+
+
+
+                    @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                    {
+
+                        <li class="dropdown">
+
+                            <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                                Admin <b class="caret"></b>
+                            </a>
+
+                            <ul class="dropdown-menu animated fadeInRight">
+
+                                <li>@Html.ActionLink("Site Admin", "Index", "SiteAdmin")</li>
+
+                                <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
+
+                                <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
+
+                            </ul>
+
+
+
+                        </li>
+                    }
+
+
+                    @Html.Partial("_LoginPartial")
+
+                </ul>
+            </div>
+
+        </header>
+
+
+        <section>
+            <section class="hbox stretch">
+
+                <section id="content">
+                    
+                    <section class="hbox stretch" id="searchResults">
+
+                        @RenderBody()
+                    </section>
+
+                        
+                </section>
+            </section>
+        </section>
+
+    </section>
+                <!-- /Body content -->
+    
+    @Scripts.Render("~/Bundles/webapp")
+
+    @RenderSection("scripts", required: false)
+                 
+                
+
+    
+                <script>
+                (function (i, s, o, g, r, a, m) {
+                    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+                ga('create', 'UA-41233555-3', 'auto');
+                ga('send', 'pageview');
+
+                </script>
+</body>
+</html>

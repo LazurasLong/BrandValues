@@ -2,9 +2,15 @@
 
 @{
     ViewBag.Title = "Locked Out";
+    Layout = "~/Views/Shared/_Layout-Account.cshtml";
 }
 
 <hgroup>
     <h1 class="text-error">Locked out.</h1>
-    <h2 class="text-error">This account has been locked out, please try again later.</h2>
+    <h3 class="text-error">This account has been locked out, please try again after 5 minutes.</h3>
+    <p>
+        Alternatively you can email us directly at
+        <a class="text-info" href="mailto:aib@valuescompetition.com?Subject=Account%20Lockout">aib@valuescompetition.com</a>
+    </p>
+    @Html.ActionLink("Back to login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
 </hgroup>
