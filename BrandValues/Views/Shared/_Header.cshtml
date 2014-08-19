@@ -1,0 +1,128 @@
+﻿<header class="bg-white-only header header-md navbar navbar-fixed-top-xs">
+    <div class="navbar-header aside brand-white">
+        <a href="~/home/" class="navbar-brand text-dark">
+            <img src="~/images/aib-logo-small.png" alt="AIB Logo">
+            <span class="hidden-nav-xs m-l-sm">Brand Values</span>
+        </a>
+        <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
+            <i class="icon-list"></i>
+        </a>
+    </div>
+    <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs hidden-tablet" role="search" method="get" action="@Url.Action("Search")" data-brandvalues-ajax="true" data-brandvalues-target="#searchResults">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" id="term" name="term" class="form-control input-sm rounded" placeholder="Search..." data-brandvalues-autocomplete="@Url.Action("Autocomplete")">
+                <span class="input-group-btn">
+                    <button type="submit" id="searchSubmit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </form>
+
+
+    <div>
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+
+            <li class="menu-purple">
+                <a href="~/home">
+                    <i class="icon-home icon"></i>
+
+                    <span class="hidden-tablet">Home</span>
+                </a>
+            </li>
+            <li class="menu-blue">
+                <a href="~/home/browse">
+                    <i class="icon-grid icon"></i>
+                    <span class="hidden-tablet">Browse</span>
+                </a>
+            </li>
+            <li class="menu-orange">
+                <a href="~/home/upload">
+                    <i class="icon-cloud-upload icon"></i>
+                    <span class="hidden-tablet">Upload</span>
+                </a>
+            </li>
+            <li class="menu-green">
+                <a href="~/home/entry">
+                    <i class="icon-pencil icon"></i>
+                    <span class="hidden-tablet">Edit</span>
+                </a>
+            </li>
+            <li class="menu-lightblue">
+                <a href="~/home/faq">
+                    <i class="icon-info icon"></i>
+                    <span class="hidden-tablet">FAQ's</span>
+                </a>
+            </li>
+
+            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+            {
+
+                <li class="dropdown menu-purple">
+
+                    <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                        Admin <b class="caret"></b>
+                    </a>
+
+                    <ul class="dropdown-menu animated fadeInRight">
+
+                        <li>@Html.ActionLink("Site Admin", "Index", "SiteAdmin")</li>
+
+                        <li>@Html.ActionLink("Roles Admin", "Index", "RolesAdmin")</li>
+
+                        <li>@Html.ActionLink("Users Admin", "Index", "UsersAdmin")</li>
+
+                    </ul>
+
+
+
+                </li>
+            }
+
+
+
+        </ul>
+
+    </div>
+
+    <div class="navbar-right ">
+
+
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user">
+
+            <li class="hidden-xs">
+                <a href="#" class="dropdown-toggle lt" data-toggle="dropdown">
+                    <i class="icon-bell"></i>
+                    <span class="badge badge-sm up bg-purple count">1</span>
+                </a>
+                <section class="dropdown-menu aside-xl animated fadeInUp">
+                    <section class="panel bg-white">
+                        <div class="panel-heading b-light bg-primary">
+                            <strong>You have <span class="count">1</span> competition notifications</strong>
+                        </div>
+                        <div class="list-group list-group-alt">
+                            <a href="~/home/upload" class="media list-group-item">
+                                <span class="media-body block m-b-none">
+                                    The competition is open! Get your entry in<br>
+                                    <small class="text-muted">27th Aug</small>
+                                </span>
+                            </a>
+                        </div>
+                        @*<div class="panel-footer text-sm">
+                                <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
+                                <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
+                            </div>*@
+                    </section>
+                </section>
+            </li>
+
+
+
+
+            @Html.Partial("_LoginPartial")
+
+        </ul>
+    </div>
+
+</header>
+

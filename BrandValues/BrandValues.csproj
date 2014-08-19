@@ -349,6 +349,7 @@
     <Content Include="Views\Home\Play.IE6.cshtml" />
     <Content Include="Views\Shared\v2\_Layout.cshtml" />
     <Content Include="Views\Home\version2.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

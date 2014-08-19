@@ -37,7 +37,7 @@ color: #f0f2f8;
 }*/
 
 /* Menu fixes */
-@media (max-width: 910px) {
+@media (max-width: 1175px) {
     .hidden-tablet{
         display: none !important;
     }
@@ -112,10 +112,11 @@ border-radius: 0px !important;
   font-weight: normal; 
   margin: 0; 
   color: #ffffff !important;
-  background-color: #343f46 !important;
+  background-color: @brand-primary !important;
   background-repeat: no-repeat !important;
   background-image: none !important;
   text-shadow: none !important;
+  color: #ffffff !important;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 }
 
@@ -211,16 +212,21 @@ border-radius: 0px !important;
 /* Footer */
 @media (max-width: 1024px) {
 .footer-md {
-min-height: 10px;
+min-height: 0px;
 }
 }
 
 @media (max-height: 600px) {
 .footer-md {
-min-height: 10px;
+min-height: 0px;
 }
 }
 
+
+/* Aside */
+.aside-45 {
+    width: 50%;
+}
 
 /* Home Screen */
 .navbar-brand{
@@ -260,6 +266,31 @@ min-height: 10px;
 .margin-bottom-20{
     margin-bottom: 20px;
 }
+
+
+/* menu */
+.menu-purple a:hover, .menu-purple a:focus {
+background-color: @text-purple !important;
+color: @brand-white !important;
+}
+.menu-blue a:hover, .menu-blue a:focus {
+background-color: @brand-primary !important;
+color: @brand-white !important;
+}
+.menu-lightblue a:hover, .menu-lightblue a:focus {
+background-color: @brand-info !important;
+color: @brand-white !important;
+}
+.menu-green a:hover, .menu-green a:focus {
+background-color: @brand-success !important;
+color: @brand-white !important;
+}
+.menu-orange a:hover, .menu-orange a:focus {
+background-color: @brand-warning !important;
+color: @brand-white !important;
+}
+
+
 .menu-panel {
     background-color: lighten(@brand-primary, 10%) !important;
     border-radius: 0px !important;

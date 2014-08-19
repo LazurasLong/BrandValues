@@ -1,7 +1,7 @@
 ﻿@using BrandValues.Entries
 @model BrandValues.Models.PlayViewModel
     @{
-        ViewBag.Title = "Play";
+        ViewBag.Title = Model.Entry.Name;
     }
 
     <script type="text/javascript">
@@ -401,7 +401,7 @@
                     </section>
                 </section>
             </section>
-            <footer class="footer bg-black"></footer>
+            <footer class="footer footer-md bg-white"><p id="footer-right"><i class="fa icon-wrench"></i>  Built internally by AIB's Digital Innovation</p></footer>
         </section>
 
     @section Scripts {
