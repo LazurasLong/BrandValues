@@ -148,7 +148,7 @@
 		$('.count', $el).fadeOut().fadeIn().text($v+1);
 		$($msg).hide().prependTo($el.find('.list-group')).slideDown().css('display','block');
 	}
-	var $msg = '<a href="~/home/upload" class="media list-group-item">'+
+	var $msg = '<a href="/home/upload" class="media list-group-item">'+
                   '<span class="pull-left thumb-sm text-center">'+
                     '<i class="fa icon-bulb fa-2x text-success"></i>' +
                   '</span>'+
