@@ -1,0 +1,213 @@
+﻿<aside class="aside-xl bg-light dk hidden-print">
+    <section class="vbox">
+
+        <section class="scrollable wrapper animated fadeInLeft">
+
+            <div class="panel b-a">
+
+                <div class="panel-body">
+
+
+                    <div class="row margin-bottom-20 no-margin-mobile">
+
+                        <div class="panel-group margin-bottom-10" id="accordion">
+                            <div class="item pos-rlt">
+                                <a class="item-overlay active wrapper-md font-xs" href="~/Home">
+                                    <div class="panel-body no-left-padding left">
+                                        <span class="h3 font-thin">The AIB<br />Brand Values<br />Competition</span>
+                                    </div>
+                                </a>
+                                <a href="~/Home">
+                                    <img class="img-full" src="~/images/box-compass.png" alt="Values Competition Logo">
+                                </a>
+                            </div>
+
+                            @*@Ajax.ActionLink(
+                                             "HowItWorks",
+                                    "HowItWorks",
+                                    "Home",
+                                             new AjaxOptions { UpdateTargetId = "result" }
+                                )*@
+
+                            <div class="hidden-desktop">
+                                @using (Ajax.BeginForm("CategoryChosen", "Home", FormMethod.Get, new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }, new { id = "menuForm" }))
+                                {
+                                    @Html.DropDownList("Menu", null, new
+                                    {
+                                        @class = "form-control",
+                                        @onchange = "$('#menuForm').submit()"
+                                    })
+                                }
+
+
+
+
+                                    <a class="btn btn-default btn-lg btn-block" href="~/Home/Play/53d8dbd646f3c621509d37cb">
+                                        <i class="fa icon-control-play text">
+                                        </i>
+                                        <span class="text">Play Brand Values Video</span>
+                                    </a>
+
+                                    <a class="btn btn-default btn-lg btn-block" href="~/Home/upload">
+                                        <i class="fa icon-cloud-upload text">
+                                        </i>
+                                        <span class="text">Upload Your Entry</span>
+                                    </a>
+
+                            </div>
+
+                            <div class="hidden-xs">
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/HowItWorks">
+                                        <div class="panel-heading menu-panel">
+
+                                            <span class="accordion-icon"><i class="fa icon-info time-icon bg-primary"></i></span>
+                                            <span class="timeline-date white">How the competition works</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Prizes">
+                                        <div class="panel-heading menu-panel">
+                                            <span class="accordion-icon"><i class="fa icon-star time-icon bg-primary"></i></span>
+                                            <span class="timeline-date white">What prizes are up for grabs?</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/BrandValues">
+                                        <div class="panel-heading menu-panel">
+                                            <span class="accordion-icon"><i class="fa icon-map time-icon bg-primary"></i></span>
+                                            <span class="timeline-date white">A reminder of the AIB brand values </span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/WinningEntry">
+                                        <div class="panel-heading menu-panel">
+                                            <span class="accordion-icon"><i class="fa icon-eye time-icon bg-primary"></i></span>
+                                            <span class="timeline-date white">What does a winning entry look like?</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/faqs">
+                                        <div class="panel-heading menu-panel">
+                                            <span class="accordion-icon"><i class="fa icon-question time-icon bg-primary"></i></span>
+                                            <span class="timeline-date white">All your questions answered… </span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel margin-top-20 panel-default no-border-radius no-border">
+                                    <a href="~/Home/Play/53d8dbd646f3c621509d37cb">
+                                        <div class="panel-heading menu-panel menu-panel-orange">
+                                            <span class="accordion-icon"><i class="fa icon-control-play time-icon bg-warning"></i></span>
+                                            <span class="timeline-date white">Watch our new brand film</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a href="~/Home/upload">
+                                        <div class="panel-heading menu-panel menu-panel-orange">
+                                            <span class="accordion-icon"><i class="fa icon-cloud-upload time-icon bg-warning"></i></span>
+                                            <span class="timeline-date white">Click here to enter</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+
+                                <script>
+                                    $("a").click(function () {
+                                        $("a").find("div").removeClass("menuhover");
+                                        $(this).find("div").toggleClass("menuhover");
+                                    });
+                                </script>
+
+                            </div>
+                            @*<div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        <div class="panel-heading menu-panel">
+
+                                            <span class="accordion-icon"><i class="fa icon-calendar time-icon bg-primary"></i></span>
+                                            <span class="timeline-date white">Competition Calendar</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>*@
+                        </div>
+
+
+                        @*<div class="timeline" id="infoAccordion">
+
+                                <section id="collapseThree" class="panel-collapse collapse top-padding-10" style="height: auto;">
+
+                                    <article class="timeline-item">
+                                        <div class="timeline-caption">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <span class="arrow left"></span>
+                                                    <span class="timeline-icon"><i class="fa icon-emoticon-smile time-icon bg-purple"></i></span>
+                                                    <span class="timeline-date">27th August</span>
+                                                    <div class="text-sm">Competition starts</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-item">
+                                        <div class="timeline-caption">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <span class="arrow left"></span>
+                                                    <span class="timeline-icon"><i class="fa icon-lock time-icon bg-success"></i></span>
+                                                    <span class="timeline-date">8th October</span>
+                                                    <div class="text-sm">Competition closes & shortlisting begins</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-item">
+                                        <div class="timeline-caption">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <span class="arrow left"></span>
+                                                    <span class="timeline-icon"><i class="fa icon-like time-icon bg-warning"></i></span>
+                                                    <span class="timeline-date">14th October</span>
+                                                    <div class="text-sm">Vote for your favourite</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="timeline-item">
+                                        <div class="timeline-caption">
+                                            <div class="panel panel-default">
+                                                <div class="panel-body">
+                                                    <span class="arrow left"></span>
+                                                    <span class="timeline-icon"><i class="fa icon-star time-icon bg-danger"></i></span>
+                                                    <span class="timeline-date">27th October</span>
+                                                    <div class="text-sm">Winners announced</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </section>
+
+
+
+
+                            </div>*@
+
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer hidden-xs footer-md bg-white"></footer>
+    </section>
+</aside>
