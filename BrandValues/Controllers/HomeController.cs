@@ -576,6 +576,10 @@ namespace BrandValues.Controllers {
                 return View();
             }
 
+
+
+
+
             //start new entry from posted fields
             var entry = new Entry(postEntry);
 
@@ -603,6 +607,19 @@ namespace BrandValues.Controllers {
                     ViewBag.Message = "Please select a file to upload";
                     return View();
                 }
+
+
+                //network check for 10MB limit
+                if (IpAddress.CheckIp())
+                {
+                    if (file.ContentLength > 10485760) //bytes
+                    {
+                        ViewBag.Message = "Sorry but the file you're trying to upload is too big for the AIB network. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support uploading your file.";
+                        return View(); 
+                    }
+                }
+
+
 
                 string accessKey = appConfig["S3AWSAccessKey"];
                 string secretKey = appConfig["S3AWSSecretKey"];
