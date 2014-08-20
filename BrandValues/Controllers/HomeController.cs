@@ -234,7 +234,11 @@ namespace BrandValues.Controllers {
 
         public PartialViewResult Intro()
         {
-            return PartialView("_Intro");
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+
+            return PartialView("_Intro", allDocs);
         }
 
         public PartialViewResult HowItWorks()

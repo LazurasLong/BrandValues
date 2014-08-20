@@ -293,25 +293,77 @@ background-color: @brand-warning !important;
 color: @brand-white !important;
 }
 
+.darken-purple {
+    background-color: darken(@text-purple, 5%) !important;
+}
+.darken-blue {
+    background-color: darken(@brand-primary, 5%) !important;
+}
+.darken-green {
+    background-color: darken(@brand-success, 5%) !important;
+}
+.darken-lightblue {
+    background-color: darken(@brand-info, 5%) !important;
+}
+.darken-orange {
+    background-color: darken(@brand-warning, 5%) !important;
+}
 
-.menu-panel {
-    background-color: lighten(@brand-primary, 10%) !important;
+
+.menu-panel-lightblue {
+    background-color: lighten(@brand-info, 5%) !important;
     border-radius: 0px !important;
     border: none !important;
     padding: 15px;
 }
-.menu-panel:hover {
-    background-color: lighten(@brand-primary, 5%) !important;
+.menu-panel-lightblue:hover {
+    background-color: @brand-info !important;
 }
-.menuhover {
+
+.menu-panel-blue {
     background-color: lighten(@brand-primary, 5%) !important;
+    border-radius: 0px !important;
+    border: none !important;
+    padding: 15px;
 }
+.menu-panel-blue:hover {
+    background-color: @brand-primary !important;
+}
+
+.menu-panel-purple {
+background-color: lighten(@text-purple, 5%) !important;
+border-radius: 0!important;
+border: none!important;
+padding: 15px;
+}
+.menu-panel-purple:hover {
+    background-color: @text-purple !important;
+}
+
+.menu-panel-green {
+    background-color: lighten(@brand-success, 5%) !important;
+    border-radius: 0px !important;
+    border: none !important;
+    padding: 15px;
+}
+.menu-panel-green:hover {
+    background-color: @brand-success !important;
+}
+
 .menu-panel-orange {
-    background-color: lighten(@brand-warning, 7.5%) !important;
+    background-color: lighten(@brand-warning, 5%) !important;
+    border-radius: 0!important;
+border: none!important;
+padding: 15px;
 }
 .menu-panel-orange:hover {
-    background-color: lighten(@brand-warning, 5%) !important;
+    background-color: @brand-warning !important;
 }
+
+.menuhover {
+    background-color: darken(@brand-primary, 5%) !important;
+}
+
 .top-padding-10 {
     padding-top: 10px;
 }

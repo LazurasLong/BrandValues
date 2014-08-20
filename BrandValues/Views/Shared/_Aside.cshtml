@@ -12,15 +12,16 @@
 
                         <div class="panel-group margin-bottom-10" id="accordion">
                             <div class="item pos-rlt">
-                                <a class="item-overlay active wrapper-md font-xs" href="~/Home">
+                                <div  class="item-overlay active wrapper-md font-xs">
+
                                     <div class="panel-body no-left-padding left">
                                         <span class="h3 font-thin">The AIB<br />Brand Values<br />Competition</span>
                                     </div>
-                                </a>
-                                <a href="~/Home">
-                                    <img class="img-full" src="~/images/box-compass.png" alt="Values Competition Logo">
-                                </a>
-                            </div>
+                                </div>
+                                    
+                                <img class="img-full" src="https://d3kx2j4tswsg1z.cloudfront.net/homepage/box-compass.png" alt="Values Competition Logo">
+                                    
+                                </div>
 
                             @*@Ajax.ActionLink(
                                              "HowItWorks",
@@ -58,10 +59,20 @@
 
                             <div class="hidden-xs">
                                 <div class="panel panel-default no-top-margin no-border-radius no-border">
-                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/HowItWorks">
-                                        <div class="panel-heading menu-panel">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Intro">
+                                        <div class="panel-heading menu-panel-blue menuhover">
 
-                                            <span class="accordion-icon"><i class="fa icon-info time-icon bg-primary"></i></span>
+                                            <span class="accordion-icon white"><i class="fa icon-home time-icon darken-lightblue"></i></span>
+                                            <span class="timeline-date white">Home</span>
+                                            <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="panel panel-default no-top-margin no-border-radius no-border">
+                                    <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/HowItWorks">
+                                        <div class="panel-heading menu-panel-blue">
+
+                                            <span class="accordion-icon white"><i class="fa icon-info time-icon darken-purple"></i></span>
                                             <span class="timeline-date white">How the competition works</span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>
@@ -69,8 +80,8 @@
                                 </div>
                                 <div class="panel panel-default no-top-margin no-border-radius no-border">
                                     <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Prizes">
-                                        <div class="panel-heading menu-panel">
-                                            <span class="accordion-icon"><i class="fa icon-star time-icon bg-primary"></i></span>
+                                        <div class="panel-heading menu-panel-blue">
+                                            <span class="accordion-icon white"><i class="fa icon-star time-icon darken-blue"></i></span>
                                             <span class="timeline-date white">What prizes are up for grabs?</span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>
@@ -78,8 +89,8 @@
                                 </div>
                                 <div class="panel panel-default no-top-margin no-border-radius no-border">
                                     <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/BrandValues">
-                                        <div class="panel-heading menu-panel">
-                                            <span class="accordion-icon"><i class="fa icon-map time-icon bg-primary"></i></span>
+                                        <div class="panel-heading menu-panel-blue">
+                                            <span class="accordion-icon white"><i class="fa icon-map time-icon darken-orange"></i></span>
                                             <span class="timeline-date white">A reminder of the AIB brand values </span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>
@@ -87,8 +98,8 @@
                                 </div>
                                 <div class="panel panel-default no-top-margin no-border-radius no-border">
                                     <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/WinningEntry">
-                                        <div class="panel-heading menu-panel">
-                                            <span class="accordion-icon"><i class="fa icon-eye time-icon bg-primary"></i></span>
+                                        <div class="panel-heading menu-panel-blue">
+                                            <span class="accordion-icon white"><i class="fa icon-eye time-icon darken-green"></i></span>
                                             <span class="timeline-date white">Tips to get you started</span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>
@@ -96,8 +107,8 @@
                                 </div>
                                 <div class="panel panel-default no-top-margin no-border-radius no-border">
                                     <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/faqs">
-                                        <div class="panel-heading menu-panel">
-                                            <span class="accordion-icon"><i class="fa icon-question time-icon bg-primary"></i></span>
+                                        <div class="panel-heading menu-panel-blue">
+                                            <span class="accordion-icon white"><i class="fa icon-question time-icon darken-lightblue"></i></span>
                                             <span class="timeline-date white">All your questions answered… </span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>
@@ -106,7 +117,7 @@
                                 <div class="panel margin-top-20 panel-default no-border-radius no-border">
                                     <a href="~/Home/Play/53d8dbd646f3c621509d37cb">
                                         <div class="panel-heading menu-panel menu-panel-orange">
-                                            <span class="accordion-icon"><i class="fa icon-control-play time-icon bg-warning"></i></span>
+                                            <span class="accordion-icon white"><i class="fa icon-control-play time-icon darken-orange"></i></span>
                                             <span class="timeline-date white">Watch our new brand film</span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>
@@ -115,7 +126,7 @@
                                 <div class="panel panel-default no-top-margin no-border-radius no-border">
                                     <a href="~/Home/upload">
                                         <div class="panel-heading menu-panel menu-panel-orange">
-                                            <span class="accordion-icon"><i class="fa icon-cloud-upload time-icon bg-warning"></i></span>
+                                            <span class="accordion-icon white"><i class="fa icon-cloud-upload time-icon darken-orange"></i></span>
                                             <span class="timeline-date white">Click here to enter</span>
                                             <i class="icon-arrow-right white i-lg pull-right acc-icon-padding"></i>
                                         </div>

@@ -3858,23 +3858,68 @@ textarea,
   background-color: #e68239 !important;
   color: #ffffff !important;
 }
-.menu-panel {
-  background-color: #879ac8 !important;
+.darken-purple {
+  background-color: #b53487 !important;
+}
+.darken-blue {
+  background-color: #536db0 !important;
+}
+.darken-green {
+  background-color: #84b253 !important;
+}
+.darken-lightblue {
+  background-color: #33869e !important;
+}
+.darken-orange {
+  background-color: #e37422 !important;
+}
+.menu-panel-lightblue {
+  background-color: #42a5c2 !important;
   border-radius: 0px !important;
   border: none !important;
   padding: 15px;
 }
-.menu-panel:hover {
-  background-color: #758bc0 !important;
+.menu-panel-lightblue:hover {
+  background-color: #3996b1 !important;
 }
-.menuhover {
+.menu-panel-blue {
   background-color: #758bc0 !important;
+  border-radius: 0px !important;
+  border: none !important;
+  padding: 15px;
+}
+.menu-panel-blue:hover {
+  background-color: #647cb8 !important;
+}
+.menu-panel-purple {
+  background-color: #cd50a0 !important;
+  border-radius: 0!important;
+  border: none!important;
+  padding: 15px;
+}
+.menu-panel-purple:hover {
+  background-color: #c73c95 !important;
+}
+.menu-panel-green {
+  background-color: #9ec277 !important;
+  border-radius: 0px !important;
+  border: none !important;
+  padding: 15px;
+}
+.menu-panel-green:hover {
+  background-color: #91ba65 !important;
 }
 .menu-panel-orange {
-  background-color: #ea975b !important;
+  background-color: #e99050 !important;
+  border-radius: 0!important;
+  border: none!important;
+  padding: 15px;
 }
 .menu-panel-orange:hover {
-  background-color: #e99050 !important;
+  background-color: #e68239 !important;
+}
+.menuhover {
+  background-color: #536db0 !important;
 }
 .top-padding-10 {
   padding-top: 10px;
