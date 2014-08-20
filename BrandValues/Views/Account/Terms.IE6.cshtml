@@ -1,0 +1,21 @@
+@{
+    ViewBag.Title = "Terms & Conditions";
+}
+
+<div class="span-16 colborder">
+
+    <h1 class="largest-text purple">Terms & Conditions</h1>
+    <hr />
+
+</div>
+
+
+
+    <p class="text-center centered">
+        @Html.ActionLink("Close", null, null, new { @class = "btn btn-grey btn-block rounded", id = "close" })
+    </p>
+
+    <script>
+        $("#close").click(function () { window.close(); });
+    </script>
+

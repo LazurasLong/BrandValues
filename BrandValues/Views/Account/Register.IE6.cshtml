@@ -43,11 +43,6 @@
             });
             listItems.Add(new SelectListItem
             {
-                Text = "IT",
-                Value = "IT",
-            });
-            listItems.Add(new SelectListItem
-            {
                 Text = "Leadership Team",
                 Value = "Leadership Team"
             });
@@ -58,23 +53,23 @@
             });
             listItems.Add(new SelectListItem
             {
-                Text = "PB & CB - Head Office",
-                Value = "PB & CB - Head Office"
+                Text = "Personal, Business & Corporate Banking - Head Office",
+                Value = "Personal, Business & Corporate Banking - Head Office"
             });
             listItems.Add(new SelectListItem
             {
-                Text = "PB & CB - Branches",
-                Value = "PB & CB - Branches"
+                Text = "Personal, Business & Corporate Banking - Branches",
+                Value = "Personal, Business & Corporate Banking - Branches"
             });
             listItems.Add(new SelectListItem
             {
-                Text = "First Trust",
-                Value = "First Trust"
+                Text = "First Trust Bank",
+                Value = "First Trust Bank"
             });
             listItems.Add(new SelectListItem
             {
-                Text = "AIB UK",
-                Value = "AIB UK"
+                Text = "AIB GB",
+                Value = "AIB GB"
             });
             listItems.Add(new SelectListItem
             {
@@ -83,13 +78,13 @@
             });
             listItems.Add(new SelectListItem
             {
-                Text = "FSG",
-                Value = "FSG"
+                Text = "Financial Solutions Group",
+                Value = "Financial Solutions Group"
             });
             listItems.Add(new SelectListItem
             {
-                Text = "HR",
-                Value = "HR"
+                Text = "Human Resources",
+                Value = "Human Resources"
             });
             listItems.Add(new SelectListItem
             {
@@ -103,22 +98,25 @@
             });
             listItems.Add(new SelectListItem
             {
-                Text = "Group Internal Audit",
-                Value = "Group Internal Audit"
+                Text = "Internal Audit",
+                Value = "Internal Audit"
             });
             listItems.Add(new SelectListItem
             {
-                Text = "Legal",
-                Value = "Legal"
+                Text = "Legal and Compliance",
+                Value = "Legal and Compliance"
             });
+
                     }
-                    @Html.DropDownListFor(model => model.Area, listItems, new { @class = "form-control m-b" })
+                    @Html.DropDownListFor(model => model.Area, listItems.OrderBy(x => x.Text), new { @class = "form-control m-b" })
                 </div>
+
+
 
             </div>
 
             <p>
-                <input id="terms" type="checkbox" name="check" checked><i></i> I agree to the  @Html.ActionLink("Terms & Conditions", "Terms", null, new { @class = "text-info" })
+                <input id="terms" type="checkbox" name="check" checked><i></i> I agree to the  @Html.ActionLink("Terms & Conditions", "Terms", null, new { @class = "text-info", target = "_blank" })
             </p>
 
 
