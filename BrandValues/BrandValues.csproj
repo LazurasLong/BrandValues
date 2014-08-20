@@ -163,6 +163,7 @@
     <Content Include="images\box-compass.png" />
     <Content Include="images\aib-logo-small.png" />
     <Content Include="images\browse-ie.png" />
+    <Content Include="images\compass-large.png" />
     <Content Include="images\entries\document.png" />
     <Content Include="images\entries\video.png" />
     <Content Include="images\entries\photo.png" />
@@ -188,6 +189,11 @@
       <DependentUpon>myversion.less</DependentUpon>
     </Content>
     <Content Include="images\upload-ie.png" />
+    <Content Include="images\values\customer.png" />
+    <Content Include="images\values\empowering.png" />
+    <Content Include="images\values\simple.png" />
+    <Content Include="images\values\together.png" />
+    <Content Include="images\values\trust.png" />
     <Content Include="packages.config" />
     <Content Include="Content\webapp\css\bootstrap.less" />
     <Content Include="Content\webapp\fonts\fontawesome-webfont.eot" />
