@@ -636,6 +636,8 @@ namespace BrandValues.Controllers {
                     username = username.Substring(0, username.LastIndexOf('@'));
 
                 var entryName = entry.Name.Replace(" ", String.Empty);
+                entryName = entryName + DateTime.Now;
+                entryName = Regex.Replace(entryName, "[^0-9a-zA-Z]+", "");
                 var newFileName = entryName + Path.GetExtension(file.FileName);
 
                 var foldername = username;
@@ -677,7 +679,7 @@ namespace BrandValues.Controllers {
 
                 if (filePath == null)
                 {
-                   ViewBag.Message = "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support";
+                    ViewBag.Message = "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support " + file.ContentType.ToString();
                   return View(); 
                 }
 
