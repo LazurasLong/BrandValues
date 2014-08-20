@@ -446,16 +446,16 @@ namespace BrandValues.Controllers {
             postComment.UserArea = user.Area;
             postComment.UserFirstName = user.FirstName;
             postComment.UserSurname = user.Surname;
-            postComment.CreatedOn = DateTime.UtcNow;
+            postComment.CreatedOn = DateTime.Now;
             postComment.Censored = false;
             postComment.Comment = form["comment"];
 
-            //entry.Comments.Add(postComment.UserName);
-            //entry.Comments.Add(postComment.Comment);
-            //entry.Comments.Add(postComment.UserFirstName);
-            //entry.Comments.Add(postComment.UserSurname);
-            //entry.Comments.Add(postComment.UserArea);
-            //entry.Comments.Add(postComment.CreatedOn.ToString());
+            //Check if your Comments collection exists
+            if (entry.Comments == null)
+            {
+                //It's null - create it
+                entry.Comments = new List<PostComment>();
+            }
 
             entry.Comments.Add(postComment);
 
@@ -590,7 +590,7 @@ namespace BrandValues.Controllers {
             }
 
             //set date
-            entry.CreatedOn = DateTime.UtcNow;
+            entry.CreatedOn = DateTime.Now;
 
             foreach (var file in files)
             {

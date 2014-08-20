@@ -3615,7 +3615,7 @@ fieldset[disabled] .i-checks input + i:before {
  -webkit-overflow-scrolling: touch;
 }*/
 /* Menu fixes */
-@media (max-width: 1175px) {
+@media (min-width: 768px) and (max-width: 1175px) {
   .hidden-tablet {
     display: none !important;
   }
@@ -3639,6 +3639,9 @@ fieldset[disabled] .i-checks input + i:before {
     margin-bottom: 15px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+  }
+  .m-t-xl {
+    margin-top: 20px;
   }
 }
 @media (min-width: 768px) {
@@ -4005,6 +4008,10 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected {
 }
 #likeResults {
   display: none !important;
+}
+.created-on {
+  color: #8ca1af;
+  font-size: 14px;
 }
 /* Jquery Dropdown menu */
 .ui-menu {
