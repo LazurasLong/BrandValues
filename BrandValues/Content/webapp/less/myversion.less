@@ -23,6 +23,51 @@ color: #f0f2f8;
     background-color: @brand-white;
 }
 
+/* Fix FF3+4 image issues */
+@-moz-document url-prefix() {
+    .img-full {
+        max-width: none !important;
+       
+    }
+    #competition-logo{
+    }
+    #accordion {
+        width: 320px;
+    }
+
+    .full{
+        width: 100% !important;
+    }
+
+    @media (max-width: 1025px) {
+        #play{
+            max-width: 700px;
+        }
+    }
+    #play{
+        max-width: 900px;
+    }
+
+    @media (max-width: 768px) {
+        #sidebar {
+            width: 100%;
+        }
+        #accordion {
+        width: 100%;
+        }
+    }
+
+    #sidebar {
+        width: 260px;
+    }
+
+    .vbox>section, .vbox>footer {
+        width: auto;
+    }
+
+}
+
+
 
 /* Stop apple rubberbanding */
 /*html, body {
