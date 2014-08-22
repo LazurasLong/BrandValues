@@ -4,6 +4,18 @@
         case ("video"):
             LoadMedia();
             break;
+        case ("story"):
+            LoadText();
+            break;
+        case ("poem"):
+            LoadText();
+            break;
+        case ("lyric"):
+            LoadText();
+            break;
+        case ("other"):
+            LoadText();
+            break;
         case ("text"):
             LoadText();
             break;

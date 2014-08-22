@@ -1,4 +1,5 @@
 ﻿@model BrandValues.Entries.PostEntry
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Upload";
 }
@@ -13,13 +14,13 @@
     </div>
     <div class="panel-heading">
         <ul class="nav nav-tabs font-bold">
-            <li><a href="#step1" data-toggle="tab">Step 1: Your Details</a></li>
-            <li><a href="#step2" data-toggle="tab">Step 2: Upload</a></li>
+            <li>Step 1: Your Details</a></li>
+            <li>Step 2: Upload</a></li>
         </ul>
     </div>
 </div>
 
-                        <div class="span-12 prepend-1 ">
+<div class="span-12 prepend-1 ">
 
     <div class="m-t m-b">
 
@@ -34,7 +35,8 @@
 
                 <div class="panel-body">
                     <hr />
-                    <h2 class="text-success">@Html.Raw(ViewBag.Message)</h2>
+                    <h3 class="text-success">@Html.Raw(ViewBag.SuccessMessage)</h3>
+                    <h4 class="text-danger">@Html.Raw(ViewBag.ErrorMessage)</h4>
                     <hr />
 
                     <div id="loading" class="centered">
@@ -49,8 +51,7 @@
 
                         <p>
                             <label>Competition Entry Name</label>
-                            <input name="name" type="text" class="title input-small" placeholder="Your entry name">
-                            @*@Html.EditorFor(model => model.Name, new { @class = "form-control" })*@
+                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Your entry name" })
                             <span class="help-block">@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger top-padding" })</span>
                         </p>
 
@@ -60,8 +61,8 @@
                             <label>
                                 Description
                             </label>
-                            <textarea name="description" class="title input-small" rows="6" placeholder="Type a description of your entry"></textarea>
-                            @*@Html.TextAreaFor(model => model.Description, new { @class = "form-control" })*@
+
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
                             <span class="help-block">@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })</span>
                         </p>
 
@@ -70,98 +71,134 @@
                             <label>
                                 Type
                             </label>
-                            <select name="type" id="type" class="form-control">
-                                <option value="individual">Individual</option>
-                                <option value="team">Team</option>
-                            </select>
-                            <span class="help-block">@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger top-padding" })</span>
+                            @{
+            List<SelectListItem> typeListItems = new List<SelectListItem>();
+            typeListItems.Add(new SelectListItem
+            {
+                Text = "Individual",
+                Value = "individual"
+            });
+            typeListItems.Add(new SelectListItem
+            {
+                Text = "Team",
+                Value = "team"
+            });
+                            }
+                            @Html.DropDownListFor(model => model.Type, typeListItems.OrderBy(x => x.Text), new { @class = "form-control m-b" })
+                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger top-padding" })</span>
                         </p>
 
-                        <p id="teamname-txt">
-                            <label>Team Name</label>
-                            <input name="teamname" id="teamname" type="text" class="form-control parsley-validated" placeholder="Your team name">
-                            @*@Html.EditorFor(model => model.Name, new { @class = "form-control" })*@
-                            <span class="help-block">@Html.ValidationMessageFor(m => m.TeamName, "", new { @class = "text-danger top-padding" })</span>
+                        <div id="teamelements">
+                            <p>
+                                <label>Team Name</label>
+                                @Html.TextBoxFor(model => model.TeamName, new { @class = "form-control" })
+                                <span class="help-block">@Html.ValidationMessageFor(m => m.TeamName, "", new { @class = "text-danger top-padding" })</span>
+                            </p>
+
+                            <p>
+                                <label>How many people on the team?</label>
+                                @Html.TextBoxFor(model => model.TeamNumber, new { @class = "form-control" })
+                                <span class="help-block">@Html.ValidationMessageFor(m => m.TeamNumber, "", new { @class = "text-danger top-padding" })</span>
+                            </p>
+
+                            <p>
+                                <label>Names of all team members</label>
+                                @Html.TextAreaFor(model => model.TeamMemberNames, new { @class = "form-control" })
+                                <span class="help-block">@Html.ValidationMessageFor(m => m.TeamMemberNames, "", new { @class = "text-danger top-padding" })</span>
+                            </p>
+                        </div>
+
+                        <p>
+                            <label>
+                                Contact email
+                            </label>
+                            @Html.TextBoxFor(model => model.ContactEmail, new { @class = "form-control" })
+                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.ContactEmail, "", new { @class = "text-danger top-padding" })</span>
                         </p>
 
 
-                        <p >
-                            <label >
+                        <p>
+                            <label>
+                                Contact phone
+                            </label>
+                            @Html.TextBoxFor(model => model.ContactTel, new { @class = "form-control" })
+                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.ContactTel, "", new { @class = "text-danger top-padding" })</span>
+                        </p>
+
+                        <p>
+                            <label>
                                 Format
                             </label>
-
-                                <select name="format" class="form-control">
-                                    <option value="text">Poem / Story / Lyric</option>
-                                    <option value="video">Video</option>
-                                    <option value="image">Image</option>
-                                </select>
-                                <span class="help-block">@Html.ValidationMessageFor(m => m.Format, "", new { @class = "text-danger top-padding" })</span>
+                            @{
+            List<SelectListItem> formatListItems = new List<SelectListItem>();
+            formatListItems.Add(new SelectListItem
+            {
+                Text = "Poem",
+                Value = "poem"
+            });
+            formatListItems.Add(new SelectListItem
+            {
+                Text = "Story",
+                Value = "story"
+            });
+            formatListItems.Add(new SelectListItem
+            {
+                Text = "Lyric",
+                Value = "lyric"
+            });
+            formatListItems.Add(new SelectListItem
+            {
+                Text = "Video",
+                Value = "video"
+            });
+            formatListItems.Add(new SelectListItem
+            {
+                Text = "Image",
+                Value = "image"
+            });
+            formatListItems.Add(new SelectListItem
+            {
+                Text = "Other",
+                Value = "other"
+            });
+                            }
+                            @Html.DropDownListFor(model => model.Format, formatListItems.OrderBy(x => x.Text), new { @class = "form-control m-b" })
+                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Format, "", new { @class = "text-danger top-padding" })</span>
                         </p>
 
 
                         <p>
 
-                            <label >Which AIB Values are demonstrated?</label>
+                            <label>Which AIB Values are demonstrated?</label>
 
 
-                                <select name="values" class="form-control">
-                                    <option value="all">All the brand values</option>
-                                    <option value="customers">We put our customers first</option>
-                                    <option value="empowering">We are empowering</option>
-                                    <option value="trust">We are building trust and appreciation</option>
-                                    <option value="simple">We keep things simple</option>
-                                    <option value="together">We are better together</option>
-                                </select>
+                            <select name="values" class="form-control">
+                                <option value="all">All the brand values</option>
+                                <option value="customers">We put our customers first</option>
+                                <option value="empowering">We are empowering</option>
+                                <option value="trust">We are building trust and appreciation</option>
+                                <option value="simple">We keep things simple</option>
+                                <option value="together">We are better together</option>
+                            </select>
 
-                                <span class="help-block">@Html.ValidationMessageFor(m => m.Values, "", new { @class = "text-danger top-padding" })</span>
+                            <span class="help-block">@Html.ValidationMessageFor(m => m.Values, "", new { @class = "text-danger top-padding" })</span>
 
                         </p>
 
+                        <p>
 
-
-                    </div>
-                    <div class="tab-pane" id="step2">
-
-                        <hr/>
-                        
-                        <h4>Select your file to upload</h4>
-                        
-                        <hr />
-
-                        <div class="form-group">
-
-                            <div class="centered center">
-                                <input type="file" name="files" class=" filestyle" data-icon="false" data-classbutton="btn btn-default" value="" data-classinput="form-control inline v-middle input-s" id="filestyle-0" style="position: fixed; left: -500px;">
-                                @*<div class="bootstrap-filestyle" style="display: inline;">
-                                        <input type="text" class="form-control inline v-middle input-s" disabled="">
-                                        <label for="filestyle-0" class="btn btn-default"><span>Choose file</span></label>
-                                    </div>*@
-                            </div>
-
-
-                        </div>
-
-                        @*<label class="col-sm-4 control-label" for="file">Your File to Upload</label>
-                            <div class="col-sm-8">
-
-                                <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
-
-                            </div>*@
-                        
-                        <hr/>
+                            <label>Select your file to upload</label>
+                            <input type="file" name="files" class=" filestyle" data-icon="false" data-classbutton="btn btn-default" value="" data-classinput="form-control inline v-middle input-s" id="filestyle-0" style="position: fixed; left: -500px;">
+                        </p>
 
                         <div class="centered center">
                             <input type="submit" class="btn btn-primary btn-lg btn-block" id="upload" value="Upload" />
                         </div>
 
-
                     </div>
 
-                    <div class="tab-pane" id="step3">
+                       
 
-
-
-                    </div>
 
 
                 </div>
@@ -173,7 +210,7 @@
 
 
 
-                        <div class="span-5 last"></div>
+<div class="span-5 last"></div>
 
 
 

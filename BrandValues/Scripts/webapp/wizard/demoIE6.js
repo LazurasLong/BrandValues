@@ -7,7 +7,6 @@
 
     $("#upload").click(function () {
         $("#step1").hide();
-        $("#step2").hide();
 
         $("#loading").fadeIn();
 
@@ -34,16 +33,7 @@
 
     if (uploaded) {
         $("#step1").hide();
-        $("#step2").hide();
     }
 
-
-    $('#type').on('change', function () {
-        if (this.value == "team") {
-            $("#teamname-txt").fadeIn();
-        } else {
-            $("#teamname-txt").hide();
-        }
-    });
 
   });

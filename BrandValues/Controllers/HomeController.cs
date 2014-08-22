@@ -659,6 +659,10 @@ namespace BrandValues.Controllers {
                 }
                 if (entry.Format == "image")
                 {
+                    if (!file.ContentType.Contains("image/"))
+                    {
+                        entry.Format = "text";
+                    }
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/photo.png";
                 }
                 if (entry.Format == "video")
