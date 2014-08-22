@@ -3739,6 +3739,7 @@ textarea,
   background-image: url("../images/bg/bg-compass.png");
   background-position: 98% 97%;
   background-repeat: no-repeat;
+  overflow: auto !important;
 }
 @media (max-width: 991px) {
   .bg-login {
