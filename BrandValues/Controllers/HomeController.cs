@@ -645,27 +645,27 @@ namespace BrandValues.Controllers {
                 var foldername = username;
                     //Path.GetFileNameWithoutExtension(newFileName);
 
-                if (entry.Type == "story")
+                if (entry.Format == "story")
                 {
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/document.png";
                 }
-                if (entry.Type == "poem")
+                if (entry.Format == "poem")
                 {
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/poem.png";
                 }
-                if (entry.Type == "lyric")
+                if (entry.Format == "lyric")
                 {
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/lyrics.png";
                 }
-                if (entry.Type == "image")
+                if (entry.Format == "image")
                 {
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/photo.png";
                 }
-                if (entry.Type == "video")
+                if (entry.Format == "video")
                 {
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/video.png";
                 }
-                if (entry.Type == "other")
+                if (entry.Format == "other")
                 {
                     entry.ThumbnailUrl = siteFilesCloudfront + "/entries/other.png";
                 }
