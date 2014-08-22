@@ -645,6 +645,30 @@ namespace BrandValues.Controllers {
                 var foldername = username;
                     //Path.GetFileNameWithoutExtension(newFileName);
 
+                if (entry.Type == "story")
+                {
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/document.png";
+                }
+                if (entry.Type == "poem")
+                {
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/poem.png";
+                }
+                if (entry.Type == "lyric")
+                {
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/lyrics.png";
+                }
+                if (entry.Type == "image")
+                {
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/photo.png";
+                }
+                if (entry.Type == "video")
+                {
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/video.png";
+                }
+                if (entry.Type == "other")
+                {
+                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/other.png";
+                }
 
                 if (file.ContentType.Contains("video/"))
                 {
@@ -664,18 +688,16 @@ namespace BrandValues.Controllers {
                     )
                 {
                     //set the submission format to match filetype
-                    entry.Format = "text";
+                    //entry.Format = "text";
                     filePath = "text/" + foldername + "/" + newFileName;
-                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/document.png";
                     entry.Url = filePath;
                 }
 
                 if (file.ContentType.Contains("image/"))
                 {
                     //set the submission format to match filetype
-                    entry.Format = "image";
-                    filePath = "image/" + foldername + "/" + newFileName;
-                    entry.ThumbnailUrl = siteFilesCloudfront + "/entries/photo.png";
+                    //entry.Format = "image";
+                    filePath = "image/" + foldername + "/" + newFileName;                    
                     entry.Url = filePath;
                 }
 
