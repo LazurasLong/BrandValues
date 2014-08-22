@@ -588,23 +588,27 @@ namespace BrandValues.Controllers {
             entry.UserSurname = user.Surname;
 
             //check that user has completed team name
-            if (postEntry.Type == "team" && postEntry.TeamName.IsEmpty())
-            {
-                ViewBag.ErrorMessage = "Please enter your team name";
-                return View(postEntry);
+            if (postEntry.Type == "team") {
+                if (postEntry.TeamName.IsEmpty() || postEntry.TeamNumber.IsEmpty() || postEntry.TeamMemberNames.IsEmpty())
+                {
+                    ViewBag.ErrorMessage = "Please complete your team details";
+                    return View(postEntry);
+                }
             }
 
             //set date
             entry.CreatedOn = DateTime.Now;
 
-            if (files == null)
-            {
-                ViewBag.ErrorMessage = "Please select a file to upload";
-                return View();
-            }
+
 
             foreach (var file in files)
             {
+
+                if (file == null)
+                {
+                    ViewBag.ErrorMessage = "Please select a file to upload";
+                    return View(postEntry);
+                }
 
 
                 //network check for 10MB limit
@@ -613,7 +617,7 @@ namespace BrandValues.Controllers {
                     if (file.ContentLength > 10485760) //bytes
                     {
                         ViewBag.ErrorMessage = "Sorry but the file you're trying to upload is too big for the AIB network. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support uploading your file.";
-                        return View();
+                        return View(postEntry);
                     }
                 }
 
@@ -678,7 +682,7 @@ namespace BrandValues.Controllers {
                 if (filePath == null)
                 {
                     ViewBag.ErrorMessage = "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support " + file.ContentType;
-                    return View();
+                    return View(postEntry);
                 }
 
                 try
@@ -727,7 +731,7 @@ namespace BrandValues.Controllers {
 #endif
 
 
-                    return View();
+                    return View(postEntry);
                 }
 
                 //Send to SQS for re-encoding

@@ -3,7 +3,7 @@
   $(function(){
 
       //set username and contact email
-      $('#contactemail').val(username);
+      $('#ContactEmail').val(username);
 
       //validate form 
 
@@ -46,7 +46,12 @@
     //}
 
 
-    $('#type').on('change', function () {
+    var type = $('#Type').val();
+    if (type == "team") {
+        $("#teamname-txt").fadeIn();
+    }
+
+    $('#Type').on('change', function () {
         if (this.value == "team") {
             $("#teamname-txt").fadeIn();
         } else {
