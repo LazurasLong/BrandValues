@@ -1,224 +1,272 @@
 ﻿@model BrandValues.Entries.PostEntry
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Upload";
 }
 
 <script>
     var uploaded = '@ViewBag.Uploaded';
+    var username = '@User.Identity.GetUserName()';
 </script>
 
 <section>
 
     <section class="vbox">
-        <section class="relativescroll scrollable animated fadeInLeft padder-lg w-f-md full">
+        <section class="relativescroll scrollable animated fadeInLeft padder-lg w-f-md full bg-compass">
 
             <div class="margin-top-20 panel b-a">
 
                 <div class="panel-body">
 
+                    <div class="m-b clearfix">
 
-                    <div class="row">
-                        <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-6 wrapper-md">
+                                <span class="h3 font-thin text-warning">Upload your Individual or Team Competition Entry</span>
+                            </div>
+                            <div class="col-lg-6 wrapper-md">
 
-                            <div class="m-b clearfix">
-
-                                <span class="h3 font-thin">Upload your Individual or Team Competition Entry</span>
-
-                                @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data", data_parsley_validate = "" }))
+                                @if(ViewBag.ErrorMessage != null) {
+                                    <div class="alert alert-danger alert-block">
+                                        <button data-dismiss="alert" class="close" type="button">×</button>
+                                        <h4><i class="fa fa-warning"></i> Error</h4>
+                                        <p>@Html.Raw(ViewBag.ErrorMessage)</p>
+                                    </div>
+                                }
+                                
+                                @if (ViewBag.SuccessMessage != null)
                                 {
+                                    <div class="alert alert-success alert-block">
+                                        <button data-dismiss="alert" class="close" type="button">×</button>
+                                        <h4><i class="fa fa-smile-o"></i> Success</h4>
+                                        <p>@Html.Raw(ViewBag.SuccessMessage)</p>
+                                    </div>
+                                }
 
-                                    @Html.AntiForgeryToken()
-                                    <div class="panel margin-top-20 panel-default">
-                                        <div class="panel-heading">
-                                            <ul class="nav nav-tabs font-bold">
-                                                <li><a href="#step1" data-toggle="tab">Step 1: Your Details</a></li>
-                                                <li><a href="#step2" data-toggle="tab">Step 2: Upload</a></li>
-                                                <li><a href="#step3" data-toggle="tab">Step 3: Finish</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="panel-body">
+                            </div>
+                        </div>
 
-                                            <h4>Your progress</h4>
-                                            <div class="progress progress-xs m-t-md">
-                                                <div class="progress-bar bg-success"></div>
-                                            </div>
-                                            <div class="line line-lg"></div>
-                                            @Html.Raw(ViewBag.Message)
-                                            <div class="line line-lg"></div>
-                                            <div class="tab-content">
-                                                <div id="loading" class="centered">
-                                                    <p align="center">
-                                                        <img src="~/images/ajax-loader.gif" alt="" />
-                                                        <div class="line line-dashed b-b line-lg pull-in"></div>
-                                                    <p class="center" id="waiting"></p>
-                                                    </p>
+                        <div class="panel margin-top-20 margin-bottom-20 panel-default">
+
+                            <div id="loading" class="centered margin-top-20">
+                                <p align="center">
+                                    <img src="~/images/ajax-loader.gif" alt="" />
+                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                <p class="center" id="waiting"></p>
+                            </div>
+
+
+                            @using (Html.BeginForm("Upload", "Home", FormMethod.Post, new { id = "wizardform", enctype = "multipart/form-data", data_parsley_validate = "" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+
+                                <div id="uploadform">
+
+                                    <div class="row">
+
+                                        <div class="col-lg-6">
+
+
+                                            <div class="panel-body">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">Competition Entry Name</label>
+                                                    <div class="col-sm-8">
+                                                       
+                                                        @*<input name="name" id="name" type="text" class="form-control parsley-validated" data-trigger="change" data-required="true" data-parsley-type="alphanum" placeholder="Your entry name">*@
+                                                        @Html.EditorFor(model => model.Name, new { @class = "form-control" })
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger top-padding" })</span>
+                                                    </div>
                                                 </div>
 
-                                                <div class="tab-pane" id="step1">
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Description
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        @*<textarea name="description" id="description" class="form-control parsley-validated" rows="6" data-minwords="6" data-required="true" placeholder="Type a description of your entry"></textarea>*@
+                                                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Type
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <select name="type" id="type" class="form-control">
+                                                            <option value="individual">Individual</option>
+                                                            <option value="team">Team</option>
+                                                        </select>
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger top-padding" })</span>
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div id="teamname-txt">
 
                                                     <div class="form-group">
-                                                        <label class="col-sm-4 control-label">Competition Entry Name</label>
-                                                        <div class="col-sm-8">
-                                                            <input name="name" type="text" class="form-control parsley-validated" data-trigger="change" data-required="true" data-parsley-type="alphanum" placeholder="Your entry name">
-                                                            @*@Html.EditorFor(model => model.Name, new { @class = "form-control" })*@
-                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger top-padding" })</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">
-                                                            Description
-                                                        </label>
-                                                        <div class="col-sm-8">
-                                                            <textarea name="description" class="form-control parsley-validated" rows="6" data-minwords="6" data-required="true" placeholder="Type a description of your entry"></textarea>
-                                                            @*@Html.TextAreaFor(model => model.Description, new { @class = "form-control" })*@
-                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger top-padding" })</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-
-                                                    <div class="form-group">
-                                                        <label class="col-sm-4 control-label">
-                                                            Type
-                                                        </label>
-                                                        <div class="col-sm-8">
-                                                            <select name="type" id="type" class="form-control">
-                                                                <option value="individual">Individual</option>
-                                                                <option value="team">Team</option>
-                                                            </select>
-                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger top-padding" })</span>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group" id="teamname-txt">
                                                         <label class="col-sm-4 control-label">Team Name</label>
                                                         <div class="col-sm-8">
                                                             <input name="teamname" id="teamname" type="text" class="form-control parsley-validated" placeholder="Your team name">
-                                                            @*@Html.EditorFor(model => model.Name, new { @class = "form-control" })*@
                                                             <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.TeamName, "", new { @class = "text-danger top-padding" })</span>
                                                         </div>
                                                     </div>
-
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-
+                                                    <div class="form-group">
+                                                        <label class="col-sm-4 control-label">How many people on the team?</label>
+                                                        <div class="col-sm-2">
+                                                            <input name="teamnumber" id="teamnumber" type="number" class="form-control parsley-validated">
+                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.TeamNumber, "", new { @class = "text-danger top-padding" })</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix"></div>
                                                     <div class="form-group">
                                                         <label class="col-sm-4 control-label">
-                                                            Format
+                                                            Names of all team members
                                                         </label>
                                                         <div class="col-sm-8">
-                                                            <select name="format" class="form-control">
-                                                                <option value="text">Poem / Story / Lyric</option>
-                                                                <option value="video">Video</option>
-                                                                <option value="image">Image</option>
-                                                            </select>
-                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Format, "", new { @class = "text-danger top-padding" })</span>
+                                                            <textarea name="teammembernames" class="form-control parsley-validated" rows="2" data-minwords="6" data-required="true" placeholder="Names of all team members"></textarea>
+                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.TeamMemberNames, "", new { @class = "text-danger top-padding" })</span>
                                                         </div>
                                                     </div>
-
-
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-                                                    <div class="form-group">
-
-                                                        <label class="col-sm-4 control-label">Which AIB Values are demonstrated?</label>
-                                                        <div class="col-sm-8">
-
-                                                            <select name="values" class="form-control">
-                                                                <option value="all">All the brand values</option>
-                                                                <option value="customers">We put our customers first</option>
-                                                                <option value="empowering">We are empowering</option>
-                                                                <option value="trust">We are building trust and appreciation</option>
-                                                                <option value="simple">We keep things simple</option>
-                                                                <option value="together">We are better together</option>
-                                                            </select>
-
-
-                                                            @*<div class="checkbox i-checks">
-
-                                                                         <label>
-                                                                             <input type="checkbox" name="values" class="chkclass" value="All the brand values" />
-                                                                             <i></i>
-                                                                             All the brand values
-                                                                         </label>
-
-                                                            </div>*@
-
-
-
-                                                            <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Values, "", new { @class = "text-danger top-padding" })</span>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-
-
                                                 </div>
-                                                <div class="tab-pane" id="step2">
 
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-
-
-                                                    <div class="form-group">
-
-                                                        <div class="centered center">
-                                                            <input type="file" name="files" class=" filestyle" data-icon="false" data-classbutton="btn btn-default" value="" data-classinput="form-control inline v-middle input-s" id="filestyle-0" style="position: fixed; left: -500px;">
-                                                            @*<div class="bootstrap-filestyle" style="display: inline;">
-                                                                <input type="text" class="form-control inline v-middle input-s" disabled="">
-                                                                <label for="filestyle-0" class="btn btn-default"><span>Choose file</span></label>
-                                                            </div>*@
-                                                        </div>
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
 
 
+
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="col-lg-6">
+
+                                            <div class="panel-body">
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Contact email
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <input name="contactemail" id="contactemail" type="text" class="form-control parsley-validated" placeholder="Contact email">
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.ContactEmail, "", new { @class = "text-danger top-padding" })</span>
                                                     </div>
+                                                </div>
 
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
 
-                                                    @*<label class="col-sm-4 control-label" for="file">Your File to Upload</label>
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Contact phone
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <input name="contacttel" id="contacttel" type="number" class="form-control parsley-validated" placeholder="Contact phone">
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.ContactTel, "", new { @class = "text-danger top-padding" })</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label">
+                                                        Format
+                                                    </label>
+                                                    <div class="col-sm-8">
+                                                        <select name="format" class="form-control">
+                                                            <option value="text">Poem / Story / Lyric</option>
+                                                            <option value="video">Video</option>
+                                                            <option value="image">Image</option>
+                                                        </select>
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Format, "", new { @class = "text-danger top-padding" })</span>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                <div class="form-group">
+
+                                                    <label class="col-sm-4 control-label">Which AIB Values are demonstrated?</label>
                                                     <div class="col-sm-8">
 
-                                                        <input type="file" id="uploadFiles" name="files" value="" multiple="multiple" />
+                                                        <select name="values" class="form-control">
+                                                            <option value="all">All the brand values</option>
+                                                            <option value="customers">We put our customers first</option>
+                                                            <option value="empowering">We are empowering</option>
+                                                            <option value="trust">We are building trust and appreciation</option>
+                                                            <option value="simple">We keep things simple</option>
+                                                            <option value="together">We are better together</option>
+                                                        </select>
 
-                                                    </div>*@
-                                                    <div class="centered center">
-                                                        <input type="submit" class="btn btn-primary btn-lg btn-block" id="upload" value="Upload" />
+
+                                                        @*<div class="checkbox i-checks">
+
+                                                                     <label>
+                                                                         <input type="checkbox" name="values" class="chkclass" value="All the brand values" />
+                                                                         <i></i>
+                                                                         All the brand values
+                                                                     </label>
+
+                                                        </div>*@
+
+
+
+                                                        <span class="help-block m-b-none">@Html.ValidationMessageFor(m => m.Values, "", new { @class = "text-danger top-padding" })</span>
+                                                    </div>
+                                                </div>
+                                                <div class="line line-dashed b-b line-lg pull-in"></div>
+                                                <div class="clearfix"></div>
+                                                <div class="form-group">
+
+                                                    <label class="col-sm-4 control-label">Select your file to upload</label>
+                                                    <div class="col-sm-8">
+                                                        <input type="file" name="files" class=" filestyle" data-icon="false" data-classbutton="btn btn-default" value="" data-classinput="form-control inline v-middle input-s" id="filestyle-0" style="position: fixed; left: -500px;">
+                                                        @*<div class="bootstrap-filestyle" style="display: inline;">
+                                                            <input type="text" class="form-control inline v-middle input-s" disabled="">
+                                                            <label for="filestyle-0" class="btn btn-default"><span>Choose file</span></label>
+                                                        </div>*@
                                                     </div>
 
 
-
-                                                    <div class="line line-dashed b-b line-lg pull-in"></div>
-
                                                 </div>
-
-                                                <div class="tab-pane" id="step3">
-
-
-
-                                                </div>
-
-                                                <ul id="pager" class="pager wizard m-b-sm">
-                                                    <li class="previous first" style="display: none;"><a href="#">First</a></li>
-                                                    <li class="previous"><a href="#">Previous</a></li>
-                                                    <li class="next last" style="display: none;"><a href="#">Last</a></li>
-                                                    <li class="next"><a href="#">Next</a></li>
-                                                </ul>
                                             </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row margin-bottom-20">
+
+                                        <div class="line line-dashed b-b line-lg pull-in"></div>
+
+                                        <div class="centered center">
+                                            <input type="submit" class="btn btn-primary btn-lg btn-block" id="upload" value="Upload" />
                                         </div>
                                     </div>
-                                }
-                            </div>
+                                </div>
+
+                            }
+
+
 
                         </div>
-
-                        <div class="col-lg-4"></div>
-
                     </div>
                 </div>
-            </div>
 
         </section>
+
+
+
+
+
+
         
         <footer class="footer footer-md bg-white"><p id="footer-right"><i class="fa icon-wrench"></i>  Built internally by AIB's Digital Innovation</p></footer>
     </section>

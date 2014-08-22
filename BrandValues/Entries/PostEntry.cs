@@ -25,12 +25,21 @@ namespace BrandValues.Entries
         public string Description { get; set; }
 
         [StringLength(50)]
-        [Required(ErrorMessage = "A name would be very helpful")]
+        [Required(ErrorMessage = "We need a name for your entry")]
         public string Name { get; set; }
         
         public string UserName { get; set; }
 
+        [Required(ErrorMessage = "We need to be able to contact you")]
+        public string ContactEmail { get; set; }
+
+        public string ContactTel { get; set; }
+
         public string TeamName { get; set; }
+
+        public string TeamNumber { get; set; }
+
+        public string TeamMemberNames { get; set; }
 
         public DateTime CreatedOn { get; set; }
         

@@ -158,6 +158,7 @@
     <Content Include="fonts\Simple-Line-Icons.svg" />
     <Content Include="images\aib-logo-large-ie.png" />
     <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\bg\bg-compass-text.png" />
     <Content Include="images\bg\bg-nav-compass.png" />
     <Content Include="images\box-compass-ie.png" />
     <Content Include="images\box-compass.png" />
@@ -362,6 +363,7 @@
     <Content Include="Views\Shared\v2\_Layout.IE6.cshtml" />
     <Content Include="Views\Home\version2.IE6.cshtml" />
     <Content Include="Views\Account\Terms.IE6.cshtml" />
+    <Content Include="Views\Home\_Upload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

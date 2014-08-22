@@ -1,0 +1,22 @@
+﻿<div class="col-lg-6">
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger alert-block">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            <h4><i class="fa fa-warning"></i> Error</h4>
+            <p>@ViewBag.ErrorMessage</p>
+            <p>@Html.ValidationSummary("")</p>
+        </div>
+    }
+
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success alert-block">
+            <button data-dismiss="alert" class="close" type="button">×</button>
+            <h4><i class="fa fa-warning"></i> Error</h4>
+            <p>@ViewBag.SuccessMessage</p>
+        </div>
+    }
+
+</div>

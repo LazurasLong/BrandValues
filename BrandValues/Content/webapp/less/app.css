@@ -4032,6 +4032,13 @@ textarea,
 #mainLoading {
   display: none;
 }
+/* Compass BG */
+.bg-compass {
+  color: #788188;
+  background-image: url("../images/bg/bg-compass-text.png");
+  background-position: 98% 97%;
+  background-repeat: no-repeat;
+}
 /* Upload */
 #teamname-txt {
   display: none;

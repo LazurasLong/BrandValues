@@ -565,7 +565,7 @@ namespace BrandValues.Controllers {
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Upload(PostEntry postEntry, HttpPostedFileBase[] files)
+        public async Task<ActionResult> Upload(PostEntry postEntry, IEnumerable<HttpPostedFileBase> files)
         {
             //positive outcome response
             var myResponse = "";
@@ -573,12 +573,9 @@ namespace BrandValues.Controllers {
             //check that model is valid
             if (!ModelState.IsValid)
             {
-                return View();
+                ViewBag.ErrorMessage = "Please complete the form";
+                return View(postEntry);
             }
-
-
-
-
 
             //start new entry from posted fields
             var entry = new Entry(postEntry);
@@ -593,20 +590,21 @@ namespace BrandValues.Controllers {
             //check that user has completed team name
             if (postEntry.Type == "team" && postEntry.TeamName.IsEmpty())
             {
-                ViewBag.Message = "Please enter your team name";
-                return View();
+                ViewBag.ErrorMessage = "Please enter your team name";
+                return View(postEntry);
             }
 
             //set date
             entry.CreatedOn = DateTime.Now;
 
+            if (files == null)
+            {
+                ViewBag.ErrorMessage = "Please select a file to upload";
+                return View();
+            }
+
             foreach (var file in files)
             {
-                if (file == null)
-                {
-                    ViewBag.Message = "Please select a file to upload";
-                    return View();
-                }
 
 
                 //network check for 10MB limit
@@ -614,8 +612,8 @@ namespace BrandValues.Controllers {
                 {
                     if (file.ContentLength > 10485760) //bytes
                     {
-                        ViewBag.Message = "Sorry but the file you're trying to upload is too big for the AIB network. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support uploading your file.";
-                        return View(); 
+                        ViewBag.ErrorMessage = "Sorry but the file you're trying to upload is too big for the AIB network. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support uploading your file.";
+                        return View();
                     }
                 }
 
@@ -679,8 +677,8 @@ namespace BrandValues.Controllers {
 
                 if (filePath == null)
                 {
-                    ViewBag.Message = "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support " + file.ContentType;
-                  return View(); 
+                    ViewBag.ErrorMessage = "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support " + file.ContentType;
+                    return View();
                 }
 
                 try
@@ -712,24 +710,24 @@ namespace BrandValues.Controllers {
                 {
                     //s3Exception.InnerException
 #if(DEBUG)
-                    ViewBag.Message = s3Exception.Message;
+                    ViewBag.ErrorMessage = s3Exception.Message;
 #endif
 
 #if(!DEBUG)
                     if (s3Exception.Message.Contains("x-amz-server-side-encryption header is not supported"))
                     {
-                        ViewBag.Message =
+                        ViewBag.ErrorMessage =
                             "Sorry but we currently don't support the type of file you're trying to upload. Please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support";
                     }
                     else
                     {
-                        ViewBag.Message =
+                        ViewBag.ErrorMessage =
                             "There was a problem uploading your file. Please try again, if this continues to happen please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20uploading'>aib@valuescompetition.com</a> for support";
                     }
 #endif
 
 
-                    return View("Upload");
+                    return View();
                 }
 
                 //Send to SQS for re-encoding
@@ -750,11 +748,11 @@ namespace BrandValues.Controllers {
                         catch (AmazonSQSException sqsException)
                         {
 #if(DEBUG)
-                            ViewBag.Message = sqsException.Message;
+                            ViewBag.ErrorMessage = sqsException.Message;
 #endif
 
 #if(!DEBUG)
-                        ViewBag.Message =
+                        ViewBag.ErrorMessage =
                             "There was a problem editing your video. Please try again, if this continues to happen please contact us at <a href='mailto:aib@valuescompetition.com?Subject=Issue%20re-encoding%20video'>aib@valuescompetition.com</a> for support";
 #endif
                         }
@@ -769,7 +767,7 @@ namespace BrandValues.Controllers {
             
            
 
-            ViewBag.Message = myResponse;
+            ViewBag.SuccessMessage = myResponse;
             ViewBag.Uploaded = true;
             return View();
         }

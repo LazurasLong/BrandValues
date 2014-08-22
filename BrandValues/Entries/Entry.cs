@@ -41,11 +41,19 @@ namespace BrandValues.Entries
 
         public string UserName { get; set; }
 
+        public string ContactEmail { get; set; }
+
+        public string ContactTel { get; set; }
+
         public string UserFirstName { get; set; }
 
         public string UserSurname { get; set; }
 
         public string TeamName { get; set; }
+
+        public string TeamNumber { get; set; }
+
+        public string TeamMemberNames { get; set; }
 
         public string UserArea { get; set; }
 
@@ -63,6 +71,10 @@ namespace BrandValues.Entries
             Type = postEntry.Type;
             Values = postEntry.Values;
             TeamName = postEntry.TeamName;
+            TeamNumber = postEntry.TeamNumber;
+            TeamMemberNames = postEntry.TeamMemberNames;
+            ContactEmail = postEntry.ContactEmail;
+            ContactTel = postEntry.ContactTel;
         }
 
         public void Edit(Edit edit)
