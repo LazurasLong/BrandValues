@@ -5,6 +5,10 @@
 
         if (Model.Count() > 6)
         {
+            <script>
+                $("#browse").removeClass("bg-compass");
+            </script>
+            
             foreach (var entry in Model)
             {
 
@@ -42,7 +46,7 @@
             foreach (var entry in Model)
             {
 
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
                     <div class="item">
                         <div class="pos-rlt entry-icon">
                             <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
@@ -78,6 +82,13 @@
         if (!Model.Any())
         {
             <span class="h3 font-thin">There are no entries for this specific Brand Value.</span><p>@Html.ActionLink("Click here", "Upload", null, new { @class = "text-info" }) to become the first to upload one.</p>
+        
+            <script>
+                if ($(window).width() > 960) {
+                    $("#browse").addClass("bg-compass");
+                }
+                
+            </script>
         }
 
 

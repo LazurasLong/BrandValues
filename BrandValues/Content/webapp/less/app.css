@@ -3651,6 +3651,13 @@ fieldset[disabled] .i-checks input + i:before {
     display: none !important;
   }
 }
+/* header logo */
+.navbar-brand {
+  text-align: left;
+}
+.logo-text {
+  font-size: 18px;
+}
 @media (max-width: 768px) {
   .no-margin-mobile {
     margin-bottom: 0px !important;
@@ -3674,11 +3681,20 @@ fieldset[disabled] .i-checks input + i:before {
   .m-t-xl {
     margin-top: 20px;
   }
+  .navbar-brand {
+    text-align: center;
+  }
 }
 @media (min-width: 768px) {
   .hidden-desktop {
     display: none !important;
   }
+}
+/* browse */
+.list-group-item.active {
+  color: #fff;
+  border-color: #647cb8 !important;
+  background-color: #647cb8 !important;
 }
 /* Autocomplete fixes */
 .ui-autocomplete {

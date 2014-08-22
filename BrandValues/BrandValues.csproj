@@ -239,6 +239,9 @@
     <Content Include="Content\webapp\less\IE6.css.map">
       <DependentUpon>IE6.css</DependentUpon>
     </Content>
+    <Content Include="Content\webapp\fonts\opensans\OpenSans-Regular-webfont.eot" />
+    <Content Include="fonts\opensans\OpenSans-Regular-webfont.eot" />
+    <Content Include="fonts\opensans\OpenSans-Light-webfont.eot" />
     <None Include="Scripts\jquery-1.8.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.3.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />

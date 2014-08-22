@@ -1,24 +1,8 @@
 @font-face {
 	font-family: 'Source Sans Pro';
     font-style: normal;
-    font-weight: 300;
-	src: url('../fonts/sourcesanspro/sourcesanspro-light-webfont.eot'); /* IE9 Compat Modes */
-	src: url('../fonts/sourcesanspro/sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('../fonts/sourcesanspro/sourcesanspro-light.woff') format('woff'); /* Modern Browsers */
-}
-@font-face {
-	font-family: 'Source Sans Pro';
-    font-style: normal;
     font-weight: 400;
 	src: url('../fonts/sourcesanspro/sourcesanspro-regular-webfont.eot'); /* IE9 Compat Modes */
-	src: url('../fonts/sourcesanspro/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	src: url('../fonts/opensans/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
 		url('../fonts/sourcesanspro/sourcesanspro.woff') format('woff'); /* Modern Browsers */
-}
-@font-face {
-	font-family: 'Source Sans Pro';
-    font-style: normal;
-    font-weight: 700;
-	src: url('../fonts/sourcesanspro/sourcesanspro-bold-webfont.eot'); /* IE9 Compat Modes */
-	src: url('../fonts/sourcesanspro/sourcesanspro-bold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-		url('../fonts/sourcesanspro/sourcesanspro-bold.woff') format('woff'); /* Modern Browsers */
 }

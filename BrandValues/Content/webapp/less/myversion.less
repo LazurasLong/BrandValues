@@ -84,6 +84,14 @@ color: #f0f2f8;
     }
 }
 
+/* header logo */    
+.navbar-brand {
+        text-align: left;
+    }
+.logo-text{
+    font-size: 18px;
+}
+
 @media (max-width: 768px) {
     .no-margin-mobile{
         margin-bottom: 0px !important;
@@ -107,6 +115,10 @@ color: #f0f2f8;
     .m-t-xl {
         margin-top: 20px;
     }
+    .navbar-brand {
+        text-align: center;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -114,6 +126,13 @@ color: #f0f2f8;
         display: none !important;
     }
   
+}
+
+/* browse */
+.list-group-item.active {
+    color: #fff;
+    border-color: @brand-primary !important;
+    background-color: @brand-primary !important;
 }
 
 /* Autocomplete fixes */
@@ -504,6 +523,8 @@ padding: 15px;
     background-position: 98% 97%;
     background-repeat: no-repeat;
 }
+
+
 
 /* Upload */
 #teamname-txt {
