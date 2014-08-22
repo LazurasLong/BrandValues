@@ -18,7 +18,14 @@ namespace BrandValues.App_Start
         {
             NameValueCollection appConfig = ConfigurationManager.AppSettings;
             string mongoConnectionString = appConfig["PARAM1"];
+            
+            #if(DEBUG)
             string mongoDatabaseName = appConfig["PARAM3"];
+            #endif
+
+            #if(!DEBUG)
+            string mongoDatabaseName = appConfig["PARAM4"];
+            #endif
 
             var settings = MongoClientSettings.FromUrl(new MongoUrl(mongoConnectionString));
             settings.WriteConcern.Journal = true;

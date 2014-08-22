@@ -102,15 +102,10 @@ namespace BrandValues.Controllers {
 
             if (version == "Version2")
             {
-                return View("V2", allDocs);
+                return View("HomePageV2", allDocs);
             }
 
-            if (version == "Version3")
-            {
-                return View("Version2", allDocs);
-            }
-
-            return View(allDocs);
+            return View("HomePageV1", allDocs);
 
         }
 

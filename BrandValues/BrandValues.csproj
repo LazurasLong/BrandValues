@@ -333,7 +333,7 @@
     <Content Include="Views\SiteAdmin\Delete.cshtml" />
     <Content Include="Views\SiteAdmin\Edit.cshtml" />
     <Content Include="Views\SiteAdmin\Index.cshtml" />
-    <Content Include="Views\Home\V2.cshtml" />
+    <Content Include="Views\Home\HomePageV2.cshtml" />
     <Content Include="Views\Account\Terms.cshtml" />
     <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\_Intro.cshtml" />
@@ -358,13 +358,13 @@
     <Content Include="Views\Home\Browse.IE6.cshtml" />
     <Content Include="Views\Home\Play.IE6.cshtml" />
     <Content Include="Views\Shared\v2\_Layout.cshtml" />
-    <Content Include="Views\Home\version2.cshtml" />
+    <Content Include="Views\Home\HomePageV1.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
     <Content Include="Views\Shared\_Aside.IE6.cshtml" />
     <Content Include="Views\Shared\_Header.IE6.cshtml" />
     <Content Include="Views\Shared\v2\_Layout.IE6.cshtml" />
-    <Content Include="Views\Home\version2.IE6.cshtml" />
+    <Content Include="Views\Home\HomePageV1.IE6.cshtml" />
     <Content Include="Views\Account\Terms.IE6.cshtml" />
     <Content Include="Views\Home\_Upload.cshtml" />
     <None Include="Web.Debug.config">
