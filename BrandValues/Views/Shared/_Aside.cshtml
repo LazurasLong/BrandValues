@@ -30,7 +30,7 @@
                                              new AjaxOptions { UpdateTargetId = "result" }
                                 )*@
 
-                            <div class="hidden-desktop margin-top-20">
+                            <div class="hidden-desktop">
                                 @using (Ajax.BeginForm("CategoryChosen", "Home", FormMethod.Get, new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }, new { id = "menuForm" }))
                                 {
                                     @Html.DropDownList("Menu", null, new
@@ -43,11 +43,11 @@
 
 
 
-                                    <a class="btn btn-primary btn-lg btn-block" href="~/Home/Play/53d8dbd646f3c621509d37cb">
-                                        <i class="fa icon-control-play text">
-                                        </i>
-                                        <span class="text">Play Brand Values Video</span>
-                                    </a>
+                                <a class="btn btn-primary btn-lg btn-block margin-top-20" href="~/Home/Play/53d8dbd646f3c621509d37cb">
+                                    <i class="fa icon-control-play text">
+                                    </i>
+                                    <span class="text">Play the Brand Values Video</span>
+                                </a>
 
                                 <a class="btn btn-primary btn-lg btn-block" href="~/Home/upload">
                                     <i class="fa icon-cloud-upload text">
