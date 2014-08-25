@@ -153,6 +153,8 @@ namespace BrandValues.Controllers {
             var entries = Context.Entries.Find(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
 
+            ViewBag.Voting = GetVotingStatus();
+
             return PartialView("_Search", entries);
         }
 
