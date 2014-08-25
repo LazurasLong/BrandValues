@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label class="control-label col-md-2">Entry Name</label>
                     <div class="col-md-10">
-                        @Html.TextBox("Name")
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
                     </div>
                 </div>
 
