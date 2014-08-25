@@ -164,6 +164,7 @@
     <Content Include="images\box-compass.png" />
     <Content Include="images\aib-logo-small.png" />
     <Content Include="images\browse-ie.png" />
+    <Content Include="images\camera.jpg" />
     <Content Include="images\compass-large.png" />
     <Content Include="images\entries\document.png" />
     <Content Include="images\entries\video.png" />
@@ -172,6 +173,7 @@
     <Content Include="images\Liffey.jpg" />
     <Content Include="images\logo-ie.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\music.jpg" />
     <Content Include="images\p0.jpg" />
     <Content Include="images\p1.jpg" />
     <Content Include="images\p2.jpg" />

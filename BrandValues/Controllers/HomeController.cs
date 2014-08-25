@@ -366,7 +366,7 @@ namespace BrandValues.Controllers {
             //return last 6 entries
             SortByBuilder sbb = new SortByBuilder();
             sbb.Descending("CreatedOn");
-            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(2);
+            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(4);
 
             //get Entry first
             var entry = GetEntry(id);
