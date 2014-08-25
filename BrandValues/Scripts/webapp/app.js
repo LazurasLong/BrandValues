@@ -182,7 +182,7 @@ Date.now = Date.now || function() { return +new Date; };
 
   $(function(){
 
-    // toogle fullscreen
+    //toogle fullscreen
     //$(document).on('click', "[data-toggle=fullscreen]", function(e){
     //  e.preventDefault();
     //  if (screenfull.enabled) {

@@ -632,6 +632,9 @@ namespace BrandValues.Controllers {
                 if (username.Contains('@'))
                     username = username.Substring(0, username.LastIndexOf('@'));
 
+                //remove odd characters
+                username = Regex.Replace(username, "[^0-9a-zA-Z.]+", "");
+
                 var entryName = entry.Name.Replace(" ", String.Empty);
                 entryName = entryName + DateTime.Now;
                 entryName = Regex.Replace(entryName, "[^0-9a-zA-Z]+", "");

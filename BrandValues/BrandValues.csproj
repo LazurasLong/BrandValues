@@ -178,7 +178,7 @@
     <Content Include="images\p3.jpg" />
     <Content Include="images\p4.jpg" />
     <Content Include="images\p5.jpg" />
-    <Content Include="error500.html" />
+    <Content Include="404.html" />
     <Content Include="error.html" />
     <Content Include="check.html" />
     <Content Include="images\aib-logo-large.png" />

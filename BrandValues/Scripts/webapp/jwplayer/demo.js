@@ -112,10 +112,17 @@ $(document).ready(function () {
                             file: fallbackUrl
                         }]
                     }],
-                    //sharing: {
-                    //    link: document.URL
-                    //},
+                    sharing: {
+                        link: document.URL
+                    },
                     //primary: "flash",
+                    //stretching: 'fill',
+                    events: {
+                        onFullscreen: function (event) {
+                            resizePlayer();
+                        }
+                    },
+                    autostart: true,
                     width: "100%",
                     aspectratio: "16:9",
                     //autostart: true,
@@ -134,6 +141,36 @@ $(document).ready(function () {
 
 
     }
+
+
+    //$(document).on('click', "[data-toggle=fullscreen]", function (e) {
+    //    e.preventDefault();
+    //    console.log("fullscreen");
+    //    if (screenfull.enabled) {
+    //        screenfull.request();
+    //    }
+    //    resizePlayer();
+    //});
+
+    function resizePlayer() {
+        
+
+        $("#sidemenu").toggleClass("hidden");
+        $("header").toggleClass("hidden");
+        $("footer").toggleClass("hidden");
+
+        //var check = $("header").hasClass("hidden");
+
+        //if (check) {
+        //    var height = $(window).height();
+        //    var width = $(window).width();
+        //    //jwplayer().resize(width, height);
+        //} else {
+        //    //jwplayer().resize(999, 999);
+
+        //}
+       
+  };
 
 
 

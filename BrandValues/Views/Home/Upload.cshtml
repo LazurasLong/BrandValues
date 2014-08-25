@@ -7,6 +7,11 @@
 <script>
     var uploaded = '@ViewBag.Uploaded';
     var username = '@User.Identity.GetUserName()';
+
+    //fix apostrophe bug
+    if (username.indexOf("&#39;") > -1) {
+        username = username.replace("&#39;", "'");
+    }
 </script>
 
 <section>
