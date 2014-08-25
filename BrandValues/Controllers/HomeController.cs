@@ -269,7 +269,10 @@ namespace BrandValues.Controllers {
         //Browse
         public PartialViewResult All()
         {
-            var entries = Context.Entries.FindAll();
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var entries = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb);
+
             return PartialView("_DisplayEntries", entries);
         }
 
@@ -824,8 +827,9 @@ namespace BrandValues.Controllers {
 
         public ActionResult Browse()
         {
-            
-            var model = Context.Entries.FindAll();
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var model = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb);
 
 
             return View(model);

@@ -1,96 +1,111 @@
 ﻿@model IEnumerable<BrandValues.Entries.Entry>
 
-    @if (Model != null)
+@if (Model != null)
+{
+
+
+
+    if (Model.Count() > 6)
     {
+        <script>
+            $("#browse").removeClass("bg-compass");
+        </script>
 
-        if (Model.Count() > 6)
+        foreach (var entry in Model)
         {
-            <script>
-                $("#browse").removeClass("bg-compass");
-            </script>
-            
-            foreach (var entry in Model)
-            {
 
-                <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-                    <div class="item">
-                        <div class="pos-rlt entry-icon">
-                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
-                        </div>
-                        <div class="padder-v entry-icon-padder">
-                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
-                            <span class="text-ellipsis text-xs text-muted">
-                                @if (entry.Type == "individual")
-                                {
-                                    var space = "&nbsp;";
-                                    @Html.DisplayFor(modelItem => entry.UserFirstName)
-                                    @Html.Raw(space)
-                                    @Html.DisplayFor(modelItem => entry.UserSurname)
-                                    <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                }
-                                else
-                                {
-                                    @Html.DisplayFor(modelItem => entry.TeamName)
-                                    <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                }
-                            </span>
-                        </div>
+            <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="item">
+                    <div class="pos-rlt entry-icon">
+                        <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v entry-icon-padder">
+                        <span class="pull-right badge bg-white">
+                            <i class="fa fa-thumbs-o-up text"></i>
+                            @if (entry.Votes.Count != 0)
+                            {
+                                @entry.Votes.Count
+                            }
+                            else
+                            {
+                                @entry.Likes.Count
+                            }
+                        </span>
+
+
+                        <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                        <span class="text-ellipsis text-xs text-muted">
+                            @if (entry.Type == "individual")
+                            {
+                                var space = "&nbsp;";
+                                @Html.DisplayFor(modelItem => entry.UserFirstName)
+                                @Html.Raw(space)
+                                @Html.DisplayFor(modelItem => entry.UserSurname)
+                                <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => entry.TeamName)
+                                <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                            }
+                        </span>
                     </div>
                 </div>
+            </div>
 
 
-            }
         }
-        else
-        {
-            foreach (var entry in Model)
-            {
-
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
-                    <div class="item">
-                        <div class="pos-rlt entry-icon">
-                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
-                        </div>
-                        <div class="padder-v entry-icon-padder">
-                            <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
-                            <span class="text-ellipsis text-xs text-muted">
-                                @if (entry.Type == "individual")
-                                {
-                                    var space = "&nbsp;";
-                                    @Html.DisplayFor(modelItem => entry.UserFirstName)
-                                    @Html.Raw(space)
-                                    @Html.DisplayFor(modelItem => entry.UserSurname)
-                                    <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                }
-                                else
-                                {
-                                    @Html.DisplayFor(modelItem => entry.TeamName)
-                                    <br />@Html.DisplayFor(modelItem => entry.UserArea)
-                                }
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-
-            }
-        }
-
-
-
-
-        if (!Model.Any())
-        {
-            <span class="h3 font-thin">There are no entries for this specific Brand Value.</span><p>@Html.ActionLink("Click here", "Upload", null, new { @class = "text-info" }) to become the first to upload one.</p>
-        
-            <script>
-                if ($(window).width() > 960) {
-                    $("#browse").addClass("bg-compass");
-                }
-                
-            </script>
-        }
-
-
     }
-    
+    else
+    {
+        foreach (var entry in Model)
+        {
+
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="item">
+                    <div class="pos-rlt entry-icon">
+                        <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
+                    </div>
+                    <div class="padder-v entry-icon-padder">
+                        <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                        <span class="text-ellipsis text-xs text-muted">
+                            @if (entry.Type == "individual")
+                            {
+                                var space = "&nbsp;";
+                                @Html.DisplayFor(modelItem => entry.UserFirstName)
+                                @Html.Raw(space)
+                                @Html.DisplayFor(modelItem => entry.UserSurname)
+                                <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                            }
+                            else
+                            {
+                                @Html.DisplayFor(modelItem => entry.TeamName)
+                                <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                            }
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    }
+
+
+
+
+    if (!Model.Any())
+    {
+        <span class="h3 font-thin">There are no entries for this specific Brand Value.</span><p>@Html.ActionLink("Click here", "Upload", null, new { @class = "text-info" }) to become the first to upload one.</p>
+
+        <script>
+            if ($(window).width() > 960) {
+                $("#browse").addClass("bg-compass");
+            }
+
+        </script>
+    }
+
+
+}
+

@@ -3696,6 +3696,10 @@ fieldset[disabled] .i-checks input + i:before {
   border-color: #647cb8 !important;
   background-color: #647cb8 !important;
 }
+/*comment*/
+.comment-text {
+  font-size: 14px;
+}
 /* Autocomplete fixes */
 .ui-autocomplete {
   z-index: 99999 !important;

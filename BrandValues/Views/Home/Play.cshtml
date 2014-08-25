@@ -336,6 +336,17 @@
                                                                     <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
                                                                 </div>
                                                                 <div class="padder-v entry-icon-padder">
+                                                                    <span class="pull-right badge bg-white">
+                                                                        <i class="fa fa-thumbs-o-up text"></i>
+                                                                        @if (entry.Votes.Count != 0)
+                                                                        {
+                                                                            @entry.Votes.Count
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @entry.Likes.Count
+                                                                        }
+                                                                    </span>
                                                                     <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
                                                                     <span class="text-ellipsis text-xs text-muted">
                                                                         @if (entry.Type == "individual")
