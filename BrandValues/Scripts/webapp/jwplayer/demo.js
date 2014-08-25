@@ -112,9 +112,9 @@ $(document).ready(function () {
                             file: fallbackUrl
                         }]
                     }],
-                    sharing: {
-                        link: document.URL
-                    },
+                    //sharing: {
+                    //    link: document.URL
+                    //},
                     //primary: "flash",
                     //stretching: 'fill',
                     events: {
