@@ -30,7 +30,7 @@
                                              new AjaxOptions { UpdateTargetId = "result" }
                                 )*@
 
-                            <div class="hidden-desktop">
+                            <div class="hidden-desktop margin-top-20">
                                 @using (Ajax.BeginForm("CategoryChosen", "Home", FormMethod.Get, new AjaxOptions { UpdateTargetId = "result", InsertionMode = InsertionMode.Replace }, new { id = "menuForm" }))
                                 {
                                     @Html.DropDownList("Menu", null, new

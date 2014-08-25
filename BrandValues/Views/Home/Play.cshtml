@@ -242,6 +242,16 @@
                                                     <span class="h4 font-thin">Post a comment</span><br />
                                                 </p>
 
+
+                                                <script>
+                                                    function enableComment() {
+                                                        $("#comment-btn").removeAttr("disabled");
+
+                                                    };
+                                                   
+                                                </script>
+
+
                                                 @using (Ajax.BeginForm("PostComment", "Home", FormMethod.Post, new AjaxOptions { UpdateTargetId = "comments-result", OnBegin = "OnBegin", LoadingElementId = "loading", OnFailure = "handleError", OnSuccess = "OnSuccess", InsertionMode = InsertionMode.Replace }, new { id = "commentForm" }))
                                                 {
 
@@ -252,8 +262,8 @@
 
                                                     <div class="form-group">
 
-                                                        <textarea name="comment" id="comment" class="form-control" placeholder="Your comment" rows="3"></textarea>
-                                                        <button type="submit" class="btn btn-primary" id="comment-btn" value="Comment">
+                                                        <textarea name="comment" id="comment" onchange="enableComment()" onkeyup="enableComment()" class="form-control" placeholder="Your comment" rows="3"></textarea>
+                                                        <button type="submit" class="btn btn-primary" id="comment-btn" value="Comment" disabled>
                                                             <i class="fa fa-thumbs-o-up text"></i> Comment
                                                         </button>
                                                     </div>
