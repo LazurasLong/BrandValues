@@ -99,6 +99,7 @@ namespace BrandValues.Controllers {
             //get menu
             ViewBag.Menu = GetMenu();
 
+            ViewBag.Voting = GetVotingStatus();
 
             if (version == "Version2")
             {
@@ -207,10 +208,12 @@ namespace BrandValues.Controllers {
             sbb.Descending("CreatedOn");
             var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
 
+            ViewBag.Voting = GetVotingStatus();
 
             switch (selection)
             {
                 case 0:
+                    ViewBag.Voting = GetVotingStatus();
                     return PartialView("_Intro", allDocs);
                 case 1:
                     return PartialView("_HowItWorks");
@@ -232,7 +235,7 @@ namespace BrandValues.Controllers {
             SortByBuilder sbb = new SortByBuilder();
             sbb.Descending("CreatedOn");
             var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
-
+            ViewBag.Voting = GetVotingStatus();
             return PartialView("_Intro", allDocs);
         }
 
@@ -266,12 +269,27 @@ namespace BrandValues.Controllers {
             return PartialView("_FAQ");
         }
 
+        private bool GetVotingStatus()
+        {
+            var votingEnabled = SiteVersion.Voting;
+
+            if (votingEnabled == true)
+            {
+                ViewBag.Voting = true;
+                return true;
+            }
+
+            return false;
+        }
+
         //Browse
         public PartialViewResult All()
         {
             SortByBuilder sbb = new SortByBuilder();
             sbb.Descending("CreatedOn");
             var entries = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb);
+
+            ViewBag.Voting = GetVotingStatus();
 
             return PartialView("_DisplayEntries", entries);
         }
@@ -289,6 +307,8 @@ namespace BrandValues.Controllers {
                 .FindAs<Entry>(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
 
+            ViewBag.Voting = GetVotingStatus();
+
             return PartialView("_DisplayEntries", entries);
         }
 
@@ -304,6 +324,8 @@ namespace BrandValues.Controllers {
             var entries = Context.Entries
                 .FindAs<Entry>(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            ViewBag.Voting = GetVotingStatus();
 
             return PartialView("_DisplayEntries", entries);
         }
@@ -321,6 +343,8 @@ namespace BrandValues.Controllers {
                 .FindAs<Entry>(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
 
+            ViewBag.Voting = GetVotingStatus();
+
             return PartialView("_DisplayEntries", entries);
         }
 
@@ -336,6 +360,8 @@ namespace BrandValues.Controllers {
             var entries = Context.Entries
                 .FindAs<Entry>(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            ViewBag.Voting = GetVotingStatus();
 
             return PartialView("_DisplayEntries", entries);
         }
@@ -353,6 +379,8 @@ namespace BrandValues.Controllers {
             var entries = Context.Entries
                 .FindAs<Entry>(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+
+            ViewBag.Voting = GetVotingStatus();
 
             return PartialView("_DisplayEntries", entries);
         }
@@ -830,7 +858,7 @@ namespace BrandValues.Controllers {
             SortByBuilder sbb = new SortByBuilder();
             sbb.Descending("CreatedOn");
             var model = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb);
-
+            ViewBag.Voting = GetVotingStatus();
 
             return View(model);
         }

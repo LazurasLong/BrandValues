@@ -168,7 +168,7 @@ namespace BrandValues.Controllers
 
         private bool CheckEmail(string email)
         {
-            if (email.Contains("@aib"))
+            if (email.Contains("@aib.ie"))
             {
                 return true;
             }
@@ -204,7 +204,7 @@ namespace BrandValues.Controllers
                     string firstName = "";
                     string surname = "";
 
-                    if (userEmail.Contains("@aib"))
+                    if (userEmail.Contains("@aib.ie"))
                     {
                         //Get title case for first name & surname
                         firstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(namesArray[0]);

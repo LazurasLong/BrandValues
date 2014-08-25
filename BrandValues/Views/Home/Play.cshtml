@@ -42,8 +42,10 @@
                                                 if (ViewBag.Voted)
                                                 {
                                                     <div class="pull-right text-sm">
+                                                        <i class="fa fa-thumbs-o-up text"></i> @Model.Entry.Votes.Count
+                                                        
                                                         <div class="btn btn-success">
-                                                            <i class="fa fa-thumbs-o-up text"></i> Voted
+                                                           <i class="fa fa-thumbs-o-up text"></i> Voted
                                                         </div>
                                                     </div>
                                                 }
@@ -99,6 +101,9 @@
                                                     <form class="pull-right text-sm" id="voteForm" method="post" action="@Url.Action("PostVote")">
                                                         @Html.AntiForgeryToken()
                                                         @Html.HiddenFor(model => model.Entry.Id)
+
+                                                        <i class="fa fa-thumbs-o-up text"></i> @Model.Entry.Votes.Count
+
                                                         <button type="submit" class="btn btn-default" id="btn-vote" value="Vote">
                                                             <i class="fa fa-thumbs-o-up text"></i> <span id="voteTxt">Vote For</span>
                                                         </button>
@@ -113,8 +118,9 @@
                                                 if (ViewBag.Liked)
                                                 {
                                                     <div class="pull-right text-sm">
+                                                        <i class="fa fa-thumbs-o-up text"></i> @Model.Entry.Likes.Count
                                                         <div class="btn btn-success">
-                                                            <i class="fa fa-thumbs-o-up text"></i> Liked
+                                                             <i class="fa fa-thumbs-o-up text"></i> Liked
                                                         </div>
                                                     </div>
                                                 }
@@ -170,6 +176,7 @@
                                                     <form class="pull-right text-sm" id="likeForm" method="post" action="@Url.Action("PostLike")">
                                                         @Html.AntiForgeryToken()
                                                         @Html.HiddenFor(model => model.Entry.Id)
+                                                        <i class="fa fa-thumbs-o-up text"></i> @Model.Entry.Likes.Count
                                                         <button type="submit" class="btn btn-default" id="btn-like" value="Comment">
                                                             <i class="fa fa-thumbs-o-up text"></i> <span id="likeTxt">Thumbs Up</span>
                                                         </button>
@@ -181,6 +188,8 @@
 
                                             <div class="pull-right animated fadeInRight hidden" id="likeresults">
                                                 <div class="pull-right text-sm">
+
+                                                    
                                                     <div class="btn btn-success">
                                                         <i class="fa fa-thumbs-o-up text"></i> Liked
                                                     </div>
@@ -189,6 +198,7 @@
 
                                             <div class="pull-right animated fadeInRight hidden" id="voteresults">
                                                 <div class="pull-right text-sm">
+                                                    
                                                     <div class="btn btn-success">
                                                         <i class="fa fa-thumbs-o-up text"></i> Voted
                                                     </div>
@@ -229,11 +239,11 @@
                                                 </p>
                                             </div>
                                             @*@using (Ajax.BeginForm("PostComment", new AjaxOptions
-                                    {
-                                        UpdateTargetId = "comments-result",
-                                        HttpMethod = "POST",
-                                        InsertionMode = InsertionMode.Replace
-                                    }))*@
+                    {
+                        UpdateTargetId = "comments-result",
+                        HttpMethod = "POST",
+                        InsertionMode = InsertionMode.Replace
+                    }))*@
 
 
                                             <div class="col-xs-12 margin-bottom">
@@ -248,7 +258,7 @@
                                                         $("#comment-btn").removeAttr("disabled");
 
                                                     };
-                                                   
+
                                                 </script>
 
 
@@ -321,6 +331,14 @@
 
 
 
+
+
+
+
+
+
+
+
                             </section>
 
                     </section>
@@ -348,7 +366,8 @@
                                                                 <div class="padder-v entry-icon-padder">
                                                                     <span class="pull-right badge bg-white">
                                                                         <i class="fa fa-thumbs-o-up text"></i>
-                                                                        @if (entry.Votes.Count != 0)
+
+                                                                        @if (ViewBag.Voting)
                                                                         {
                                                                             @entry.Votes.Count
                                                                         }
@@ -356,6 +375,7 @@
                                                                         {
                                                                             @entry.Likes.Count
                                                                         }
+
                                                                     </span>
                                                                     <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
                                                                     <span class="text-ellipsis text-xs text-muted">
