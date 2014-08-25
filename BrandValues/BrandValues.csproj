@@ -197,6 +197,7 @@
     <Content Include="images\values\simple.png" />
     <Content Include="images\values\together.png" />
     <Content Include="images\values\trust.png" />
+    <Content Include="mu-86b4d9cd-81c6b4ea-1224895e-918bfa3d.txt" />
     <Content Include="packages.config" />
     <Content Include="Content\webapp\css\bootstrap.less" />
     <Content Include="Content\webapp\fonts\fontawesome-webfont.eot" />
