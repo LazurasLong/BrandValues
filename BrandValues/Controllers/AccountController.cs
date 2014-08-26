@@ -51,6 +51,7 @@ namespace BrandValues.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ServerName = System.Environment.MachineName;
             return View();
         }
 

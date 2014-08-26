@@ -2694,6 +2694,12 @@ fieldset[disabled] .btn-dark.active {
   background-color: #fff;
   color: #788188;
 }
+.bg-white a {
+  color: #545a5f;
+}
+.bg-white a:hover {
+  color: #3c4144;
+}
 .bg-white .text-muted {
   color: #939aa0 !important;
 }
@@ -3646,6 +3652,9 @@ fieldset[disabled] .i-checks input + i:before {
 @media (min-width: 768px) and (max-width: 1175px) {
   .hidden-tablet {
     display: none !important;
+  }
+  .menu-hidden-tablet {
+    display: none;
   }
 }
 /* header logo */
