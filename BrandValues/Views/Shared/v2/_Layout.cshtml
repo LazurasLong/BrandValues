@@ -34,7 +34,7 @@
 <body>
 
     <!-- Body content -->
-    <section class="vbox">
+    <section class="vbox" id="content">
 
         @Html.Partial("_Header")
 
@@ -44,15 +44,15 @@
 
                 @Html.Partial("_Aside")
 
-                <section id="content">
-                    
+                <section>
+
                     <section class="hbox stretch" id="searchResults">
-                        
-                       
+
+
                         @RenderBody()
                     </section>
 
-                        
+
                 </section>
             </section>
         </section>

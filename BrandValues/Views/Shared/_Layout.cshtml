@@ -34,7 +34,7 @@
 <body>
 
     <!-- Body content -->
-    <section class="vbox">
+    <section class="vbox" id="content">
 
         @Html.Partial("_Header")
 
@@ -43,104 +43,104 @@
             <section class="hbox stretch">
                 <!-- .aside -->
                 @*<aside class="bg-black dk aside hidden-print nav-xs" id="nav">
-                    <section class="vbox">
-                        <section class="w-f-md scrollable">
-                            <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 430px;">
-                                <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2" style="overflow: hidden; width: auto; height: 430px;">
-                                    <!-- nav -->
-                                    <nav class="nav-primary hidden-xs">
-                                        <ul class="nav bg clearfix">
-                                            <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                                Discover
-                                            </li>
-                                            <li>
-                                                <a href="~/home">
-                                                    <i class="icon-like icon"></i>
-
-                                                    <span>Discover</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="~/home/browse">
-                                                    <i class="icon-grid icon"></i>
-                                                    <span>Browse</span>
-                                                </a>
-                                            </li>
-                                            <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                                Your Entry
-                                            </li>
-                                            <li>
-                                                <a href="~/home/upload">
-                                                    <i class="icon-cloud-upload icon  "></i>
-                                                    <span>Upload</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="~/home/entry">
-                                                    <i class="icon-pencil icon"></i>
-                                                    <span>Edit</span>
-                                                </a>
-                                            </li>
-
-                                            <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                                Help
-                                            </li>
-                                            <li>
-                                                <a href="~/home/faq">
-                                                    <i class="icon-info" icon="icon-question icon"></i>
-                                                    <span>FAQ's</span>
-                                                </a>
-                                            </li>
-
-                                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
-                                            {
+                        <section class="vbox">
+                            <section class="w-f-md scrollable">
+                                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 430px;">
+                                    <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railopacity="0.2" style="overflow: hidden; width: auto; height: 430px;">
+                                        <!-- nav -->
+                                        <nav class="nav-primary hidden-xs">
+                                            <ul class="nav bg clearfix">
                                                 <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                                                    Admin
+                                                    Discover
                                                 </li>
                                                 <li>
-                                                    <a href="~/SiteAdmin">
-                                                        <i class="icon-settings icon"></i>
-                                                        <span>Site Admin</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/UsersAdmin">
-                                                        <i class="icon-users icon"></i>
-                                                        <span>Users Admin</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="~/RolesAdmin">
-                                                        <i class="icon-magic-wand icon"></i>
-                                                        <span>Roles Admin</span>
-                                                    </a>
-                                                </li>
-                                            }
+                                                    <a href="~/home">
+                                                        <i class="icon-like icon"></i>
 
-                                            <li class="m-b hidden-nav-xs"></li>
-                                        </ul>
+                                                        <span>Discover</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/home/browse">
+                                                        <i class="icon-grid icon"></i>
+                                                        <span>Browse</span>
+                                                    </a>
+                                                </li>
+                                                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                                    Your Entry
+                                                </li>
+                                                <li>
+                                                    <a href="~/home/upload">
+                                                        <i class="icon-cloud-upload icon  "></i>
+                                                        <span>Upload</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="~/home/entry">
+                                                        <i class="icon-pencil icon"></i>
+                                                        <span>Edit</span>
+                                                    </a>
+                                                </li>
 
-                                    </nav>
-                                    <!-- / nav -->
-                                </div><div class="slimScrollBar" style="width: 10px; position: absolute; top: -330px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 0px; height: 389.2631578947369px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 10px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 0px; background: rgb(51, 51, 51);"></div>
-                            </div>
+                                                <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                                    Help
+                                                </li>
+                                                <li>
+                                                    <a href="~/home/faq">
+                                                        <i class="icon-info" icon="icon-question icon"></i>
+                                                        <span>FAQ's</span>
+                                                    </a>
+                                                </li>
+
+                                                @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                                                {
+                                                    <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
+                                                        Admin
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/SiteAdmin">
+                                                            <i class="icon-settings icon"></i>
+                                                            <span>Site Admin</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/UsersAdmin">
+                                                            <i class="icon-users icon"></i>
+                                                            <span>Users Admin</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="~/RolesAdmin">
+                                                            <i class="icon-magic-wand icon"></i>
+                                                            <span>Roles Admin</span>
+                                                        </a>
+                                                    </li>
+                                                }
+
+                                                <li class="m-b hidden-nav-xs"></li>
+                                            </ul>
+
+                                        </nav>
+                                        <!-- / nav -->
+                                    </div><div class="slimScrollBar" style="width: 10px; position: absolute; top: -330px; opacity: 0.4; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; right: 0px; height: 389.2631578947369px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 10px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; opacity: 0.2; z-index: 90; right: 0px; background: rgb(51, 51, 51);"></div>
+                                </div>
+                            </section>
+
+                            <footer class="footer hidden-xs no-padder text-center-nav-xs"></footer>
                         </section>
+                    </aside>*@
 
-                        <footer class="footer hidden-xs no-padder text-center-nav-xs"></footer>
-                    </section>
-                </aside>*@
-                
 
-               
+
                 <!-- /.aside -->
-                <section id="content">
-                    
+                <section>
+
                     <section class="hbox stretch" id="searchResults">
 
                         @RenderBody()
                     </section>
 
-                        
+
                 </section>
             </section>
         </section>

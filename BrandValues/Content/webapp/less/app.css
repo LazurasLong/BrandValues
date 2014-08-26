@@ -3666,10 +3666,10 @@ fieldset[disabled] .i-checks input + i:before {
   .wrapper {
     padding-bottom: 0px !important;
   }
-  .panel-body {
-    padding-bottom: 0px !important;
-    padding-top: 0px !important;
-  }
+  /*.panel-body {
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+    }*/
   .mobile-bg {
     background-color: #fff;
     padding: 10px;
@@ -3690,6 +3690,7 @@ fieldset[disabled] .i-checks input + i:before {
     display: none !important;
   }
 }
+/* faq's */
 /* browse */
 .list-group-item.active {
   color: #fff;
