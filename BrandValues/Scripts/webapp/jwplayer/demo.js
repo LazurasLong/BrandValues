@@ -110,7 +110,8 @@ $(document).ready(function () {
                         //},
                         {
                             file: fallbackUrl
-                        }]
+                        }
+                        ]
                     }],
                     //sharing: {
                     //    link: document.URL
