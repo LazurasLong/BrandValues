@@ -224,6 +224,14 @@ namespace BrandValues.Controllers {
                 case 3:
                     return PartialView("_BrandValues");
                 case 4:
+                    if(IpAddress.CheckIp()) {
+                        ViewBag.NetworkPC = true;
+                    }
+                    else
+                    {
+                        ViewBag.NetworkPC = false;
+                    }
+                    
                     return PartialView("_WinningEntry");
                 case 5:
                     return PartialView("_FAQ");
@@ -263,6 +271,14 @@ namespace BrandValues.Controllers {
 
         public PartialViewResult WinningEntry()
         {
+            if (IpAddress.CheckIp())
+            {
+                ViewBag.NetworkPC = true;
+            }
+            else
+            {
+                ViewBag.NetworkPC = false;
+            }
             return PartialView("_WinningEntry");
         }
 
@@ -419,7 +435,7 @@ namespace BrandValues.Controllers {
                 else
                 {
                     ViewBag.NetworkCheck = false;
-                    ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
+                    //ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
                     //ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
                     ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
                     ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
@@ -762,7 +778,9 @@ namespace BrandValues.Controllers {
 
                             myResponse = "File uploaded & entry submitted.<br/>To view it, please <a href=\"";
                             var callbackUrl = Url.Action("Play", "Home", new { Id = entry.Id });
-                            myResponse = myResponse + callbackUrl + "\">click here</a>";                          
+                            var editUrl = Url.Action("Edit", "Home", new { Id = entry.Id });
+                            myResponse = myResponse + callbackUrl + "\">click here</a><hr/>Alternatively, to edit your entry please <a href=\"";
+                            myResponse = myResponse + editUrl + "\">click here</a>";
                         }
 
                     }

@@ -2694,12 +2694,6 @@ fieldset[disabled] .btn-dark.active {
   background-color: #fff;
   color: #788188;
 }
-.bg-white a {
-  color: #545a5f;
-}
-.bg-white a:hover {
-  color: #3c4144;
-}
 .bg-white .text-muted {
   color: #939aa0 !important;
 }
@@ -3601,7 +3595,10 @@ fieldset[disabled] .i-checks input + i:before {
   color: #f0f2f8;
 }
 .bg-white {
-  background-color: #ffffff;
+  background-color: #ffffff !important;
+}
+.panel-default .panel-heading {
+  background-color: none;
 }
 /* Fix FF3+4 image issues */
 @-moz-document url-prefix() {
@@ -3770,6 +3767,14 @@ textarea,
     background-color: #ffffff;
     border-radius: 10px;
     padding: 10px;
+  }
+}
+@media (max-height: 650px) {
+  .bg-login {
+    background-image: none !important;
+  }
+  .bg-compass {
+    background-image: none !important;
   }
 }
 .largest-text {

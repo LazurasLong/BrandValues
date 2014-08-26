@@ -20,7 +20,11 @@ color: #f0f2f8;
 }
 
 .bg-white{
-    background-color: @brand-white;
+    background-color: @brand-white !important;
+}
+
+.panel-default .panel-heading {
+    background-color: none;
 }
 
 /* Fix FF3+4 image issues */
@@ -215,6 +219,14 @@ border-radius: 0px !important;
         background-color: @brand-white;
         border-radius: 10px;
         padding: 10px;
+    }
+}
+@media (max-height: 650px) {
+    .bg-login {
+        background-image: none !important;
+    }    
+    .bg-compass {
+        background-image: none !important;
     }
 }
 .largest-text{
