@@ -17,22 +17,22 @@
                                     <input type="submit" value="Search" />
                                 }*@
 
-                            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/All" class="list-group-item active">
+                            <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/All" class="list-group-item active">
                                 All Entries
                             </a>
-                            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Customers" class="list-group-item">
+                            <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Customers" class="list-group-item">
                                 We put our customers first
                             </a>
-                            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Empowering" class="list-group-item">
+                            <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Empowering" class="list-group-item">
                                 We are empowering
                             </a>
-                            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Trust" class="list-group-item">
+                            <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Trust" class="list-group-item">
                                 We are building trust and appreciation
                             </a>
-                            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Simple" class="list-group-item">
+                            <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Simple" class="list-group-item">
                                 We keep things simple
                             </a>
-                            <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Together" class="list-group-item">
+                            <a data-ajax="true" data-ajax-loading="#mainLoading" data-ajax-mode="replace" data-ajax-update="#result" href="~/Home/Together" class="list-group-item">
                                 We are better together
                             </a>
 
@@ -56,6 +56,11 @@
                         <div class="row row-sm">
 
                             <div id="result">
+
+                                <div id="mainLoading">
+                                    <p align="left">
+                                        <img src="~/images/blueloading.gif" alt="" />
+                                </div>
 
                                 @Html.Partial("_DisplayEntries")
 
