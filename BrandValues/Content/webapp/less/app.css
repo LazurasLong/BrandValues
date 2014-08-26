@@ -3778,7 +3778,7 @@ textarea,
     padding: 10px;
   }
 }
-@media (max-height: 650px) {
+@media (max-height: 650px) and (min-width: 768px) {
   .bg-login {
     background-image: none !important;
   }
