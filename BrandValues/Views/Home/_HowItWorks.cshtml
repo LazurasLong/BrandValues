@@ -32,7 +32,7 @@
             <li class="margin-bottom-10">Decide if you’d like to enter as an individual or as part of a team – for the purpose of this competition we’ve capped the size of a team being between 3 and 15 people. However you can enter numerous times as an individual and / or as a team.</li>
             <li class="margin-bottom-10">Select the value or value(s) you think you live well</li>
             <li class="margin-bottom-10">Come up with a creative way to demonstrate how you embody this value(s) – for example, this could be in the form of a film, a photo, a story, a poem or even a song! The more creative the better</li>
-            <li class="margin-bottom-10">Come up with a name for your entry and submit it <a href="javascript:void(0);" id="uploadlink" class="text-info">here</a> on-line.</li>
+            <li class="margin-bottom-10">Come up with a name for your entry and submit it @Html.ActionLink("here", "Upload", "Home", new { @class = "text-info", target = "_blank" }) on-line.</li>
         </ol>
         <hr/>
         <p>
@@ -53,9 +53,3 @@
 
     
 </div>
-
-<script>
-    $('#uploadlink').on('click', function() {
-        window.location = "/home/upload";
-    });
-</script>
