@@ -105,13 +105,12 @@ namespace BrandValuesProcessor
 
             try
             {
-                var job = etsClient.CreateJob(new CreateJobRequest()
+                var RTMPjob = etsClient.CreateJob(new CreateJobRequest()
                 {
                     PipelineId = pipeline.Id,
                     Input = new JobInput()
                     {
                         AspectRatio = "auto",
-                        Container = "mp4",
                         FrameRate = "auto",
                         Interlaced = "auto",
                         Resolution = "auto",
@@ -125,6 +124,30 @@ namespace BrandValuesProcessor
                         Key = outputBucketName + fileName + ".mp4"
                     }
                 });
+
+
+                var HLSjob = etsClient.CreateJob(new CreateJobRequest()
+                {
+                    PipelineId = pipeline.Id,
+                    Input = new JobInput()
+                    {
+                        AspectRatio = "auto",
+                        FrameRate = "auto",
+                        Interlaced = "auto",
+                        Resolution = "auto",
+                        Key = videoPath
+                    },
+                    Output = new CreateJobOutput()
+                    {
+                        SegmentDuration = "10",
+                        ThumbnailPattern = thumbnailUrl + "_{count}",
+                        Rotate = "0",
+                        PresetId = "1409077585577-2ee3e1", //Web : HLS 600k - copy
+                        Key = outputBucketName + fileName
+                    }
+                });
+
+
 
                 client.DeleteMessage(new DeleteMessageRequest() { QueueUrl = request.QueueUrl, ReceiptHandle = m.ReceiptHandle });
             }

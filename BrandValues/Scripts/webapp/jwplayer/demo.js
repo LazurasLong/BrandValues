@@ -93,42 +93,81 @@ $(document).ready(function () {
             if (!videoThumbnailUrl || !fallbackUrl) {
                 $('#mediaplayer').append("<h1>No video uploaded along with this entry.</h1>");
             } else {
+
                 jwplayer.key = "D7QMo1Ir9C8AM7Rbowp5IFudmR8sc8K4pzXVb4PNirw=";
 
-                //JWPlayer
-                jwplayer("mediaplayer").setup({
-                    playlist: [{
-                        image: videoThumbnailUrl,
-                        sources: [
-                            //{
-                            //    file: rtmpUrl,
-                            //    type: "rtmp"
+                    var vid = document.createElement('video');
+                    if (vid.canPlayType('application/x-mpegurl')) {
+
+                        //JWPlayer
+                        jwplayer("mediaplayer").setup({
+                            playlist: [
+                                {
+                                    image: videoThumbnailUrl,
+                                    sources: [
+                                        {
+                                            file: appleUrl,
+                                            type: "hls"
+                                        },
+                                        {
+                                            file: fallbackUrl
+                                        }
+                                    ]
+                                }
+                            ],
+                            //sharing: {
+                            //    link: document.URL
                             //},
-                        //{
-                        //    file: appleUrl,
-                        //    type: "hls"
-                        //},
-                        {
-                            file: fallbackUrl
-                        }
-                        ]
-                    }],
-                    //sharing: {
-                    //    link: document.URL
-                    //},
-                    //primary: "flash",
-                    //stretching: 'fill',
-                    events: {
-                        onFullscreen: function (event) {
-                            resizePlayer();
-                        }
-                    },
-                    autostart: true,
-                    width: "100%",
-                    aspectratio: "16:9",
-                    //autostart: true,
-                    ga: { idstring: videoName }
-                });
+                            //primary: "flash",
+                            //stretching: 'fill',
+                            events: {
+                                onFullscreen: function(event) {
+                                    resizePlayer();
+                                }
+                            },
+                            autostart: true,
+                            width: "100%",
+                            aspectratio: "16:9",
+                            //autostart: true,
+                            ga: { idstring: videoName }
+                        });
+                    } else {
+                        //JWPlayer
+                        jwplayer("mediaplayer").setup({
+                            playlist: [{
+                                image: videoThumbnailUrl,
+                                sources: [
+                                    {
+                                        file: rtmpUrl,
+                                        type: "rtmp"
+                                    },
+                                {
+                                    file: fallbackUrl
+                                }
+                                ]
+                            }],
+                            //sharing: {
+                            //    link: document.URL
+                            //},
+                            primary: "flash",
+                            events: {
+                                onFullscreen: function (event) {
+                                    resizePlayer();
+                                }
+                            },
+                            autostart: true,
+                            width: "100%",
+                            aspectratio: "16:9",
+                            //autostart: true,
+                            ga: { idstring: videoName }
+                        });
+                    }
+
+     
+
+              
+
+                
 
                 jwplayer().onError(function () {
                     jwplayer().load({ file: "https://s3-eu-west-1.amazonaws.com/valuescompetition-degraded/video-encoding.mp4", image: "https://s3-eu-west-1.amazonaws.com/valuescompetition-degraded/video-encoding.png" });

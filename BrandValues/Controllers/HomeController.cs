@@ -435,8 +435,8 @@ namespace BrandValues.Controllers {
                 else
                 {
                     ViewBag.NetworkCheck = false;
-                    //ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
-                    //ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
+                    ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
+                    ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
                     ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
                     ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
                 } 
@@ -551,20 +551,24 @@ namespace BrandValues.Controllers {
         private string GetRTMPCloudfrontUrl(Entry entry)
         {
             string rtmpUrl = appConfig["RTMPCloudfront"];
-            //string videoUrl = entry.Url;
-            string fileName = Path.GetFileNameWithoutExtension(entry.Url);
+            string pathUrl = entry.Url;
+            string fileName = Path.GetFileNameWithoutExtension(pathUrl);
             string videoUrl = fileName + ".mp4";
+
+            //remove file name
+            var result = pathUrl.Replace(videoUrl, "");
+            
             string signedVideoUrl = GetSignedUrl.GetCloudfrontUrl(videoUrl);
-            return rtmpUrl + signedVideoUrl;
+            return rtmpUrl + result + "mp4:" + signedVideoUrl;
         }
 
         private string GetAppleCloudFrontUrl(Entry entry)
         {
-            string cloudfrontUrl = appConfig["TranscoderCloudfront"];
+            string cloudfrontUrl = appConfig["SimpleTranscoderCloudfront"];
             string fileName = Path.GetFileNameWithoutExtension(entry.Url);
             string relativeUrl = entry.Url.Substring(0, entry.Url.LastIndexOf('/'));
             string url = cloudfrontUrl + relativeUrl + "/" + fileName + ".m3u8";
-            return GetSignedUrl.GetCloudfrontUrl(url);
+            return url;
         }
 
         private string GetFallbackMP4CloudFrontUrl(Entry entry)
@@ -584,12 +588,19 @@ namespace BrandValues.Controllers {
             return GetSignedUrl.GetCloudfrontUrl(url);
         }
 
-        private string GetVideoThumbnailUrl(Entry entry)
+        private string GetSignedVideoThumbnailUrl(Entry entry)
         {
             string cloudfrontUrl = appConfig["TranscoderCloudfront"];
             string relativeUrl = entry.VideoThumbnailUrl;
             string url = cloudfrontUrl + relativeUrl;
             return GetSignedUrl.GetCloudfrontUrl(url);
+        }
+
+        private string GetVideoThumbnailUrl(Entry entry)
+        {
+            string cloudfrontUrl = appConfig["SimpleTranscoderCloudfront"];
+            string relativeUrl = entry.VideoThumbnailUrl;
+            return cloudfrontUrl + relativeUrl;
         }
 
         public ActionResult FAQ()
