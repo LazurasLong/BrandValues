@@ -1,5 +1,6 @@
 ﻿using BrandValues.Models;
 using System;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -18,6 +19,10 @@ namespace BrandValues
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            //http://msdn.microsoft.com/en-us/library/system.web.helpers.antiforgeryconfig.suppressidentityheuristicchecks(v=vs.111).aspx
+            //Identity.IsAuthenticated is true but Identity.Name is not set.
+            //AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
 
             MvcHandler.DisableMvcResponseHeader = true;
 
