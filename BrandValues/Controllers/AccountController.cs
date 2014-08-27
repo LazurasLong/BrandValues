@@ -235,8 +235,10 @@ namespace BrandValues.Controllers
                         int l = userEmail.IndexOf(".");
                         if (l > 0)
                         {
-                            firstName = userEmail.Substring(0, l);
+                            firstName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userEmail.Substring(0, l));
                         }
+
+                        surname = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(userEmail.Split(new char[] { '.', '@' })[1]);
                     }
 
 
