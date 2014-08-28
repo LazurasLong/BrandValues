@@ -435,7 +435,7 @@ namespace BrandValues.Controllers {
                 else
                 {
                     ViewBag.NetworkCheck = false;
-                    ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
+                    //ViewBag.RTMPUrl = GetRTMPCloudfrontUrl(entry);
                     ViewBag.AppleUrl = GetAppleCloudFrontUrl(entry);
                     ViewBag.FallbackUrl = GetFallbackMP4CloudFrontUrl(entry);
                     ViewBag.VideoThumbnailUrl = GetVideoThumbnailUrl(entry);
