@@ -88,13 +88,36 @@ namespace BrandValues.Controllers {
             //return Json(Context.Database.Server.BuildInfo, JsonRequestBehavior.AllowGet);
 
             var version = SiteVersion.Homepage;
+            ViewBag.SiteVersion = version;
 
             //var entries = Context.Entries.FindAll().SetLimit(6);
 
             //return last 6 entries
-            SortByBuilder sbb = new SortByBuilder();
-            sbb.Descending("CreatedOn");
-            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+            //SortByBuilder sbb = new SortByBuilder();
+            //sbb.Descending("CreatedOn");
+            //var latest = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+            
+            var allDocs = Context.Entries.FindAll();
+
+
+            //SortByBuilder tbb = new SortByBuilder();
+            //var votingStatus = GetVotingStatus();
+            //if (votingStatus == true)
+            //{
+            //    tbb.Descending("Votes");
+            //}
+            //else
+            //{
+            //    tbb.Descending("Likes");
+            //}
+            //var trending = Context.Entries.FindAllAs<Entry>().SetSortOrder(tbb).SetLimit(6);
+
+
+            //var model = new EntryViewModel();
+            //model.Latest = latest;
+            //model.Trending = trending;
+
+
 
             //get menu
             ViewBag.Menu = GetMenu();
@@ -104,9 +127,11 @@ namespace BrandValues.Controllers {
             if (version == "Version2")
             {
                 return View("HomePageV2", allDocs);
+                //return View("HomePageV2");
             }
 
             return View("HomePageV1", allDocs);
+            //return View("HomePageV1");
 
         }
 
@@ -249,6 +274,11 @@ namespace BrandValues.Controllers {
             return PartialView("_Intro", allDocs);
         }
 
+        public PartialViewResult IntroV2()
+        {
+            return PartialView("_IntroV2");
+        }
+
         public PartialViewResult HowItWorks()
         {
             return PartialView("_HowItWorks");
@@ -285,6 +315,11 @@ namespace BrandValues.Controllers {
         public PartialViewResult FAQs()
         {
             return PartialView("_FAQ");
+        }
+
+        public PartialViewResult Trending()
+        {
+            return PartialView("_Trending");
         }
 
         private bool GetVotingStatus()

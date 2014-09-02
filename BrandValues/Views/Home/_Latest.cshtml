@@ -1,0 +1,50 @@
+﻿@model IEnumerable<BrandValues.Entries.Entry>
+
+@{
+
+    var latest = Model.OrderByDescending(x => x.CreatedOn).Take(12);
+
+}
+
+@foreach (var entry in latest)
+{
+
+    <div class="col-xs-6 col-sm-3">
+        <div class="item">
+            <div class="pos-rlt entry-icon">
+                <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
+            </div>
+            <div class="padder-v entry-icon-padder">
+                <span class="pull-right badge bg-white">
+                    <i class="fa fa-thumbs-o-up text"></i>
+
+                    @if (ViewBag.Voting)
+                    {
+                        @entry.Votes.Count
+                    }
+                    else
+                    {
+                        @entry.Likes.Count
+                    }
+
+                </span>
+                <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                <span class="text-ellipsis text-xs text-muted">
+                    @if (entry.Type == "individual")
+                    {
+                        var space = "&nbsp;";
+                        @Html.DisplayFor(modelItem => entry.UserFirstName)
+                        @Html.Raw(space)
+                        @Html.DisplayFor(modelItem => entry.UserSurname)
+                        <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => entry.TeamName)
+                        <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                    }
+                </span>
+            </div>
+        </div>
+    </div>
+}

@@ -371,6 +371,9 @@
     <Content Include="Views\Home\HomePageV1.IE6.cshtml" />
     <Content Include="Views\Account\Terms.IE6.cshtml" />
     <Content Include="Views\Home\_Upload.cshtml" />
+    <Content Include="Views\Home\_IntroV2.cshtml" />
+    <Content Include="Views\Home\_Trending.cshtml" />
+    <Content Include="Views\Home\_Latest.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -532,6 +535,7 @@
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Entries\Edit.cs" />
     <Compile Include="Entries\Entry.cs" />
+    <Compile Include="Entries\EntryViewModel.cs" />
     <Compile Include="Entries\PostComment.cs" />
     <Compile Include="Entries\PostEntry.cs" />
     <Compile Include="Global.asax.cs">
@@ -542,6 +546,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PlayViewModel.cs" />
+    <Compile Include="Models\Poll.cs" />
     <Compile Include="Models\SiteVersion.cs" />
     <Compile Include="Models\SiteVersionViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
