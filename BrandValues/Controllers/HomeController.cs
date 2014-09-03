@@ -90,14 +90,8 @@ namespace BrandValues.Controllers {
             var version = SiteVersion.Homepage;
             ViewBag.SiteVersion = version;
 
-            //var entries = Context.Entries.FindAll().SetLimit(6);
-
-            //return last 6 entries
-            //SortByBuilder sbb = new SortByBuilder();
-            //sbb.Descending("CreatedOn");
-            //var latest = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+            //var entries = Context.Entries.FindAll().SetLimit(6);       
             
-            var allDocs = Context.Entries.FindAll();
 
 
             //SortByBuilder tbb = new SortByBuilder();
@@ -126,11 +120,17 @@ namespace BrandValues.Controllers {
 
             if (version == "Version2")
             {
+                var allDocs = Context.Entries.FindAll();
                 return View("HomePageV2", allDocs);
                 //return View("HomePageV2");
             }
 
-            return View("HomePageV1", allDocs);
+            //return last 6 entries
+            SortByBuilder sbb = new SortByBuilder();
+            sbb.Descending("CreatedOn");
+            var latest = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+
+            return View("HomePageV1", latest);
             //return View("HomePageV1");
 
         }

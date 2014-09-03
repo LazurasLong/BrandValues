@@ -22,7 +22,7 @@ namespace BrandValues
 
             //http://msdn.microsoft.com/en-us/library/system.web.helpers.antiforgeryconfig.suppressidentityheuristicchecks(v=vs.111).aspx
             //Identity.IsAuthenticated is true but Identity.Name is not set.
-            //AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
+            AntiForgeryConfig.SuppressIdentityHeuristicChecks = true;
 
             MvcHandler.DisableMvcResponseHeader = true;
 
