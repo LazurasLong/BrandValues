@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using BrandValues.Entries;
 using BrandValues.Models;
-using BrandValues.Polls;
 using MongoDB.Driver;
 
 namespace BrandValues.App_Start
@@ -44,9 +43,5 @@ namespace BrandValues.App_Start
             get { return Database.GetCollection<SiteVersion>("siteversions"); }
         }
 
-        public MongoCollection<Poll> Polls
-        {
-            get { return Database.GetCollection<Poll>("polls"); }
-        }
     }
 }

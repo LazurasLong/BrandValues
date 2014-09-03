@@ -2,14 +2,14 @@
 
 @{
 
-    var latest = Model.OrderByDescending(x => x.CreatedOn).Take(12);
+    var latest = Model.OrderByDescending(x => x.CreatedOn).Take(9);
 
 }
 
 @foreach (var entry in latest)
 {
 
-    <div class="col-xs-6 col-sm-3">
+    <div class="col-xs-6 col-sm-4">
         <div class="item">
             <div class="pos-rlt entry-icon">
                 <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
