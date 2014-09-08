@@ -19,6 +19,7 @@ using BrandValues.Entries;
 using Microsoft.Ajax.Utilities;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System;
 using Amazon.CloudFront;
 using BrandValues.Models;
@@ -90,29 +91,6 @@ namespace BrandValues.Controllers {
             var version = SiteVersion.Homepage;
             ViewBag.SiteVersion = version;
 
-            //var entries = Context.Entries.FindAll().SetLimit(6);       
-            
-
-
-            //SortByBuilder tbb = new SortByBuilder();
-            //var votingStatus = GetVotingStatus();
-            //if (votingStatus == true)
-            //{
-            //    tbb.Descending("Votes");
-            //}
-            //else
-            //{
-            //    tbb.Descending("Likes");
-            //}
-            //var trending = Context.Entries.FindAllAs<Entry>().SetSortOrder(tbb).SetLimit(6);
-
-
-            //var model = new EntryViewModel();
-            //model.Latest = latest;
-            //model.Trending = trending;
-
-
-
             //get menu
             ViewBag.Menu = GetMenu();
 
@@ -133,6 +111,62 @@ namespace BrandValues.Controllers {
             return View("HomePageV1", latest);
             //return View("HomePageV1");
 
+        }
+
+        public async Task<ActionResult> UpdatePoll(string pollName)
+        {
+            //update user polls
+            if (!string.IsNullOrEmpty(pollName))
+            {
+                //http://localhost/BrandValues/Home/updatepoll?pollName=enjoy
+
+                var user = await UserManager.FindByNameAsync(User.Identity.Name);
+                if (user != null)
+                {
+                    var poll = GetPoll(pollName);
+                    if (poll == null)
+                    {
+                        switch (pollName)
+                        {
+                            case "enjoy":
+                                    Poll newPoll = new Poll();
+                                    newPoll.Name = "enjoy";
+                                    Context.Polls.Save(newPoll);
+                                    poll = GetPoll("enjoy");                              
+                                break;
+                            case "":
+                                break;
+                        }
+
+                        
+
+                    }
+
+                    poll.Completed.Add(user.UserName);
+
+                    Context.Polls.Save(poll);
+                }
+
+            }
+
+            //get menu
+            ViewBag.Menu = GetMenu();
+            ViewBag.Voting = GetVotingStatus();
+
+            var allDocs = Context.Entries.FindAll();
+            return View("HomePageV2", allDocs);
+        }
+
+        private Poll GetPoll(string name)
+        {
+            //http://theprogrammersnotebook.wordpress.com/2014/03/19/mongodb-raw-query-with-c-driver/
+            var jsonQuery = "{ 'Name' : '" + name + "' }";
+
+            BsonDocument doc = MongoDB.Bson.Serialization.BsonSerializer.Deserialize<BsonDocument>(jsonQuery);
+            var query = new QueryDocument(doc);
+
+            var poll = Context.Polls.FindOne(query);
+            return poll;
         }
 
         public List<SelectListItem> GetMenu()

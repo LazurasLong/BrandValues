@@ -60,6 +60,36 @@
     </section>
                 <!-- /Body content -->
     
+    <!-- Modal -->
+    <!-- How did you find your activation session modal-->
+    <div class="modal fade" id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title purple" id="myModalLabel">We want your view</h4>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <div id="surveyMonkeyInfo">
+                        <div>
+                            <script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=R2SRlMeswwbZf8eSY0_2bEuA_3d_3d"> </script>
+                        </div>
+                    </div>
+                    <script>
+                        var maxWidth = $(window).width();
+
+                        if (maxWidth < 800) {
+                            $("#sm_e_s").attr("width", "300");
+                        }
+                        $("#sm_e_s").attr("scrolling", "no");
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     @Scripts.Render("~/Bundles/webapp")
 
     @RenderSection("scripts", required: false)

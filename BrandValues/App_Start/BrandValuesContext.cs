@@ -43,5 +43,10 @@ namespace BrandValues.App_Start
             get { return Database.GetCollection<SiteVersion>("siteversions"); }
         }
 
+        public MongoCollection<Poll> Polls
+        {
+            get { return Database.GetCollection<Poll>("polls"); }
+        }
+
     }
 }
