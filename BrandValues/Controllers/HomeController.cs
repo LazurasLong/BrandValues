@@ -146,14 +146,13 @@ namespace BrandValues.Controllers {
    
             }
 
-            HomeViewModel homeVM = new HomeViewModel();
+            //HomeViewModel homeVM = new HomeViewModel();
             //homeVM.Polls = pollsNotCompleted;
 
             if (version == "Version2")
             {
                 var allDocs = Context.Entries.FindAll();
-                homeVM.Entries = allDocs;
-                return View("HomePageV2", homeVM);
+                return View("HomePageV2", allDocs);
                 //return View("HomePageV2");
             }
 
@@ -340,15 +339,69 @@ namespace BrandValues.Controllers {
 
             SortByBuilder sbb = new SortByBuilder();
             sbb.Descending("CreatedOn");
-            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
+            var latest = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(6);
 
             ViewBag.Voting = GetVotingStatus();
+
+            //surveys
+            var username = User.Identity.Name;
+
+            Random rand = new Random();
+            var pollsNotCompleted = Context.Polls.FindAll().Where(i => !i.Completed.Contains(username))
+                .Select(r => new Poll
+                {
+                    Name = r.Name
+                }).OrderBy(x => rand.Next()).Take(1);
+
+            if (pollsNotCompleted != null && pollsNotCompleted.Any())
+            {
+                var e = pollsNotCompleted.FirstOrDefault();
+
+                switch (e.Name)
+                {
+                    case "enjoy":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=R2SRlMeswwbZf8eSY0_2bEuA_3d_3d";
+                        ViewBag.SurveyName = "enjoy";
+                        break;
+                    case "describe":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=fups23Yw9gVFiGPvAMro8Q_3d_3d";
+                        ViewBag.SurveyName = "describe";
+                        break;
+                    case "focus":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=wwFVFlxc6h6r_2faCTsCfByw_3d_3d";
+                        ViewBag.SurveyName = "focus";
+                        break;
+                    case "role":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=CaPLVGUo3frY7trnJFTw4A_3d_3d";
+                        ViewBag.SurveyName = "role";
+                        break;
+                    case "energised":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=qB8YNl_2feMg3eYD8EDzZDtA_3d_3d";
+                        ViewBag.SurveyName = "energised";
+                        break;
+                    case "culture":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=upntmzov3Gbrjzrag_2bPPwA_3d_3d";
+                        ViewBag.SurveyName = "culture";
+                        break;
+                    case "pride":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=_2b5zV_2bvy9xjH6M1RJ5B4yHA_3d_3d";
+                        ViewBag.SurveyName = "pride";
+                        break;
+                }
+
+            }
 
             switch (selection)
             {
                 case 0:
-                    ViewBag.Voting = GetVotingStatus();
-                    return PartialView("_Intro", allDocs);
+                    var version = SiteVersion.Homepage;
+                    if (version == "Version2")
+                    {
+                        var allEntries = Context.Entries.FindAll();
+                        return PartialView("_IntroV2", allEntries);
+                    }
+                    //return last 6 entries
+                    return PartialView("_Intro", latest);
                 case 1:
                     return PartialView("_HowItWorks");
                 case 2:
@@ -369,7 +422,7 @@ namespace BrandValues.Controllers {
                     return PartialView("_FAQ");
             }
 
-            return PartialView("_Intro", allDocs);
+            return PartialView("_Intro", latest);
         }
 
         public PartialViewResult Intro()
@@ -383,7 +436,9 @@ namespace BrandValues.Controllers {
 
         public PartialViewResult IntroV2()
         {
-            return PartialView("_IntroV2");
+            var allDocs = Context.Entries.FindAll();
+            ViewBag.Voting = GetVotingStatus();
+            return PartialView("_IntroV2", allDocs);
         }
 
         public PartialViewResult HowItWorks()

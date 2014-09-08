@@ -481,7 +481,28 @@ a.list-group-item:focus {
 .no-gutter [class*="col"] {
   padding: 0;
 }
-
+.modal-backdrop {
+  background-color: #5a6a7a;
+}
+.modal-backdrop.in {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.modal-over {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #5a6a7a;
+}
+.modal-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+.modal-content {
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
 .icon-muted {
   color: #ccc;
 }
@@ -3674,6 +3695,14 @@ fieldset[disabled] .i-checks input + i:before {
   .hidden-desktop {
     display: none !important;
   }
+}
+/* home */
+.largerBtn {
+  height: 350px;
+}
+.larger-btn {
+  width: 100%;
+  height: 100%;
 }
 /* faq's */
 /* browse */
