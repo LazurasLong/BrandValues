@@ -113,12 +113,14 @@ namespace BrandValues.Controllers {
 
         }
 
-        public async Task<ActionResult> UpdatePoll(string pollName)
+        [HttpPost]
+        public async Task<JsonResult> UpdatePoll(string pollName)
         {
             //update user polls
             if (!string.IsNullOrEmpty(pollName))
             {
                 //http://localhost/BrandValues/Home/updatepoll?pollName=enjoy
+                //https://valuescompetition.com/home/updatepoll?pollname=enjoy
 
                 var user = await UserManager.FindByNameAsync(User.Identity.Name);
                 if (user != null)
@@ -131,14 +133,13 @@ namespace BrandValues.Controllers {
                             case "enjoy":
                                     Poll newPoll = new Poll();
                                     newPoll.Name = "enjoy";
-                                    Context.Polls.Save(newPoll);
-                                    poll = GetPoll("enjoy");                              
+                                    Context.Polls.Save(newPoll);                           
                                 break;
                             case "":
                                 break;
                         }
 
-                        
+                        poll = GetPoll(pollName);
 
                     }
 
@@ -146,15 +147,10 @@ namespace BrandValues.Controllers {
 
                     Context.Polls.Save(poll);
                 }
-
+                return Json("Ok", JsonRequestBehavior.AllowGet);
             }
 
-            //get menu
-            ViewBag.Menu = GetMenu();
-            ViewBag.Voting = GetVotingStatus();
-
-            var allDocs = Context.Entries.FindAll();
-            return View("HomePageV2", allDocs);
+            return Json("Error", JsonRequestBehavior.AllowGet);
         }
 
         private Poll GetPoll(string name)
