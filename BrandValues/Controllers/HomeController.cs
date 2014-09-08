@@ -96,10 +96,64 @@ namespace BrandValues.Controllers {
 
             ViewBag.Voting = GetVotingStatus();
 
+            
+
+            //surveys
+            var username = User.Identity.Name;
+
+            Random rand = new Random();
+            var pollsNotCompleted = Context.Polls.FindAll().Where(i => !i.Completed.Contains(username))
+                .Select(r => new Poll
+                {
+                    Name = r.Name
+                }).OrderBy(x => rand.Next()).Take(1);
+
+            if (pollsNotCompleted != null && pollsNotCompleted.Any())
+            {
+                var e = pollsNotCompleted.FirstOrDefault();
+                
+                switch (e.Name) 
+                {
+                    case "enjoy":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=R2SRlMeswwbZf8eSY0_2bEuA_3d_3d";
+                        ViewBag.SurveyName = "enjoy";
+                        break;
+                    case "describe":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=fups23Yw9gVFiGPvAMro8Q_3d_3d";
+                        ViewBag.SurveyName = "describe";
+                        break;
+                    case "focus":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=wwFVFlxc6h6r_2faCTsCfByw_3d_3d";
+                        ViewBag.SurveyName = "focus";
+                        break;
+                    case "role":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=CaPLVGUo3frY7trnJFTw4A_3d_3d";
+                        ViewBag.SurveyName = "role";
+                        break;
+                    case "energised":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=qB8YNl_2feMg3eYD8EDzZDtA_3d_3d";
+                        ViewBag.SurveyName = "energised";
+                        break;
+                    case "culture":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=upntmzov3Gbrjzrag_2bPPwA_3d_3d";
+                        ViewBag.SurveyName = "culture";
+                        break;
+                    case "pride":
+                        ViewBag.SurveySrc = "https://www.surveymonkey.com/jsEmbed.aspx?sm=_2b5zV_2bvy9xjH6M1RJ5B4yHA_3d_3d";
+                        ViewBag.SurveyName = "pride";
+                        break;
+                }
+   
+            }
+
+            HomeViewModel homeVM = new HomeViewModel();
+            //homeVM.Polls = pollsNotCompleted;
+
             if (version == "Version2")
             {
                 var allDocs = Context.Entries.FindAll();
-                return View("HomePageV2", allDocs);
+                homeVM.Entries = allDocs;
+                return View("HomePageV2", homeVM);
                 //return View("HomePageV2");
             }
 
@@ -131,12 +185,28 @@ namespace BrandValues.Controllers {
                         switch (pollName)
                         {
                             case "enjoy":
-                                    Poll newPoll = new Poll();
-                                    newPoll.Name = "enjoy";
-                                    Context.Polls.Save(newPoll);                           
+                                    AddPoll(pollName);
                                 break;
-                            case "":
+                            case "describe":
+                                    AddPoll(pollName);
                                 break;
+                            case "focus":
+                                AddPoll(pollName);
+                                break;
+                            case "role":
+                                AddPoll(pollName);
+                                break;
+                            case "energised":
+                                AddPoll(pollName);
+                                break;
+                            case "culture":
+                                AddPoll(pollName);
+                                break;
+                            case "pride":
+                                AddPoll(pollName);
+                                break;
+                            default:
+                                return Json("No poll name selected", JsonRequestBehavior.AllowGet);
                         }
 
                         poll = GetPoll(pollName);
@@ -151,6 +221,13 @@ namespace BrandValues.Controllers {
             }
 
             return Json("Error", JsonRequestBehavior.AllowGet);
+        }
+
+        private void AddPoll(string name)
+        {
+            Poll newPoll = new Poll();
+            newPoll.Name = name;
+            Context.Polls.Save(newPoll);
         }
 
         private Poll GetPoll(string name)

@@ -1,8 +1,9 @@
-﻿@model IEnumerable<BrandValues.Entries.Entry>
+﻿@using BrandValues.Entries
+@model BrandValues.Models.HomeViewModel
 
 @{
 
-    var latest = Model.OrderByDescending(x => x.CreatedOn).Take(12);
+    var latest = Model.Entries.OrderByDescending(x => x.CreatedOn).Take(12);
 
 }
 

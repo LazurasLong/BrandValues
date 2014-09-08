@@ -1,16 +1,17 @@
-﻿@model IEnumerable<BrandValues.Entries.Entry>
+﻿@using BrandValues.Entries
+@model BrandValues.Models.HomeViewModel
 
 @{
     
-    var trending = Model;
+    var trending = Model.Entries;
     
     if (ViewBag.Voting)
     {
-        trending = Model.OrderByDescending(x => x.Votes.Count).Take(6);
+        trending = Model.Entries.OrderByDescending(x => x.Votes.Count).Take(6);
     }
     else
     {
-        trending = Model.OrderByDescending(x => x.Likes.Count).Take(6);
+        trending = Model.Entries.OrderByDescending(x => x.Likes.Count).Take(6);
     }
         
         

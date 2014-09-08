@@ -545,6 +545,7 @@
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\PlayViewModel.cs" />
     <Compile Include="Models\Poll.cs" />
     <Compile Include="Models\SiteVersion.cs" />

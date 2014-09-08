@@ -61,7 +61,6 @@
                 <!-- /Body content -->
     
     <!-- Modal -->
-    <!-- How did you find your activation session modal-->
     <div class="modal fade" id="modalWindow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,7 +71,29 @@
                 <div class="modal-body" id="modalBody">
                     <div id="surveyMonkeyInfo">
                         <div>
-                            <script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=R2SRlMeswwbZf8eSY0_2bEuA_3d_3d"> </script>
+
+                            <script src="@ViewBag.SurveySrc"></script>
+
+                            <!-- enjoy // How did you find your activation session modal-->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=R2SRlMeswwbZf8eSY0_2bEuA_3d_3d"> </script>*@
+
+                            <!-- describe // ValuesCompetition - describe your brand activation session -->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=fups23Yw9gVFiGPvAMro8Q_3d_3d"> </script>*@
+
+                            <!-- focus // ValuesCompetition - which brand value did you focus on -->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=wwFVFlxc6h6r_2faCTsCfByw_3d_3d"> </script>*@
+
+                            <!-- role // ValuesCompetition - your role in building the AIB brand reputation -->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=CaPLVGUo3frY7trnJFTw4A_3d_3d"> </script>*@
+
+                            <!-- energised // ValuesCompetition - How energised do you feel by the new brand strategy -->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=qB8YNl_2feMg3eYD8EDzZDtA_3d_3d"> </script>*@
+
+                            <!-- culture // ValuesCompetition - Do you feel the culture of AIB is changing -->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=upntmzov3Gbrjzrag_2bPPwA_3d_3d"> </script>*@
+
+                            <!-- pride // ValuesCompetition - Which of the values restore pride in AIB-->
+                            @*<script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=_2b5zV_2bvy9xjH6M1RJ5B4yHA_3d_3d"> </script>*@
                         </div>
                     </div>
                     <div class="modal-footer animated fadeInTop hidden" id="modal-footer">
@@ -86,30 +107,35 @@
                         }
                         $("#sm_e_s").attr("scrolling", "no");
 
+
                         //check iFrame load to determine whether user has completed survey
                         var page = 0;
-                        $("#sm_e_s").attr("onLoad", "pageNumber();");
 
-                        var pageNumber = function () {
-                            page++;
+                        var surveyName = '@ViewBag.SurveyName';
 
-                            if (page >= 2) {
+                        if (surveyName != null) {
+                            $("#sm_e_s").attr("onLoad", "pageNumber('" + surveyName + "');");
 
-                                $.ajax({
-                                    url: location.href + "/updatepoll?pollName=enjoy",
-                                    type: "POST",
-                                    data: [],
-                                    success: function (data, textStatus, jqXHR) {
-                                        //data - response from server
-                                        $('#modal-footer').removeClass('hidden');
-                                    },
-                                    error: function (jqXHR, textStatus, errorThrown) {
-                                        
-                                    }
-                                });
-                            }
-                        };
+                            var pageNumber = function (name) {
+                                page++;
 
+                                if (page >= 2) {
+
+                                    $.ajax({
+                                        url: location.href + "/updatepoll?pollName=" + name,
+                                        type: "POST",
+                                        data: [],
+                                        success: function (data, textStatus, jqXHR) {
+                                            //data - response from server
+                                            $('#modal-footer').removeClass('hidden');
+                                        },
+                                        error: function (jqXHR, textStatus, errorThrown) {
+                                            $('#modal-footer').removeClass('hidden');
+                                        }
+                                    });
+                                }
+                            };
+                        }
 
                     </script>
                 </div>
