@@ -56,7 +56,6 @@ namespace BrandValues
             bundles.Add(new StyleBundle("~/Bundles/jqueryui").Include(
                       "~/Content/webapp/css/jquery-ui-1.10.0.custom.css"
             ));
-                                  
 
             bundles.Add(new StyleBundle("~/Bundles/ie6css").Include(
                     "~/Content/webapp/ie/screen.css",    

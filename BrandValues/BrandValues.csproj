@@ -148,6 +148,7 @@
     <Content Include="Content\webapp\css\jquery-ui-1.10.0.custom.css" />
     <Content Include="Content\webapp\css\jquery.ui.1.10.0.ie.css" />
     <Content Include="Content\webapp\ie\ie.css" />
+    <Content Include="Content\webapp\ie\ieonly.css" />
     <Content Include="Content\webapp\ie\print.css" />
     <Content Include="Content\webapp\ie\screen.css" />
     <Content Include="Content\webapp\less\IE6.css">
@@ -186,7 +187,9 @@
     <Content Include="Content\webapp\less\myversion.css">
       <DependentUpon>myversion.less</DependentUpon>
     </Content>
+    <Content Include="images\question-bg.png" />
     <Content Include="images\question.png" />
+    <Content Include="images\survey-compass.png" />
     <Content Include="images\upload-ie.png" />
     <Content Include="images\values\customer.png" />
     <Content Include="images\values\empowering.png" />

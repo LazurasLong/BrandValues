@@ -34,7 +34,6 @@ $(document).ready(function () {
     //fix width bug
     if (get_browser() == 'Firefox') {
         if (get_browser_version() < 5) {
-            
             $("#play").css({ "max-width": "65%" });
         }
     }
@@ -63,6 +62,32 @@ $(document).ready(function () {
             LoadImage();
             break;
     }
+
+    ieResize();
+
+    function ieResize() {
+        var browser = get_browser();
+
+        if (browser == 'MSIE' || browser == 'IE 11' || browser == 'IE 10') {
+            //$("#play").css({ "max-width": "65%" });
+
+            if (get_browser_version() < 9) {
+
+            } else {
+                $(".app, .app body").css({ "overflow": "visible" });
+                $(".app .vbox > section, .app .vbox > footer").css({ "position": "relative" });
+
+                var width = $(window).width();
+                width = width * 0.65;
+
+                $(".entry-image").css({ "max-width": width });
+
+            }
+
+
+        }
+    }
+
 
     function LoadText() {
         if (!cloudfrontUrl) {
@@ -93,6 +118,13 @@ $(document).ready(function () {
             if (!videoThumbnailUrl || !fallbackUrl) {
                 $('#mediaplayer').append("<h1>No video uploaded along with this entry.</h1>");
             } else {
+
+                if (get_browser() == 'MSIE') {
+                    if (get_browser_version() < 10) {
+
+                        $('#text').append("<p class='margin-top-20'>You are using an <strong>outdated</strong> browser.<br/>Please use Chrome or Firefox to view this video.</p>");
+                    }
+                }
 
                 jwplayer.key = "D7QMo1Ir9C8AM7Rbowp5IFudmR8sc8K4pzXVb4PNirw=";
 
@@ -161,7 +193,8 @@ $(document).ready(function () {
                             //autostart: true,
                             ga: { idstring: videoName }
                         });
-                    }
+                    }
+
 
      
 

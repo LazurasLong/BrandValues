@@ -18,13 +18,14 @@
     @Styles.Render("~/Bundles/css")   
     @*@Styles.Render("~/Bundles/jqueryui")*@
 
-    
+ 
 
     <!--[if lt IE 9]>
       <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/html5shiv.js"></script>
       <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/respond.min.js"></script>
       <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/excanvas.js"></script>
     <![endif]-->
+
     
     <script src="~/Scripts/webapp/jquery.min.js"></script> 
     <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
@@ -97,13 +98,15 @@
                         </div>
                     </div>
                     <div class="modal-footer animated fadeInTop hidden" id="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary btn-default" data-dismiss="modal">Close</button>
                     </div>
                     <script>
                         var maxWidth = $(window).width();
 
                         if (maxWidth < 800) {
                             $("#sm_e_s").attr("width", "300");
+                        } else {
+                            $("#sm_e_s").attr("width", "550");
                         }
                         $("#sm_e_s").attr("scrolling", "no");
 
@@ -114,6 +117,33 @@
                         var surveyName = '@ViewBag.SurveyName';
 
                         if (surveyName != null) {
+
+                            //switch (surveyName) {
+                            //    case "enjoy":
+                            //        $(".button-text").html("How much did you enjoy your brand activation session?");
+                            //        break;
+                            //    case "describe":
+                            //        $(".button-text").html("What one word would you use to describe your brand activation session?");
+                            //        break;
+                            //    case "focus":
+                            //        $(".button-text").html("Which brand value did you focus on in your activation session?");
+                            //        break;
+                            //    case "role":
+                            //        $(".button-text").html("How clear do you feel about your role in building the AIB brand reputation?");
+                            //        break;
+                            //    case "energised":
+                            //        $(".button-text").html("How energised do you feel by the new brand strategy and the direction we’re going in?");
+                            //        break;
+                            //    case "culture":
+                            //        $(".button-text").html("Do you feel the culture of AIB is changing for the better");
+                            //        break;
+                            //    case "pride":
+                            //        $(".button-text").html("Which of the values do you think we need to improve on most to restore pride in AIB?");
+                            //        break;
+                            //}
+
+
+
                             $("#sm_e_s").attr("onLoad", "pageNumber('" + surveyName + "');");
 
                             var pageNumber = function (name) {
@@ -122,7 +152,7 @@
                                 if (page >= 2) {
 
                                     $.ajax({
-                                        url: location.href + "/updatepoll?pollName=" + name,
+                                        url: location.href + "home/updatepoll?pollName=" + name,
                                         type: "POST",
                                         data: [],
                                         success: function (data, textStatus, jqXHR) {

@@ -1,0 +1,13 @@
+﻿.app, .app body {
+    overflow: visible !important;
+}
+
+.app .vbox > section, .app .vbox > footer {
+    position: relative !important;
+}
+
+@media all and (min-width:768px) {
+.app .vbox > section, .app .vbox > footer {
+   position: relative !important;
+}
+}
