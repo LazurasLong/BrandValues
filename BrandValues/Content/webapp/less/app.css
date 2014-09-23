@@ -3664,6 +3664,9 @@ fieldset[disabled] .i-checks input + i:before {
 .logo-text {
   font-size: 18px;
 }
+.no-margin {
+  margin-bottom: 0px !important;
+}
 @media (max-width: 768px) {
   .no-margin-mobile {
     margin-bottom: 0px !important;
