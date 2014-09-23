@@ -3856,6 +3856,9 @@ textarea,
 .center {
   text-align: center;
 }
+.survey-padding {
+  padding-top: 38px;
+}
 .top-padding {
   padding-top: 5px;
 }
