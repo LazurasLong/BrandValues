@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<BrandValues.Entries.Entry>
 
-@*<div class="row no-margin">
+<div class="row no-margin">
 
-        <script type="text/javascript">
+    <script type="text/javascript">
         //###################################################################
         // Author: ricocheting.com
         // Version: v3.0
@@ -93,17 +93,15 @@
             }
         };
 
-        $( document ).ready(function() {
+        $(document).ready(function () {
             var cdown = new CDown();
 
             cdown.add(new Date(2014, 9, 8, 18, 00, 00), "countbox1");
         });
-        </script>
-        <div class="alert alert-warning no-margin animated fadeIn" role="alert">
-            Hello! Just a quick reminder that closing time for <a href="~/home/upload" class="alert-link">new entries</a> is in...<span id="countbox1"></span>
-        </div>
+    </script>
 
-    </div>*@
+
+</div>
 
 <a href="~/Home/Browse">
     <h4 class="font-thin">Top Trending Entries</h4>
@@ -130,10 +128,15 @@
 
     <div class="col-md-5 survey-padding">
 
+        @*<div class="jumbotron b-a bg-white">
+                <h1>8th October</h1>
+                <p>Closing date for entries..</p>
+                <p><a href="~/home/upload" class="btn btn-primary btn-lg menu-panel-purple" role="button">Upload your entry today!</a></p>
+            </div>*@
+
         <div class="jumbotron b-a bg-white">
-            <h1>8th October</h1>
-            <p>Closing date for entries..</p>
-            <p><a href="~/home/upload" class="btn btn-primary btn-lg menu-panel-orange" role="button">Upload your entry today!</a></p>
+            <h1 class="purple">Hello!</h1>
+            Just a quick reminder that the closing time for <a href="~/home/upload" class="purple">new entries</a> is in...<br /><span class="h3" id="countbox1"></span>
         </div>
 
     </div>

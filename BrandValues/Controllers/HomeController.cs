@@ -1158,7 +1158,10 @@ namespace BrandValues.Controllers {
 
         private Entry GetEntry(string id)
         {
-            var entry = Context.Entries.FindOneById(new ObjectId(id));
+            //bugfix Could not find any recognizable digits.
+            var max24chars = Utils.Substring.TruncateLongString(id, 24);
+
+            var entry = Context.Entries.FindOneById(new ObjectId(max24chars));
             return entry;
         }
 

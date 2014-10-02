@@ -507,6 +507,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\IpAddress.cs" />
+    <Compile Include="Utils\Substring.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
