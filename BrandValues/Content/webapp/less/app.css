@@ -4026,6 +4026,9 @@ textarea,
 .top-padding-10 {
   padding-top: 10px;
 }
+.inline {
+  margin-left: 15px;
+}
 .normal {
   font-size: 14px !important;
 }

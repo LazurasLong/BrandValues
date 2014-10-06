@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BrandValues.Entries.Entry>
+﻿@using BrandValues.Entries
+@model BrandValues.Models.BrowseViewModel
 
     @{
         ViewBag.Title = "Browse";
@@ -52,21 +53,30 @@
             <section>
                 <section class="vbox">
                     <section class="scrollable padder-lg w-f-md" id="browse">
+
                         <h2 class="font-thin m-b text-primary">Browse Competition Entries</h2>
-                        <div class="row row-sm">
 
-                            <div id="result">
 
-                                <div id="mainLoading">
-                                    <p align="left">
-                                        <img src="~/images/blueloading.gif" alt="" />
-                                </div>
+                        <div id="result">
+
+                            <div id="mainLoading">
+                                <p align="left">
+                                    <img src="~/images/blueloading.gif" alt="" />
+                            </div>
 
                                 @Html.Partial("_DisplayEntries")
 
-                            </div>
+                            
                         </div>
+
+
                     </section>
+
+
+
+
+
+
 
                     <footer class="footer footer-md bg-white"><p id="footer-right"><i class="fa icon-wrench"></i>  Built internally by AIB's Digital Innovation</p></footer>
                 </section>

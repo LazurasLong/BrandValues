@@ -548,106 +548,108 @@ namespace BrandValues.Controllers {
         }
 
         //Browse
-        public PartialViewResult All()
+        public ActionResult Browse()
         {
-            SortByBuilder sbb = new SortByBuilder();
-            sbb.Descending("CreatedOn");
-            var entries = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb);
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team")).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual")).OrderByDescending(x => x.CreatedOn);
+
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
 
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_DisplayEntries", entries);
+            return View(browseViewModel);
+        }
+
+        public PartialViewResult All()
+        {
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team")).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual")).OrderByDescending(x => x.CreatedOn);
+
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
+
+            ViewBag.Voting = GetVotingStatus();
+
+            return PartialView("_DisplayEntries", browseViewModel);
         }
 
         public PartialViewResult Customers()
         {
             var searchTerm = "customers";
-            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
-            var searchQuery =
-                MongoDB.Driver.Builders.Query.Or(
-                    search
-                );
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
 
-            var entries = Context.Entries
-                .FindAs<Entry>(searchQuery)
-                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
 
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_DisplayEntries", entries);
+            return PartialView("_DisplayEntries", browseViewModel);
         }
 
         public PartialViewResult Empowering()
         {
             var searchTerm = "empowering";
-            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
-            var searchQuery =
-                MongoDB.Driver.Builders.Query.Or(
-                    search
-                );
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
 
-            var entries = Context.Entries
-                .FindAs<Entry>(searchQuery)
-                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
 
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_DisplayEntries", entries);
+            return PartialView("_DisplayEntries", browseViewModel);
         }
 
         public PartialViewResult Trust()
         {
             var searchTerm = "trust";
-            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
-            var searchQuery =
-                MongoDB.Driver.Builders.Query.Or(
-                    search
-                );
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
 
-            var entries = Context.Entries
-                .FindAs<Entry>(searchQuery)
-                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
 
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_DisplayEntries", entries);
+            return PartialView("_DisplayEntries", browseViewModel);
         }
 
         public PartialViewResult Simple()
         {
             var searchTerm = "simple";
-            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
-            var searchQuery =
-                MongoDB.Driver.Builders.Query.Or(
-                    search
-                );
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
 
-            var entries = Context.Entries
-                .FindAs<Entry>(searchQuery)
-                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
 
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_DisplayEntries", entries);
+            return PartialView("_DisplayEntries", browseViewModel);
         }
 
 
         public PartialViewResult Together()
         {
             var searchTerm = "together";
-            var search = MongoDB.Driver.Builders.Query<Entry>.Matches(g => g.Values, BsonRegularExpression.Create(new Regex(searchTerm, RegexOptions.IgnoreCase)));
-            var searchQuery =
-                MongoDB.Driver.Builders.Query.Or(
-                    search
-                );
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
 
-            var entries = Context.Entries
-                .FindAs<Entry>(searchQuery)
-                .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
 
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_DisplayEntries", entries);
+            return PartialView("_DisplayEntries", browseViewModel);
         }
 
         //cache
@@ -1129,16 +1131,6 @@ namespace BrandValues.Controllers {
             
 
             return View(entries);
-        }
-
-        public ActionResult Browse()
-        {
-            SortByBuilder sbb = new SortByBuilder();
-            sbb.Descending("CreatedOn");
-            var model = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb);
-            ViewBag.Voting = GetVotingStatus();
-
-            return View(model);
         }
 
         public ActionResult Edit(string id)
