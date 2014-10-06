@@ -576,6 +576,21 @@ namespace BrandValues.Controllers {
             return PartialView("_DisplayEntries", browseViewModel);
         }
 
+        public PartialViewResult AllValues()
+        {
+            var searchTerm = "all";
+            var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+            var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual") && x.Values.Contains(searchTerm)).OrderByDescending(x => x.CreatedOn);
+
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = individualEntries;
+            browseViewModel.TeamEntries = teamEntries;
+
+            ViewBag.Voting = GetVotingStatus();
+
+            return PartialView("_DisplayEntries", browseViewModel);
+        }
+
         public PartialViewResult Customers()
         {
             var searchTerm = "customers";
