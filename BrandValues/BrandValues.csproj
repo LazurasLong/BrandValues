@@ -372,6 +372,7 @@
     <Content Include="Views\Home\_Trending.cshtml" />
     <Content Include="Views\Home\_Latest.cshtml" />
     <Content Include="Views\Home\_DisplayTeamEntries.cshtml" />
+    <Content Include="Views\Home\_IntroV3.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

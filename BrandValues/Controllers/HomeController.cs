@@ -254,9 +254,7 @@ namespace BrandValues.Controllers {
 
             items.Add(new SelectListItem { Text = "A reminder of the AIB brand values", Value = "3" });
 
-            items.Add(new SelectListItem { Text = "What does a winning entry look like?", Value = "4" });
-
-            items.Add(new SelectListItem { Text = "All your questions answered…", Value = "5" });
+            items.Add(new SelectListItem { Text = "All your questions answered…", Value = "4" });
 
             return items;
         }
@@ -409,16 +407,6 @@ namespace BrandValues.Controllers {
                 case 3:
                     return PartialView("_BrandValues");
                 case 4:
-                    if(IpAddress.CheckIp()) {
-                        ViewBag.NetworkPC = true;
-                    }
-                    else
-                    {
-                        ViewBag.NetworkPC = false;
-                    }
-                    
-                    return PartialView("_WinningEntry");
-                case 5:
                     return PartialView("_FAQ");
             }
 

@@ -3699,6 +3699,11 @@ fieldset[disabled] .i-checks input + i:before {
     display: none !important;
   }
 }
+@media (max-width: 1210px) {
+  .jumbotron h1 {
+    font-size: 32px !important;
+  }
+}
 /* home */
 .largerBtn {
   height: 350px;
@@ -3857,7 +3862,7 @@ textarea,
   text-align: center;
 }
 .survey-padding {
-  padding-top: 38px;
+  padding-top: 10px;
 }
 .top-padding {
   padding-top: 5px;
