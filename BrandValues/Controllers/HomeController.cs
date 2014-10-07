@@ -146,8 +146,17 @@ namespace BrandValues.Controllers {
    
             }
 
-            //HomeViewModel homeVM = new HomeViewModel();
-            //homeVM.Polls = pollsNotCompleted;
+            if (version == "Version3")
+            {
+                var teamEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("team"));
+                var individualEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("individual"));
+
+                ShortlistViewModel shortlistViewModel = new ShortlistViewModel();
+                shortlistViewModel.IndividualEntries = individualEntries;
+                shortlistViewModel.TeamEntries = teamEntries;
+
+                return View("HomePageV3", shortlistViewModel);
+            }
 
             if (version == "Version2")
             {

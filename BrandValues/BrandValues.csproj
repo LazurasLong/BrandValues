@@ -373,6 +373,8 @@
     <Content Include="Views\Home\_Latest.cshtml" />
     <Content Include="Views\Home\_DisplayTeamEntries.cshtml" />
     <Content Include="Views\Home\_IntroV3.cshtml" />
+    <Content Include="Views\Home\HomePageV3.cshtml" />
+    <Content Include="Views\Home\_ShortListed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -490,6 +492,7 @@
     <Compile Include="Controllers\SiteAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Entries\Edit.cs" />
+    <Compile Include="Entries\ShortlistedEntry.cs" />
     <Compile Include="Entries\Entry.cs" />
     <Compile Include="Entries\EntryViewModel.cs" />
     <Compile Include="Entries\PostComment.cs" />
@@ -499,6 +502,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ShortlistViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\HomeViewModel.cs" />

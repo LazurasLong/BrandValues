@@ -48,5 +48,10 @@ namespace BrandValues.App_Start
             get { return Database.GetCollection<Poll>("polls"); }
         }
 
+        public MongoCollection<ShortlistedEntry> ShortlistedEntries
+        {
+            get { return Database.GetCollection<ShortlistedEntry>("shortlists"); }
+        }
+
     }
 }

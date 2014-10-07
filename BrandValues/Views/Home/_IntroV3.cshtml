@@ -1,1 +1,33 @@
-﻿
+﻿@using BrandValues.Entries
+@model BrandValues.Models.ShortlistViewModel
+
+
+<div class="m-t-xl m-b clearfix animated fadeInLeft">
+    
+
+    <div class="row">
+
+        <div class="col-lg-6">
+            <span class="h3 font-thin purple">Vote for your favourite today!</span>
+            <hr />
+            It’s your chance to vote for your favourite shortlisted entry! Voting will end on the <span class="purple">24th October</span>.
+            <hr />
+        </div>
+
+        <div class="col-lg-6 center">
+
+            @*<img src="https://d3kx2j4tswsg1z.cloudfront.net/values/compass-large.png" alt="Brand Values Compass" />*@
+        </div>
+
+    </div>
+
+    <div class="row row-sm entry-centered">
+
+        @Html.Partial("_ShortListed")
+
+    </div>
+</div>
+
+
+
+

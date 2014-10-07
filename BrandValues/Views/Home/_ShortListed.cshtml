@@ -1,0 +1,105 @@
+﻿@using BrandValues.Entries
+@model BrandValues.Models.ShortlistViewModel
+
+@{
+    
+    var individual = Model.IndividualEntries;
+    var team = Model.TeamEntries;
+
+}
+
+<div class="row row-sm">
+    <h4 class="font-thin purple">Shortlisted Individual Entries</h4>
+    @foreach (var entry in individual)
+    {
+
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+            <div class="item">
+                <div class="pos-rlt entry-icon">
+                    <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
+                </div>
+                <div class="padder-v entry-icon-padder">
+                    <span class="pull-right badge bg-white">
+                        <i class="fa fa-thumbs-o-up text"></i>
+
+                        @if (ViewBag.Voting)
+                        {
+                            @entry.Votes.Count
+                        }
+                        else
+                        {
+                            @entry.Likes.Count
+                        }
+
+                    </span>
+                    <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                    <span class="text-ellipsis text-xs text-muted">
+                        @if (entry.Type == "individual")
+                        {
+                            var space = "&nbsp;";
+                            @Html.DisplayFor(modelItem => entry.UserFirstName)
+                            @Html.Raw(space)
+                            @Html.DisplayFor(modelItem => entry.UserSurname)
+                            <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => entry.TeamName)
+                            <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                        }
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+
+    </div>
+
+<hr />
+
+<div class="row row-sm">
+    <h4 class="font-thin purple">Shortlisted Team Entries</h4>
+    @foreach (var entry in team)
+    {
+
+        <div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+            <div class="item">
+                <div class="pos-rlt entry-icon">
+                    <a href="@Url.Action("Play", "Home", new { id = entry.Id })"><img src="@Html.DisplayFor(modelItem => entry.ThumbnailUrl)" alt="Competition Entry" class="r r-2x img-full"></a>
+                </div>
+                <div class="padder-v entry-icon-padder">
+                    <span class="pull-right badge bg-white">
+                        <i class="fa fa-thumbs-o-up text"></i>
+
+                        @if (ViewBag.Voting)
+                        {
+                            @entry.Votes.Count
+                        }
+                        else
+                        {
+                            @entry.Likes.Count
+                        }
+
+                    </span>
+                    <a href="@Url.Action("Play", "Home", new { id = entry.Id })" class="text-ellipsis">@Html.DisplayFor(modelItem => entry.Name)</a>
+                    <span class="text-ellipsis text-xs text-muted">
+                        @if (entry.Type == "individual")
+                        {
+                            var space = "&nbsp;";
+                            @Html.DisplayFor(modelItem => entry.UserFirstName)
+                            @Html.Raw(space)
+                            @Html.DisplayFor(modelItem => entry.UserSurname)
+                            <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => entry.TeamName)
+                            <br />@Html.DisplayFor(modelItem => entry.UserArea)
+                        }
+                    </span>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
