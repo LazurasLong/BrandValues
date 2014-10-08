@@ -375,6 +375,8 @@
     <Content Include="Views\Home\_IntroV3.cshtml" />
     <Content Include="Views\Home\HomePageV3.cshtml" />
     <Content Include="Views\Home\_ShortListed.cshtml" />
+    <Content Include="Views\Home\HomePageV2.IE6.cshtml" />
+    <Content Include="Views\Home\HomePageV3.IE6.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<BrandValues.Entries.Entry>
+@{
+    ViewBag.Title = "Values Competition";
+}
+
+<div class="span-8 colborder">
+
+
+    @Html.Partial("_Aside")
+
+</div>
+
+
+<div class="span-15 last">
+
+
+    <div id="result" class="left">
+
+        <div id="mainLoading" class="centered">
+            <p align="center">
+                <img src="~/images/ajax-loader.gif" alt="" />
+        </div>
+
+        @Html.Partial("_IntroV3")
+    </div>
+
+
+</div>
