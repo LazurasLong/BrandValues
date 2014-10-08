@@ -178,6 +178,12 @@ namespace BrandValues.Controllers
             {
                 return true;
             }
+
+            if (email.Contains("@aibny.com"))
+            {
+                return true;
+            }
+            
             
             return false;
         }
