@@ -291,9 +291,16 @@ namespace BrandValues.Controllers {
             var entries = Context.Entries.Find(searchQuery)
                 .SetSortOrder(SortBy<Entry>.Descending(g => g.CreatedOn));
 
+            //var teamEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("team")).OrderByDescending(x => x.CreatedOn);
+            //var individualEntries = Context.Entries.FindAllAs<Entry>().Where(x => x.Type.Contains("individual")).OrderByDescending(x => x.CreatedOn);
+
+            BrowseViewModel browseViewModel = new BrowseViewModel();
+            browseViewModel.IndividualEntries = entries.Where(x => x.Type.Contains("individual"));
+            browseViewModel.TeamEntries = entries.Where(x => x.Type.Contains("team")); ;
+
             ViewBag.Voting = GetVotingStatus();
 
-            return PartialView("_Search", entries);
+            return PartialView("_Search", browseViewModel);
         }
 
         public ActionResult Autocomplete(string term)
