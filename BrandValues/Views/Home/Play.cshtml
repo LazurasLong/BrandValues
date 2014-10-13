@@ -42,7 +42,6 @@
                                             if (ViewBag.Voted)
                                             {
                                                 <div class="pull-right text-sm">
-                                                    <i class="fa fa-thumbs-o-up text"></i> @Model.Entry.Votes.Count
 
                                                     <div class="btn btn-success">
                                                         <i class="fa fa-thumbs-o-up text"></i> Voted
@@ -102,7 +101,7 @@
                                                     @Html.AntiForgeryToken()
                                                     @Html.HiddenFor(model => model.Entry.Id)
 
-                                                    <i class="fa fa-thumbs-o-up text"></i> @Model.Entry.Votes.Count
+                                                    
 
                                                     <button type="submit" class="btn btn-default" id="btn-vote" value="Vote">
                                                         <i class="fa fa-thumbs-o-up text"></i> <span id="voteTxt">Vote For</span>
@@ -352,7 +351,7 @@
 
                                     <div class="row entry-centered margin-lr">
 
-                                        <h4 class="font-thin">Latest Entries</h4>
+                                        <a href="~/home"><h4 class="font-thin">Vote for your favourite today!</h4></a>
 
                                         <div class="row row-sm">
                                             @foreach (var entry in Model.Entries)
@@ -365,14 +364,15 @@
                                                         </div>
                                                         <div class="padder-v entry-icon-padder">
                                                             <span class="pull-right badge bg-white">
-                                                                <i class="fa fa-thumbs-o-up text"></i>
+                                                               
 
                                                                 @if (ViewBag.Voting)
                                                                 {
-                                                                    @entry.Votes.Count
+                                                                   
                                                                 }
                                                                 else
                                                                 {
+                                                                    <i class="fa fa-thumbs-o-up text"></i>
                                                                     @entry.Likes.Count
                                                                 }
 

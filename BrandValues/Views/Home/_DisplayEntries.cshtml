@@ -22,14 +22,15 @@
                         </div>
                         <div class="padder-v entry-icon-padder">
                             <span class="pull-right badge bg-white">
-                                <i class="fa fa-thumbs-o-up text"></i>
+                                
 
                                 @if (ViewBag.Voting)
                                 {
-                                    @entry.Votes.Count
+                                    
                                 }
                                 else
                                 {
+                                    <i class="fa fa-thumbs-o-up text"></i>
                                     @entry.Likes.Count
                                 }
 
@@ -71,14 +72,15 @@
                         </div>
                         <div class="padder-v entry-icon-padder">
                             <span class="pull-right badge bg-white">
-                                <i class="fa fa-thumbs-o-up text"></i>
+                                
 
                                 @if (ViewBag.Voting)
                                 {
-                                    @entry.Votes.Count
+
                                 }
                                 else
                                 {
+                                    <i class="fa fa-thumbs-o-up text"></i>
                                     @entry.Likes.Count
                                 }
 

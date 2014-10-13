@@ -78,6 +78,7 @@ namespace BrandValues.Controllers {
             }
         }
 
+
         //cache
         //[OutputCache(Duration = 60)]
         public ActionResult Index()
@@ -683,7 +684,9 @@ namespace BrandValues.Controllers {
             //return last 6 entries
             SortByBuilder sbb = new SortByBuilder();
             sbb.Descending("CreatedOn");
-            var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(4);
+            //var allDocs = Context.Entries.FindAllAs<Entry>().SetSortOrder(sbb).SetLimit(4);
+            Random r = new Random();
+            var allDocs = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().OrderBy(x => r.Next()).Take(4);
 
             //get Entry first
             var entry = GetEntry(id);
@@ -719,25 +722,36 @@ namespace BrandValues.Controllers {
 
             //check site version for like/vote
             var votingEnabled = SiteVersion.Voting;
-            ViewBag.Voting = false;
+
             //check for vote
             ViewBag.Voted = false;
-            if (votingEnabled == true)
+            ViewBag.Liked = false;
+
+            var allShortlistedEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Id.Contains(entry.Id));
+
+            if (allShortlistedEntries.Any())
             {
-                ViewBag.Voting = true;
-                
-                foreach (string x in entry.Votes)
+                if (votingEnabled == true)
                 {
-                    if (x.Contains(User.Identity.Name))
+                    ViewBag.Voting = true;
+
+                    foreach (string x in entry.Votes)
                     {
-                        ViewBag.Voted = true;
+                        if (x.Contains(User.Identity.Name))
+                        {
+                            ViewBag.Voted = true;
+                        }
                     }
+                    return View(playViewModel);
                 }
-                return View(playViewModel);
+
             }
 
+            ViewBag.Voting = false;
+
+
             //check for like
-            ViewBag.Liked = false;
+
             foreach (string x in entry.Likes)
             {
                 if (x.Contains(User.Identity.Name))
@@ -745,6 +759,7 @@ namespace BrandValues.Controllers {
                     ViewBag.Liked = true;
                 }
             }
+
 
             return View(playViewModel);
         }
