@@ -149,6 +149,7 @@ namespace BrandValues.Controllers {
 
             if (version == "Version3")
             {
+                
                 var teamEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("team"));
                 var individualEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("individual"));
 
@@ -410,6 +411,17 @@ namespace BrandValues.Controllers {
             {
                 case 0:
                     var version = SiteVersion.Homepage;
+                    if (version == "Version3")
+                    {
+                        var teamEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("team"));
+                        var individualEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("individual"));
+
+                        ShortlistViewModel shortlistViewModel = new ShortlistViewModel();
+                        shortlistViewModel.IndividualEntries = individualEntries;
+                        shortlistViewModel.TeamEntries = teamEntries;
+
+                        return PartialView("_IntroV3", shortlistViewModel);
+                    }
                     if (version == "Version2")
                     {
                         var allEntries = Context.Entries.FindAll();
@@ -494,6 +506,19 @@ namespace BrandValues.Controllers {
             var allDocs = Context.Entries.FindAll();
             ViewBag.Voting = GetVotingStatus();
             return PartialView("_IntroV2", allDocs);
+        }
+
+        public PartialViewResult IntroV3()
+        {
+            ViewBag.Voting = GetVotingStatus();
+            var teamEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("team"));
+            var individualEntries = Context.ShortlistedEntries.FindAllAs<ShortlistedEntry>().Where(x => x.Type.Contains("individual"));
+
+            ShortlistViewModel shortlistViewModel = new ShortlistViewModel();
+            shortlistViewModel.IndividualEntries = individualEntries;
+            shortlistViewModel.TeamEntries = teamEntries;
+
+            return PartialView("_IntroV3", shortlistViewModel);
         }
 
         public PartialViewResult HowItWorks()
