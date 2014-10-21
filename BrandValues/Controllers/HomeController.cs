@@ -147,6 +147,13 @@ namespace BrandValues.Controllers {
    
             }
 
+            if (version == "Version4")
+            {
+
+                return View("HomePageV4");
+            }
+
+
             if (version == "Version3")
             {
                 

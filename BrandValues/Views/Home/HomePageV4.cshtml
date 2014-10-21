@@ -1,0 +1,95 @@
+﻿@using BrandValues.Entries
+@model BrandValues.Models.ShortlistViewModel
+@{
+    ViewBag.Title = "Values Competition Home";
+    Layout = "~/Views/Shared/v3/_Layout.cshtml";
+}
+
+
+
+
+
+    <div class="container">
+
+        <!-- ONLY LOGO ON HEADER -->
+        <div class="only-logo">
+            <div class="navbar">
+                <div class="navbar-header centered">
+                    <img src="~/images/aib-logo-large.png" alt="AIB Logo">
+                </div>
+            </div>
+        </div> <!-- /END ONLY LOGO ON HEADER -->
+
+
+        <div class="row home-contents">
+            <div class="col-md-6 col-sm-6">
+
+                <!-- HEADING AND BUTTONS -->
+                <div class="intro-section">
+
+                    <!-- WELCOM MESSAGE -->
+                    <h1 class="intro">Winners Announced!</h1>
+                    <h5 class="white">Congratulations to John Byrne the winner of our individual entry award and to Waterford Business Centre winners of our team entry award.</h5>
+
+                    <!-- BUTTON -->
+                    <div class="buttons">
+
+                        <a class="btn btn-purple btn-lg" href="~/Home/Play/542e73d67bab3305e8bf679d">
+                            <i class="icon-user icon"></i>
+                            <span class="text" id="individual-btn">Individual Winner - Living The Brand Values</span>
+                        </a>
+                        <br/>
+                        <a class="btn btn-purple btn-lg margin-top-10" href="~/Home/Play/54317fd17bab3307a47d88b1">
+                            <i class="icon-users icon"></i>
+                            <span class="text">Team Winner - The A ib Team</span>
+                        </a>
+
+                    </div>
+                    <!-- /END BUTTONS -->
+
+                    
+                    <div class="buttons">
+                        <a class="btn btn-default" href="~/home/browse">
+                            <i class="icon-grid icon"></i>
+                            <span class="text">View all entries</span>
+                        </a>
+                    </div>
+
+                </div>
+                <!-- /END HEADNING AND BUTTONS -->
+
+            </div>
+
+
+            <div class="col-md-6 col-sm-6">
+
+                <!-- PHONE IMAGE WILL BE HIDDEN IN TABLET PORTRAIT AND MOBILE-->
+                <div class="phone-image">
+                    <img src="~/images/polaroid.png" class="img-responsive" alt="Winning entries">
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /END ROW -->
+
+    </div>
+   
+
+        @*<div class="container">
+            <div class="row-fluid">
+                <div class="hero-unit">
+                    <h1>Winners Announced!</h1>
+                    <p>Congratulations to <span class="purple">John Byrne</span> the winner of our individual entry award and to <span class="purple">Waterford Business Centre</span> winners of our team entry award.</p>
+                    <p><button type="button" class="btn btn-default">View all entries</button></p>
+
+
+                    @*<div class="row row-sm margin-top-20 ">
+
+                        @Html.Partial("_ShortListed")
+
+                    </div>*@
+
+
+
+

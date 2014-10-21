@@ -162,6 +162,7 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\bg\bg-compass-text.png" />
     <Content Include="images\bg\bg-nav-compass.png" />
+    <Content Include="images\bg\heo-bg.jpg" />
     <Content Include="images\blueloading.gif" />
     <Content Include="images\box-compass-ie.png" />
     <Content Include="images\box-compass.png" />
@@ -188,6 +189,7 @@
     <Content Include="Content\webapp\less\myversion.css">
       <DependentUpon>myversion.less</DependentUpon>
     </Content>
+    <Content Include="images\polaroid.png" />
     <Content Include="images\question.png" />
     <Content Include="images\survey-compass.png" />
     <Content Include="images\upload-ie.png" />
@@ -378,6 +380,9 @@
     <Content Include="Views\Home\_ShortListed.cshtml" />
     <Content Include="Views\Home\HomePageV2.IE6.cshtml" />
     <Content Include="Views\Home\HomePageV3.IE6.cshtml" />
+    <Content Include="Views\Home\HomePageV4.cshtml" />
+    <Content Include="Views\Shared\v3\_Layout.cshtml" />
+    <Content Include="Views\Home\HomePageV4.IE6.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

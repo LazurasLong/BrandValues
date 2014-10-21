@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/webapp/images/icons/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="~/Content/webapp/images/icons/iphone.jpg" rel="apple-touch-icon">
+    <link href="~/Content/webapp/images/icons/ipad.jpg" rel="apple-touch-icon" sizes="72x72">
+    <link href="~/Content/webapp/images/icons/iphone4.jpg" rel="apple-touch-icon" sizes="114x114">
+    <link href="~/Content/webapp/images/icons/ipad3.jpg" rel="apple-touch-icon" sizes="144x144">
+
+    @Styles.Render("~/Bundles/css")    
+
+    <!--[if lt IE 9]>
+      <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/html5shiv.js"></script>
+      <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/respond.min.js"></script>
+      <script src="https://d3kx2j4tswsg1z.cloudfront.net/ie/excanvas.js"></script>
+    <![endif]-->
+
+    
+    <script src="~/Scripts/webapp/jquery.min.js"></script> 
+    <script src="~/Scripts/jquery-ui-1.9.2.min.js"></script>
+
+   
+</head>
+<body>
+
+    <!-- Body content -->
+    <section class="vbox" id="content">
+
+        @Html.Partial("_Header")
+
+
+        <section id="fullscreen-bg">
+            <section class="hbox stretch" id="searchResults">
+
+                <section>
+
+                    <section class="hbox stretch">
+                        @RenderBody()
+                    </section>
+
+
+                </section>
+            </section>
+        </section>
+
+    </section><!-- /Body content -->
+    
+    @Scripts.Render("~/Bundles/webapp")
+
+    @RenderSection("scripts", required: false)
+                 
+    <script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-41233555-3', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</body>
+</html>

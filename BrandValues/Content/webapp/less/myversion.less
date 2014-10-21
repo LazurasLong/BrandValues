@@ -91,6 +91,40 @@ color: #f0f2f8;
     }
 }
 
+#fullscreen-bg{
+background: url("../images/bg/heo-bg.jpg") no-repeat center top fixed;
+-webkit-background-size: cover;
+background-size: cover;
+background-color: @brand-primary;
+}
+
+.intro-section {
+text-align: left;
+}
+.intro {
+color: #ffffff;
+margin-bottom: 36px;
+}
+.buttons {
+margin-top: 35px;
+}
+.phone-image {
+margin: auto;
+margin-bottom: 50px;
+}
+.only-logo .navbar .navbar-header {
+float: none;
+text-align: center;
+}
+.only-logo .navbar {
+background: none;
+padding: 60px;
+}
+
+#individual-btn {
+    white-space: normal;
+}
+
 /* header logo */    
 .navbar-brand {
         text-align: left;
@@ -104,6 +138,13 @@ color: #f0f2f8;
 }  
 
 @media (max-width: 768px) {
+    .only-logo .navbar {
+    background: none;
+    padding: 20px;
+    }
+    .phone-image {
+    margin-top: 30px;
+    }
     .no-margin-mobile{
         margin-bottom: 0px !important;
         padding-bottom: 0px !important;
@@ -139,6 +180,14 @@ color: #f0f2f8;
 }
 
 @media (max-width: 1210px) {
+    .only-logo .navbar {
+    background: none;
+    padding: 20px;
+    padding-top: 20px;
+    }
+    .phone-image {
+    margin-top: 30px;
+    }
     .jumbotron h1{
         font-size: 32px !important;
     
@@ -282,6 +331,15 @@ border-radius: 0px !important;
 }
 .dark-grey{
     color: @text-dark-grey;
+}
+.btn-purple {
+    background-color: @text-purple;
+    color: @brand-white;
+}
+.btn-purple:hover {
+    background-color: darken(@text-purple, 5%);
+    border-color: darken(@text-purple, 8%);
+    color: @brand-white;
 }
 .btn-grey {
     background-color: @color-grey;
