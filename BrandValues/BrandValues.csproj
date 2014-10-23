@@ -162,6 +162,7 @@
     <Content Include="images\ajax-loader.gif" />
     <Content Include="images\bg\bg-compass-text.png" />
     <Content Include="images\bg\bg-nav-compass.png" />
+    <Content Include="images\bg\heo-bg-white.jpg" />
     <Content Include="images\bg\heo-bg.jpg" />
     <Content Include="images\blueloading.gif" />
     <Content Include="images\box-compass-ie.png" />

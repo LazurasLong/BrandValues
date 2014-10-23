@@ -3658,16 +3658,15 @@ fieldset[disabled] .i-checks input + i:before {
   }
 }
 #fullscreen-bg {
-  background: url("../images/bg/heo-bg.jpg") no-repeat center top fixed;
+  background: url("../images/bg/heo-bg-white.jpg") no-repeat center top fixed;
   -webkit-background-size: cover;
   background-size: cover;
-  background-color: #647cb8;
+  background-color: #ffffff;
 }
 .intro-section {
   text-align: left;
 }
 .intro {
-  color: #ffffff;
   margin-bottom: 36px;
 }
 .buttons {
